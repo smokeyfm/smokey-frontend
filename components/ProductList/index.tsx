@@ -1,32 +1,13 @@
 import React, { useState } from "react";
-import { usePosts } from "../../hooks/usePosts";
+import { useProducts } from "../../hooks/useProducts";
 
-export const PostList = () => {
-  const [postCount, setPostCount] = useState(10);
-  const { data, isLoading, isFetching } = usePosts(postCount);
-
+export const ProductList = () => {
+  const { data, isLoading, isFetching } = useProducts(1);
+  console.log("PRODUCTS: ", data);
   if (isLoading) return <div>Loading</div>;
 
   return (
     <section>
-      <ul>
-        {data?.map((post, index) => (
-          <li key={post.id}>
-            <div>
-              <span>{index + 1}. </span>
-              <a href="#">{post.title}</a>
-            </div>
-          </li>
-        ))}
-      </ul>
-      {postCount <= 90 && (
-        <button
-          onClick={() => setPostCount(postCount + 10)}
-          disabled={isFetching}
-        >
-          {isFetching ? "Loading..." : "Show More"}
-        </button>
-      )}
       <style jsx>{`
         section {
           padding-bottom: 20px;

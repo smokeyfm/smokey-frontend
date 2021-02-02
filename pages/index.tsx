@@ -1,7 +1,7 @@
 import React from "react";
 import { QueryClient } from "react-query";
 import { dehydrate } from "react-query/hydration";
-import { Layout, Header, InfoBox, PostList } from "../components";
+import { Layout, Header, InfoBox, ProductList } from "../components";
 import { fetchPosts } from "../hooks";
 
 const Home = () => {
@@ -9,7 +9,7 @@ const Home = () => {
     <Layout>
       <Header />
       <InfoBox>ℹ️ This page shows how to use SSG with React-Query.</InfoBox>
-      <PostList />
+      <ProductList />
     </Layout>
   );
 };
@@ -18,6 +18,7 @@ export async function getStaticProps() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(["posts", 10], () => fetchPosts(10));
+  await queryClient.prefetchQuery(["products", 1], () => fetchPosts(1));
 
   return {
     props: {
