@@ -8,6 +8,12 @@ export const ProductList = () => {
 
   return (
     <section>
+      {data?.data?.map((product) => (
+        <div key={product.id}>
+          <h1>{product.attributes.name}</h1>
+          <h3>${product.attributes.price}</h3>
+        </div>
+      ))}
       <style jsx>{`
         section {
           padding-bottom: 20px;

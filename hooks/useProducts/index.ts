@@ -10,13 +10,11 @@ const client = makeClient({
 
 const fetchProducts = async (page = 1) => {
   const response = await client.products.list();
-  console.log("success: ", response.isSuccess());
-  console.log("success: ", response.success());
   return response.success();
 };
 
 const useProducts = (page: number) => {
-  return useQuery(["products", page], () => fetchProducts);
+  return useQuery(["products", page], () => fetchProducts(page));
 };
 
 export { useProducts, fetchProducts };
