@@ -2,7 +2,7 @@ import React from "react";
 import { QueryClient } from "react-query";
 import { dehydrate } from "react-query/hydration";
 import { Layout, Header, InfoBox, ProductList } from "../components";
-import { fetchPosts } from "../hooks";
+import { fetchPosts, fetchProducts } from "../hooks";
 
 const Home = () => {
   return (
@@ -18,7 +18,7 @@ export async function getStaticProps() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(["posts", 10], () => fetchPosts(10));
-  await queryClient.prefetchQuery(["products", 1], () => fetchPosts(1));
+  await queryClient.prefetchQuery(["products", 1], () => fetchProducts(1));
 
   return {
     props: {
