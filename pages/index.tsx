@@ -8,13 +8,13 @@ const Home = () => {
   return (
     <Layout>
       <Header />
-      <InfoBox>ℹ️ This page shows how to use SSG with React-Query.</InfoBox>
+      <InfoBox>ℹ️ This page shows how to use SSR with React-Query.</InfoBox>
       <ProductList />
     </Layout>
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(["posts", 10], () => fetchPosts(10));
