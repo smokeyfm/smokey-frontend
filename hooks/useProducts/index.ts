@@ -6,7 +6,7 @@ import { IProducts } from "@spree/storefront-api-v2-sdk/types/interfaces/Product
 // import { makeClient } from '@spree/storefront-api-v2-sdk/dist/client'
 
 const client = makeClient({
-  host: "http://localhost:8080",
+  host: process.env.SPREE_API_URL || "http://localhost:8080",
 });
 
 const fetchProducts = async (page = 1) => {
