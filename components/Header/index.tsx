@@ -61,7 +61,7 @@ export const Header = () => {
       <Sticky>
         <div className="bottom-header">
           {dummyCategories.map((category) => (
-            <Link href="/">
+            <Link href="/" key={category}>
               <a className="category">{category}</a>
             </Link>
           ))}
