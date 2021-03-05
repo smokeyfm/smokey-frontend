@@ -62,7 +62,7 @@ export const Header = () => {
         <div className="bottom-header">
           {dummyCategories.map((category) => (
             <Link href="/">
-              <a className={pathname === "/" ? "is-active" : ""}>{category}</a>
+              <a className="category">{category}</a>
             </Link>
           ))}
           <style jsx>{`
@@ -71,15 +71,25 @@ export const Header = () => {
               flex-direction: row;
               align-items: center;
               justify-content: space-between;
+              flex-wrap: wrap;
               padding: 30px 0px;
               background: black;
             }
+            .category {
+              padding: 15px;
+            }
+            .bottom-header > :first-child {
+              padding-left: 0px;
+            }
+            .bottom-header > :last-child {
+              padding-right: 0px;
+            }
+
             header {
               margin-bottom: 25px;
             }
             a {
               font-size: 14px;
-              margin-right: 15px;
               text-decoration: none;
             }
             .is-active {
