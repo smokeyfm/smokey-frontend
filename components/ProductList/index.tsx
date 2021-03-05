@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { useProducts } from "../../hooks/useProducts";
 
 export const ProductList = () => {
@@ -15,13 +16,25 @@ export const ProductList = () => {
             ).attributes.styles[2].url
           }`;
           return (
-            <div key={product.id} className="product-container">
-              <img src={source} />
-              <h1>{product.attributes.name}</h1>
-              <div>
-                <h3>${product.attributes.price}</h3>
+            <Link
+              key={product.id}
+              href={{
+                pathname: `[slug]`,
+                query: {
+                  slug: product.attributes.slug,
+                  productId: product.id,
+                },
+              }}
+              as={`/${product.attributes.slug}`}
+            >
+              <div className="product-container">
+                <img src={source} />
+                <h1>{product.attributes.name}</h1>
+                <div>
+                  <h3>${product.attributes.price}</h3>
+                </div>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>
