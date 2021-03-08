@@ -26,14 +26,32 @@ export const Header = () => {
             <a className={pathname === "/" ? "is-active" : ""}>LOGO</a>
           </Link>
         </div>
-        <Link href="/client-only">
-          <a className={pathname === "/client-only" ? "is-active" : ""}>
-            Client-Only
-          </a>
-        </Link>
+        <div className="rightSide">
+          <Link href="/authenticate/login">
+            <a
+              className={pathname === "/authenticate/login" ? "is-active" : ""}
+            >
+              LOG IN
+            </a>
+          </Link>
+          <Link href="/authenticate/signup">
+            <a
+              className={pathname === "/authenticate/signup" ? "is-active" : ""}
+            >
+              SIGN UP
+            </a>
+          </Link>
+        </div>
         <style jsx>{`
           .top-header {
             padding: 30px 0px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+          }
+          .rightSide {
+            width: 10%;
             display: flex;
             flex-direction: row;
             align-items: center;
