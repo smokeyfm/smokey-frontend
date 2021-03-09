@@ -1,5 +1,5 @@
 import * as Yup from "yup";
-import { createAccount } from "../../hooks/useAuth";
+import { createAccount, login } from "../../hooks/useAuth";
 
 export enum AuthFromType {
   login = "login",
@@ -38,7 +38,7 @@ export const formConfig = {
       password: "",
     },
     validate: LoginSchema,
-    onSubmit: () => {},
+    onSubmit: login,
   },
   [AuthFromType.signup]: {
     title: "SIGN UP",
