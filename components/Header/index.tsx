@@ -1,33 +1,33 @@
 import React from "react";
 import { useRouter } from "next/router";
+import styled from '@emotion/styled';
 import Link from "next/link";
-
+import { param } from "jquery";
+const HeaderMargin= styled.header`
+margin-bottom: 25px;
+`
+const AnchorTag = styled.a(
+  {
+    fontSize: 20,
+    marginRight:15,
+    textDecoration:'none',
+    cursor:'pointer'
+  },
+  props => ({ textDecoration: props.color })
+)
 export const Header = () => {
   const { pathname } = useRouter();
 
   return (
-    <header>
+    <HeaderMargin>
       <Link href="/">
-        <a className={pathname === "/" ? "is-active" : ""}>Home</a>
+        <AnchorTag color={pathname === "/" ? "underline":"" }>Home</AnchorTag>
       </Link>
       <Link href="/client-only">
-        <a className={pathname === "/client-only" ? "is-active" : ""}>
+        <AnchorTag color= {pathname === "/client-only" ?"underline":"" }>
           Client-Only
-        </a>
+        </AnchorTag>
       </Link>
-      <style jsx>{`
-        header {
-          margin-bottom: 25px;
-        }
-        a {
-          font-size: 14px;
-          margin-right: 15px;
-          text-decoration: none;
-        }
-        .is-active {
-          text-decoration: underline;
-        }
-      `}</style>
-    </header>
+    </HeaderMargin>
   );
 };

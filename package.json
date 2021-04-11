@@ -8,14 +8,25 @@
     "start": "next start -p $PORT"
   },
   "dependencies": {
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
     "@spree/storefront-api-v2-sdk": "^4.4.3",
+    "@types/jquery": "^3.5.5",
+    "fs": "^0.0.1-security",
     "ky": "^0.23.0",
     "ky-universal": "^0.8.2",
     "next": "10.0.6",
     "react": "17.0.1",
+    "react-audio-player": "^0.14.0",
+    "react-burger-menu": "^3.0.3",
     "react-dom": "17.0.1",
+    "react-drag-drawer": "^3.3.4",
+    "react-player": "^2.9.0",
     "react-query": "^3.6.0",
-    "resolve-from": "^5.0.0"
+    "react-youtube": "^7.13.1",
+    "resolve-from": "^5.0.0",
+    "soundcloud-api-client": "^0.0.9",
+    "video-react": "^0.14.1"
   },
   "devDependencies": {
     "@types/node": "^14.14.25",
