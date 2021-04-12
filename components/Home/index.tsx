@@ -1,45 +1,73 @@
 import React, { Component, createRef } from 'react'
-import Popup from '../Modal/Popup'
-import YouTubeIframe from '../youTubeIframe/YouTubeIframe';
+import Popup from '../Modal/index'
+import YouTubeIframe from '../video';
 import ReactAudioPlayer from 'react-audio-player';
 import Image from 'next/image'
 const client_id = '465bfa9fa3bf3c824164deb07cb2761b'
+
 const styles = {
-  backgroundColor: '#1f1f1f',
-  paddingLeft: '17px',
-  paddingRight: '15px'
+	backgroundColor: '#1f1f1f',
+	paddingLeft: '17px',
+	paddingRight: '15px'
 
 }
+
 interface Props {
 }
+
 export interface S {
-  trackIndex: any;
-  songs: any;
-  index: any;
-  isPlaying: boolean;
-  // audioInput:any;
-  url:any;
-  // audioInput: any;
+	songs: any;
+	index: any;
+	isPlaying: boolean;
+	url: any;
+	currentTime: any;
+	duration: any;
+	muted: boolean;
+	volume: number;
+	reverse: any;
+	seeking: boolean;
+	seekable: any;
+	audioInput: any;
+	seekbarvalue: any;
+
 }
 export default class HomeComponent extends Component<Props, S> {
   rap: any;
+  //seekbarFunction: (e: Event) => void;
   constructor(props) {
     super(props);
-    // this.rap = React.createRef();
+    this.rap = React.createRef();
     this.state = {
-      // audioInput: '',
-      trackIndex: 0,
       songs: [],
       index: 0,
       isPlaying: false,
-      url:''
-    }
+      url: "",
+      currentTime: "",
+      duration: "",
+      muted: false,
+      volume: 1,
+      reverse: 100,
+      seeking: false,
+      seekable: "",
+      audioInput: "",
+      seekbarvalue: "",
+    };
   }
   componentDidMount() {
-    this.ApiCall()
-    // console.log(this.rap);
-    // this.setState({ audioInput: this.rap });
+    this.ApiCall();
+    const audio = document.getElementsByClassName("react-audio-player")[0];
+    // console.log( this.rap.audioEl.current);
+    //audio.addEventListener('timeupdate', this.UpdateTheTime, false);
+    // audio.addEventListener('durationchange', this.SetSeekBar, false);
+    // const seekbar = document.getElementById('seekbar');
+    // this.setState({ seekbarvalue: seekbar })
+    this.setState({ audioInput: audio });
+    this.rap.audioEl.current.onvolumechange = (e) => {
+      // console.log(`Events**********`, e)
+    };
+    //this.setState({ audioInput: this.rap });
     // document.addEventListener("keypress", (e) => {
+    //   console.log("KEYPRESSED*************", e)
     //   if (e.key === " ") {
     //     if (this.state.isPlaying) {
     //       this._pauseAudio();
@@ -50,224 +78,273 @@ export default class HomeComponent extends Component<Props, S> {
     // });
   }
   ApiCall() {
-    fetch("https://api.soundcloud.com/tracks?client_id=" + `${client_id}` + `&limit=20`)
-      // fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem", {
-      //   "method": "GET",
-      //   "headers": {
-      //     "x-rapidapi-key": "daafecbc68mshe3b1a0f8d5e9a70p1dd539jsnf81267d84e57",
-      //     "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com"
-      //   }
-      // })
-      .then(res => res.json())
+    fetch(
+      "https://api.soundcloud.com/users/6319082/playlists?client_id=" +
+        `${client_id}`
+    )
+      .then((res) => res.json())
       .then(
         (result) => {
-          this.setState({songs: result}, ()=>this.GetUrl());
+          this.setState({ songs: result[0].tracks }, () => this.GetUrl());
         },
-        (error) => {
-          console.log(error)
-        }
-      )
+        (error) => {}
+      );
   }
-GetUrl=()=>{
-  const url = this.state.songs.map((sons => {
-    return sons.stream_url + "?client_id=" + `${client_id}`
-  }))
-  this.setState({url:url})
-}
+  GetCurrentTimeAndDuration = () => {
+    this.setState({ currentTime: this.rap.audioEl.current.currentTime });
+    this.setState({ duration: this.rap.audioEl.current.duration });
+    this.setState({ duration: this.rap.audioEl.current.seeking });
+    this.setState({ duration: this.rap.audioEl.current.seekable });
+  };
+
+  randomArrayShuffle(array) {
+    var currentIndex = array.length,
+      temporaryValue,
+      randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
+  }
+
+  GetUrl = () => {
+    this.randomArrayShuffle(this.state.songs);
+
+    const url = this.state.songs.map((song) => {
+      return song.stream_url + "?client_id=" + `${client_id}`;
+    });
+    this.setState({ url: url });
+    //this.GetCurrentTimeAndDuration()
+  };
   componentWillReceiveProps(nextProps) {
-    console.debug("Will received props", nextProps)
+    console.debug("Will received props", nextProps);
     /* Update state songs while data is passed from parent component while ready and formated */
     this.setState({
       songs: nextProps.songs,
-    })
+    });
   }
-
-  // componentDidUpdate() {
-  //   if (this.rap !== this.state.audioInput) {
-  //     this.setState({ audioInput: this.rap })
-  //   }
+  
+  // UpdateTheTime = () => {
+  // 	var sec = this.state.audioInput.currentTime;
+  // 	var h = Math.floor(sec / 3600);
+  // 	sec = sec % 3600;
+  // 	var min = Math.floor(sec / 60);
+  // 	sec = Math.floor(sec % 60);
+  // 	if (sec.toString().length < 2) sec = "0" + sec;
+  // 	if (min.toString().length < 2) min = 0 + min;
+  // 	document.getElementById('lblTime').innerHTML = h + ":" + min + ":" + sec;
+  // 	this.state.seekbarvalue.min = this.state.audioInput.startTime;
+  // 	this.state.seekbarvalue.max = this.state.audioInput.duration;
+  // 	this.state.seekbarvalue.value = this.state.audioInput.currentTime;
   // }
+
+  // SetSeekBar = () => {
+  // 	this.state.seekbarvalue.min = 0;
+  // 	this.state.seekbarvalue.max = this.state.audioInput.duration;
+  // }
+
+  handleChangeReverse = (value) => {
+    const finalvalue = (value * 1) / 100;
+    if (finalvalue) {
+      this.setState({
+        volume: finalvalue,
+      });
+    }
+  };
+
+  mutedPlayer = () => {
+    if (this.state.muted == true) {
+      this.setState({ muted: false });
+    } else {
+      this.setState({ muted: true });
+    }
+  };
   _playCurrentSong = () => {
-    /* this.rap is set bye reactAudioPlayer, direct acces to the html5 audio instance */
-   // this.rap.audioEl
-    this.setState({ isPlaying: true })
-  }
+    this.rap.audioEl.current.play();
+    this.setState({ isPlaying: true });
+  };
 
   _pauseAudio = () => {
-    /* this.rap is set bye reactAudioPlayer, direct acces to the html5 audio instance */
-   // this.rap.audioEl
-    this.setState({ isPlaying: false })
-  }
-  _playNextSong = () => {
+    this.rap.audioEl.current.pause();
+    this.setState({ isPlaying: false });
+  };
 
-    /* inc index or set to 0 if the last song was playing */
-    if (this.state.index + 1 < this.state.songs.length) {
-      this.setState({ index: this.state.index + 1 })
-    } else {
-      this.setState({ index: 0 })
+  getRandomIndex = () => {
+    return Math.floor(Math.random() * this.state.songs.length);
+  };
+
+  _playNextSong = () => {
+    if (this.state.songs && this.state.songs.length != undefined && this.state.songs.length != 0) {
+      let randomIndex = this.getRandomIndex();
+
+      if (randomIndex != this.state.index) {
+        this.setState({ index: randomIndex });
+      } else {
+        this._playNextSong();
+      }
     }
-  }
+  };
 
   _ErrorNextSong = (e) => {
     const { songs, index } = this.state;
-    console.log(`${songs[index] && songs[index].title} can't be loaded \nAutomatically loading next song...`)
+    console.log(
+      `${
+        songs[index] && songs[index].title
+      } can't be loaded \nAutomatically loading next song...`
+    );
     this._playNextSong();
-  }
+  };
 
-  _playPreviousSong = () => {
+  ChangeTheTime = () => {
+    this.state.audioInput.currentTime = this.state.seekbarvalue.value;
+  };
 
-    /* dec index or set to max if the last first was playing */
-    if (this.state.index - 1 >= 0) {
-      this.setState({ index: this.state.index + -1 })
-    } else {
-      this.setState({ index: this.state.songs.length - 1 })
-    }
-  }
+//   _playPreviousSong = () => {
+//     if (this.state.index - 1 >= 0) {
+//       this.setState({ index: this.state.index + -1 }, () => {
+//         console.log(
+//           this.state.songs.length + " IF... Previous song index is ",
+//           this.state.index
+//         );
+//       });
+//     } else {
+//       this.setState({ index: this.state.songs.length - 1 }, () => {
+//         console.log(
+//           this.state.songs.length + " ELSE... Previous song index is ",
+//           this.state.index
+//         );
+//       });
+//     }
+//   };
+
   render() {
     return (
       <div>
-          <Popup />
-            <YouTubeIframe isPlaying={this.state.isPlaying}/>
-              <p style={{
-                color: '#fff', width: '100%', bottom: '8%',
-                textAlign: 'center',
-                position: 'absolute', fontFamily: 'james', fontSize: 40, margin: 'auto', zIndex: 99999
-                }}>
-                  {this.state.songs[this.state.index]
-                && this.state.songs[this.state.index].title}
-              
-
-              </p>
-              <div style={{
-                position: 'absolute',
-                bottom: 0,
-                left: '35%',
-                zIndex: 99999
-                // margin: -25px 0 0 -25px; 
-              }}>
-
-              <div style={{ position: 'absolute', bottom: 0 }}>
-                <ReactAudioPlayer
-                  src={this.state.url[this.state.index]}
-                  // ref={(element) => { this.rap = element; }}
-                  autoPlay={true}
-                  onEnded={this._playNextSong}
-                  onError={this._ErrorNextSong}
-                  onPlay={this._playCurrentSong}
-                  onPause={this._pauseAudio}
-                  controls
-                  style={styles}
-                />
-              <div style={{
-                cursor: 'pointer',
-                position: 'absolute', top: 12, right: -40
-              }}>
-              <Image
-                src="/img/forward-button.png"
-                alt="Picture of the author"
-                width={16}
-                height={16}
-                onClick={this._playNextSong}
-              />
-            </div>
-            <div style={{
-              cursor: 'pointer',
-              position: 'absolute', top: 12, left: -30
-            }}>
-              <Image
-                src="/img/rewind-button.png"
-                alt="Picture of the author"
-                width={16}
-                height={16}
-                onClick={this._playPreviousSong}
-              />
-            </div>
-              </div>
-            </div>
-            <div id="skyline"></div>
-            <div id="glowContainer">
-              <div id="glow"></div>
-            </div>
-            <div id="starsContainer">
-              <div id="stars"></div>
-            </div>
-        <style jsx>
-          {
-            `
-                    html{
-                        overflow: hidden;
-                    }
-                    #starsContainer {
-                        position: fixed;
-                        width: 100%;
-                        height: 100%;
-                        overflow: hidden;
-                        background-color: black;
-                    }
-                    #stars {
-                        content: "";
-                        position: absolute;
-                        width: 200%;
-                        height: 200%;
-                        top: -50%;
-                        left: -50%;
-                        background: url(img/stars.png) 0 0 repeat;
-                        background-size: cover;
-                        animation: spin 180s linear infinite;
-                    }
-                    @keyframes spin {
-                        from {
-                            transform: rotate(0deg)
-                        }
-                        to {
-                            transform: rotate(360deg)
-                        }
-                    }
-                    #skyline {
-                        z-index: 1;
-                        position: fixed;
-                        width: 100%;
-                        left: 0;
-                        bottom: 0px;
-                        height: 490px;
-                        display: block;
-                        background: url(img/skyline.png) repeat-x;
-                        background-size: 1775px 600px;
-                        background-position: center -30px;
-                        pointer-events: none;
-                        }
-            
-                    #glowContainer {
-                        height: 100%;
-                        width: 100%;
-                        position: absolute;
-                        z-index: 999;
-                        overflow: hidden;
-                        pointer-events: none;
-                    }
-            
-                    #glow {
-                    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2e04e8+0,660058+100&0+0,1+100 */
-                        background: -moz-radial-gradient(center, ellipse cover, rgba(46, 4, 232, 0) 0%, rgba(102, 0, 88, 1) 100%);
-                        /* FF3.6-15 */
-                        background: -webkit-radial-gradient(center, ellipse cover, rgba(46, 4, 232, 0) 0%, rgba(102, 0, 88, 1) 100%);
-                        /* Chrome10-25,Safari5.1-6 */
-                        background: radial-gradient(ellipse at center, rgba(46, 4, 232, 0) 0%, rgba(102, 0, 88, 1) 100%);
-                        /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-                        /* // filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#002e04e8', endColorstr='#660058', GradientType=1 );
-                        IE6-9 fallback on horizontal gradient */
-                        display: block;
-                        height: 100%;
-                        width: 100%;
-                        top: 100px;
-                        left: 0;
-                        opacity: 0.66;
-                        transform: scale(2.2);
-                     }
-                        `
+        <Popup />
+        <YouTubeIframe
+          isPlaying={this.state.isPlaying}
+          mute={this.state.muted}
+          mutedPlayer={this.mutedPlayer}
+          handleChangeReverse={this.handleChangeReverse}
+          reverse={this.state.reverse}
+        />
+        {/* <div style={{
+					color: '#fff', width: '100%', bottom: '12%',
+					textAlign: 'center',
+					position: 'absolute',
+					margin: 'auto', zIndex: 999
+				}}>
+					<input type="range" step="any" id="seekbar"
+						onChange={this.ChangeTheTime} />
+					<label id="lblTime">-:--:--</label>
+				</div> */}
+        <a
+          href={
+            this.state.songs[this.state.index] &&
+            this.state.songs[this.state.index].permalink_url
+              ? this.state.songs[this.state.index] &&
+                this.state.songs[this.state.index].permalink_url
+              : ""
           }
-        </style>
+          target="blank"
+        >
+          <p
+            style={{
+              color: "#fff",
+              width: "100%",
+              bottom: "8%",
+              textAlign: "center",
+              position: "absolute",
+              fontFamily: "james",
+              fontSize: 40,
+              margin: "auto",
+              zIndex: 99999,
+            }}
+          >
+            {this.state.songs[this.state.index] &&
+              this.state.songs[this.state.index].title}
+          </p>
+        </a>
+        <div
+          style={{
+            position: "absolute",
+            width: "100%",
+            margin: "auto",
+            zIndex: 99999,
+            display: "flex",
+            justifyContent: "center",
+            color: "red",
+            bottom: 5,
+          }}
+        >
+          <div style={{ marginTop: 10, cursor: "pointer", marginRight: 5 }}>
+            <Image
+              src="/img/previous.png"
+              alt="Picture of the author"
+              width={24}
+              height={24}
+              onClick={this._playNextSong}
+            />
+          </div>
+          {this.state.isPlaying ? (
+            <div style={{ cursor: "pointer", marginTop: 10 }}>
+              <Image
+                src="/img/pause.png"
+                alt="Picture of the author"
+                width={24}
+                height={24}
+                onClick={this._pauseAudio}
+              />
+            </div>
+          ) : (
+            <div style={{ cursor: "pointer", marginTop: 10 }}>
+              <Image
+                src="/img/play-arrow.png"
+                alt="Picture of the author"
+                width={24}
+                height={24}
+                onClick={this._playCurrentSong}
+              />
+            </div>
+          )}
+          <ReactAudioPlayer
+            src={this.state.url[this.state.index]}
+            ref={(element) => {
+              this.rap = element;
+            }}
+            autoPlay={this.state.isPlaying}
+            onEnded={this._playNextSong}
+            onError={this._ErrorNextSong}
+            onPlay={(e) => this._playCurrentSong}
+            onPause={(e) => this._pauseAudio}
+            volume={this.state.volume}
+            onVolumeChanged={this.handleChangeReverse}
+            //	onSeeked={this.seekbarFunction}
+            muted={this.state.muted}
+            style={styles}
+          />
+          <div style={{ marginTop: 10, cursor: "pointer", marginLeft: 5 }}>
+            <Image
+              src="/img/right-arrow.png"
+              alt="Picture of the author"
+              width={24}
+              height={24}
+              onClick={this._playNextSong}
+            />
+          </div>
+        </div>
+        <div id="skyline"></div>
+        <div id="glowContainer">
+          <div id="glow"></div>
+        </div>
+        <div id="starsContainer">
+          <div id="stars"></div>
+        </div>
       </div>
-    )
+    );
   }
 }

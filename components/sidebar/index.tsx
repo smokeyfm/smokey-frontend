@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { slide as Menu } from 'react-burger-menu'
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import Popup from '../Modal/Popup';
-import Image from 'next/image'
 const StyledAnchor = styled.a`
     padding: 1rem 3rem;
     display: flex;
@@ -17,8 +15,6 @@ const StyledAnchor = styled.a`
     cursor: pointer;
     color: #FFFAFA;
 `;
-
-
 
 interface Props {
 
@@ -108,16 +104,6 @@ class BurgerSideMenu extends Component<Props, S> {
                 }}>
 
             </div>
-            {/* <div style={{cursor:'pointer', 
-             position:'absolute',top:5,right:5}}>
-                    <Image
-                        src="/img/question-mark.png"
-                        alt="Picture of the author"
-                        width={24}
-                        height={24}
-                        //onClick={()=>this.setState({ModalOpen:true})}
-                    />
-             </div> */}
                 <Menu styles={styles} noOverlay width={280}
                     isOpen={this.state.menuOpen}
                     onStateChange={(state) => this.handleStateChange(state)}>
@@ -130,7 +116,6 @@ class BurgerSideMenu extends Component<Props, S> {
                     <Link href="/items">
                         <StyledAnchor onClick={() => this.closeMenu()}>Contact</StyledAnchor>
                     </Link>
-                    {/* <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a> */}
                 </Menu>
                
                 

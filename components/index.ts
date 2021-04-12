@@ -3,3 +3,7 @@ export * from "./Header";
 export * from "./InfoBox";
 export * from "./PostList";
 export * from "./ProductList";
+export * from "./Home";
+export * from "./Modal";
+export * from "./sidebar";
+export * from "./video";
