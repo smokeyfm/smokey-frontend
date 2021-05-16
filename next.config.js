@@ -28,10 +28,26 @@ Module.prototype.require = function (modulePath) {
 
   return originalRequire.call(this, modulePath);
 };
-console.log('next js starting... build env = ', process.env.DEPLOY_ENV);
-
+const DEPLOY_ENV =
+    process.env.DEPLOY_ENV && process.env.DEPLOY_ENV.toLowerCase();
+const DEPLOY_ENV_MAPPING={
+  dev:'development',
+  staging:'staging',
+  prod:'production'
+}
+const envFile=path.join(__dirname,`.env.DNA.${DEPLOY_ENV_MAPPING[DEPLOY_ENV]}`)
+loadEnvVariables();
+const isLocalDevEnvironment = !process.env.DEPLOY_ENV;
 module.exports = {
-  webpack: (config) => {
+  webpack: (config,{webpack}) => {
+    config.plugins = config.plugins || [];
+    config.plugins = [
+      ...config.plugins,
+      new Dotenv({
+        path: envFile,
+        systemvars: true
+      })
+    ];
     config.resolve = {
       ...config.resolve,
       alias: {
@@ -47,3 +63,9 @@ module.exports = {
     return config;
   },
 };
+function loadEnvVariables() {
+  // eslint-disable-next-line global-require
+  require('dotenv').config({
+    path: envFile
+  });
+}
