@@ -1,7 +1,7 @@
 const Module = require("module");
 const path = require("path");
 const resolveFrom = require("resolve-from");
-
+const Dotenv = require('dotenv-webpack');
 const node_modules = path.resolve(__dirname, "node_modules");
 
 const originalRequire = Module.prototype.require;
@@ -28,6 +28,7 @@ Module.prototype.require = function (modulePath) {
 
   return originalRequire.call(this, modulePath);
 };
+console.log('next js starting... build env = ', process.env.DEPLOY_ENV);
 
 module.exports = {
   webpack: (config) => {
