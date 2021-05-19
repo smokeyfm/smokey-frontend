@@ -1,7 +1,7 @@
 import React from 'react'
 import BurgerMenu from './BurgerMenu'
 
-export const HamburgerMenu=props=>{
+export const MainMenu=props=>{
     const {animationType,children,...others}=props
         const Menu=BurgerMenu[animationType]
         return (
