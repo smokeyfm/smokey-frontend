@@ -10,7 +10,7 @@ export const ProductList = () => {
     <section>
       <div className="products-row">
         {data?.data?.map((product, index) => {
-          const source = `http://localhost:8080${
+          const source = `https://qa.dna-admin.instinct.is/${
             data.included.find(
               (image) => image.id === product.relationships.images.data[0].id
             )?.attributes.styles[2].url
