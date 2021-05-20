@@ -73,7 +73,7 @@ export const Footer=props=>{
                 }
             </div>
             <div className="copy-right">
-                © All Rights Reserved by DNA
+                © All Rights Reserved by Material Instincts DNA
             </div>
 
             <style jsx>
