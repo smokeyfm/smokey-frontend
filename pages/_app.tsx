@@ -11,15 +11,15 @@ import { GlobalStyles } from '../styles/global-styles';
 const queryClient = new QueryClient();
 
 export default function MyApp({ Component, pageProps }) {
-    return (
-        <QueryClientProvider client={queryClient}>
-            <Hydrate state={pageProps.dehydratedState}>
-                <ThemeProvider theme={theme}>
-                    <GlobalStyles />
-                    <Component {...pageProps} />
-                </ThemeProvider>
-            </Hydrate>
-            <ReactQueryDevtools />
-        </QueryClientProvider>
-    );
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Hydrate state={pageProps.dehydratedState}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyles />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </Hydrate>
+      <ReactQueryDevtools />
+    </QueryClientProvider>
+  );
 }
