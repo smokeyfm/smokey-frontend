@@ -5,22 +5,29 @@ import { useProduct } from "../hooks/useProduct";
 
 const ProductDetail = () => {
   const router = useRouter();
-  const { productId } = router.query;
-  const { data, isLoading, isFetching } = useProduct(`${productId}`);
+  const { id } = router.query;
+  const { data, isLoading, isSuccess } = useProduct(`${id}`);
 
-  const source = `http://localhost:8080${data?.included[0].attributes.styles[2].url}`;
+  if (isLoading) {
+    return <div>Loading Product...</div>;
+  }
 
-  return (
-    <Layout>
-      <div className="product-container">
-        <img src={source} />
-        <h1>{data?.data.attributes.name}</h1>
-        <div>
-          <h3>${data?.data.attributes.price}</h3>
+  if (isSuccess) {
+    const source = `http://localhost:8080${data?.included[0]?.attributes?.styles[2].url}`;
+
+    return (
+      <Layout>
+        <div className="product-container">
+          <img src={source} />
+          <h1>{data?.data?.attributes?.name}</h1>
+          <div>
+            <h3>${data?.data?.attributes?.price}</h3>
+          </div>
         </div>
-      </div>
-    </Layout>
-  );
+      </Layout>
+    );
+  }
+  return <div>PRODUCT NOT FOUND</div>;
 };
 
 export default ProductDetail;

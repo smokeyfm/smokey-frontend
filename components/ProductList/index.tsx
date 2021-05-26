@@ -22,10 +22,9 @@ export const ProductList = () => {
                 pathname: `[slug]`,
                 query: {
                   slug: product.attributes.slug,
-                  productId: product.id,
+                  id: product.id,
                 },
               }}
-              as={`/${product.attributes.slug}`}
             >
               <div className="product-container">
                 <img src={source} />
