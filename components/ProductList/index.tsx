@@ -1,5 +1,5 @@
-import React from 'react';
-import { useProducts } from '../../hooks/useProducts';
+import React from "react";
+import { useProducts } from "../../hooks/useProducts";
 
 export const ProductList = () => {
   const { data, isLoading, isFetching } = useProducts(1);
@@ -77,7 +77,7 @@ export const ProductList = () => {
           border-style: solid;
           border-width: 6px 4px 0 4px;
           border-color: #ffffff transparent transparent transparent;
-          content: '';
+          content: "";
           height: 0;
           margin-right: 5px;
           width: 0;
