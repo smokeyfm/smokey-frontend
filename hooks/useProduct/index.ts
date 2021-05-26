@@ -4,7 +4,7 @@ import { spreeClient } from "../../config/spree";
 
 const fetchProduct = async (id: string): Promise<IProduct> => {
   const response = await spreeClient.products.show(id, {
-    include: "images",
+    include: "images"
   });
   console.warn("FETCH PRODUCTS");
   if (response.isSuccess()) {

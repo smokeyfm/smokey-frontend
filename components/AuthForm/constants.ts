@@ -6,7 +6,7 @@ export enum AuthFromType {
   signup = "signup",
   forgot_password = "forgot_password",
   update_password = "update_password", // not implemented
-  update_email = "update_email", // not implemented
+  update_email = "update_email" // not implemented
 }
 
 export const SignupSchema = Yup.object().shape({
@@ -18,16 +18,16 @@ export const SignupSchema = Yup.object().shape({
     function (value: string) {
       return this.parent.password === value;
     }
-  ),
+  )
 });
 
 export const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
-  password: Yup.string().min(6, "Too Short").required("Required"),
+  password: Yup.string().min(6, "Too Short").required("Required")
 });
 
 export const ForgotPasswordSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Required"),
+  email: Yup.string().email("Invalid email").required("Required")
 });
 
 export const formConfig = {
@@ -35,27 +35,27 @@ export const formConfig = {
     title: "LOGIN",
     fields: {
       email: "",
-      password: "",
+      password: ""
     },
     validate: LoginSchema,
-    onSubmit: login,
+    onSubmit: login
   },
   [AuthFromType.signup]: {
     title: "SIGN UP",
     fields: {
       email: "",
       password: "",
-      password_confirmation: "",
+      password_confirmation: ""
     },
     validate: SignupSchema,
-    onSubmit: createAccount,
+    onSubmit: createAccount
   },
   [AuthFromType.forgot_password]: {
     title: "RESET PASSWORD",
     fields: {
-      email: "",
+      email: ""
     },
     validate: ForgotPasswordSchema,
-    onSubmit: () => {},
-  },
+    onSubmit: () => {}
+  }
 };
