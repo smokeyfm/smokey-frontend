@@ -1,5 +1,5 @@
 export const theme = {
-  colors: {
-    primary: 'hotpink'
-  }
-}
+    colors: {
+        primary: 'hotpink'
+    }
+};
