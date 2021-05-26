@@ -10,9 +10,8 @@ export const ProductList = () => {
       <div className="products-row">
         {data?.data?.map((product, index) => {
           const source = `http://localhost:8080${
-            data.included.find(
-              (image) => image.id === product.relationships.images.data[0].id
-            ).attributes.styles[2].url
+            data.included.find((image) => image.id === product.relationships.images.data[0].id)
+              .attributes.styles[2].url
           }`;
           return (
             <div key={product.id} className="product-container">
