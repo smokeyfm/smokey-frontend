@@ -7,11 +7,14 @@
     "build": "next build",
     "start": "next start -p $PORT",
     "lint": "eslint --fix .",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+    "prettier": "prettier --check './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+    "lint-check": "tsc --noEmit && eslint .",
+    "pre-commit": "yarn prettier && yarn lint-check"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "yarn pre-commit"
     }
   },
   "lint-staged": {
