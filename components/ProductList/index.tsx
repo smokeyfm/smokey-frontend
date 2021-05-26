@@ -11,9 +11,8 @@ export const ProductList = () => {
       <div className="products-row">
         {data?.data?.map((product, index) => {
           const source = `https://qa.dna-admin.instinct.is/${
-            data.included.find(
-              (image) => image.id === product.relationships.images.data[0].id
-            )?.attributes.styles[2].url
+            data.included.find((image) => image.id === product.relationships.images.data[0].id)
+              ?.attributes.styles[2].url
           }`;
           return (
             <Link
@@ -22,10 +21,9 @@ export const ProductList = () => {
                 pathname: `[slug]`,
                 query: {
                   slug: product.attributes.slug,
-                  id: product.id,
-                },
-              }}
-            >
+                  id: product.id
+                }
+              }}>
               <div className="product-container">
                 <img src={source} />
                 <h1>{product.attributes.name}</h1>

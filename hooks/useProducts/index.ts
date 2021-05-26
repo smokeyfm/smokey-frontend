@@ -4,7 +4,7 @@ import { spreeClient } from "../../config/spree";
 
 const fetchProducts = async (page: number = 1) => {
   const response = await spreeClient.products.list({
-    include: "images",
+    include: "images"
   });
   if (response.isSuccess()) {
     return response.success();
@@ -14,9 +14,7 @@ const fetchProducts = async (page: number = 1) => {
 };
 
 const useProducts = (page: number) => {
-  return useQuery<IProducts, false>(["products", page], () =>
-    fetchProducts(page)
-  );
+  return useQuery<IProducts, false>(["products", page], () => fetchProducts(page));
 };
 
 export { useProducts, fetchProducts };

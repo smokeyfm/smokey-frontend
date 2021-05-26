@@ -3,14 +3,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Sticky from "react-sticky-el";
 
-const dummyCategories = [
-  "Best Sellers",
-  "Latest",
-  "Seasonal",
-  "Luxury",
-  "On Sale",
-  "Coming Soon",
-];
+const dummyCategories = ["Best Sellers", "Latest", "Seasonal", "Luxury", "On Sale", "Coming Soon"];
 
 export const Header = () => {
   const { pathname } = useRouter();
@@ -28,18 +21,10 @@ export const Header = () => {
         </div>
         <div className="rightSide">
           <Link href="/authenticate/login">
-            <a
-              className={pathname === "/authenticate/login" ? "is-active" : ""}
-            >
-              LOG IN
-            </a>
+            <a className={pathname === "/authenticate/login" ? "is-active" : ""}>LOG IN</a>
           </Link>
           <Link href="/authenticate/signup">
-            <a
-              className={pathname === "/authenticate/signup" ? "is-active" : ""}
-            >
-              SIGN UP
-            </a>
+            <a className={pathname === "/authenticate/signup" ? "is-active" : ""}>SIGN UP</a>
           </Link>
         </div>
         <style jsx>{`
