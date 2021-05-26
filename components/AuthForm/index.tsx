@@ -36,8 +36,7 @@ export const AuthForm = ({ formType }: Props) => {
             .catch(() => {
               setSubmitting(false);
             });
-        }}
-      >
+        }}>
         {({ isSubmitting }) => (
           <Form>
             {formFields.hasOwnProperty("email") && (
