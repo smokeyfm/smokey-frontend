@@ -1,8 +1,8 @@
-const Module = require('module');
-const path = require('path');
-const resolveFrom = require('resolve-from');
+const Module = require("module");
+const path = require("path");
+const resolveFrom = require("resolve-from");
 
-const node_modules = path.resolve(__dirname, 'node_modules');
+const node_modules = path.resolve(__dirname, "node_modules");
 
 const originalRequire = Module.prototype.require;
 
@@ -11,7 +11,7 @@ const originalRequire = Module.prototype.require;
 Module.prototype.require = function (modulePath) {
   // Only redirect resolutions to non-relative and non-absolute modules
   if (
-    ['/react/', '/react-dom/', '/react-query/'].some((d) => {
+    ["/react/", "/react-dom/", "/react-query/"].some((d) => {
       try {
         return require.resolve(modulePath).includes(d);
       } catch (err) {
@@ -35,9 +35,9 @@ module.exports = {
       ...config.resolve,
       alias: {
         ...config.resolve.alias,
-        react$: resolveFrom(path.resolve('node_modules'), 'react'),
-        'react-query$': resolveFrom(path.resolve('node_modules'), 'react-query'),
-        'react-dom$': resolveFrom(path.resolve('node_modules'), 'react-dom')
+        react$: resolveFrom(path.resolve("node_modules"), "react"),
+        "react-query$": resolveFrom(path.resolve("node_modules"), "react-query"),
+        "react-dom$": resolveFrom(path.resolve("node_modules"), "react-dom")
       }
     };
     return config;

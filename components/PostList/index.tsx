@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { usePosts } from '../../hooks/usePosts';
+import React, { useState } from "react";
+import { usePosts } from "../../hooks/usePosts";
 
 export const PostList = () => {
   const [postCount, setPostCount] = useState(10);
@@ -21,7 +21,7 @@ export const PostList = () => {
       </ul>
       {postCount <= 90 && (
         <button onClick={() => setPostCount(postCount + 10)} disabled={isFetching}>
-          {isFetching ? 'Loading...' : 'Show More'}
+          {isFetching ? "Loading..." : "Show More"}
         </button>
       )}
       <style jsx>{`
@@ -56,7 +56,7 @@ export const PostList = () => {
           border-style: solid;
           border-width: 6px 4px 0 4px;
           border-color: #ffffff transparent transparent transparent;
-          content: '';
+          content: "";
           height: 0;
           margin-right: 5px;
           width: 0;
