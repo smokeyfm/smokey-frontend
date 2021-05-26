@@ -6,18 +6,18 @@ import { IProducts } from '@spree/storefront-api-v2-sdk/types/interfaces/Product
 // import { makeClient } from '@spree/storefront-api-v2-sdk/dist/client'
 
 const client = makeClient({
-    host: process.env.SPREE_API_URL || 'http://localhost:8080'
+  host: process.env.SPREE_API_URL || 'http://localhost:8080'
 });
 
 const fetchProducts = async (page = 1) => {
-    const response = await client.products.list({
-        include: 'images'
-    });
-    return response.success();
+  const response = await client.products.list({
+    include: 'images'
+  });
+  return response.success();
 };
 
 const useProducts = (page: number) => {
-    return useQuery<IProducts, false>(['products', page], () => fetchProducts(page));
+  return useQuery<IProducts, false>(['products', page], () => fetchProducts(page));
 };
 
 export { useProducts, fetchProducts };
