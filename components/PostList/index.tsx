@@ -20,10 +20,7 @@ export const PostList = () => {
         ))}
       </ul>
       {postCount <= 90 && (
-        <button
-          onClick={() => setPostCount(postCount + 10)}
-          disabled={isFetching}
-        >
+        <button onClick={() => setPostCount(postCount + 10)} disabled={isFetching}>
           {isFetching ? "Loading..." : "Show More"}
         </button>
       )}
