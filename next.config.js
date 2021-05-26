@@ -36,13 +36,10 @@ module.exports = {
       alias: {
         ...config.resolve.alias,
         react$: resolveFrom(path.resolve("node_modules"), "react"),
-        "react-query$": resolveFrom(
-          path.resolve("node_modules"),
-          "react-query"
-        ),
-        "react-dom$": resolveFrom(path.resolve("node_modules"), "react-dom"),
-      },
+        "react-query$": resolveFrom(path.resolve("node_modules"), "react-query"),
+        "react-dom$": resolveFrom(path.resolve("node_modules"), "react-dom")
+      }
     };
     return config;
-  },
+  }
 };
