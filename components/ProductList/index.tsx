@@ -2,17 +2,23 @@ import React from "react";
 import { useProducts } from "../../hooks/useProducts";
 
 export const ProductList = () => {
-  const { data, isLoading, isFetching } = useProducts(1);
+  const { data, isLoading, isSuccess } = useProducts(1);
   if (isLoading) return <div>Loading</div>;
+
+  if (!isSuccess) {
+    return <div>Could not load products</div>;
+  }
 
   return (
     <section>
       <div className="products-row">
         {data?.data?.map((product, index) => {
-          const source = `http://localhost:8080${
-            data.included.find((image) => image.id === product.relationships.images.data[0].id)
-              .attributes.styles[2].url
-          }`;
+          const imageId =
+            Array.isArray(product.relationships.images.data) &&
+            product.relationships.images.data[0].id;
+          const imageSource = data?.included?.find((image) => image.id === imageId)?.attributes
+            .styles[2].url;
+          const source = `http://localhost:8080${imageSource}`;
           return (
             <div key={product.id} className="product-container">
               <img src={source} />
