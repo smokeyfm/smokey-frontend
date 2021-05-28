@@ -1,7 +1,8 @@
 import menuFactory from "./menuFactory";
+import {MenuFactoryStyles} from "../Footer/types/interfaces/menuFactory";
 
-const styles = {
-  menuWrap(isOpen) {
+const styles:MenuFactoryStyles = {
+  menuWrap(isOpen:boolean) {
     return {
       MozTransform: isOpen ? "" : "translate3d(0, -100%, 0)",
       MsTransform: isOpen ? "" : "translate3d(0, -100%, 0)",
@@ -12,7 +13,7 @@ const styles = {
     };
   },
 
-  pageWrap(isOpen, width, right) {
+  pageWrap(isOpen:boolean, width:string, right:boolean) {
     return {
       MozTransform: isOpen
         ? ""
@@ -43,7 +44,7 @@ const styles = {
     };
   },
 
-  outerContainer(isOpen) {
+  outerContainer(isOpen:boolean) {
     return {
       perspective: "1500px",
       perspectiveOrigin: "0% 50%",

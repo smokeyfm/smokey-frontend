@@ -1,6 +1,7 @@
 import menuFactory from "./menuFactory";
+import {MenuFactoryStyles} from "../Footer/types/interfaces/menuFactory";
 
-const styles = {
+const styles:MenuFactoryStyles = {
   menuWrap(isOpen, width, right) {
     return {
       MozTransform: isOpen

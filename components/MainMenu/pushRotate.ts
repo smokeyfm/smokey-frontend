@@ -1,7 +1,7 @@
 import menuFactory from "./menuFactory";
 
 const styles = {
-  pageWrap(isOpen, width, right) {
+  pageWrap(isOpen:boolean, width:string, right:string) {
     return {
       MozTransform: isOpen
         ? ""
@@ -34,7 +34,7 @@ const styles = {
     };
   },
 
-  outerContainer(isOpen) {
+  outerContainer(isOpen:boolean) {
     return {
       perspective: "1500px",
       overflow: isOpen ? "" : "hidden"

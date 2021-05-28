@@ -1,7 +1,7 @@
 import menuFactory from "./menuFactory";
 
 const styles = {
-  pageWrap(isOpen, width) {
+  pageWrap(isOpen:boolean, width:string) {
     return {
       MozTransform: isOpen ? "" : `translate3d(0, 0, -${width})`,
       MsTransform: isOpen ? "" : `translate3d(0, 0, -${width})`,
