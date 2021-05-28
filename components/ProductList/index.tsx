@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { useProducts } from "../../hooks/useProducts";
 
 export const ProductList = () => {
@@ -13,20 +14,33 @@ export const ProductList = () => {
     <section>
       <div className="products-row">
         {data?.data?.map((product, index) => {
+          console.warn("product: ", product);
           const imageId =
             Array.isArray(product.relationships.images.data) &&
-            product.relationships.images.data[0].id;
+            product.relationships.images.data[0]?.id;
           const imageSource = data?.included?.find((image) => image.id === imageId)?.attributes
             .styles[2].url;
-          const source = `http://localhost:8080${imageSource}`;
+          const source = imageSource
+            ? `http://localhost:8080${imageSource}`
+            : "https://via.placeholder.com/150";
           return (
-            <div key={product.id} className="product-container">
-              <img src={source} />
-              <h1>{product.attributes.name}</h1>
-              <div>
-                <h3>${product.attributes.price}</h3>
+            <Link
+              key={product.id}
+              href={{
+                pathname: `[slug]`,
+                query: {
+                  slug: product.attributes.slug,
+                  id: product.id
+                }
+              }}>
+              <div className="product-container">
+                <img src={source} />
+                <h1>{product.attributes.name}</h1>
+                <div>
+                  <h3>${product.attributes.price}</h3>
+                </div>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>
