@@ -1,11 +1,13 @@
 import React from "react";
 import Proptypes from "prop-types";
-export const Footer = (props) => {
+import {FooterProps} from "./types/interfaces/FooterProps";
+
+export const Footer = (props: FooterProps) => {
   const { links, showLegal, showContact, showSocial, styles } = props;
-  let legals = [];
-  let contacts = [];
-  let socials = [];
-  links.forEach((link) => {
+  let legals: object[] = [];
+  let contacts: object[] = [];
+  let socials: object[] = [];
+  links.forEach((link:object) => {
     if (link.type == "legal") {
       legals.push(link);
     } else if (link.type == "contact") {
