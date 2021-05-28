@@ -44,10 +44,11 @@ export const signupForm = {
   title: "SIGN UP",
   fields: {
     email: "",
-    password: ""
+    password: "",
+    password_confirmation: ""
   },
-  validate: LoginSchema,
-  onSubmit: login
+  validate: SignupSchema,
+  onSubmit: createAccount
 };
 
 export const forgotPasswordForm = {
