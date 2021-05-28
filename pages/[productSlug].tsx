@@ -15,7 +15,9 @@ const ProductDetail = () => {
   if (isSuccess) {
     const imageSource =
       Array.isArray(data?.included) && data?.included[0]?.attributes.styles[2].url;
-    const source = `http://localhost:8080${imageSource}`;
+    const source = imageSource
+      ? `http://localhost:8080${imageSource}`
+      : "https://via.placeholder.com/150";
 
     return (
       <Layout>
