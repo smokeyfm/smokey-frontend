@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 import { createAccount, login } from "../../hooks/useAuth";
 
-export enum AuthFromType {
+export enum AuthFormType {
   login = "login",
   signup = "signup",
   forgot_password = "forgot_password",
@@ -15,7 +15,7 @@ export const SignupSchema = Yup.object().shape({
   password_confirmation: Yup.string().test(
     "passwords-match",
     "Passwords must match",
-    function (value: string) {
+    function (value: string | undefined) {
       return this.parent.password === value;
     }
   )
@@ -30,32 +30,49 @@ export const ForgotPasswordSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required")
 });
 
-export const formConfig = {
-  [AuthFromType.login]: {
-    title: "LOGIN",
-    fields: {
-      email: "",
-      password: ""
-    },
-    validate: LoginSchema,
-    onSubmit: login
+export const loginForm = {
+  title: "LOGIN",
+  fields: {
+    email: "",
+    password: ""
   },
-  [AuthFromType.signup]: {
-    title: "SIGN UP",
-    fields: {
-      email: "",
-      password: "",
-      password_confirmation: ""
-    },
-    validate: SignupSchema,
-    onSubmit: createAccount
+  validate: LoginSchema,
+  onSubmit: login
+};
+
+export const signupForm = {
+  title: "SIGN UP",
+  fields: {
+    email: "",
+    password: ""
   },
-  [AuthFromType.forgot_password]: {
-    title: "RESET PASSWORD",
-    fields: {
-      email: ""
-    },
-    validate: ForgotPasswordSchema,
-    onSubmit: () => {}
-  }
+  validate: LoginSchema,
+  onSubmit: login
+};
+
+export const forgotPasswordForm = {
+  title: "RESET PASSWORD",
+  fields: {
+    email: ""
+  },
+  validate: ForgotPasswordSchema,
+  onSubmit: async (values: { email: string }) => {}
+};
+
+export const updatePasswordForm = {
+  title: "RESET PASSWORD",
+  fields: {
+    email: ""
+  },
+  validate: ForgotPasswordSchema,
+  onSubmit: async () => {}
+};
+
+export const updateEmailForm = {
+  title: "RESET PASSWORD",
+  fields: {
+    email: ""
+  },
+  validate: ForgotPasswordSchema,
+  onSubmit: async () => {}
 };

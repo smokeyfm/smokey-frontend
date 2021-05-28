@@ -13,7 +13,9 @@ const ProductDetail = () => {
   }
 
   if (isSuccess) {
-    const source = `http://localhost:8080${data?.included[0]?.attributes?.styles[2].url}`;
+    const imageSource =
+      Array.isArray(data?.included) && data?.included[0]?.attributes.styles[2].url;
+    const source = `http://localhost:8080${imageSource}`;
 
     return (
       <Layout>
