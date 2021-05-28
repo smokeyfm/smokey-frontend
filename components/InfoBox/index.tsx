@@ -1,6 +1,6 @@
 import React from "react";
 
-const InfoBox = ({ children }) => (
+const InfoBox = ({ children }: { children: string }) => (
   <div className="info">
     <style jsx>{`
       .info {

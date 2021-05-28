@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Layout = ({ children }) => {
+export const Layout = ({ children }: { children: JSX.Element[] | JSX.Element }) => {
   return (
     <main>
       {children}
