@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-const CrossIcon = ({ customIcon, styles, crossClassName, className, onClick, isOpen }) => {
-  const getCrossStyle = (type) => {
+import {CrossIconProps} from "../Footer/types/interfaces/CrossIcon";
+const CrossIcon = ({ customIcon, styles, crossClassName, className, onClick, isOpen }:CrossIconProps) => {
+  const getCrossStyle = (type:string) => {
     return {
-      position: "absolute",
+      position: "absolute" as "absolute",
       width: 3,
       height: 14,
       transform: type === "before" ? "rotate(45deg)" : "rotate(-45deg)"
@@ -11,7 +12,7 @@ const CrossIcon = ({ customIcon, styles, crossClassName, className, onClick, isO
   };
   let icon;
   let buttonWrapperStyle = {
-    position: "absolute",
+    position: "absolute" as "absolute",
     width: 24,
     height: 24,
     right: 8,

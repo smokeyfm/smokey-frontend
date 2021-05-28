@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ReactElement} from "react";
 import PropTypes from "prop-types";
 import baseStyles from "./baseStyles";
 import {
@@ -10,8 +10,10 @@ import {
 } from "./dom";
 import BurgerIcon from "./BurgerIcon";
 import CrossIcon from "./CrossIcon";
+import {MenuFactoryStyles, MenuProps} from "../Footer/types/interfaces/menuFactory";
+import { BaseStylesKey} from "../Footer/types/interfaces/baseStyles";
 
-const MenuFactory = (styles) => {
+const MenuFactory = (styles:MenuFactoryStyles) => {
   if (!styles) {
     throw new Error("No styles supplied");
   }
@@ -23,7 +25,7 @@ const MenuFactory = (styles) => {
   const HOME = "Home";
   const END = "End";
 
-  function usePrevious(value) {
+  function usePrevious(value:any) {
     const ref = React.useRef(value);
     React.useEffect(() => {
       ref.current = value;
@@ -31,9 +33,9 @@ const MenuFactory = (styles) => {
     return ref.current;
   }
 
-  const Menu = (props) => {
+  const Menu = (props:MenuProps) => {
     const [isOpen, setIsOpen] = React.useState(false);
-    const timeoutId = React.useRef(null);
+    const timeoutId:any = React.useRef(null);
     const toggleOptions: { current: any } = React.useRef({});
     const prevIsOpenProp = usePrevious(props.isOpen);
 
@@ -70,7 +72,7 @@ const MenuFactory = (styles) => {
         } else {
           // Reset path (timeout ensures animation happens off screen)
           setTimeout(() => {
-            path.attr("d", styles.svg.pathInitial);
+            path.attr("d", styles&&styles.svg&&styles.svg.pathInitial);
           }, 300);
         }
       }
@@ -149,12 +151,12 @@ const MenuFactory = (styles) => {
     ) {
       const { width, right } = props;
       const formattedWidth = typeof width !== "string" ? `${width}px` : width;
-      return style(isOpen, formattedWidth, right, index);
+      return style(isOpen, formattedWidth, right, index as number);
     }
 
     // Builds styles incrementally for a given element
-    function getStyles(el, index?: any, inline?: any) {
-      const propName = "bm" + el.replace(el.charAt(0), el.charAt(0).toUpperCase());
+    function getStyles(el:BaseStylesKey, index?: any, inline?: any) {
+      const propName= "bm" + el.replace(el.charAt(0), el.charAt(0).toUpperCase());
 
       // Set base styles
       let output = baseStyles[el] ? getStyle(baseStyles[el]) : {};
@@ -196,7 +198,7 @@ const MenuFactory = (styles) => {
     // This is necessary for correct page interaction with some of the menus
     // Throws and returns if the required external elements don't exist,
     // which means any external page animations won't be applied
-    function handleExternalWrapper(id, wrapperStyles, set) {
+    function handleExternalWrapper(id:string, wrapperStyles, set) {
       const wrapper = document.getElementById(id);
 
       if (!wrapper) {
@@ -217,24 +219,24 @@ const MenuFactory = (styles) => {
       // bodyClassName is not passed in. Otherwise, it is up to the caller to
       // decide if they want to set the overflow style in CSS using the custom
       // class names
-      const applyOverflow = (el) => (el.style["overflow-x"] = set ? "hidden" : "");
+      const applyOverflow = (el:HTMLElement) => (el.style["overflow-x"] = set ? "hidden" : "");
       if (!props.htmlClassName) {
-        applyOverflow(document.querySelector("html"));
+        applyOverflow(document.querySelector("html") as HTMLElement);
       }
       if (!props.bodyClassName) {
-        applyOverflow(document.querySelector("body"));
+        applyOverflow(document.querySelector("body") as HTMLElement);
       }
     }
 
     // Applies component-specific styles to external wrapper elements
     function applyWrapperStyles(set = true) {
-      const applyClass = (el, className) => el.classList[set ? "add" : "remove"](className);
+      const applyClass = (el:HTMLElement, className:string) => el.classList[set ? "add" : "remove"](className);
 
       if (props.htmlClassName) {
-        applyClass(document.querySelector("html"), props.htmlClassName);
+        applyClass(document.querySelector("html") as HTMLElement, props.htmlClassName);
       }
       if (props.bodyClassName) {
-        applyClass(document.querySelector("body"), props.bodyClassName);
+        applyClass(document.querySelector("body") as HTMLElement, props.bodyClassName);
       }
 
       if (styles.pageWrap && props.pageWrapId) {

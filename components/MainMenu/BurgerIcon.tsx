@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-const BurgerIcon = (props) => {
+import {BurgerIconProps} from "../Footer/types/interfaces/BurgerIconProps";
+const BurgerIcon = (props:BurgerIconProps) => {
   const { styles, customIcon, barClassName, className, onClick, onIconHoverChange } = props;
   const [hover, setHover] = useState(false);
-  const getLineStyle = (index) => {
+  const getLineStyle = (index:number) => {
     return {
-      position: "absolute",
+      position: "absolute" as "absolute",
       height: "20%",
       left: 0,
       right: 0,
       top: 20 * (index * 2) + "%",
       opacity: hover ? 0.6 : 1,
-      ...(hover && styles.bmBurgerBarsHover)
+      ...(hover && styles?.bmBurgerBarsHover)
     };
   };
   let icon;
@@ -34,7 +35,7 @@ const BurgerIcon = (props) => {
       className: `bm-icon ${customIcon.props.className || ""}`.trim(),
       style: {
         ...{ width: "100%", height: "100%" },
-        ...styles.bmIcon
+        ...styles?.bmIcon
       }
     };
     icon = React.cloneElement(customIcon, extraProps);
@@ -49,8 +50,10 @@ const BurgerIcon = (props) => {
             }`.trim()}
             style={{
               ...getLineStyle(bar),
-              ...styles.bmBurgerBars
-            }}></span>
+              ...styles?.bmBurgerBars
+            }}>
+
+          </span>
         ))}
       </span>
     );
@@ -60,7 +63,7 @@ const BurgerIcon = (props) => {
       className={`bm-burger-button ${className}`.trim()}
       style={{
         ...{ zIndex: 1000 },
-        ...styles.bmBurgerButton
+        ...styles?.bmBurgerButton
       }}>
       <button
         id="react-burger-menu-btn"

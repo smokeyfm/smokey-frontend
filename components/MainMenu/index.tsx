@@ -1,7 +1,8 @@
 import React from "react";
 import BurgerMenu from "./BurgerMenu";
+import {MainMenuProps} from "../Footer/types/interfaces";
 
-export const MainMenu = (props) => {
+export const MainMenu = (props:MainMenuProps) => {
   const { animationType, children, ...others } = props;
   const Menu = BurgerMenu[animationType];
   return (

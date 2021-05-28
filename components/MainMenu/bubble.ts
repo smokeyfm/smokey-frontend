@@ -1,25 +1,20 @@
 import Snap from "./snapsvgImporter";
 import menuFactory from "./menuFactory";
 import { pxToNum } from "./utils";
-
-declare global {
-  interface Window {
-    mina: any;
-  }
-}
+import {Path} from "../Footer/types/interfaces";
+import {MenuFactoryStyles} from "../Footer/types/interfaces/menuFactory";
 const BUBBLE_WIDTH = 140;
-const styles = {
+const styles:MenuFactoryStyles = {
   svg: {
     lib: Snap,
     pathInitial: "M-7.312,0H0c0,0,0,113.839,0,400c0,264.506,0,400,0,400h-7.312V0z",
     pathOpen:
       "M-7.312,0H15c0,0,66,113.339,66,399.5C81,664.006,15,800,15,800H-7.312V0z;M-7.312,0H100c0,0,0,113.839,0,400c0,264.506,0,400,0,400H-7.312V0z",
-    animate(path) {
+    animate(path:Path) {
       let pos = 0;
       let steps = this.pathOpen.split(";");
       let stepsTotal = steps.length;
       let mina = window.mina;
-
       let nextStep = function () {
         if (pos > stepsTotal - 1) return;
 
@@ -39,7 +34,7 @@ const styles = {
     }
   },
 
-  morphShape(isOpen, width, right) {
+  morphShape(isOpen:boolean, width:string, right:boolean) {
     return {
       position: "absolute",
       width: "100%",
@@ -54,7 +49,7 @@ const styles = {
     };
   },
 
-  menuWrap(isOpen, width, right) {
+  menuWrap(isOpen:boolean, width:string, right:boolean) {
     return {
       MozTransform: isOpen
         ? "translate3d(0, 0, 0)"
@@ -85,7 +80,7 @@ const styles = {
     };
   },
 
-  menu(isOpen, width, right) {
+  menu(isOpen:boolean, width:string, right:boolean) {
     const finalWidth = pxToNum(width) - BUBBLE_WIDTH;
     return {
       position: "fixed",
@@ -121,7 +116,7 @@ const styles = {
     };
   },
 
-  item(isOpen, width, right, nthChild) {
+  item(isOpen:boolean, width:string, right:boolean) {
     const finalWidth = pxToNum(width) - BUBBLE_WIDTH;
     return {
       MozTransform: isOpen
@@ -156,7 +151,7 @@ const styles = {
     };
   },
 
-  closeButton(isOpen, width, right) {
+  closeButton(isOpen:boolean, width:string, right:boolean) {
     const finalWidth = pxToNum(width) - BUBBLE_WIDTH;
     return {
       MozTransform: isOpen

@@ -1,5 +1,7 @@
-const styles = {
-  overlay(isOpen) {
+import {BaseStyles} from "../Footer/types/interfaces/baseStyles";
+
+const styles:BaseStyles = {
+  overlay(isOpen:boolean) {
     return {
       position: "fixed",
       zIndex: 1000,
@@ -16,7 +18,7 @@ const styles = {
     };
   },
 
-  menuWrap(isOpen, width, right) {
+  menuWrap(isOpen:boolean, width:string, right:string) {
     return {
       position: "fixed",
       right: right ? 0 : "inherit",
