@@ -12,6 +12,7 @@ import BurgerIcon from "./BurgerIcon";
 import CrossIcon from "./CrossIcon";
 import {MenuFactoryStyles, MenuFactoryStylesKey, MenuProps} from "./types/menuFactory";
 import {BaseStyles, BaseStylesKey} from "./types/baseStyles";
+import {BurgerIconStyles} from "./types/BurgerIconProps";
 
 const MenuFactory = (styles:MenuFactoryStyles) => {
   if (!styles) {
@@ -165,15 +166,15 @@ const MenuFactory = (styles:MenuFactoryStyles) => {
       if (styles[el]) {
         output = {
           ...output,
-          ...getStyle(styles[el], index + 1)
+          ...getStyle(styles[el] as ()=>any, index + 1)
         };
       }
 
       // Add custom styles
-      if (props.styles[propName]) {
+      if (props.styles[propName as keyof BurgerIconStyles]) {
         output = {
           ...output,
-          ...props.styles[propName]
+          ...props.styles[propName as keyof BurgerIconStyles]
         };
       }
 
@@ -210,7 +211,7 @@ const MenuFactory = (styles:MenuFactoryStyles) => {
 
       for (const prop in builtStyles) {
         if (builtStyles.hasOwnProperty(prop)) {
-          wrapper.style[prop] = set ? builtStyles[prop] : "";
+          wrapper.style[prop as unknown as number] = set ? builtStyles[prop] : "";
         }
       }
 
@@ -219,7 +220,7 @@ const MenuFactory = (styles:MenuFactoryStyles) => {
       // bodyClassName is not passed in. Otherwise, it is up to the caller to
       // decide if they want to set the overflow style in CSS using the custom
       // class names
-      const applyOverflow = (el:HTMLElement) => (el.style["overflow-x"] = set ? "hidden" : "");
+      const applyOverflow = (el:HTMLElement) => (el.style["overflow-x"as unknown as number] = set ? "hidden" : "");
       if (!props.htmlClassName) {
         applyOverflow(document.querySelector("html") as HTMLElement);
       }
@@ -264,7 +265,7 @@ const MenuFactory = (styles:MenuFactoryStyles) => {
       }
     }
 
-    function onKeyDownOpen(e) {
+    function onKeyDownOpen(e:KeyboardEvent) {
       e = e || window.event;
       switch (e.key) {
         case ESCAPE:
@@ -289,7 +290,7 @@ const MenuFactory = (styles:MenuFactoryStyles) => {
       }
     }
 
-    function onKeyDownClosed(e) {
+    function onKeyDownClosed(e:KeyboardEvent) {
       e = e || window.event;
       // Key downs came from menu button
       if (e.target === document.getElementById("react-burger-menu-btn")) {
