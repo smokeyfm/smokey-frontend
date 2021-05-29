@@ -1,7 +1,8 @@
 import React from "react";
 import { useProducts } from "../../hooks/useProducts";
+import { ProductListProps } from "./types";
 
-export const ProductList = () => {
+export const ProductList: React.FC<ProductListProps> = () => {
   const { data, isLoading, isSuccess } = useProducts(1);
   if (isLoading) return <div>Loading</div>;
 

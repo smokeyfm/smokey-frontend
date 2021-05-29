@@ -1,8 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {CrossIconProps} from "./types/CrossIcon";
-const CrossIcon = ({ customIcon, styles, crossClassName, className, onClick, isOpen }:CrossIconProps) => {
-  const getCrossStyle = (type:string) => {
+import { CrossIconProps } from "./types/CrossIcon";
+const CrossIcon = ({
+  customIcon,
+  styles,
+  crossClassName,
+  className,
+  onClick,
+  isOpen
+}: CrossIconProps) => {
+  const getCrossStyle = (type: string) => {
     return {
       position: "absolute" as "absolute",
       width: 3,

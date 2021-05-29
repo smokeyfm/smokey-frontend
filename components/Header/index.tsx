@@ -1,10 +1,10 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { HeaderProps } from "./types";
 
-export const Header = () => {
+export const Header: React.FC<HeaderProps> = (props) => {
   const { pathname } = useRouter();
-
   return (
     <header>
       <Link href="/">
