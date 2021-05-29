@@ -21,6 +21,8 @@ export  const SocialLinks = () => {
         list-style-type: none;
         margin: 0;
         padding: 0;
+        position: absolute;
+        bottom: 0;
       }
       ul.social-media-list li {
         display: inline-block;
