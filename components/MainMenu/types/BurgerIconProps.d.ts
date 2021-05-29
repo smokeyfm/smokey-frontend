@@ -5,6 +5,8 @@ export type BurgerIconStyles={
     bmIcon:object;
     bmBurgerBars:object;
     bmBurgerButton:object;
+    bmCross:object;
+    bmCrossButton:object;
 }
 export interface BurgerIconProps{
     styles?:BurgerIconStyles;
