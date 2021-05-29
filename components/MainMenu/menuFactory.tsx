@@ -10,8 +10,8 @@ import {
 } from "./dom";
 import BurgerIcon from "./BurgerIcon";
 import CrossIcon from "./CrossIcon";
-import {MenuFactoryStyles, MenuProps} from "../Footer/types/interfaces/menuFactory";
-import { BaseStylesKey} from "../Footer/types/interfaces/baseStyles";
+import {MenuFactoryStyles, MenuFactoryStylesKey, MenuProps} from "./types/menuFactory";
+import {BaseStyles, BaseStylesKey} from "./types/baseStyles";
 
 const MenuFactory = (styles:MenuFactoryStyles) => {
   if (!styles) {
@@ -198,7 +198,7 @@ const MenuFactory = (styles:MenuFactoryStyles) => {
     // This is necessary for correct page interaction with some of the menus
     // Throws and returns if the required external elements don't exist,
     // which means any external page animations won't be applied
-    function handleExternalWrapper(id:string, wrapperStyles, set) {
+    function handleExternalWrapper(id:string, wrapperStyles:any, set:any) {
       const wrapper = document.getElementById(id);
 
       if (!wrapper) {
@@ -328,7 +328,7 @@ const MenuFactory = (styles:MenuFactoryStyles) => {
           />
         )}
         {props.customBurgerIcon !== false && (
-          <div style={getStyles("burgerIcon")}>
+          <div style={getStyles("burgerIcon" as keyof  BaseStyles)}>
             <BurgerIcon
               onClick={open}
               styles={props.styles}
@@ -348,7 +348,7 @@ const MenuFactory = (styles:MenuFactoryStyles) => {
             <div
               id="bm-morph-shape"
               className={`bm-morph-shape ${props.morphShapeClassName}`.trim()}
-              style={getStyles("morphShape")}>
+              style={getStyles("morphShape" as keyof BaseStyles)}>
               <svg width="100%" height="100%" viewBox="0 0 100 800" preserveAspectRatio="none">
                 <path d={styles.svg.pathInitial} />
               </svg>
@@ -378,7 +378,7 @@ const MenuFactory = (styles:MenuFactoryStyles) => {
             )}
           </div>
           {props.customCrossIcon !== false && (
-            <div style={getStyles("closeButton")}>
+            <div style={getStyles("closeButton" as keyof BaseStyles)}>
               <CrossIcon
                 onClick={close}
                 styles={props.styles}

@@ -1,10 +1,10 @@
 import React from "react";
 import BurgerMenu from "./BurgerMenu";
-import {MainMenuProps} from "../Footer/types/interfaces";
+import {MainMenuProps} from "./types";
 
 export const MainMenu = (props:MainMenuProps) => {
   const { animationType, children, ...others } = props;
-  const Menu = BurgerMenu[animationType];
+  const Menu = BurgerMenu[animationType as keyof typeof BurgerMenu];
   return (
     <Menu {...others}>
       {children}

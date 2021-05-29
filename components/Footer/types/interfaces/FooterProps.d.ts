@@ -1,16 +1,16 @@
-import {ReactElement} from "react";
+import {FunctionComponent} from "react";
 
 export interface Link {
     type:string;
     url?:string;
-    icon?:ReactElement;
+    icon?:FunctionComponent;
     text?:string;
 }
 export interface FooterProps{
     links: Link[];
     showLegal: boolean;
     showContact:boolean;
-    showContent: boolean;
+    showContent?: boolean;
     showSocial: boolean;
     styles:{}
 }

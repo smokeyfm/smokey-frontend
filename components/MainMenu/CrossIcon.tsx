@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {CrossIconProps} from "../Footer/types/interfaces/CrossIcon";
+import {CrossIconProps} from "./types/CrossIcon";
 const CrossIcon = ({ customIcon, styles, crossClassName, className, onClick, isOpen }:CrossIconProps) => {
   const getCrossStyle = (type:string) => {
     return {
