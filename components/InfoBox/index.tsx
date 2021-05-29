@@ -1,6 +1,7 @@
 import React from "react";
+import { InfoBoxProps } from "./types";
 
-const InfoBox = ({ children }: { children: string }) => (
+const InfoBox: React.FC<InfoBoxProps> = ({ children }: { children: string }) => (
   <div className="info">
     <style jsx>{`
       .info {
