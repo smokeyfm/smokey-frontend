@@ -19,7 +19,7 @@ export default function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </ThemeProvider>
       </Hydrate>
-      <ReactQueryDevtools />
+      {/* <ReactQueryDevtools /> */}
     </QueryClientProvider>
   );
 }

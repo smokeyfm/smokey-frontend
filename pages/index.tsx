@@ -1,15 +1,14 @@
 import React from "react";
 import { QueryClient } from "react-query";
 import { dehydrate } from "react-query/hydration";
-import { Layout, Header, ProductList, NewsletterForm, SocialLinks } from "../components";
-// import {  } from "../components/NewsletterForm";
-// import {  } from "../components/SocialLinks";
+import { Layout, Header, ProductList, ComingSoon, NewsletterForm, SocialLinks } from "../components";
 import { fetchPosts, fetchProducts } from "../hooks";
 
 const Home = () => {
   return (
     <Layout>
-      <Header />
+      {/* <Header /> */}
+      <ComingSoon/>
       <NewsletterForm/>
       <SocialLinks/>
       <ProductList />
