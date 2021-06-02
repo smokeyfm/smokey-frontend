@@ -39,6 +39,10 @@ module.exports = {
         specialLink: ["hrefLeft", "hrefRight"],
         aspects: ["invalidHref", "preferButton"]
       }
-    ]
+    ],
+    "prefer-const": ["error", {
+      "destructuring": "any",
+      "ignoreReadBeforeAssign": false
+    }]
   }
 };
