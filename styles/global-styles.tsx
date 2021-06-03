@@ -6,8 +6,7 @@ export const GlobalStyles = () => (
     <Global
       styles={css`
         body {
-          background: white;
-          color: hotpink !important;
+          background: #2b1866;
         }
       `}
     />
