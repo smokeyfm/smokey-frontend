@@ -11,7 +11,7 @@ export const NewsletterForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Submitted!");
-    setEmail("")
+    setEmail("");
   };
 
   return (
@@ -27,36 +27,34 @@ export const NewsletterForm = () => {
             name="text"
             onChange={handleChange}
           />
-        <button type="submit">SIGN UP</button>
+          <button type="submit">SIGN UP</button>
         </form>
       </div>
       <style jsx>
         {`
-          #button-cotainer {
+          #container {
+            position: absolute;
             display: flex;
             align-itmes: center;
             justify-content: center;
-            width: 300px;
-            height: 300px;
-            background: white;
+            width: 100%;
+            height: 100%;
           }
           #notify {
             position: absolute;
-
-            top: 705px;
+            text-align: center;
+            width:100%;
             font-style: normal;
             font-weight: 200;
             font-size: 15px;
             line-height: 19px;
-
             color: #ffffff;
           }
           #email-input {
             position: absolute;
             width: 201px;
             height: 36.15px;
-            left: 646px;
-            top: 733px;
+            top: 40px;
 
             background: #eccfed;
             box-shadow: -2.89209px -2.89209px 14.4604px rgba(144, 0, 147, 0.7),
@@ -67,9 +65,8 @@ export const NewsletterForm = () => {
           button {
             position: absolute;
             width: 201px;
+            top: 90px;
             height: 36.15px;
-            left: 646px;
-            top: 781.17px;
             background: #430098;
             border: 1.89432px solid rgba(255, 0, 138, 0.15);
             box-sizing: border-box;
