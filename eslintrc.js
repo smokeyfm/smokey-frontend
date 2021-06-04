@@ -40,9 +40,12 @@ module.exports = {
         aspects: ["invalidHref", "preferButton"]
       }
     ],
-    "prefer-const": ["error", {
-      "destructuring": "any",
-      "ignoreReadBeforeAssign": false
-    }]
+    "prefer-const": [
+      "error",
+      {
+        destructuring: "any",
+        ignoreReadBeforeAssign: false
+      }
+    ]
   }
 };
