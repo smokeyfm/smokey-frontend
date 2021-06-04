@@ -3,6 +3,7 @@ import type { AppProps /*, AppContext */ } from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { AuthProvider } from "../config/auth";
 import { Header } from "../components";
 
 // Styles
@@ -15,13 +16,15 @@ const queryClient = new QueryClient();
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <ThemeProvider theme={theme}>
-          <GlobalStyles />
-          <Header />
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </Hydrate>
+      <AuthProvider>
+        <Hydrate state={pageProps.dehydratedState}>
+          <ThemeProvider theme={theme}>
+            <GlobalStyles />
+            <Header />
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </Hydrate>
+      </AuthProvider>
       <ReactQueryDevtools />
     </QueryClientProvider>
   );
