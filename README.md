@@ -28,3 +28,33 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Gotchas:
+
+- App only loads using http://0.0.0.0:3000, using "localhost" does not work right now
+
+TODO:
+
+- Flow / Type Checking
+- React
+- Express (SSR)
+- Redux (project specific data mgmt)
+- Pusher / API Integration
+- Styled Components
+- Moving Letters
+- UI Sounds (proprietary: "npm install beeper")
+- Maps
+- File upload
+- Form validation (Formik / React Final Form / YUP / Blitz inspo)
+- Animations / Transitions
+- Gestures
+- UI Alerts
+- Uptime Monitoring
+- Twilio
+- Unit Testing
+- Chat widget
+- Chatbot
+- Feature Detection
+- Benchmarking
+- Header tag injection (Helmet)
+- Secrets management
