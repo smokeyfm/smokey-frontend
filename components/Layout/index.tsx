@@ -1,7 +1,11 @@
 import React from "react";
 import { LayoutProps } from "./types";
 
-export const Layout: React.FC<LayoutProps> = ({ children }: { children: JSX.Element[] }) => {
+export const Layout: React.FC<LayoutProps> = ({
+  children
+}: {
+  children: JSX.Element[] | JSX.Element;
+}) => {
   return (
     <main>
       {children}
