@@ -33,17 +33,16 @@ export const NewsletterForm = () => {
       <style jsx>
         {`
           #container {
-            position: absolute;
             display: flex;
-            align-itmes: center;
+            position: absolute;
             justify-content: center;
-            width: 100%;
-            height: 100%;
+            align-itmes: center;
+            width: 95%;
           }
           #notify {
             position: absolute;
             text-align: center;
-            width:100%;
+            width: 100%;
             font-style: normal;
             font-weight: 200;
             font-size: 15px;
@@ -52,9 +51,11 @@ export const NewsletterForm = () => {
           }
           #email-input {
             position: absolute;
+            text-align: center;
             width: 201px;
             height: 36.15px;
             top: 40px;
+            margin-left: -90px;
 
             background: #eccfed;
             box-shadow: -2.89209px -2.89209px 14.4604px rgba(144, 0, 147, 0.7),
@@ -64,9 +65,12 @@ export const NewsletterForm = () => {
           }
           button {
             position: absolute;
+            text-align: center;
             width: 201px;
             top: 90px;
             height: 36.15px;
+            margin-left: -90px;
+
             background: #430098;
             border: 1.89432px solid rgba(255, 0, 138, 0.15);
             box-sizing: border-box;
