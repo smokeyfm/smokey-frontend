@@ -1,13 +1,12 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { HeaderProps } from "./types";
 import Sticky from "react-sticky-el";
 
 const dummyCategories = ["Best Sellers", "Latest", "Seasonal", "Luxury", "On Sale", "Coming Soon"];
-
-export const Header = () => {
+export const Header: React.FC<HeaderProps> = (props) => {
   const { pathname } = useRouter();
-
   return (
     <header>
       <div className="top-header">
