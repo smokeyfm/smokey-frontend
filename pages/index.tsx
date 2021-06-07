@@ -7,11 +7,9 @@ import { fetchPosts, fetchProducts } from "../hooks";
 const Home = () => {
   return (
     <Layout>
-      {/* <Header /> */}
       <ComingSoon/>
       <NewsletterForm/>
       <SocialLinks/>
-      <ProductList />
     </Layout>
   );
 };
