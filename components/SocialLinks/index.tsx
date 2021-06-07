@@ -31,7 +31,7 @@ export  const SocialLinks = () => {
       }
       ul.social-media-list {
         list-style-type: none;
-        margin-left: -50px;
+        margin-left: -70px;
         padding: 0;
         position: absolute;
         bottom: 0;
