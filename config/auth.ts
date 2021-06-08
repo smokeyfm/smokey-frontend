@@ -31,9 +31,9 @@ const authConfig = {
       console.warn(response.fail());
       return null;
     }
+    return null;
   },
   loginFn: async (data: unknown) => {
-    console.warn("LOGIN DATA: ", data);
     const response = await spreeClient.authentication.getToken(data as LoginUser);
     if (response.isSuccess()) {
       const result = response.success();
@@ -41,7 +41,8 @@ const authConfig = {
       const user = await authConfig.loadUser();
       return user;
     } else {
-      Promise.reject(response.fail());
+      console.warn(response.fail());
+      return null;
     }
   },
   registerFn: async (data: unknown) => {
@@ -54,8 +55,8 @@ const authConfig = {
 
       return response.success();
     } else {
-      console.warn("FAILED REGISTER: ", response.fail());
-      Promise.reject(response.fail());
+      console.warn(response.fail());
+      return null;
     }
   },
   logoutFn: async () => {
