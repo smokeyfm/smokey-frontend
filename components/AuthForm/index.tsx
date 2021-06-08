@@ -1,5 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { Layout } from "../../components";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import styled from "@emotion/styled";
@@ -11,6 +12,7 @@ import {
   updatePasswordForm,
   updateEmailForm
 } from "./constants";
+import { useAuth } from "../../config/auth";
 
 const FieldContainer = styled.div`
   margin: 15px 0px;
@@ -25,6 +27,7 @@ interface Props {
 }
 
 const LoginForm = () => {
+  const { login } = useAuth();
   return (
     <Layout>
       <h1>{loginForm.title}</h1>
@@ -32,10 +35,11 @@ const LoginForm = () => {
         initialValues={loginForm.fields}
         validationSchema={loginForm.validate}
         onSubmit={(values, { setSubmitting }) => {
-          loginForm
-            .onSubmit(values)
+          login(values)
             .then(() => {
               setSubmitting(false);
+              const router = useRouter();
+              router.push("/");
             })
             .catch(() => {
               setSubmitting(false);
@@ -45,8 +49,8 @@ const LoginForm = () => {
           <Form>
             <FieldContainer>
               <label>EMAIL</label>
-              <Field type="email" name="email" />
-              <ErrorMessage name="email" component="div" />
+              <Field type="email" name="username" />
+              <ErrorMessage name="username" component="div" />
             </FieldContainer>
             <FieldContainer>
               <label>Password</label>
@@ -81,6 +85,7 @@ const LoginForm = () => {
 };
 
 const SignupForm = () => {
+  const { register } = useAuth();
   return (
     <Layout>
       <h1>{signupForm.title}</h1>
@@ -88,10 +93,11 @@ const SignupForm = () => {
         initialValues={signupForm.fields}
         validationSchema={signupForm.validate}
         onSubmit={(values, { setSubmitting }) => {
-          signupForm
-            .onSubmit(values)
+          register({ user: values })
             .then(() => {
               setSubmitting(false);
+              const router = useRouter();
+              router.push("/");
             })
             .catch(() => {
               setSubmitting(false);
