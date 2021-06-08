@@ -1,6 +1,11 @@
 import React from "react";
+import { LayoutProps } from "./types";
 
-export const Layout = ({ children }: { children: JSX.Element[] | JSX.Element }) => {
+export const Layout: React.FC<LayoutProps> = ({
+  children
+}: {
+  children: JSX.Element[] | JSX.Element;
+}) => {
   return (
     <main>
       {children}
@@ -13,6 +18,7 @@ export const Layout = ({ children }: { children: JSX.Element[] | JSX.Element }) 
           margin: 0;
           padding: 25px 50px;
         }
+
         a {
           color: #22bad9;
         }

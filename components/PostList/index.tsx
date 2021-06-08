@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { usePosts } from "../../hooks/usePosts";
+import { PostListProps } from "./types";
 
-export const PostList = () => {
+export const PostList: React.FC<PostListProps> = () => {
   const [postCount, setPostCount] = useState(10);
   const { data, isLoading, isFetching } = usePosts(postCount);
 
