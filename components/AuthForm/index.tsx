@@ -28,6 +28,7 @@ interface Props {
 
 const LoginForm = () => {
   const { login } = useAuth();
+  const router = useRouter();
   return (
     <Layout>
       <h1>{loginForm.title}</h1>
@@ -38,7 +39,6 @@ const LoginForm = () => {
           login(values)
             .then(() => {
               setSubmitting(false);
-              const router = useRouter();
               router.push("/");
             })
             .catch(() => {
@@ -86,6 +86,7 @@ const LoginForm = () => {
 
 const SignupForm = () => {
   const { register } = useAuth();
+  const router = useRouter();
   return (
     <Layout>
       <h1>{signupForm.title}</h1>
@@ -96,7 +97,6 @@ const SignupForm = () => {
           register({ user: values })
             .then(() => {
               setSubmitting(false);
-              const router = useRouter();
               router.push("/");
             })
             .catch(() => {
