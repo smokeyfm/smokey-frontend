@@ -30,6 +30,7 @@ export type menuDataItem = {
   key: string;
   children?: menuDataItem[];
   icon?: () => ReactNode;
+  pcIcon?:()=>ReactNode;
 };
 export interface MainMenuProps {
   pcWrapClassName?: string;
