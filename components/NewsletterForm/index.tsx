@@ -40,6 +40,7 @@ export const NewsletterForm = () => {
             justify-content: center;
             align-itmes: center;
             width: 95%;
+            height: 150px;
           }
           #notify {
             position: absolute;
