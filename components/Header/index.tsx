@@ -3,10 +3,13 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { HeaderProps } from "./types";
 import Sticky from "react-sticky-el";
+import { useAuth } from "../../config/auth";
 
 const dummyCategories = ["Best Sellers", "Latest", "Seasonal", "Luxury", "On Sale", "Coming Soon"];
 export const Header: React.FC<HeaderProps> = (props) => {
   const { pathname } = useRouter();
+  const { user, logout } = useAuth();
+
   return (
     <header>
       <div className="top-header">
@@ -18,14 +21,23 @@ export const Header: React.FC<HeaderProps> = (props) => {
             <a className={pathname === "/" ? "is-active" : ""}>LOGO</a>
           </Link>
         </div>
-        <div className="rightSide">
-          <Link href="/authenticate/login">
-            <a className={pathname === "/authenticate/login" ? "is-active" : ""}>LOG IN</a>
-          </Link>
-          <Link href="/authenticate/signup">
-            <a className={pathname === "/authenticate/signup" ? "is-active" : ""}>SIGN UP</a>
-          </Link>
-        </div>
+        <>
+          {user ? (
+            <div className="rightSide">
+              <div>{user.data.attributes.email}</div>
+              <button onClick={logout}>LOGOUT</button>
+            </div>
+          ) : (
+            <div className="rightSide">
+              <Link href="/authenticate/login">
+                <a className={pathname === "/authenticate/login" ? "is-active" : ""}>LOG IN</a>
+              </Link>
+              <Link href="/authenticate/signup">
+                <a className={pathname === "/authenticate/signup" ? "is-active" : ""}>SIGN UP</a>
+              </Link>
+            </div>
+          )}
+        </>
         <style jsx>{`
           .top-header {
             padding: 30px 0px;
