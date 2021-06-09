@@ -16,7 +16,7 @@ export const NewsletterForm = () => {
 
   return (
     <div>
-      <div id="container">
+      <div id="newsletter-container">
         <div id="notify">GET NOTIFIED</div>
         <form onSubmit={handleSubmit}>
           <input
@@ -27,12 +27,14 @@ export const NewsletterForm = () => {
             name="text"
             onChange={handleChange}
           />
-          <button id="signup-button" type="submit">SIGN UP</button>
+          <button id="signup-button" type="submit">
+            SIGN UP
+          </button>
         </form>
       </div>
       <style jsx>
         {`
-          #container {
+          #newsletter-container {
             display: flex;
             position: absolute;
             justify-content: center;
@@ -56,9 +58,7 @@ export const NewsletterForm = () => {
             height: 36.15px;
             top: 40px;
             margin-left: -100px;
-
             background: #eccfed;
-
             border: 1.89432px solid rgba(255, 0, 138, 0.15);
             box-sizing: border-box;
             box-shadow: -6.76748px -6.76748px 27.0772px rgba(144, 0, 147, 0.7),
@@ -68,18 +68,15 @@ export const NewsletterForm = () => {
           }
           ::placeholder {
             color: #ce8dd0;
-
           }
           #signup-button {
             position: absolute;
             color: #ce8dd0;
-
             text-align: center;
             width: 201px;
             top: 90px;
             height: 36.15px;
             margin-left: -100px;
-
             background: #430098;
             border: 1.89432px solid rgba(255, 0, 138, 0.15);
             box-sizing: border-box;
