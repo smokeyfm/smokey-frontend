@@ -13,6 +13,7 @@ import CrossIcon from "./CrossIcon";
 import { MenuFactoryStyles, MenuFactoryStylesKey, MenuProps } from "./types/menuFactory";
 import { BaseStyles, BaseStylesKey } from "./types/baseStyles";
 import { BurgerIconStyles } from "./types/BurgerIconProps";
+import { CrossIconStyles } from "./types/CrossIcon";
 
 const MenuFactory = (styles: MenuFactoryStyles) => {
   if (!styles) {
@@ -387,7 +388,7 @@ const MenuFactory = (styles: MenuFactoryStyles) => {
             <div style={getStyles("closeButton" as keyof BaseStyles)}>
               <CrossIcon
                 onClick={close}
-                styles={props.styles}
+                styles={props.styles as CrossIconStyles}
                 customIcon={props.customCrossIcon}
                 className={props.crossButtonClassName}
                 crossClassName={props.crossClassName}
