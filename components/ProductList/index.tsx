@@ -14,15 +14,14 @@ export const ProductList: React.FC<ProductListProps> = () => {
   return (
     <section>
       <div className="products-row">
-        {data?.data?.map((product, index) => {
-          console.warn("product: ", product);
+        {data?.data?.map((product) => {
           const imageId =
             Array.isArray(product.relationships.images.data) &&
             product.relationships.images.data[0]?.id;
           const imageSource = data?.included?.find((image) => image.id === imageId)?.attributes
             .styles[2].url;
           const source = imageSource
-            ? `http://localhost:8080${imageSource}`
+            ? `https://pol-admin-staging.instinct.is/${imageSource}`
             : "https://via.placeholder.com/150";
           return (
             <Link
