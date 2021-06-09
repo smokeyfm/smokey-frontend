@@ -28,7 +28,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
         </div>
         <style jsx>{`
           .top-header {
-            padding: 30px 0px;
+            padding: 30px 20px 30px 92px;
             display: flex;
             flex-direction: row;
             align-items: center;

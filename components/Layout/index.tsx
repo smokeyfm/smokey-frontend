@@ -16,7 +16,7 @@ export const Layout: React.FC<LayoutProps> = ({
         }
         body {
           margin: 0;
-          padding: 25px 50px;
+          padding: 0;
         }
 
         a {

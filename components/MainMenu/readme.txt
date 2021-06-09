@@ -315,10 +315,7 @@ var styles = {
 import {MainMenu} from '../components'
 <div id="outter-container">
  <MainMenu pageWrapId="page-wrap" outterContainerId="outter-container" animationType="slide" right={false} styles={styles}>
-        <a id="home" className="menu-item" href="/">Home</a>
-        <a id="about" className="menu-item" href="/about">About</a>
-        <a id="contact" className="menu-item" href="/contact">Contact</a>
-        <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a>
+
 </MainMenu>
 <main id="page-wrap">
 .
@@ -326,4 +323,10 @@ import {MainMenu} from '../components'
 .
 </main>
 </div>
+
+18.pcWrapClassName: pc端导航栏的样式名
+ 19.pcMenuItemClassName:pc端2级菜单样式名
+  20.onMenuItemClick：点击菜单触发的回调(keyPath:string,key:string)=>void;
+  menusData:  菜单数据格式为[{icon:()=><AccountBalanceOutlinedIcon style={{marginRight:'10px'}} />，name:'home',key:'home',children:[{name:'home-sub',key:'home-sub'}]}]
+
 
