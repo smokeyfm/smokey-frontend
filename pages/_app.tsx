@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { Header } from "../components";
+import {menusData} from "../components/MainMenu/data/menusData";
 
 // Styles
 import { ThemeProvider } from "@emotion/react";
@@ -24,27 +25,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       jssStyles.parentElement?.removeChild(jssStyles);
     }
   }, []);
-  const menusdata = [
-    {
-      name: "home",
-      key: "home",
-      icon: () => <HomeIcon style={{ color: "#fff", fontSize: "25px" }} />,
-      children: [
-        {
-          icon: () => (
-            <AccountBalanceOutlinedIcon
-              style={{ marginRight: "10px", color: "#fff", fontSize: "25px" }}
-            />
-          ),
-          name: "home-sub1",
-          key: "home-sub1"
-        },
-        { name: "home-sub2", key: "home-sub2" }
-      ]
-    },
-    { name: "contact", key: "contact", children: [{ name: "contact-sub1", key: "contact-sub1" }] },
-    { name: "setting", key: "setting", children: [{ name: "setting-sub1", key: "setting-sub1" }] }
-  ];
+
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
@@ -54,7 +35,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           <MainMenu
             pcWrapClassName={"pcWrap"}
             pcMenuItemClassName={"pcMenuItem"}
-            menusData={menusdata}
+            menusData={menusData}
             outterContainerId={"__next"}
             styles={{ bmMenuWrap: { top: 0, backgroundColor: "#ccc" } } as BurgerIconStyles}
             pageWrapId={"page-wrap"}
