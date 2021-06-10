@@ -22,7 +22,8 @@ export const SocialLinks = () => {
             </a>
           </li>
         </ul>
-        <a id="mailto" href="mailto:hey@beeper.buzz ">Got Questions? We’d love to hear from you.</a>
+
+        <a id="mailto" href="mailto:hey@beeper.buzz">Got Questions? We’d love to hear from you.</a>
       </div>
 
       <style jsx>
@@ -56,7 +57,7 @@ export const SocialLinks = () => {
             padding-top: 20px;
             text-decoration: none;
             text-align: center;
-            color: #2b1866;
+            color: white;
           }
         `}
       </style>
