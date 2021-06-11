@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { Header } from "../components";
-import {menusData} from "../components/MainMenu/data/menusData";
+import { menusData } from "../components/MainMenu/data/menusData";
 
 // Styles
 import { ThemeProvider } from "@emotion/react";
