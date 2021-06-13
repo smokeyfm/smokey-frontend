@@ -34,7 +34,7 @@ export const SocialLinks = () => {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100%;
+            width: 95%;
             height: 104px;
             top: 750px;
           }
