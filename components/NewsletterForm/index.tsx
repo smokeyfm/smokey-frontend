@@ -38,7 +38,6 @@ export const NewsletterForm = () => {
             display: flex;
             position: absolute;
             justify-content: center;
-            align-itmes: center;
             width: 95%;
             height: 150px;
           }
