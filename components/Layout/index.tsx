@@ -10,6 +10,8 @@ export const Layout = ({ children }) => {
           font-family: IBM Plex Mono, Menlo, Monaco, "Lucida Console", "Liberation Mono",
             "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New",
             monospace, serif;
+            padding: 0;
+            margin: 0;
         }
         body {
           margin: 0;
