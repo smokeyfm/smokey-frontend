@@ -20,6 +20,7 @@ export type BurgerMenu = {
   fallDown: ReactElement;
   reveal: ReactElement;
 };
+
 export type menuItem = {
   name: string;
   key: string;
@@ -32,7 +33,7 @@ export type menuDataItem = {
   icon?: () => ReactNode;
   pcIcon?: () => ReactNode;
 };
-export interface MainMenuProps {
+export interface MobileMenuProps {
   pcWrapClassName?: string;
   pcMenuItemClassName?: string;
   onMenuItemClick?: (keyPath: string, key: string) => void;

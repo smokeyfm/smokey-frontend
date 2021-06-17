@@ -33,6 +33,16 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 - App only loads using http://0.0.0.0:3000, using "localhost" does not work right now
 
+## Deploy URLS:
+
+POL Admin Interface & API
+http://pol-admin-dev.instinct.is/
+http://pol-admin-staging.instinct.is/
+
+POL Frontend Interface
+https://pol-frontend-dev.instinct.is/
+https://pol-frontend-staging.instinct.is/
+
 TODO:
 
 - Flow / Type Checking
