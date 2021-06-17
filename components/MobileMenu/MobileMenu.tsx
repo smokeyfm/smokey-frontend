@@ -1,8 +1,8 @@
 import React from "react";
 import BurgerMenu from "./BurgerMenu";
-import { MainMenuProps } from "./types";
+import { MobileMenuProps } from "./types";
 
-export const MainMenu = (props: MainMenuProps) => {
+export const MobileMenu = (props: MobileMenuProps) => {
   const { animationType, children, ...others } = props;
   const Menu = BurgerMenu[animationType as keyof typeof BurgerMenu];
   return (
