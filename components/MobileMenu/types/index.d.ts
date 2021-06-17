@@ -20,7 +20,7 @@ export type BurgerMenu = {
   fallDown: ReactElement;
   reveal: ReactElement;
 };
-export interface MainMenuProps {
+export interface MobileMenuProps {
   animationType?: keyof BurgerMenu;
   children: JSX.Element<type, props, key> | JSX.Element<type, props, key>[];
   bodyClassName?: string;
