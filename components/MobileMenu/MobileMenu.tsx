@@ -9,7 +9,7 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
 import { makeStyles, createStyles } from "@material-ui/core";
-import { MainMenuProps, menuDataItem } from "./types";
+import { MobileMenuProps, menuDataItem } from "./types";
 import { useMediaQuery } from "react-responsive";
 import DesktopMenu from "./DesktopMenu";
 const useStyles = makeStyles((theme) =>
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) =>
     }
   })
 );
-export const MainMenu = (props: MainMenuProps) => {
+export const MobileMenu = (props: MobileMenuProps) => {
   const {
     pcWrapClassName,
     pcMenuItemClassName,
