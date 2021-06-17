@@ -1,5 +1,4 @@
 import * as Yup from "yup";
-import { createAccount, login } from "../../hooks/useAuth";
 
 export enum AuthFormType {
   login = "login",
@@ -22,7 +21,7 @@ export const SignupSchema = Yup.object().shape({
 });
 
 export const LoginSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Required"),
+  username: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string().min(6, "Too Short").required("Required")
 });
 
@@ -33,11 +32,10 @@ export const ForgotPasswordSchema = Yup.object().shape({
 export const loginForm = {
   title: "LOGIN",
   fields: {
-    email: "",
+    username: "",
     password: ""
   },
-  validate: LoginSchema,
-  onSubmit: login
+  validate: LoginSchema
 };
 
 export const signupForm = {
@@ -47,8 +45,7 @@ export const signupForm = {
     password: "",
     password_confirmation: ""
   },
-  validate: SignupSchema,
-  onSubmit: createAccount
+  validate: SignupSchema
 };
 
 export const forgotPasswordForm = {
