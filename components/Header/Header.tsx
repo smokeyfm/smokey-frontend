@@ -4,114 +4,99 @@ import Link from "next/link";
 import { HeaderProps } from "./types";
 import Sticky from "react-sticky-el";
 import { useAuth } from "../../config/auth";
-
+import styled from '@emotion/styled'
+const TopHeader=styled.div`
+  padding: 30px 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`
+const RightSide=styled.div`
+  width: 10%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`
+const LogoDiv=styled.div`
+  padding: 15px 30px;
+  background: grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+const HeaderDiv=styled.header`
+  margin-bottom: 25px;
+`
+export interface LinkDivProps{
+  isActive:boolean;
+}
+const LinkDiv=styled.a<LinkDivProps>`
+  font-size: 14px;
+  text-decoration: ${props=> props.isActive ? 'underline' : 'none'};
+`
+const BottomHeader=styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 30px 0px;
+  background: black;
+  &>:first-child {
+    padding-left: 0px;
+  }
+  &>:last-child {
+    padding-right: 0px;
+  }
+`
+const Category=styled.a`
+  padding: 15px;
+`
 const dummyCategories = ["Best Sellers", "Latest", "Seasonal", "Luxury", "On Sale", "Coming Soon"];
 export const Header: React.FC<HeaderProps> = (props) => {
   const { pathname } = useRouter();
   const { user, logout } = useAuth();
 
   return (
-    <header>
-      <div className="top-header">
+    <HeaderDiv>
+      <TopHeader>
         <Link href="/">
-          <a className={pathname === "/" ? "is-active" : ""}>Home</a>
+          <LinkDiv isActive={pathname==='/'}>Home</LinkDiv>
         </Link>
-        <div className="logo">
+        <LogoDiv>
           <Link href="/">
-            <a className={pathname === "/" ? "is-active" : ""}>LOGO</a>
+            <LinkDiv isActive>LOGO</LinkDiv>
           </Link>
-        </div>
+        </LogoDiv>
         <>
           {user ? (
-            <div className="rightSide">
+            <RightSide>
               <div>{user.data.attributes.email}</div>
               <button onClick={logout}>LOGOUT</button>
-            </div>
+            </RightSide>
           ) : (
-            <div className="rightSide">
+            <RightSide>
               <Link href="/authenticate/login">
-                <a className={pathname === "/authenticate/login" ? "is-active" : ""}>LOG IN</a>
+                <LinkDiv isActive={pathname==="/authenticate/login"}>LOG IN</LinkDiv>
               </Link>
               <Link href="/authenticate/signup">
-                <a className={pathname === "/authenticate/signup" ? "is-active" : ""}>SIGN UP</a>
+                <LinkDiv isActive={pathname === "/authenticate/signup"}>SIGN UP</LinkDiv>
               </Link>
-            </div>
+            </RightSide>
           )}
         </>
-        <style jsx>{`
-          .top-header {
-            padding: 30px 0px;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-          }
-          .rightSide {
-            width: 10%;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-          }
-          .logo {
-            padding: 15px 30px;
-            background: grey;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-          header {
-            margin-bottom: 25px;
-          }
-          a {
-            font-size: 14px;
-            text-decoration: none;
-          }
-          .is-active {
-            text-decoration: underline;
-          }
-        `}</style>
-      </div>
+      </TopHeader>
       <Sticky>
-        <div className="bottom-header">
+        <BottomHeader>
           {dummyCategories.map((category) => (
             <Link href="/" key={category}>
-              <a className="category">{category}</a>
+              <Category>{category}</Category>
             </Link>
           ))}
-          <style jsx>{`
-            .bottom-header {
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              justify-content: space-between;
-              flex-wrap: wrap;
-              padding: 30px 0px;
-              background: black;
-            }
-            .category {
-              padding: 15px;
-            }
-            .bottom-header > :first-child {
-              padding-left: 0px;
-            }
-            .bottom-header > :last-child {
-              padding-right: 0px;
-            }
-
-            header {
-              margin-bottom: 25px;
-            }
-            a {
-              font-size: 14px;
-              text-decoration: none;
-            }
-            .is-active {
-              text-decoration: underline;
-            }
-          `}</style>
-        </div>
+        </BottomHeader>
       </Sticky>
-    </header>
+    </HeaderDiv>
   );
 };

@@ -1,7 +1,62 @@
 import React from "react";
 import Proptypes from "prop-types";
+import styled from '@emotion/styled'
 import { FooterProps, Link } from "./types/interfaces/FooterProps";
 
+const Container=styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+const LinksWrapper=styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`
+const LegalWrap=styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 300px;
+  font-size: 30px;
+`
+const LegalTitle=styled.div`
+  font-size: 30px;
+  font-weight: 900;
+  margin-bottom: 50px;
+`
+const ContactWrap=styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 300px;
+  font-size: 30px;
+`
+const ContactTitle=styled.div`
+  font-size: 30px;
+  font-weight: 900;
+  margin-bottom: 50px;
+`
+const SocialWrap=styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: 30px;
+`
+const SocialTitle=styled.div`
+  font-size: 30px;
+  font-weight: 900;
+  margin-bottom: 50px;
+`
+const LinkItem=styled.div`
+  margin-bottom: 20px;
+  color: #000;
+  & a {
+    color: #000;
+  }
+`
+const CopyRight=styled.div`
+  margin-top: 100px;
+`
 export const Footer = (props: FooterProps) => {
   const { links, showLegal, showContact, showSocial, styles } = props;
   let legals: Link[] = [];
@@ -17,115 +72,56 @@ export const Footer = (props: FooterProps) => {
     }
   });
   return (
-    <div style={styles} className={"container"}>
-      <div className="links-wrapper">
+    <Container style={styles}>
+      <LinksWrapper>
         {showLegal && legals.length !== 0 && (
-          <div className="legal-wrap">
-            <div className="legal-title">Legal Links</div>
+          <LegalWrap>
+            <LegalTitle>Legal Links</LegalTitle>
             {legals.map((item, index) => {
               return (
-                <div className={"link-item"} key={index}>
+                <LinkItem key={index}>
                   <a href={item.url}>
                     {item.icon && <item.icon />}
                     {item.text}
                   </a>
-                </div>
+                </LinkItem>
               );
             })}
-          </div>
+          </LegalWrap>
         )}
         {showContact && contacts.length !== 0 && (
-          <div className="contact-wrap">
-            <div className="contact-title">Contact Links</div>
+          <ContactWrap>
+            <ContactTitle>Contact Links</ContactTitle>
             {contacts.map((item, index) => {
               return (
-                <div className={"link-item"} key={index}>
+                <LinkItem key={index}>
                   <a href={item.url}>
                     {item.icon && <item.icon />}
                     {item.text}
                   </a>
-                </div>
+                </LinkItem>
               );
             })}
-          </div>
+          </ContactWrap>
         )}
         {showSocial && socials.length !== 0 && (
-          <div className="social-wrap">
-            <div className="social-title">Social Links</div>
+          <SocialWrap>
+            <SocialTitle>Social Links</SocialTitle>
             {socials.map((item, index) => {
               return (
-                <div className={"link-item"} key={index}>
+                <LinkItem key={index}>
                   <a href={item.url}>
                     {item.icon && <item.icon />}
                     {item.text}
                   </a>
-                </div>
+                </LinkItem>
               );
             })}
-          </div>
+          </SocialWrap>
         )}
-      </div>
-      <div className="copy-right">© All Rights Reserved by Material Instincts DNA</div>
-
-      <style jsx>
-        {`
-          .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          }
-          .links-wrapper {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-          }
-          .legal-wrap {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-right: 300px;
-            font-size: 30px;
-          }
-          .legal-title {
-            font-size: 30px;
-            font-weight: 900;
-            margin-bottom: 50px;
-          }
-          .contact-wrap {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-right: 300px;
-            font-size: 30px;
-          }
-          .contact-title {
-            font-size: 30px;
-            font-weight: 900;
-            margin-bottom: 50px;
-          }
-          .social-wrap {
-            display: flex;
-            flex-direction: column;
-            font-size: 30px;
-          }
-          .social-title {
-            font-size: 30px;
-            font-weight: 900;
-            margin-bottom: 50px;
-          }
-          .link-item {
-            margin-bottom: 20px;
-            color: #000;
-          }
-          .link-item a {
-            color: #000;
-          }
-          .copy-right {
-            margin-top: 100px;
-          }
-        `}
-      </style>
-    </div>
+      </LinksWrapper>
+      <CopyRight>© All Rights Reserved by Material Instincts DNA</CopyRight>
+    </Container>
   );
 };
 
