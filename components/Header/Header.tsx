@@ -4,39 +4,39 @@ import Link from "next/link";
 import { HeaderProps } from "./types";
 import Sticky from "react-sticky-el";
 import { useAuth } from "../../config/auth";
-import styled from '@emotion/styled'
-const TopHeader=styled.div`
+import styled from "@emotion/styled";
+const TopHeader = styled.div`
   padding: 30px 0px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-`
-const RightSide=styled.div`
+`;
+const RightSide = styled.div`
   width: 10%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-`
-const LogoDiv=styled.div`
+`;
+const LogoDiv = styled.div`
   padding: 15px 30px;
   background: grey;
   display: flex;
   align-items: center;
   justify-content: center;
-`
-const HeaderDiv=styled.header`
+`;
+const HeaderDiv = styled.header`
   margin-bottom: 25px;
-`
-export interface LinkDivProps{
-  isActive:boolean;
+`;
+export interface LinkDivProps {
+  isActive: boolean;
 }
-const LinkDiv=styled.a<LinkDivProps>`
+const LinkDiv = styled.a<LinkDivProps>`
   font-size: 14px;
-  text-decoration: ${props=> props.isActive ? 'underline' : 'none'};
-`
-const BottomHeader=styled.div`
+  text-decoration: ${(props) => (props.isActive ? "underline" : "none")};
+`;
+const BottomHeader = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -44,16 +44,16 @@ const BottomHeader=styled.div`
   flex-wrap: wrap;
   padding: 30px 0px;
   background: black;
-  &>:first-child {
+  & > :first-child {
     padding-left: 0px;
   }
-  &>:last-child {
+  & > :last-child {
     padding-right: 0px;
   }
-`
-const Category=styled.a`
+`;
+const Category = styled.a`
   padding: 15px;
-`
+`;
 const dummyCategories = ["Best Sellers", "Latest", "Seasonal", "Luxury", "On Sale", "Coming Soon"];
 export const Header: React.FC<HeaderProps> = (props) => {
   const { pathname } = useRouter();
@@ -63,7 +63,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
     <HeaderDiv>
       <TopHeader>
         <Link href="/">
-          <LinkDiv isActive={pathname==='/'}>Home</LinkDiv>
+          <LinkDiv isActive={pathname === "/"}>Home</LinkDiv>
         </Link>
         <LogoDiv>
           <Link href="/">
@@ -79,7 +79,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
           ) : (
             <RightSide>
               <Link href="/authenticate/login">
-                <LinkDiv isActive={pathname==="/authenticate/login"}>LOG IN</LinkDiv>
+                <LinkDiv isActive={pathname === "/authenticate/login"}>LOG IN</LinkDiv>
               </Link>
               <Link href="/authenticate/signup">
                 <LinkDiv isActive={pathname === "/authenticate/signup"}>SIGN UP</LinkDiv>

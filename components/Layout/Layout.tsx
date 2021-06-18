@@ -1,7 +1,7 @@
 import React from "react";
 import { LayoutProps } from "./types";
 import { MobileMenu, Footer } from "../../components";
-import {menusData} from "../MobileMenu/data/menusData";
+import { menusData } from "../MobileMenu/data/menusData";
 
 export const Layout: React.FC<LayoutProps> = ({
   children
@@ -11,13 +11,13 @@ export const Layout: React.FC<LayoutProps> = ({
   return (
     <main>
       <MobileMenu
+          pcMenuItemClassName={'pc-menu-item'}
         outterContainerId={"outter-container"}
         pageWrapId={"page-wrap"}
         animationType={"slide"}
         menusData={menusData}
-        right>
-      </MobileMenu>
-        {children}
+        right></MobileMenu>
+      {children}
       <Footer
         showContact={true}
         showLegal={true}

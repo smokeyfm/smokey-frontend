@@ -12,28 +12,28 @@ import { MobileMenuProps, menuDataItem } from "./types";
 import { useMediaQuery } from "react-responsive";
 import DesktopMenu from "./DesktopMenu";
 import styled from "@emotion/styled";
-const SiderMenu=styled(List)`
+const SiderMenu = styled(List)`
   width: 100%;
-`
-export interface MenuItemProps{
-  pl:string;
+`;
+export interface MenuItemProps {
+  pl: string;
 }
-const MenuItem=styled(ListItem)<MenuItemProps>`
-  padding-left: ${props=>props.pl}!important;
-`
-const PCHidden=styled.div`
-  @media screen and (min-width: 768px){
+const MenuItem = styled(ListItem)<MenuItemProps>`
+  padding-left: ${(props) => props.pl}!important;
+`;
+const PCHidden = styled.div`
+  @media screen and (min-width: 768px) {
     display: none;
   }
-`
-const MobileHidden=styled.div`
-  @media screen and (max-width: 767px){
+`;
+const MobileHidden = styled.div`
+  @media screen and (max-width: 767px) {
     display: none;
   }
-  @media screen and (min-width: 768px){
+  @media screen and (min-width: 768px) {
     display: flex;
   }
-`
+`;
 export const MobileMenu = (props: MobileMenuProps) => {
   const {
     pcWrapClassName,
@@ -61,7 +61,7 @@ export const MobileMenu = (props: MobileMenuProps) => {
     });
   }, []);
   const getSubMenuOrItems = (menusData: menuDataItem[], parentKeyPath: string, level: number) => {
-    const pl =  level * 40+'px';
+    const pl = level * 40 + "px";
     return (
       <SiderMenu disablePadding>
         {menusData.map((item, index) => {
@@ -107,9 +107,7 @@ export const MobileMenu = (props: MobileMenuProps) => {
   return (
     <>
       <PCHidden>
-        <Menu {...others}>
-          {getSubMenuOrItems(menusData, "", 0)}
-        </Menu>
+        <Menu {...others}>{getSubMenuOrItems(menusData, "", 0)}</Menu>
       </PCHidden>
       <MobileHidden>
         <DesktopMenu

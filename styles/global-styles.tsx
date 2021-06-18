@@ -5,17 +5,17 @@ export const GlobalStyles = () => (
   <>
     <Global
       styles={css`
-         html {
-         overflow: hidden;
-         }
+        html {
+          overflow: hidden;
+        }
         body {
           background: #ffffff;
           color: hotpink !important;
-           margin: 0;
+          margin: 0;
           padding: 0;
-           overflow: hidden;
+          overflow: hidden;
         }
-         * {
+        * {
           font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono",
             "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
         }
@@ -105,7 +105,10 @@ export const GlobalStyles = () => (
         .bm-overlay {
           top: 0;
           background: rgba(0, 0, 0, 0.3);
-        }       
+        }
+        .pc-menu-item{
+        color:#000;
+        }
       `}
     />
   </>

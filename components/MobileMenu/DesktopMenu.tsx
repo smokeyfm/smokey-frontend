@@ -2,28 +2,25 @@ import React, { useState, useCallback } from "react";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { IDesktopMenuProps } from "./types/DesktopMenu";
-import { makeStyles, createStyles } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-import classnames from "classnames";
 import { menuDataItem } from "./types";
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    container: {
-      paddingLeft: "100px",
-      height: "80px",
-      display: "flex",
-      alignItems: "center",
-      flexWrap: "wrap"
-    },
-    topMenuItem: {
-      marginRight: "50px",
-      lineHeight: "80px"
-    }
-  })
-);
+import styled from "@emotion/styled";
+const Container=styled.div`
+padding-left: 100px;
+  height:80px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+`
+const MyMenuItem=styled.div`
+margin-right: 50px;
+  line-height: 80px;
+`
+const MySubMenuItem=styled.div`
+  text-align: center;
+  width: 100%;
+`
 const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
   const { pcWrapClassName, menusData, pcMenuItemClassName, onMenuItemClick } = props;
-  const classes = useStyles();
   const [keyPathMap, setKeyPathMap] = useState({});
   const handleClick = useCallback((keyPath, event) => {
     setKeyPathMap((pre) => {
@@ -45,15 +42,14 @@ const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
   const getSubMenuOrItems = (menusData: menuDataItem[], parentKeyPath: string, level: number) => {
     return menusData.map((item, index) => {
       return (
-        <div
-          className={classnames(classes.topMenuItem, pcMenuItemClassName)}
+        <MyMenuItem
+          className={pcMenuItemClassName}
           key={parentKeyPath + "/" + item.key}>
-          <div
-            style={{ textAlign: "center", width: "100%" }}
+          <MySubMenuItem
             onClick={handleClick.bind(null, parentKeyPath + "/" + item.key)}>
             {item.pcIcon && item.pcIcon()}
             {item.name}
-          </div>
+          </MySubMenuItem>
 
           {item && item.children && (
             <Menu
@@ -87,14 +83,14 @@ const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
               })}{" "}
             </Menu>
           )}
-        </div>
+        </MyMenuItem>
       );
     });
   };
   return (
-    <div className={classnames(classes.container, pcWrapClassName)}>
+    <Container className={pcWrapClassName}>
       {getSubMenuOrItems(menusData, "", 0)}
-    </div>
+    </Container>
   );
 };
 export default DesktopMenu;
