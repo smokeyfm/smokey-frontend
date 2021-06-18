@@ -51,7 +51,9 @@ const BurgerIcon = (props: BurgerIconProps) => {
             style={{
               ...getLineStyle(bar),
               ...styles?.bmBurgerBars
-            }}></span>
+            }}>
+
+          </span>
         ))}
       </span>
     );

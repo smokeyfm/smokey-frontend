@@ -1,62 +1,62 @@
 import React from "react";
 import Proptypes from "prop-types";
-import styled from '@emotion/styled'
+import styled from "@emotion/styled";
 import { FooterProps, Link } from "./types/interfaces/FooterProps";
 
-const Container=styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
-const LinksWrapper=styled.div`
+`;
+const LinksWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-`
-const LegalWrap=styled.div`
+`;
+const LegalWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-right: 300px;
   font-size: 30px;
-`
-const LegalTitle=styled.div`
+`;
+const LegalTitle = styled.div`
   font-size: 30px;
   font-weight: 900;
   margin-bottom: 50px;
-`
-const ContactWrap=styled.div`
+`;
+const ContactWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-right: 300px;
   font-size: 30px;
-`
-const ContactTitle=styled.div`
+`;
+const ContactTitle = styled.div`
   font-size: 30px;
   font-weight: 900;
   margin-bottom: 50px;
-`
-const SocialWrap=styled.div`
+`;
+const SocialWrap = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 30px;
-`
-const SocialTitle=styled.div`
+`;
+const SocialTitle = styled.div`
   font-size: 30px;
   font-weight: 900;
   margin-bottom: 50px;
-`
-const LinkItem=styled.div`
+`;
+const LinkItem = styled.div`
   margin-bottom: 20px;
   color: #000;
   & a {
     color: #000;
   }
-`
-const CopyRight=styled.div`
+`;
+const CopyRight = styled.div`
   margin-top: 100px;
-`
+`;
 export const Footer = (props: FooterProps) => {
   const { links, showLegal, showContact, showSocial, styles } = props;
   let legals: Link[] = [];
