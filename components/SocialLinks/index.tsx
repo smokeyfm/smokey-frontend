@@ -1,76 +1,52 @@
 import React from "react";
+import styled from "@emotion/styled";
 
-// https://dribbble.com/shots/922852-Socialtograms
+export const SocialContainer = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  height: 104px;
+  bottom: 0;
+`;
+
+export const SocialList = styled.ul`
+  padding-inline-start: 0px;
+`;
+export const SocialListItem = styled.li`
+  display: inline-block;
+`;
+export const SocialIcon = styled.img`
+  height: 40px;
+  width: 40px;
+  padding: 5px;
+`;
+
 export const SocialLinks = () => {
   return (
     <div>
-      <div id="social-container">
-        <ul className="social-media-list">
-          <li>
-            <a href="http://www.twitter.com">
-              <img src="twitter.png" />{" "}
-            </a>
-          </li>
-          <li>
+      <SocialContainer>
+        <SocialList>
+          <SocialListItem>
             <a href="http://www.instagram.com">
-              <img src="instagram.png" />{" "}
+              <SocialIcon src="social-icon-instagram.png" />
             </a>
-          </li>
-          <li>
-            <a href="http://www.facebook.com">
-              <img src="fb.png" />{" "}
-            </a>
-          </li>
-        </ul>
-        <a  id="mailto" href="mailto:hey@beeper.buzz">
-          Got Questions? We’d love to hear from you.
-        </a>
-      </div>
+          </SocialListItem>
 
-      <style jsx>
-        {`
-          #social-container {
-            position: absolute;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 95%;
-            height: 104px;
-            top: 750px;
-          }
-          ul.social-media-list {
-            padding-inline-start:0px;
-          }
-          ul.social-media-list li {
-            display: inline-block;
-          }
-          ul.social-media-list img {
-            height: 50px;
-            width: 50px;
-            padding: 5px;
-          }
-          #mailto {
-            position: absolute;
-            text-decoration: none;
-            text-align: center;
-            line-height: 19px;
-            font-style: normal;
-            font-weight: 200;
-            font-size: 15px;
-            bottom: 10px;
-            color: #ffffff;
-          }
-        `}
-      </style>
+          <SocialListItem>
+            <a href="http://www.facebook.com">
+              <SocialIcon src="social-icon-facebook.png" />{" "}
+            </a>
+          </SocialListItem>
+
+          <SocialListItem>
+            <a href="http://www.twitter.com">
+              <SocialIcon src="social-icon-twitter.png" />{" "}
+            </a>
+          </SocialListItem>
+        </SocialList>
+      </SocialContainer>
     </div>
   );
 };
-
-/*
-position: absolute;
-            text-align: center;
-            width: 100%;
-            font-style: normal;
-            font-weight: 200;
-            font-size: 15px;
-            color: #ffffff; */

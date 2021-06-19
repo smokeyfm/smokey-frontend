@@ -3,5 +3,5 @@ export * from "./Header";
 export * from "./PostList";
 export * from "./ProductList";
 export * from "./ComingSoon";
-export * from "./NewsletterForm"
+export * from "./NotifyForm"
 export * from "./SocialLinks"
