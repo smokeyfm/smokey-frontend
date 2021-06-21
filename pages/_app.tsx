@@ -4,7 +4,7 @@ import { Hydrate } from "react-query/hydration";
 import { ReactQueryDevtools } from "react-query/devtools";
 
 // Styles
-import { jsx, ThemeProvider } from '@emotion/react'
+import { ThemeProvider } from '@emotion/react'
 import { theme } from '../styles/theme';
 import { GlobalStyles } from '../styles/global-styles';
 
