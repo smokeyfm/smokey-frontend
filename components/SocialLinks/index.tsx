@@ -25,7 +25,7 @@ export const SocialIcon = styled.img`
 
 export const SocialLinks = () => {
   return (
-    <div>
+    <>
       <SocialContainer>
         <SocialList>
           <SocialListItem>
@@ -47,6 +47,6 @@ export const SocialLinks = () => {
           </SocialListItem>
         </SocialList>
       </SocialContainer>
-    </div>
+    </>
   );
 };
