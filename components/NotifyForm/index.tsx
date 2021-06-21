@@ -84,7 +84,7 @@ export const NotifyForm = () => {
   `;
 
   return (
-    <div>
+    <>
       <Container>
         <NotifyText>GET NOTIFIED</NotifyText>
         <form onSubmit={handleSubmit}>
@@ -104,6 +104,6 @@ export const NotifyForm = () => {
           Got Questions? We’d love to hear from you.
         </MailTo>
       </Container>
-    </div>
+    </>
   );
 };
