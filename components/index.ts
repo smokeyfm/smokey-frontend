@@ -3,6 +3,6 @@ export * from "./Header";
 export * from "./InfoBox";
 export * from "./PostList";
 export * from "./ProductList";
-export * from "./MainMenu";
+export * from "./MobileMenu";
 export * from "./Footer";
 export * from "./AuthForm";
