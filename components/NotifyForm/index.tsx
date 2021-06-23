@@ -21,7 +21,7 @@ export const NotifyForm = () => {
     position: absolute;
     justify-content: center;
     width: 95%;
-    height: 150px;
+    height: 175px;
   `;
 
   const NotifyText = styled.div`
@@ -79,8 +79,9 @@ export const NotifyForm = () => {
     font-style: normal;
     font-weight: 200;
     font-size: 15px;
-    top: 10px;
     color: #ffffff;
+    padding-top: 25px;
+    bottom:0;
   `;
 
   return (
