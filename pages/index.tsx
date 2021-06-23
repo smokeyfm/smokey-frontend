@@ -10,10 +10,11 @@ const Home = () => {
     <>
       <Head>
         <title>beeper</title>
-        <meta property="og:description" content="A new mobile music experience coming to a “where ever you are” near you." />
+        <meta
+          property="og:description"
+          content="A new mobile music experience coming to a “where ever you are” near you."
+        />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://ahrefs.com/blog/open-graph-meta-tags/" />
-
         <meta property="og:image" content="OpenGraph-Thumbnail.jpg" />
       </Head>
       <Layout>
