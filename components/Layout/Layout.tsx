@@ -11,7 +11,7 @@ export const Layout: React.FC<LayoutProps> = ({
   return (
     <main>
       <MobileMenu
-          pcMenuItemClassName={'pc-menu-item'}
+        pcMenuItemClassName={"pc-menu-item"}
         outterContainerId={"outter-container"}
         pageWrapId={"page-wrap"}
         animationType={"slide"}

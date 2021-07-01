@@ -106,8 +106,8 @@ export const GlobalStyles = () => (
           top: 0;
           background: rgba(0, 0, 0, 0.3);
         }
-        .pc-menu-item{
-        color:#000;
+        .pc-menu-item {
+          color: #000;
         }
       `}
     />
