@@ -83,6 +83,7 @@ export const GlobalStyles = () => (
         .bm-menu-wrap {
           position: fixed;
           height: 100%;
+          top: 0;
         }
         .bm-menu {
           background: #373a47;
