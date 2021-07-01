@@ -4,21 +4,21 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { IDesktopMenuProps } from "./types/DesktopMenu";
 import { menuDataItem } from "./types";
 import styled from "@emotion/styled";
-const Container=styled.div`
-padding-left: 100px;
-  height:80px;
+const Container = styled.div`
+  padding-left: 100px;
+  height: 80px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-`
-const MyMenuItem=styled.div`
-margin-right: 50px;
+`;
+const MyMenuItem = styled.div`
+  margin-right: 50px;
   line-height: 80px;
-`
-const MySubMenuItem=styled.div`
+`;
+const MySubMenuItem = styled.div`
   text-align: center;
   width: 100%;
-`
+`;
 const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
   const { pcWrapClassName, menusData, pcMenuItemClassName, onMenuItemClick } = props;
   const [keyPathMap, setKeyPathMap] = useState({});
@@ -42,11 +42,8 @@ const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
   const getSubMenuOrItems = (menusData: menuDataItem[], parentKeyPath: string, level: number) => {
     return menusData.map((item, index) => {
       return (
-        <MyMenuItem
-          className={pcMenuItemClassName}
-          key={parentKeyPath + "/" + item.key}>
-          <MySubMenuItem
-            onClick={handleClick.bind(null, parentKeyPath + "/" + item.key)}>
+        <MyMenuItem className={pcMenuItemClassName} key={parentKeyPath + "/" + item.key}>
+          <MySubMenuItem onClick={handleClick.bind(null, parentKeyPath + "/" + item.key)}>
             {item.pcIcon && item.pcIcon()}
             {item.name}
           </MySubMenuItem>
@@ -87,10 +84,6 @@ const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
       );
     });
   };
-  return (
-    <Container className={pcWrapClassName}>
-      {getSubMenuOrItems(menusData, "", 0)}
-    </Container>
-  );
+  return <Container className={pcWrapClassName}>{getSubMenuOrItems(menusData, "", 0)}</Container>;
 };
 export default DesktopMenu;
