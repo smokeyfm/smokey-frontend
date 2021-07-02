@@ -1,12 +1,13 @@
 import { MouseEventHandler } from "react";
 
 export type BurgerIconStyles = {
-  bmBurgerBarsHover: object;
-  bmIcon: object;
-  bmBurgerBars: object;
-  bmBurgerButton: object;
-  bmCross: object;
-  bmCrossButton: object;
+  bmBurgerBarsHover?: object;
+  bmIcon?: object;
+  bmBurgerBars?: object;
+  bmBurgerButton?: object;
+  bmCross?: object;
+  bmCrossButton?: object;
+  bmMenuWrap?: object;
 };
 export interface BurgerIconProps {
   styles?: BurgerIconStyles;

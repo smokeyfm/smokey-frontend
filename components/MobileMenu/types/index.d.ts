@@ -1,4 +1,4 @@
-import { FunctionComponent, ReactElement } from "react";
+import { FunctionComponent, ReactElement, ReactNode } from "react";
 import { BurgerIconStyles } from "./BurgerIconProps";
 declare global {
   interface Window {
@@ -20,9 +20,26 @@ export type BurgerMenu = {
   fallDown: ReactElement;
   reveal: ReactElement;
 };
-export interface MainMenuProps {
+
+export type menuItem = {
+  name: string;
+  key: string;
+  icon?: () => ReactNode;
+};
+export type menuDataItem = {
+  name: string;
+  key: string;
+  children?: menuDataItem[];
+  icon?: () => ReactNode;
+  pcIcon?: () => ReactNode;
+};
+export interface MobileMenuProps {
+  pcWrapClassName?: string;
+  pcMenuItemClassName?: string;
+  onMenuItemClick?: (keyPath: string, key: string) => void;
+  menusData: menuDataItem[];
   animationType?: keyof BurgerMenu;
-  children: JSX.Element<type, props, key> | JSX.Element<type, props, key>[];
+  children?: JSX.Element<type, props, key> | JSX.Element<type, props, key>[];
   bodyClassName?: string;
   burgerBarClassName?: string;
   burgerButtonClassName?: string;
