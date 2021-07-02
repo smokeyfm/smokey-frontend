@@ -34,7 +34,7 @@ const MyDiv = styled.div`
   display: flex;
 `;
 export const ProductList: React.FC<ProductListProps> = () => {
-  const { data, isLoading, isSuccess } = useProducts(1);
+  const { data: products, isLoading, isSuccess } = useProducts(1);
   if (isLoading) return <MyDiv>Loading</MyDiv>;
 
   if (!isSuccess) {
@@ -44,11 +44,11 @@ export const ProductList: React.FC<ProductListProps> = () => {
   return (
     <MySection>
       <ProductsRow>
-        {data?.data?.map((product) => {
+        {products?.data?.map((product) => {
           const imageId =
             Array.isArray(product.relationships.images.data) &&
             product.relationships.images.data[0]?.id;
-          const imageSource = data?.included?.find((image) => image.id === imageId)?.attributes
+          const imageSource = products?.included?.find((image) => image.id === imageId)?.attributes
             .styles[2].url;
           const source = imageSource
             ? `https://pol-admin-staging.instinct.is/${imageSource}`
