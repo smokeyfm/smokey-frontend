@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 // import { useDispatch, useSelector } from 'react-redux';
 // import { IconSearch, IconClose } from '@components/SVGs';
-import { operations } from '../../ducks';
+import { operations } from "../../ducks";
 import {
   StyledSearch,
   StyledInputContainer,
@@ -14,25 +14,23 @@ import {
   BrowseButton,
   SearchBarWrapper,
   ButtonWrapper
-} from './SearchBar.styles';
-import AutoComplete from '../AutoComplete';
-import { Router } from 'next/router';
+} from "./SearchBar.styles";
+import AutoComplete from "../AutoComplete";
+import { Router } from "next/router";
 
-import {
-  SearchBarProps
-} from './types'
+import { SearchBarProps } from "./types";
 
 const SearchBar = ({
-  placeholder = 'Search...',
+  placeholder = "Search...",
   autoComplete = true,
-  value = '',
+  value = "",
   ...rest
 }: SearchBarProps) => {
   const [query, setQuery] = useState(value);
   const [searchResults, setSearchResults] = useState<Any[]>([]);
   const [isAutoCompleteVisible, setIsAutocompleteVisible] = useState(false);
 
-  const handleSearchChange = e => {
+  const handleSearchChange = (e) => {
     const { value } = e.target;
     if (value.length === 0) handleSearchClear();
     setQuery(value);
@@ -41,13 +39,13 @@ const SearchBar = ({
   };
 
   const handleSearchClear = () => {
-    setQuery('');
+    setQuery("");
     setIsAutocompleteVisible(false);
   };
 
   const dropdownRef = useRef(null);
 
-  const handleClickOutside = event => {
+  const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setIsAutocompleteVisible(false);
     }
@@ -75,30 +73,30 @@ const SearchBar = ({
     }
 
     return <>✅</>;
-  }
+  };
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('touchstart', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('touchstart', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
     };
   }, []);
 
-  const keyboardEvents = event => {
+  const keyboardEvents = (event) => {
     const { key, target } = event;
 
     switch (key) {
-      case 'Escape':
-      case 'Tab':
+      case "Escape":
+      case "Tab":
         setIsAutocompleteVisible(false);
         break;
-      case 'Enter':
+      case "Enter":
         if (target?.value?.length > 3) {
-          if (key === 'Enter' && target?.value?.length > 3) {
-            Router.push(`/apply?`)
+          if (key === "Enter" && target?.value?.length > 3) {
+            Router.push(`/apply?`);
           }
         }
         break;
@@ -108,8 +106,8 @@ const SearchBar = ({
     }
   };
 
-  const labelId = 'label-search';
-  const dropdownId = 'dropdown-search';
+  const labelId = "label-search";
+  const dropdownId = "dropdown-search";
 
   return (
     <StyledSearch
@@ -119,8 +117,7 @@ const SearchBar = ({
       aria-expanded={isAutoCompleteVisible}
       ref={dropdownRef}
       aria-labelledby={labelId}
-      {...rest}
-    >
+      {...rest}>
       <SearchBarWrapper className="is-search-route">
         <SearchInputWrapper>
           <StyledInputContainer>
@@ -153,7 +150,6 @@ const SearchBar = ({
               </StyledInputPostfix>
             )}
           </StyledInputContainer>
-          <SearchButton>Go</SearchButton>
         </SearchInputWrapper>
         <ButtonWrapper>
           <BrowseButton small>Search</BrowseButton>
@@ -163,10 +159,10 @@ const SearchBar = ({
       {autoComplete ? (
         <AutoComplete
           isVisible={isAutoCompleteVisible}
-          toggleVisibility={e => setIsAutocompleteVisible(e)}
+          toggleVisibility={(e) => setIsAutocompleteVisible(e)}
           id={dropdownId}
           labelId={labelId}
-          onSelect={e => setQuery(e)}
+          onSelect={(e) => setQuery(e)}
           query={query}
         />
       ) : (

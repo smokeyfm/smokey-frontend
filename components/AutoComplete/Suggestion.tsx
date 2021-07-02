@@ -1,29 +1,26 @@
-import React from 'react';
-import Router from 'next/router';
-import { nanoid } from 'nanoid';
+import React from "react";
+import Router from "next/router";
+import { nanoid } from "nanoid";
 // import { useDispatch } from 'react-redux';
 // import { commonOperations } from '@common/ducks';
-import {
-  StyledSuggestionLink,
-  StyledSuggestionContent
-} from './AutoComplete.styles';
+import { StyledSuggestionLink, StyledSuggestionContent } from "./AutoComplete.styles";
 
 const formatWithHighlight = (text, query) => {
   if (!query) return text;
 
-  const sanitizeString = str => {
-    str = str.replace(/[^a-z0-9áéíóúñü \.,_-]/gim, '');
+  const sanitizeString = (str) => {
+    str = str.replace(/[^a-z0-9áéíóúñü \.,_-]/gim, "");
     return str.trim();
   };
 
-  const reg = new RegExp(`(${sanitizeString(query)})`, 'gi');
+  const reg = new RegExp(`(${sanitizeString(query)})`, "gi");
   const textParts = text.split(reg);
 
-  return textParts.map(part =>
+  return textParts.map((part) =>
     part.match(reg) ? (
       part
     ) : (
-      <span key={nanoid()} style={{ fontWeight: 'normal' }}>
+      <span key={nanoid()} style={{ fontWeight: "normal" }}>
         {part}
       </span>
     )
@@ -41,12 +38,11 @@ const formatWithHighlight = (text, query) => {
 
 // const Suggestion = ({ suggestion, query }: OwnProps) => {
 const Suggestion = ({ suggestion, query, onChange, toggleVisibility }) => {
-
   const handleSelection = () => {
-    onChange('')
-    toggleVisibility()
-    Router.push(`/${suggestion.attributes.slug}?id=${suggestion.id}`)
-  }
+    onChange("");
+    toggleVisibility();
+    Router.push(`/${suggestion.attributes.slug}?id=${suggestion.id}`);
+  };
 
   // const dispatch = useDispatch();
   if (suggestion) {
