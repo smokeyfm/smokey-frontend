@@ -1,4 +1,4 @@
-export default () => {
+const SnapSvg = () => {
   let Snap;
   try {
     Snap = require("snapsvg-cjs");
@@ -6,3 +6,4 @@ export default () => {
     return Snap;
   }
 };
+export default SnapSvg;
