@@ -150,7 +150,6 @@ const SearchBar = ({
               </StyledInputPostfix>
             )}
           </StyledInputContainer>
-          {/* <SearchButton>Go</SearchButton> */}
         </SearchInputWrapper>
         <ButtonWrapper>
           <BrowseButton small>Search</BrowseButton>
