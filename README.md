@@ -46,17 +46,18 @@ https://pol-frontend-staging.instinct.is/
 TODO:
 
 - Flow / Type Checking
-- React
-- Express (SSR)
-- Redux (project specific data mgmt)
+- ~~React~~
+- ~~SSR~~ (NextJS)
+- State Mgmt (Redux? useContext?)
+- Request Mgmt 
 - Pusher / API Integration
 - Styled Components
 - Moving Letters
 - UI Sounds (proprietary: "npm install beeper")
 - Maps
-- File upload
+- File upload (ReactDropzone)
 - Form validation (Formik / React Final Form / YUP / Blitz inspo)
-- Animations / Transitions
+- Animations / Transitions (ReactSpring, GSAP)
 - Gestures
 - UI Alerts
 - Uptime Monitoring
