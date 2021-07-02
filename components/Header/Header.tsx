@@ -4,8 +4,10 @@ import Link from "next/link";
 import { HeaderProps } from "./types";
 import Sticky from "react-sticky-el";
 import { useAuth } from "../../config/auth";
+import SearchBar from "../SearchBar";
 
 const dummyCategories = ["Best Sellers", "Latest", "Seasonal", "Luxury", "On Sale", "Coming Soon"];
+
 export const Header: React.FC<HeaderProps> = (props) => {
   const { pathname } = useRouter();
   const { user, logout } = useAuth();
@@ -111,6 +113,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
             }
           `}</style>
         </div>
+        <SearchBar />
       </Sticky>
     </header>
   );
