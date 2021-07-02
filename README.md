@@ -56,7 +56,7 @@ TODO:
 - ~~React~~
 - ~~SSR~~ (NextJS)
 - State Mgmt (Redux? useContext?)
-- Request Mgmt 
+- Request Mgmt
 - Pusher / API Integration
 - Styled Components
 - Moving Letters

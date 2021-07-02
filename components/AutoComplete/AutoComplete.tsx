@@ -1,11 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
+import React, { useContext, useEffect, useState } from "react";
+import { useQuery } from "react-query";
 import { useProducts } from "../../hooks/useProducts";
-import { StyledAutoComplete } from './AutoComplete.styles';
-import Suggestion from './Suggestion';
-import {
-  AutoCompleteProps
-} from './types';
+import { StyledAutoComplete } from "./AutoComplete.styles";
+import Suggestion from "./Suggestion";
+import { AutoCompleteProps } from "./types";
 
 const AutoComplete = ({
   id,
@@ -46,16 +44,18 @@ const AutoComplete = ({
     <StyledAutoComplete role="listbox" aria-labelledby={labelId} id={id}>
       {isVisible &&
         data?.data?.map((job, index) => {
-          {/* console.log(job); */}
+          {
+            /* console.log(job); */
+          }
           return (
             <Suggestion
               suggestion={job}
               key={`${job.internal_job_id}-${index}`}
-              toggleVisibility={e => toggleVisibility(e)}
-              onChange={e => onSelect(e)}
+              toggleVisibility={(e) => toggleVisibility(e)}
+              onChange={(e) => onSelect(e)}
               query={query}
             />
-          )
+          );
         })}
     </StyledAutoComplete>
   );
