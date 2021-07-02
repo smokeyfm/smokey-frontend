@@ -129,8 +129,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
               text-decoration: underline;
             }
           `}</style>
-        </div>
-        <SearchBar />
+          <SearchBar />
         </BottomHeader>
       </Sticky>
     </HeaderDiv>
