@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const StyledAutoComplete = styled.div`
   position: absolute;
@@ -13,28 +13,27 @@ export const StyledAutoComplete = styled.div`
   overflow-x: hidden;
   z-index: 1;
 
-
   &::-webkit-scrollbar {
     width: 20px;
     border-radius: 0 0 3px 0;
-    background-color: ${props => props.theme.colors.gray.background};
+    background-color: ${(props) => props.theme.colors.gray.background};
   }
 
   &::-webkit-scrollbar-thumb {
     border-radius: 12px;
     height: 80px;
-    background-color: ${props => props.theme.colors.blue.primary};
-    box-shadow: 0 2px 12px rgba(0,0,0,0.33);
+    background-color: ${(props) => props.theme.colors.blue.primary};
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.33);
     transition: 1s all ease-in-out;
     &:active {
       transition: 1s all ease-in-out;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.22);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.22);
     }
   }
 
   &::-webkit-scrollbar-track {
     border-radius: 8px;
-    background-color: ${props => props.theme.colors.gray.background};
+    background-color: ${(props) => props.theme.colors.gray.background};
   }
 `;
 
@@ -43,7 +42,7 @@ export const StyledSuggestionLink = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 12px 16px 12px 40px;
-  color: ${props => props.theme.colors.blue.primary};
+  color: ${(props) => props.theme.colors.blue.primary};
 
   font-size: 14px;
   font-weight: 700;
@@ -52,8 +51,8 @@ export const StyledSuggestionLink = styled.div`
 
   &:hover {
     text-decoration: none;
-    background-color: ${props => props.theme.colors.gray.background};
-    color: ${props => props.theme.colors.blue.primary};
+    background-color: ${(props) => props.theme.colors.gray.background};
+    color: ${(props) => props.theme.colors.blue.primary};
   }
 
   mark {
