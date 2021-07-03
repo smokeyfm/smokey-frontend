@@ -1,5 +1,5 @@
-import { css } from "@emotion/react";
-import styled from "@emotion/styled";
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 
 export const StyledSearch = styled.div`
   position: relative;
@@ -48,12 +48,12 @@ export const SearchButton = styled.button`
   border: 0;
   border-radius: 3px;
   padding: 3px 18px;
-  color: ${(props) => props.theme.colors.white.primary};
-  background-color: ${(props) => props.theme.colors.blue.primary};
+  color: ${props => props.theme.colors.white.primary};
+  background-color: ${props => props.theme.colors.blue.primary};
   cursor: pointer;
 
   &:hover {
-    background-color: ${(props) => props.theme.colors.blue.medium};
+    background-color: ${props => props.theme.colors.blue.medium};
   }
 `;
 
@@ -83,10 +83,10 @@ export const StyledInputPostfix = styled.div`
   right: 45px;
   padding-left: 10px;
   justify-content: flex-start;
-  color: ${(props) => props.theme.colors.blue.primary};
+  color: ${props => props.theme.colors.blue.primary};
 
   &:hover {
-    color: ${(props) => props.theme.colors.gray.medium};
+    color: ${props => props.theme.colors.gray.medium};
     cursor: pointer;
   }
 `;
