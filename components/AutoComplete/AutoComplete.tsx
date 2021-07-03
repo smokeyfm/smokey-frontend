@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useQuery } from "react-query";
-import {useProducts } from "../../hooks/useProducts";
+import { useProducts } from "../../hooks/useProducts";
 import { StyledAutoComplete } from "./AutoComplete.styles";
 import Suggestion from "./Suggestion";
-import {AutoCompleteProps} from "./types";
+import { AutoCompleteProps } from "./types";
 
 const AutoComplete = ({
   id,
@@ -13,7 +13,14 @@ const AutoComplete = ({
   onSelect,
   query
 }: AutoCompleteProps) => {
-  const { error, status, data, isLoading, isSuccess }:{error:any,status:any,data:any,isLoading:boolean,isSuccess:boolean} = useProducts(1);
+  const {
+    error,
+    status,
+    data,
+    isLoading,
+    isSuccess
+  }: { error: any; status: any; data: any; isLoading: boolean; isSuccess: boolean } =
+    useProducts(1);
   const [page, setPage] = useState(1);
   const [suggestions, setSuggestions] = useState<[]>([]);
   // const [error, setError] = useState('');
@@ -43,7 +50,7 @@ const AutoComplete = ({
   return (
     <StyledAutoComplete role="listbox" aria-labelledby={labelId} id={id}>
       {isVisible &&
-        data.data!.map((job:any, index:number) => {
+        data.data!.map((job: any, index: number) => {
           {
             /* console.log(job); */
           }
@@ -51,8 +58,8 @@ const AutoComplete = ({
             <Suggestion
               suggestion={job}
               key={`${job.internal_job_id}-${index}`}
-              toggleVisibility={(e:any) => toggleVisibility(e)}
-              onChange={(e:any) => onSelect(e)}
+              toggleVisibility={(e: any) => toggleVisibility(e)}
+              onChange={(e: any) => onSelect(e)}
               query={query}
             />
           );

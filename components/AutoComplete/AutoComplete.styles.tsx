@@ -1,9 +1,12 @@
 import styled from "@emotion/styled";
 
-export interface StyledAutoCompleteProps{
-  theme?:{colors:{
-    blue:{primary:string},
-    gray:{background:string}}}
+export interface StyledAutoCompleteProps {
+  theme?: {
+    colors: {
+      blue: { primary: string };
+      gray: { background: string };
+    };
+  };
 }
 export const StyledAutoComplete = styled.div<StyledAutoCompleteProps>`
   position: absolute;
@@ -41,17 +44,17 @@ export const StyledAutoComplete = styled.div<StyledAutoCompleteProps>`
     background-color: ${(props) => props.theme.colors.gray.background};
   }
 `;
-export interface StyledSuggestionLinkProps{
-  theme?:{
-    colors:{
-      blue:{
-        primary:string;
-      },
-      gray:{
-        background:string;
-      }
-    }
-  }
+export interface StyledSuggestionLinkProps {
+  theme?: {
+    colors: {
+      blue: {
+        primary: string;
+      };
+      gray: {
+        background: string;
+      };
+    };
+  };
 }
 export const StyledSuggestionLink = styled.div<StyledSuggestionLinkProps>`
   display: flex;
