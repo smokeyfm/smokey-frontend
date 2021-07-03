@@ -110,6 +110,11 @@ export const GlobalStyles = () => (
         .pc-menu-item {
           color: #000;
         }
+        #__next {
+          display: flex;
+          flex-direction: column;
+          height: 100vh;
+        }
       `}
     />
   </>

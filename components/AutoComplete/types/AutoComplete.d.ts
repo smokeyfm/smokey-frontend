@@ -3,4 +3,6 @@ export interface AutoCompleteProps {
   labelId?: string;
   isVisible?: boolean;
   query?: string;
+  toggleVisibility:(e)=>void;
+  onSelect:(e)=>void;
 }

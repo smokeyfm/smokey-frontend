@@ -1,6 +1,11 @@
 import styled from "@emotion/styled";
 
-export const StyledAutoComplete = styled.div`
+export interface StyledAutoCompleteProps{
+  theme?:{colors:{
+    blue:{primary:string},
+    gray:{background:string}}}
+}
+export const StyledAutoComplete = styled.div<StyledAutoCompleteProps>`
   position: absolute;
   display: block;
   width: 100%;
@@ -36,8 +41,19 @@ export const StyledAutoComplete = styled.div`
     background-color: ${(props) => props.theme.colors.gray.background};
   }
 `;
-
-export const StyledSuggestionLink = styled.div`
+export interface StyledSuggestionLinkProps{
+  theme?:{
+    colors:{
+      blue:{
+        primary:string;
+      },
+      gray:{
+        background:string;
+      }
+    }
+  }
+}
+export const StyledSuggestionLink = styled.div<StyledSuggestionLinkProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
