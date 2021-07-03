@@ -1,10 +1,13 @@
 import styled from "@emotion/styled";
-import { pxPC } from "../../utils";
+import { pxIpone, pxPC } from "../../utils";
 export const Container = styled.div`
   width: 100%;
   height: ${pxPC(400)};
   background: #000;
   padding-top: ${pxPC(41)};
+  @media(max-width: 768px){
+    height: ${pxIpone(621)};
+  }
 `;
 export const LogoDiv = styled.div`
   width: ${pxPC(181)};
@@ -22,8 +25,15 @@ export const InnerBox = styled.div`
   display: flex;
   justify-content: space-evenly;
   margin-top: ${pxPC(47)};
+  @media(max-width: 768px){
+    flex-wrap: wrap;
+  }
 `;
-export const ContactBox = styled.div``;
+export const ContactBox = styled.div`
+@media(max-width: 768px){
+  width: 45%;
+}
+`;
 export const SocialLinksBox = styled.div`
   display: flex;
 `;
@@ -33,10 +43,21 @@ export const SocialIcon = styled.img`
   object-fit: contain;
   margin-right: ${pxPC(6)};
 `;
-export const InformationBox = styled.div``;
-export const MyAccountBox = styled.div``;
+export const InformationBox = styled.div`
+  @media(max-width: 768px){
+    width: 45%;
+  }
+`;
+export const MyAccountBox = styled.div`
+  @media(max-width: 768px){
+    width: 45%;
+  }
+`;
 export const AboutUsBox = styled.div`
   width: ${pxPC(173)};
+  @media(max-width: 768px){
+    width: 45%;
+  }
 `;
 export const Title = styled.div`
   font-family: Bebas Neue;
@@ -44,6 +65,12 @@ export const Title = styled.div`
   line-height: ${pxPC(17)};
   color: #fff;
   margin-bottom: ${pxPC(34)};
+  @media(max-width: 768px){
+    color:#EB8B8B;
+    font-size: ${pxIpone(14)};
+    line-height: ${pxIpone(17)};
+    margin-bottom: ${pxIpone(22)};
+  }
 `;
 export const LinkItem = styled.div`
   font-family: Bebas Neue;
@@ -52,6 +79,11 @@ export const LinkItem = styled.div`
   line-height: ${pxPC(17)};
   margin-bottom: ${pxPC(12)};
   white-space: pre-wrap;
+  @media(max-width: 768px){
+    font-size: ${pxIpone(14)};
+    line-height: ${pxIpone(17)};
+    margin-bottom: ${pxIpone(13)};
+  }
 `;
 export const MyLink = styled.a`
   font-family: Bebas Neue;
@@ -60,4 +92,9 @@ export const MyLink = styled.a`
   line-height: ${pxPC(17)};
   display: block;
   margin-bottom: ${pxPC(7)};
+  @media(max-width: 768px){
+    font-size: ${pxIpone(14)};
+    line-height: ${pxIpone(17)};
+    margin-bottom: ${pxIpone(7)};
+  }
 `;

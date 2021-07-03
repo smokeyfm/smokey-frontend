@@ -5,10 +5,10 @@ import { nanoid } from "nanoid";
 // import { commonOperations } from '@common/ducks';
 import { StyledSuggestionLink, StyledSuggestionContent } from "./AutoComplete.styles";
 
-const formatWithHighlight = (text:any, query:any) => {
+const formatWithHighlight = (text: any, query: any) => {
   if (!query) return text;
 
-  const sanitizeString = (str:string) => {
+  const sanitizeString = (str: string) => {
     str = str.replace(/[^a-z0-9áéíóúñü \.,_-]/gim, "");
     return str.trim();
   };
@@ -16,7 +16,7 @@ const formatWithHighlight = (text:any, query:any) => {
   const reg = new RegExp(`(${sanitizeString(query)})`, "gi");
   const textParts = text.split(reg);
 
-  return textParts.map((part:string) =>
+  return textParts.map((part: string) =>
     part.match(reg) ? (
       part
     ) : (
@@ -35,14 +35,14 @@ const formatWithHighlight = (text:any, query:any) => {
 //   };
 //   query?: string;
 // };
-export interface SuggestionProps{
-  suggestion:any;
-  query:any;
-  onChange:any;
-  toggleVisibility:any;
+export interface SuggestionProps {
+  suggestion: any;
+  query: any;
+  onChange: any;
+  toggleVisibility: any;
 }
 // const Suggestion = ({ suggestion, query }: OwnProps) => {
-const Suggestion = ({ suggestion, query, onChange, toggleVisibility }:SuggestionProps) => {
+const Suggestion = ({ suggestion, query, onChange, toggleVisibility }: SuggestionProps) => {
   const handleSelection = () => {
     onChange("");
     toggleVisibility();

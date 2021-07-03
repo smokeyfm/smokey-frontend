@@ -31,9 +31,9 @@ const SearchBar = ({
   const [searchResults, setSearchResults] = useState<[]>([]);
   const [isAutoCompleteVisible, setIsAutocompleteVisible] = useState(false);
   const { data, isLoading, isSuccess } = useProducts(1);
-  const Router =useRouter()
+  const Router = useRouter();
 
-  const handleSearchChange = (e:any) => {
+  const handleSearchChange = (e: any) => {
     const { value } = e.target;
     if (value.length === 0) handleSearchClear();
     setQuery(value);
@@ -48,11 +48,10 @@ const SearchBar = ({
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = (event:any) => {
+  const handleClickOutside = (event: any) => {
     if (dropdownRef.current && !dropdownRef?.current?.contains(event.target)) {
       setIsAutocompleteVisible(false);
     }
-
   };
 
   // const getProductData = async (params) => {
@@ -88,7 +87,7 @@ const SearchBar = ({
     };
   }, []);
 
-  const keyboardEvents = (event:any) => {
+  const keyboardEvents = (event: any) => {
     const { key, target } = event;
 
     switch (key) {
