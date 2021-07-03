@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 // import { useDispatch, useSelector } from 'react-redux';
 // import { IconSearch, IconClose } from '@components/SVGs';
-import { operations } from "../../ducks";
+//import { operations } from "../../ducks";
 import {
   StyledSearch,
   StyledInputContainer,
@@ -16,9 +16,10 @@ import {
   ButtonWrapper
 } from "./SearchBar.styles";
 import AutoComplete from "../AutoComplete";
-import { Router } from "next/router";
+import { useRouter } from "next/router";
 
 import { SearchBarProps } from "./types";
+import { useProducts } from "../../hooks";
 
 const SearchBar = ({
   placeholder = "Search...",
@@ -27,10 +28,12 @@ const SearchBar = ({
   ...rest
 }: SearchBarProps) => {
   const [query, setQuery] = useState(value);
-  const [searchResults, setSearchResults] = useState<Any[]>([]);
+  const [searchResults, setSearchResults] = useState<[]>([]);
   const [isAutoCompleteVisible, setIsAutocompleteVisible] = useState(false);
+  const { data, isLoading, isSuccess } = useProducts(1);
+  const Router =useRouter()
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = (e:any) => {
     const { value } = e.target;
     if (value.length === 0) handleSearchClear();
     setQuery(value);
@@ -43,12 +46,13 @@ const SearchBar = ({
     setIsAutocompleteVisible(false);
   };
 
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = (event) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+  const handleClickOutside = (event:any) => {
+    if (dropdownRef.current && !dropdownRef?.current?.contains(event.target)) {
       setIsAutocompleteVisible(false);
     }
+
   };
 
   // const getProductData = async (params) => {
@@ -65,7 +69,6 @@ const SearchBar = ({
   // }
 
   const readinessIcon = () => {
-    const { data, isLoading, isSuccess } = useProducts(1);
     if (isLoading) return <>...</>;
 
     if (!isSuccess) {
@@ -85,7 +88,7 @@ const SearchBar = ({
     };
   }, []);
 
-  const keyboardEvents = (event) => {
+  const keyboardEvents = (event:any) => {
     const { key, target } = event;
 
     switch (key) {

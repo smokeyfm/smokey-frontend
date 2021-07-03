@@ -4,7 +4,10 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { AuthProvider } from "../config/auth";
-import { Header } from "../components";
+import { MobileMenu } from "../components";
+import PageHeader from "../components/PageHeader";
+import "swiper/swiper-bundle.min.css";
+import { menusData } from "../components/MobileMenu/data/menusData";
 
 // Styles
 import { ThemeProvider } from "@emotion/react";
@@ -27,7 +30,14 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <Hydrate state={pageProps.dehydratedState}>
           <ThemeProvider theme={theme}>
             <GlobalStyles />
-            <Header />
+            <PageHeader />
+            <MobileMenu
+              pcMenuItemClassName={"pc-menu-item"}
+              outterContainerId={"outter-container"}
+              pageWrapId={"page-wrap"}
+              animationType={"slide"}
+              menusData={menusData}
+              right={false}></MobileMenu>
             <Component {...pageProps} />
           </ThemeProvider>
         </Hydrate>
