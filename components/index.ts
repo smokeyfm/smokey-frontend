@@ -6,3 +6,4 @@ export * from "./ProductList";
 export * from "./MobileMenu";
 export * from "./Footer";
 export * from "./AuthForm";
+export * from './Foot'
