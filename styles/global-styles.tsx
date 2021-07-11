@@ -15,18 +15,18 @@ export const GlobalStyles = () => (
           color: hotpink !important;
           margin: 0;
           padding: 0;
-          width:100%;
-          height: 100%
+          width: 100%;
+          height: 100%;
         }
         * {
           font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono",
             "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
         }
-        #__next{
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
+        #__next {
+          width: 100%;
+          height: 100vh;
+          display: flex;
+          flex-direction: column;
         }
 
         a {

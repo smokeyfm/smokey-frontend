@@ -1,1 +1,1 @@
-export {Foot} from './Foot'
+export { Foot } from "./Foot";
