@@ -15,7 +15,7 @@ const AutoComplete = ({
 }: AutoCompleteProps) => {
   const { error, status, data, isLoading, isSuccess } = useProducts(1);
   const [page, setPage] = useState(1);
-  const [suggestions, setSuggestions] = useState<Any[]>([]);
+  const [suggestions, setSuggestions] = useState([]);
   // const [error, setError] = useState('');
 
   useEffect(() => {
@@ -43,16 +43,13 @@ const AutoComplete = ({
   return (
     <StyledAutoComplete role="listbox" aria-labelledby={labelId} id={id}>
       {isVisible &&
-        data?.data?.map((job, index) => {
-          {
-            /* console.log(job); */
-          }
+        data?.data?.map((item, index) => {
           return (
             <Suggestion
-              suggestion={job}
-              key={`${job.internal_job_id}-${index}`}
-              toggleVisibility={(e) => toggleVisibility(e)}
-              onChange={(e) => onSelect(e)}
+              suggestion={item}
+              key={`${item.id}-${index}`}
+              toggleVisibility={(e: any) => toggleVisibility(e)}
+              onChange={(e: any) => onSelect(e)}
               query={query}
             />
           );
