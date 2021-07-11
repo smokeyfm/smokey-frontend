@@ -1,22 +1,21 @@
 import React from "react";
 import Router from "next/router";
 import { nanoid } from "nanoid";
+import { IProduct } from "@spree/storefront-api-v2-sdk/types/interfaces/Product";
 // import { useDispatch } from 'react-redux';
 // import { commonOperations } from '@common/ducks';
 import { StyledSuggestionLink, StyledSuggestionContent } from "./AutoComplete.styles";
-
-const formatWithHighlight = (text: any, query: any) => {
+const formatWithHighlight = (text: string, query: string | undefined) => {
   if (!query) return text;
 
-  const sanitizeString = (str: string) => {
+  const sanitizeString = (str: any) => {
     str = str.replace(/[^a-z0-9áéíóúñü \.,_-]/gim, "");
     return str.trim();
   };
 
   const reg = new RegExp(`(${sanitizeString(query)})`, "gi");
   const textParts = text.split(reg);
-
-  return textParts.map((part: string) =>
+  return textParts.map((part: any) =>
     part.match(reg) ? (
       part
     ) : (
@@ -26,26 +25,18 @@ const formatWithHighlight = (text: any, query: any) => {
     )
   );
 };
+type OwnProps = {
+  suggestion?: any;
+  query?: string;
+  onChange: (e: any) => void;
+  toggleVisibility: (e: any) => void;
+};
 
-// type OwnProps = {
-//   suggestion?: {
-//     id?: string;
-//     article_id?: string;
-//     article_name: string;
-//   };
-//   query?: string;
-// };
-export interface SuggestionProps {
-  suggestion: any;
-  query: any;
-  onChange: any;
-  toggleVisibility: any;
-}
-// const Suggestion = ({ suggestion, query }: OwnProps) => {
-const Suggestion = ({ suggestion, query, onChange, toggleVisibility }: SuggestionProps) => {
+const Suggestion = ({ suggestion, query, onChange, toggleVisibility }: OwnProps) => {
+  // const Suggestion = ({ suggestion, query, onChange, toggleVisibility }) => {
   const handleSelection = () => {
     onChange("");
-    toggleVisibility();
+    toggleVisibility(false);
     Router.push(`/${suggestion.attributes.slug}?id=${suggestion.id}`);
   };
 
@@ -59,7 +50,7 @@ const Suggestion = ({ suggestion, query, onChange, toggleVisibility }: Suggestio
       </StyledSuggestionLink>
     );
   } else {
-    return null;
+    return <></>;
   }
 };
 

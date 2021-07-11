@@ -1,7 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  KeyboardEvent,
+  MouseEvent,
+  TouchEvent
+} from "react";
 // import { useDispatch, useSelector } from 'react-redux';
 // import { IconSearch, IconClose } from '@components/SVGs';
-//import { operations } from "../../ducks";
+import { useProducts } from "../../hooks/useProducts";
 import {
   StyledSearch,
   StyledInputContainer,
@@ -17,9 +25,8 @@ import {
 } from "./SearchBar.styles";
 import AutoComplete from "../AutoComplete";
 import { useRouter } from "next/router";
-
+import { useOnClickOutside } from "../../hooks";
 import { SearchBarProps } from "./types";
-import { useProducts } from "../../hooks";
 
 const SearchBar = ({
   placeholder = "Search...",
@@ -27,11 +34,13 @@ const SearchBar = ({
   value = "",
   ...rest
 }: SearchBarProps) => {
+  const router = useRouter();
   const [query, setQuery] = useState(value);
   const [searchResults, setSearchResults] = useState<[]>([]);
   const [isAutoCompleteVisible, setIsAutocompleteVisible] = useState(false);
   const { data, isLoading, isSuccess } = useProducts(1);
   const Router = useRouter();
+  const anyRef = useRef(null);
 
   const handleSearchChange = (e: any) => {
     const { value } = e.target;
@@ -47,25 +56,14 @@ const SearchBar = ({
   };
 
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const handleClickOutside = useCallback((event: Event) => {
+    // if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    //   setIsAutocompleteVisible(false);
+    // }
+    console.log(event);
+  }, []);
 
-  const handleClickOutside = (event: any) => {
-    if (dropdownRef.current && !dropdownRef?.current?.contains(event.target)) {
-      setIsAutocompleteVisible(false);
-    }
-  };
-
-  // const getProductData = async (params) => {
-  //   const { page } = params.queryKey;
-  //   // const response = await fetch(`https://swapi.dev/api/people/?page=${page}`);
-  //   // fetch(`${process.env.CAREERS_WP_API_URL}/pages?slug=landing`).then(res =>
-  //   const response = await fetch(`${process.env.GREENHOUSE_BASE_URL}/jobs/?page=${page}`)
-  //   if (!response.ok) {
-  //     throw new Error("Problem fetching jobs");
-  //   }
-  //   const data = await response.json();
-  //   // assertIsJobResponse(data);
-  //   return data;
-  // }
+  useOnClickOutside(anyRef, handleClickOutside);
 
   const readinessIcon = () => {
     if (isLoading) return <>...</>;
@@ -86,19 +84,16 @@ const SearchBar = ({
       document.removeEventListener("touchstart", handleClickOutside);
     };
   }, []);
-
-  const keyboardEvents = (event: any) => {
-    const { key, target } = event;
-
-    switch (key) {
+  const keyboardEvents = (event: KeyboardEvent) => {
+    switch (event.key) {
       case "Escape":
       case "Tab":
         setIsAutocompleteVisible(false);
         break;
       case "Enter":
-        if (target?.value?.length > 3) {
-          if (key === "Enter" && target?.value?.length > 3) {
-            Router.push(`/apply?`);
+        if (query.length > 3) {
+          if (event.key === "Enter" && query.length > 3) {
+            router.push(`/search?term=${query}`);
           }
         }
         break;
@@ -130,7 +125,7 @@ const SearchBar = ({
               </StyledIcon>
             </StyledInputPrefix>
             <StyledInput
-              onKeyDown={keyboardEvents}
+              onKeyDown={(e: KeyboardEvent) => keyboardEvents(e)}
               tabIndex={0}
               value={query}
               placeholder={placeholder}
@@ -154,26 +149,20 @@ const SearchBar = ({
           </StyledInputContainer>
         </SearchInputWrapper>
         <ButtonWrapper>
-          <BrowseButton small>Search</BrowseButton>
+          <BrowseButton>Search</BrowseButton>
         </ButtonWrapper>
       </SearchBarWrapper>
 
       {autoComplete ? (
         <AutoComplete
           isVisible={isAutoCompleteVisible}
-          toggleVisibility={(e) => setIsAutocompleteVisible(e)}
+          toggleVisibility={(e: any) => setIsAutocompleteVisible(e)}
           id={dropdownId}
           labelId={labelId}
-          onSelect={(e) => setQuery(e)}
+          onSelect={(e: any) => setQuery(e)}
           query={query}
         />
-      ) : (
-        <>
-          {/* <ArticleResults searchQuery={query} /> */}
-          <div>{query}</div>
-          <div>Loading: {isLoading}</div>
-        </>
-      )}
+      ) : null}
     </StyledSearch>
   );
 };

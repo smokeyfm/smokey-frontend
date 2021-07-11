@@ -22,7 +22,7 @@ const AutoComplete = ({
   }: { error: any; status: any; data: any; isLoading: boolean; isSuccess: boolean } =
     useProducts(1);
   const [page, setPage] = useState(1);
-  const [suggestions, setSuggestions] = useState<[]>([]);
+  const [suggestions, setSuggestions] = useState([]);
   // const [error, setError] = useState('');
 
   useEffect(() => {
@@ -50,14 +50,11 @@ const AutoComplete = ({
   return (
     <StyledAutoComplete role="listbox" aria-labelledby={labelId} id={id}>
       {isVisible &&
-        data.data!.map((job: any, index: number) => {
-          {
-            /* console.log(job); */
-          }
+        data?.data?.map((item:any, index:any) => {
           return (
             <Suggestion
-              suggestion={job}
-              key={`${job.internal_job_id}-${index}`}
+              suggestion={item}
+              key={`${item.id}-${index}`}
               toggleVisibility={(e: any) => toggleVisibility(e)}
               onChange={(e: any) => onSelect(e)}
               query={query}
