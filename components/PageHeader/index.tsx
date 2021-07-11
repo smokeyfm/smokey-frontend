@@ -19,9 +19,9 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
       <Header>
         <LogoDivMo>POL</LogoDivMo>
         <MySearchIcon />
-        <SearchMo src={'/searchMo.png'} />
-        <CartMo src={'/CARTMo.png'} />
-        <UserIconMo src={'/user.png'} />
+        <SearchMo src={"/searchMo.png"} />
+        <CartMo src={"/CARTMo.png"} />
+        <UserIconMo src={"/user.png"} />
         <HeaderAccount>MyAccount</HeaderAccount>
         <ArrowDown />
         <ShoppingCart />
