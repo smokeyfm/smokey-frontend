@@ -3,8 +3,11 @@ export const Container = styled.div`
   padding-top: 41px;
   color: #fff;
   padding-bottom: 68px;
-  @media(max-width: 375px){
-    padding-top: 14px;
+  @media (max-width: 375px) {
+    padding-top: 3.733vw;
+  }
+  @media(max-width: 750px){
+    padding-top: 3.733vw;
   }
 `;
 export const LogoDiv = styled.div`
@@ -19,26 +22,36 @@ export const Grid = styled.div`
   justify-content: space-between;
   grid-template-columns: 111px 148px 67px 173px;
   justify-items: center;
-  @media(max-width: 375px){
-    padding-left: 54px;
-    padding-right: 13px;
+  @media (max-width: 375px) {
+    padding-left: 14.4vw;
+    padding-right: 3.46vw;
     justify-content: start;
-    grid-template-columns: [a]111px 137px;
+    grid-template-columns: [a]29.6vw 36.5vw;
     justify-content: space-between;
-    row-gap: 42px;
+    row-gap: 11.2vw;
+  }
+  @media (max-width: 750px) {
+    padding-left: 14.4vw;
+    padding-right: 3.46vw;
+    justify-content: start;
+    grid-template-columns: [a]29.6vw 36.5vw;
+    justify-content: space-between;
+    row-gap: 11.2vw;
   }
 `;
-export const IconLinksMo=styled.div`
+export const IconLinksMo = styled.div`
   justify-content: center;
   align-items: center;
-margin-top: 68px;
+  margin-top: 68px;
   display: none;
-  @media(max-width: 375px){
+  @media (max-width: 375px) {
     display: flex;
   }
-`
-export const MobileIconLink=styled.a`
-`
+  @media(max-width: 750px){
+    display: flex;
+  }
+`;
+export const MobileIconLink = styled.a``;
 export const Column = styled.div`
   display: flex;
   flex-direction: column;
@@ -50,11 +63,17 @@ export const ColumnTitle = styled.div`
   font-weight: 400;
   margin-bottom: 22px;
   white-space: nowrap;
-  @media(max-width: 375px){
-    margin-bottom: 9px;
+  @media (max-width: 375px) {
+    margin-bottom: 2.4vw;
     font-size: 20px;
     line-height: 24px;
-    color: #EB8B8B;
+    color: #eb8b8b;
+  }
+  @media(max-width: 750px){
+    margin-bottom: 2.4vw;
+    font-size: 20px;
+    line-height: 24px;
+    color: #eb8b8b;
   }
 `;
 export const ColumnSubTitle = styled.div``;
@@ -69,13 +88,16 @@ export const Description = styled.div`
   font-size: 14px;
   line-height: 150%;
   font-weight: 400;
-  margin-bottom: 5px;
+  margin-bottom: 1.33vw;
 `;
 export const IconLink = styled.a`
-  margin-right: 5.82px;
+  margin-right: 1.55vw;
 `;
 export const IconLinkWrapper = styled.div`
-@media(max-width: 375px){
-  display: none;
-}
+  @media (max-width: 375px) {
+    display: none;
+  }
+  @media (max-width: 750px) {
+    display: none;
+  }
 `;

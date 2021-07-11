@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { ClassNames } from "@emotion/react";
 import { LayoutProps } from "./types";
-import { Column,Foot } from "../Foot/Foot";
+import { Column, Foot } from "../Foot/Foot";
 const Logo = styled.div`
   width: 181px;
   height: 45px;
@@ -14,12 +14,19 @@ const Logo = styled.div`
   font-family: Montserrat;
   text-align: center;
   margin-bottom: 60px;
-  @media(max-width:375px){
-    width: 80px;
-    height: 19.83px;
+  @media (max-width: 375px) {
+    width: 21.33vw;
+    height: 5.048vw;
     font-size: 10px;
     line-height: 19.83px;
-    margin-bottom: 55.07px;
+    margin-bottom: 14.68vw;
+  }
+  @media(max-width: 750px){
+    width: 21.33vw;
+    height: 5.048vw;
+    font-size: 10px;
+    line-height: 19.83px;
+    margin-bottom: 14.68vw;
   }
 `;
 const MyLogo: React.FC = () => <Logo>POL</Logo>;
@@ -27,41 +34,60 @@ const CameraIcon = styled.img`
   width: 11px;
   height: auto;
   margin-right: 3.88px;
-  @media(max-width: 375px){
-    width: 20.71px;
+  @media (max-width: 375px) {
+    width: 5.522vw;
     height: auto;
-    margin-right: 7.76px;
+    margin-right: 2.069vw;
+  }
+  @media (max-width: 750px) {
+    width: 5.522vw;
+    height: auto;
+    margin-right: 2.069vw;
   }
 `;
 const FacebookIcon = styled.img`
   width: 6.81px;
   height: auto;
   margin-right: 3.88px;
-  @media(max-width: 375px){
-    width: 13.63px;
+  @media (max-width: 375px) {
+    width: 3.634vw;
     height: auto;
-    margin-right: 7.76px;
+    margin-right: 2.069vw;
+  }
+  @media (max-width: 750px) {
+    width: 3.634vw;
+    height: auto;
+    margin-right: 2.069vw;
   }
 `;
 const PlayIcon = styled.img`
   width: 12.29px;
   height: auto;
   margin-right: 3.88px;
-  @media(max-width: 375px){
-    width: 24.59px;
+  @media (max-width: 375px) {
+    width: 6.557vw;
     height: auto;
-    margin-right: 7.76px;
+    margin-right: 2.069vw;
+  }
+  @media (max-width: 750px) {
+    width: 6.557vw;
+    height: auto;
+    margin-right: 2.069vw;
   }
 `;
 const CircleIcon = styled.img`
   width: 10.35px;
   height: auto;
-  @media(max-width: 375px){
-    width: 20.71px;
+  @media (max-width: 375px) {
+    width: 5.522vw;
+    height: auto;
+  }
+  @media (max-width: 750px) {
+    width: 5.522vw;
     height: auto;
   }
 `;
-const iconLinks=[
+const iconLinks = [
   {
     icon: <CameraIcon src={"/camera.png"} />,
     url: ""
@@ -78,7 +104,7 @@ const iconLinks=[
     icon: <CircleIcon src={"/circle.png"} />,
     url: ""
   }
-]
+];
 const columns: Column[] = [
   {
     title: "Contact Info",
@@ -87,7 +113,7 @@ const columns: Column[] = [
       "+1 (310) 715-1370",
       "ecom@polclothing.com"
     ],
-    iconLinks,
+    iconLinks
   },
   {
     title: "Information",
@@ -134,12 +160,12 @@ const columns: Column[] = [
   }
 ];
 export const Container = styled.main`
-flex: 1;
-overflow: scroll;
-scrollbar-width: none;
-&::-webkit-scrollbar {
-  display: none;
-}
+  flex: 1;
+  overflow: scroll;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 export const Content = styled.div`
   flex: 1;
@@ -162,7 +188,7 @@ export const Layout: React.FC<LayoutProps> = ({
                   background-color: #000;
                 `
               }}
-              footerData={{ logo: <MyLogo />, columns,mobileIconLinks:iconLinks }}
+              footerData={{ logo: <MyLogo />, columns, mobileIconLinks: iconLinks }}
             />
           )}
         </ClassNames>

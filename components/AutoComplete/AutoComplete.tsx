@@ -50,7 +50,7 @@ const AutoComplete = ({
   return (
     <StyledAutoComplete role="listbox" aria-labelledby={labelId} id={id}>
       {isVisible &&
-        data?.data?.map((item:any, index:any) => {
+        data?.data?.map((item: any, index: any) => {
           return (
             <Suggestion
               suggestion={item}

@@ -54,9 +54,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
               pageWrapId={"page-wrap"}
               animationType={"slide"}
               menusData={menusData}
-              right={false}>
-
-            </MobileMenu>
+              right={false}></MobileMenu>
             <Component {...pageProps} />
           </ThemeProvider>
         </Hydrate>
