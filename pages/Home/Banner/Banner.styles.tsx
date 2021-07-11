@@ -7,7 +7,7 @@ export const Container = styled.div`
   background-image: url(/banner.png);
   background-size: cover;
   position: relative;
-  @media(max-width: 768px){
+  @media (max-width: 768px) {
     height: calc(100vh - ${pxIpone(60)});
     background-image: url("/bannerMo.png");
   }
@@ -18,12 +18,12 @@ export const BannerTitle = styled(LargeTitle)`
   position: absolute;
   left: ${pxPC(296)};
   top: ${pxPC(183)};
-@media(max-width: 768px){
-  top:${pxIpone(47)};
-  left: ${pxIpone(0)};
-  font-size: ${pxIpone(33)};
-  line-height: ${pxIpone(41)};
-}
+  @media (max-width: 768px) {
+    top: ${pxIpone(47)};
+    left: ${pxIpone(0)};
+    font-size: ${pxIpone(33)};
+    line-height: ${pxIpone(41)};
+  }
 `;
 export const BannerBtn = styled(ButtonBase)`
   width: ${pxPC(237)};
@@ -36,7 +36,7 @@ export const BannerBtn = styled(ButtonBase)`
   line-height: ${pxPC(22)};
   color: #fff;
   text-align: center;
-  @media(max-width: 768px){
+  @media (max-width: 768px) {
     width: 50vw;
     height: ${pxIpone(31)};
     font-size: ${pxIpone(20)};

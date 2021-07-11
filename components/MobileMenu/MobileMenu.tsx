@@ -8,7 +8,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
-import CloseIcon from '@material-ui/icons/Close';
+import CloseIcon from "@material-ui/icons/Close";
 import { MobileMenuProps, menuDataItem } from "./types";
 import { useMediaQuery } from "react-responsive";
 import DesktopMenu from "./DesktopMenu";
@@ -27,21 +27,21 @@ const PCHidden = styled.div`
     display: none;
   }
 `;
-const MenuHeader=styled.div`
-height: 60px;
-  display: flex!important;
+const MenuHeader = styled.div`
+  height: 60px;
+  display: flex !important;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
   padding: 0;
   background-color: #fff;
-  font-size: 8vw!important;
+  font-size: 8vw !important;
   border-bottom: 1px solid #000;
-`
-const MenuTitle=styled.span``
-const MenuClose=styled(CloseIcon)`
-color: #000;
-`
+`;
+const MenuTitle = styled.span``;
+const MenuClose = styled(CloseIcon)`
+  color: #000;
+`;
 
 const MobileHidden = styled.div`
   @media screen and (max-width: 767px) {
@@ -65,13 +65,13 @@ export const MobileMenu = (props: MobileMenuProps) => {
   } = props;
   const Menu = BurgerMenu[animationType as keyof typeof BurgerMenu];
   const [keyPath, setKeyPath] = useState("");
-  const [open,setOpen]=useState(false)
-  const handleOpen=useCallback(()=>{
-    setOpen(true)
-  },[])
-  const handleClose=useCallback(()=>{
-    setOpen(false)
-  },[])
+  const [open, setOpen] = useState(false);
+  const handleOpen = useCallback(() => {
+    setOpen(true);
+  }, []);
+  const handleClose = useCallback(() => {
+    setOpen(false);
+  }, []);
   const handleClick = useCallback((kp, key) => {
     if (onMenuItemClick) {
       onMenuItemClick(kp, key);
@@ -133,9 +133,14 @@ export const MobileMenu = (props: MobileMenuProps) => {
     <>
       <PCHidden>
         <Menu isOpen={open} onOpen={handleOpen} onClose={handleClose} {...others}>
-          {showMenuHeader ? <MenuHeader><MenuTitle>MENU</MenuTitle><MenuClose onClick={handleClose} fontSize={'large'} /></MenuHeader> :null}
+          {showMenuHeader ? (
+            <MenuHeader>
+              <MenuTitle>MENU</MenuTitle>
+              <MenuClose onClick={handleClose} fontSize={"large"} />
+            </MenuHeader>
+          ) : null}
           {getSubMenuOrItems(menusData, "", 0)}
-          {menuFooter&&menuFooter()}
+          {menuFooter && menuFooter()}
         </Menu>
       </PCHidden>
       <MobileHidden>

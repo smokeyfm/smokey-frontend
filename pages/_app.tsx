@@ -17,14 +17,14 @@ import { GlobalStyles } from "../styles/global-styles";
 import { pxIpone } from "../utils";
 
 const queryClient = new QueryClient();
-const CustomIcon=styled.img`
+const CustomIcon = styled.img`
   width: ${pxIpone(37)};
   height: auto;
-`
-const MenuFooter=styled.div`
+`;
+const MenuFooter = styled.div`
   position: fixed;
   bottom: 0;
-`
+`;
 export default function MyApp({ Component, pageProps }: AppProps) {
   React.useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
@@ -41,12 +41,14 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             <GlobalStyles />
             <PageHeader />
             <MobileMenu
-              menuFooter={()=>(<MenuFooter>
+              menuFooter={() => (
+                <MenuFooter>
                   <div>Privacy Policy - Terms & Conditions - RETURN POLICY</div>
                   <div>All Materials Copyright © 2021 POL Clothing</div>
-                </MenuFooter>)}
+                </MenuFooter>
+              )}
               showMenuHeader={true}
-              customBurgerIcon={<CustomIcon src={'/BURGER.png'} />}
+              customBurgerIcon={<CustomIcon src={"/BURGER.png"} />}
               pcMenuItemClassName={"pc-menu-item"}
               outterContainerId={"outter-container"}
               pageWrapId={"page-wrap"}

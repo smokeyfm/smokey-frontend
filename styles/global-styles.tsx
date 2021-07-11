@@ -103,7 +103,7 @@ export const GlobalStyles = () => (
         .bm-item {
           display: block;
           padding: 0.8em;
-          color:#000;
+          color: #000;
         }
         .bm-overlay {
           top: 0;

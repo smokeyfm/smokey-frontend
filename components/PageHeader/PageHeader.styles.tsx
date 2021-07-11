@@ -9,7 +9,7 @@ export const Header = styled.div`
   justify-content: flex-end;
   align-items: center;
   margin-top: 14px;
-  @media(max-width: 768px){
+  @media (max-width: 768px) {
     height: ${pxIpone(60)};
     margin-top: 0;
   }
@@ -23,86 +23,86 @@ export const LogoDiv = styled.div`
   line-height: 45px;
   color: #000;
   font-weight: bold;
-@media(max-width: 768px){
-  display: none;
-}
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
-export const LogoDivMo=styled.div`
+export const LogoDivMo = styled.div`
   display: none;
-@media(max-width: 768px){
-  display: block;
-  margin-left: ${pxIpone(60)};
-  margin-right: auto;
-  width: ${pxIpone(110)};
-  height: ${pxIpone(31)};
-  border: 0.5px solid #000;
-  text-align: center;
-  color: #000;
-  line-height: ${pxIpone(31)};
-  font-weight: bold;
-  font-size: 17px;
-}
-`
+  @media (max-width: 768px) {
+    display: block;
+    margin-left: ${pxIpone(60)};
+    margin-right: auto;
+    width: ${pxIpone(110)};
+    height: ${pxIpone(31)};
+    border: 0.5px solid #000;
+    text-align: center;
+    color: #000;
+    line-height: ${pxIpone(31)};
+    font-weight: bold;
+    font-size: 17px;
+  }
+`;
 export const HeaderAccount = styled.span`
   font-family: Roboto;
   font-size: 13px;
   line-height: 15px;
   color: #000;
-  @media(max-width: 768px){
+  @media (max-width: 768px) {
     display: none;
   }
 `;
 export const ArrowDown = styled(ArrowDropDownIcon)`
   margin-left: 5px;
   color: #000;
-  @media(max-width: 768px){
-    display: none!important;
+  @media (max-width: 768px) {
+    display: none !important;
   }
 `;
 export const ShoppingCart = styled(ShoppingCartIcon)`
   color: #000;
   font-size: 10px;
-  @media(max-width: 768px){
-    display: none!important;
+  @media (max-width: 768px) {
+    display: none !important;
   }
 `;
 export const FavoriteIcon = styled(FavoriteBorderIcon)`
   font-size: 12px;
   color: #000;
   @media (max-width: 768px) {
-    display: none!important;
+    display: none !important;
   }
 `;
 export const MySearchIcon = styled(SearchIcon)`
   color: #000;
-  @media(max-width: 768px){
-    display: none!important;
+  @media (max-width: 768px) {
+    display: none !important;
   }
 `;
-export const UserIconMo=styled.img`
+export const UserIconMo = styled.img`
   display: none;
-  @media(max-width: 768px){
+  @media (max-width: 768px) {
     display: block;
     width: ${pxIpone(19)};
     height: auto;
     margin-right: ${pxIpone(12)};
   }
-`
-export const CartMo=styled.img`
-display: none;
-  @media(max-width: 768px){
+`;
+export const CartMo = styled.img`
+  display: none;
+  @media (max-width: 768px) {
     display: block;
     width: ${pxIpone(17)};
     height: auto;
     margin-right: ${pxIpone(15)};
   }
-`
-export const SearchMo=styled.img`
-display: none;
-  @media(max-width: 768px){
+`;
+export const SearchMo = styled.img`
+  display: none;
+  @media (max-width: 768px) {
     display: block;
     width: ${pxIpone(14)};
     height: auto;
     margin-right: ${pxIpone(15)};
   }
-`
+`;
