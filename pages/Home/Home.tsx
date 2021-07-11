@@ -10,14 +10,17 @@ import LatestProducts from "./LatestProducts";
 import MemberList from "./MemberList";
 import Products from "./Products";
 import PolProductList from "../../components/POLProductList";
+import { useMediaQuery } from 'react-responsive'
 import data from "./home.json";
 const Home = () => {
+  const isMobile=useMediaQuery({maxWidth:767})
   return (
     <Layout>
       <Banner />
       <Content>
-        <MemberList data={data.memberList} />
-        <Products data={data.productList} />
+        {isMobile ? null :<MemberList data={data.memberList} />}
+        <Products data={data.productList} title={'Live-Shopping'} />
+        {!isMobile ? null :<MemberList data={data.memberList} />}
         <LatestProducts data={data.latestProducts} />
         <PolProductList data={data.hotDigs} title={"HOTDIGS"} />
         <BigHotDig data={data.bigHotDig} />

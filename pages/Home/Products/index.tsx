@@ -15,6 +15,7 @@ import {
   Title
 } from "./Products.styles";
 import SwiperCore, { Navigation, Thumbs } from "swiper/core";
+import { useMediaQuery } from "react-responsive";
 export type product = {
   name: string;
   influencer: string;
@@ -25,17 +26,19 @@ export type product = {
 };
 export interface ProductsProps {
   data: product[];
+  title:string;
 }
 SwiperCore.use([Navigation, Thumbs]);
 const Products: React.FC<ProductsProps> = (props) => {
-  const { data } = props;
+  const { data,title } = props;
+  const isMobile=useMediaQuery({maxWidth:767})
   return (
     <MySwiperWrap>
-      <Title>Live-Shopping</Title>
+      <Title>{title}</Title>
       <Swiper
         loop={true}
         spaceBetween={10}
-        slidesPerView={7}
+        slidesPerView={isMobile? 2:7}
         watchSlidesVisibility={true}
         watchSlidesProgress={true}>
         {data.map((item, index) => (
@@ -50,7 +53,7 @@ const Products: React.FC<ProductsProps> = (props) => {
               </ProductImgOutterBox>
               <MyProductTitle>{item.name}</MyProductTitle>
               <ProductDescBox>
-                <Rating name="simple-controlled" value={item.rate} />
+                <Rating size={isMobile ? 'small' :'large'} name="simple-controlled" value={item.rate} />
                 <ProductPrice as={"span"}>{item.price}</ProductPrice>
               </ProductDescBox>
             </MySlideWrap>
