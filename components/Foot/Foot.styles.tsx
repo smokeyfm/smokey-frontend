@@ -6,7 +6,7 @@ export const Container = styled.div`
   @media (max-width: 375px) {
     padding-top: 3.733vw;
   }
-  @media(max-width: 750px){
+  @media (max-width: 750px) {
     padding-top: 3.733vw;
   }
 `;
@@ -47,7 +47,7 @@ export const IconLinksMo = styled.div`
   @media (max-width: 375px) {
     display: flex;
   }
-  @media(max-width: 750px){
+  @media (max-width: 750px) {
     display: flex;
   }
 `;
@@ -69,7 +69,7 @@ export const ColumnTitle = styled.div`
     line-height: 24px;
     color: #eb8b8b;
   }
-  @media(max-width: 750px){
+  @media (max-width: 750px) {
     margin-bottom: 2.4vw;
     font-size: 20px;
     line-height: 24px;

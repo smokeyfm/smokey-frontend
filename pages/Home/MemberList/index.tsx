@@ -10,11 +10,11 @@ export interface MemberListProps {
 SwiperCore.use([Navigation]);
 const MemberList: React.FC<MemberListProps> = (props) => {
   const { data } = props;
-  const isMobile=useMediaQuery({maxWidth:767})
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   const onSwipe = useCallback((swipe) => {}, []);
   return (
     <MySwiperContainer>
-      <Swiper onSwiper={onSwipe} loop={true} spaceBetween={1} slidesPerView={isMobile? 3:7}>
+      <Swiper onSwiper={onSwipe} loop={true} spaceBetween={1} slidesPerView={isMobile ? 3 : 7}>
         {data.map((item, index) => (
           <SwiperSlide key={index}>
             <MySlideWrap>

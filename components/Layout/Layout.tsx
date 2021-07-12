@@ -21,7 +21,7 @@ const Logo = styled.div`
     line-height: 19.83px;
     margin-bottom: 14.68vw;
   }
-  @media(max-width: 750px){
+  @media (max-width: 750px) {
     width: 21.33vw;
     height: 5.048vw;
     font-size: 10px;

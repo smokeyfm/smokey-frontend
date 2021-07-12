@@ -42,7 +42,7 @@ export const XlargeTitle = styled.div`
   line-height: ${pxPC(54)};
   text-align: center;
   color: #000;
-  @media(max-width: 375px){
+  @media (max-width: 375px) {
     font-size: ${pxIpone(24)};
     line-height: ${pxIpone(29)};
   }

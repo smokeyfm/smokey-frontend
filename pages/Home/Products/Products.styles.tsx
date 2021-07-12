@@ -1,16 +1,16 @@
 import styled from "@emotion/styled";
-import { pxPC,pxIpone } from "../../../utils";
+import { pxPC, pxIpone } from "../../../utils";
 import { PriceText, ProductTitle, XlargeTitle, XsmallText } from "../../../styles/BaseStyles";
 export const Title = styled(XlargeTitle)`
   margin-bottom: ${pxPC(26)};
-  @media(max-width: 375px){
+  @media (max-width: 375px) {
     margin-bottom: ${pxIpone(19)};
   }
 `;
 export const MySwiperWrap = styled.div`
   margin-top: ${pxPC(26)};
   overflow: hidden;
-  @media(max-width: 375px){
+  @media (max-width: 375px) {
     margin-top: ${pxIpone(19)};
   }
 `;
