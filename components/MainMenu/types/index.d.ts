@@ -33,7 +33,7 @@ export type menuDataItem = {
   icon?: () => ReactNode;
   pcIcon?: () => ReactNode;
 };
-export interface MobileMenuProps {
+export interface MainMenuProps {
   pcWrapClassName?: string;
   pcMenuItemClassName?: string;
   onMenuItemClick?: (keyPath: string, key: string) => void;
