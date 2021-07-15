@@ -43,7 +43,6 @@ POL Frontend Interface
 https://pol-frontend-dev.instinct.is/
 https://pol-frontend-staging.instinct.is/
 
-
 ## Keeping Your Code Updated:
 
 When there are lots of active changes occuring on this repo, make sure to regularly:
@@ -60,6 +59,7 @@ When there are lots of active changes occuring on this repo, make sure to regula
 
 Done!
 …now you will be up-to-date with latest code. Do this before you submit your PR, and you can be sure it will be a clean merge.
+
 ## Updating a fork:
 
 - `git remote add upstream git@github.com:1instinct/dna-frontend.git`
