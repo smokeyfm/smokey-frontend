@@ -1,59 +1,59 @@
-import styled from '@emotion/styled'
+import styled from "@emotion/styled";
 import { pxIpone, pxPC } from "../../../utils";
 import Rating from "@material-ui/lab/Rating";
 import { DescText, PriceText } from "../../../styles/BaseStyles";
 
-export const Container=styled.div`
-margin-bottom: ${pxIpone(28)}`
-export const LatestTitle=styled.div`
-text-align: center;
+export const Container = styled.div`
+  margin-bottom: ${pxIpone(28)};
+`;
+export const LatestTitle = styled.div`
+  text-align: center;
   color: #000;
   font-size: 44px;
   height: 54px;
-`
-export const Grid=styled.div`
-display: grid;
+`;
+export const Grid = styled.div`
+  display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: ${pxIpone(16.23)};
   row-gap: ${pxIpone(15)};
   justify-items: center;
   justify-content: space-between;
-`
-export const ProductBox=styled.div`
+`;
+export const ProductBox = styled.div`
   width: ${pxIpone(161)};
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-`
-export const ProductImg=styled.img`
-width: 100%;
+`;
+export const ProductImg = styled.img`
+  width: 100%;
   height: auto;
-`
-export const ProductTitleBox=styled.div`
-display: flex;
+`;
+export const ProductTitleBox = styled.div`
+  display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: ${pxIpone(9.26)};
   align-self: stretch;
-`
-export const ProductTitle=styled.div`
+`;
+export const ProductTitle = styled.div`
   font-size: ${pxIpone(14)};
   line-height: 150%;
-`
-export const ProductRate = styled(Rating)`
 `;
+export const ProductRate = styled(Rating)``;
 export const ProductDesc = styled(DescText)`
   align-self: flex-start;
   margin-top: ${pxIpone(5.56)};
 `;
-export const ThreeDotWrapper=styled.div`
-display: flex;
+export const ThreeDotWrapper = styled.div`
+  display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: ${pxIpone(5.56)};
   align-self: stretch;
-`
+`;
 export const ThreeDot = styled.div`
   display: flex;
   justify-content: flex-start;
