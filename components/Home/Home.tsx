@@ -1,7 +1,7 @@
 import React from "react";
 import { QueryClient } from "react-query";
 import { dehydrate } from "react-query/hydration";
-import { Layout, InfoBox, ProductList } from "../../components";
+import { Layout, InfoBox, ProductList } from "..";
 import { fetchPosts, fetchProducts } from "../../hooks";
 import Banner from "./Banner";
 import BigHotDig from "./BigHotDig";
@@ -9,7 +9,7 @@ import { Content } from "./Home.styles";
 import LatestProducts from "./LatestProducts";
 import MemberList from "./MemberList";
 import Products from "./Products";
-import PolProductList from "../../components/POLProductList";
+import PolProductList from "../POLProductList";
 import { useMediaQuery } from "react-responsive";
 import MobileLatest from "./MobileLatest";
 import data from "./home.json";
