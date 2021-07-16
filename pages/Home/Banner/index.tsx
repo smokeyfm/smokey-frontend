@@ -5,7 +5,7 @@ const Banner: React.FC<BannerProps> = (props) => {
   return (
     <Container>
       <BannerTitle>
-        <span>BROWE ALL THE NEW</span>
+        <span>BROWSE ALL THE NEW</span>
         <span>SPRING/ SUMMER LOOKS</span>
         <BannerBtn>SHOW ME</BannerBtn>
       </BannerTitle>
