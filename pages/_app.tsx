@@ -10,7 +10,7 @@ import { Header } from "../components";
 import { ThemeProvider } from "@emotion/react";
 import { theme } from "../styles/theme";
 import { GlobalStyles } from "../styles/global-styles";
-import  './app.css'
+import "./app.css";
 
 const queryClient = new QueryClient();
 

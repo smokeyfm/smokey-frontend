@@ -1,10 +1,10 @@
-import {lighten} from 'polished'
+import { lighten } from "polished";
 export const theme = {
   colors: {
     black: {
       primary: "#000",
       medium: "#585858",
-      light: lighten(0.33,'#000')
+      light: lighten(0.33, "#000")
     },
     gray: {
       primary: "#666",
@@ -13,13 +13,13 @@ export const theme = {
     },
     white: {
       primary: "#fff",
-      medium:lighten(0.66,'#fff'),
+      medium: lighten(0.66, "#fff"),
       light: "#f9f9f9"
     },
     blue: {
       primary: "#7b61ff",
-      medium:lighten(0.66,'#7b61ff'),
-      light:lighten(0.33,'#7b61ff')
+      medium: lighten(0.66, "#7b61ff"),
+      light: lighten(0.33, "#7b61ff")
     },
     barnd: {
       primary: "#EB8B8B",
@@ -28,23 +28,23 @@ export const theme = {
     },
     todo: {
       primary: "#BFB081",
-      medium:lighten(0.66,'#BFB081'),
-      light:lighten(0.33,'#BFB081')
+      medium: lighten(0.66, "#BFB081"),
+      light: lighten(0.33, "#BFB081")
     },
     design: {
       primary: "#FF6C52",
-      medium:lighten(0.66,'#FF6C52'),
-      light:lighten(0.33,'#FF6C52'),
+      medium: lighten(0.66, "#FF6C52"),
+      light: lighten(0.33, "#FF6C52")
     },
     developed: {
       primary: "#A5D8BC",
-      medium:lighten(0.66,'#A5D8BC'),
-      light:lighten(0.33,'#A5D8BC'),
+      medium: lighten(0.66, "#A5D8BC"),
+      light: lighten(0.33, "#A5D8BC")
     },
     red: {
       primary: "#D04040",
-      medium:lighten(0.66,'#D04040'),
-      light:lighten(0.33,'#D04040'),
+      medium: lighten(0.66, "#D04040"),
+      light: lighten(0.33, "#D04040")
     }
   },
   background: {
