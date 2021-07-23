@@ -43,20 +43,28 @@ POL Frontend Interface
 https://pol-frontend-dev.instinct.is/
 https://pol-frontend-staging.instinct.is/
 
+## Updating a fork:
+
+- `git remote add upstream git@github.com:1instinct/dna-frontend.git`
+- `git fetch upstream`
+- `git checkout main`
+- `git pull upstream main`
+
 TODO:
 
 - Flow / Type Checking
-- React
-- Express (SSR)
-- Redux (project specific data mgmt)
+- ~~React~~
+- ~~SSR~~ (NextJS)
+- State Mgmt (Redux? useContext?)
+- Request Mgmt
 - Pusher / API Integration
 - Styled Components
 - Moving Letters
 - UI Sounds (proprietary: "npm install beeper")
 - Maps
-- File upload
+- File upload (ReactDropzone)
 - Form validation (Formik / React Final Form / YUP / Blitz inspo)
-- Animations / Transitions
+- Animations / Transitions (ReactSpring, GSAP)
 - Gestures
 - UI Alerts
 - Uptime Monitoring

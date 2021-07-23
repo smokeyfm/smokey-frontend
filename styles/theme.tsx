@@ -1,12 +1,20 @@
 import { lighten } from "polished";
 export const theme = {
   colors: {
+    pink: {
+      primary: "hotpink"
+    },
+    gray: {
+      primary: "#666",
+      medium: "#999",
+      background: "#eee"
+    },
     black: {
       primary: "#000",
       medium: "#585858",
       light: lighten(0.33, "#000")
     },
-    gray: {
+    grey: {
       primary: "#666",
       medium: "#969696",
       light: "#c4c4c4"
@@ -135,6 +143,7 @@ export const theme = {
       fontSize: "6.2699px",
       lineHeight: "7px",
       color: "#000"
-    }
+
+  }
   }
 };

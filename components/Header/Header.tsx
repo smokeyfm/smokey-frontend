@@ -4,7 +4,9 @@ import Link from "next/link";
 import { HeaderProps } from "./types";
 import Sticky from "react-sticky-el";
 import { useAuth } from "../../config/auth";
+import SearchBar from "../SearchBar";
 import styled from "@emotion/styled";
+
 const TopHeader = styled.div`
   padding: 30px 0px;
   display: flex;
@@ -55,6 +57,7 @@ const Category = styled.a`
   padding: 15px;
 `;
 const dummyCategories = ["Best Sellers", "Latest", "Seasonal", "Luxury", "On Sale", "Coming Soon"];
+
 export const Header: React.FC<HeaderProps> = (props) => {
   const { pathname } = useRouter();
   const { user, logout } = useAuth();
@@ -95,6 +98,38 @@ export const Header: React.FC<HeaderProps> = (props) => {
               <Category>{category}</Category>
             </Link>
           ))}
+          <style jsx>{`
+            .bottom-header {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: space-between;
+              flex-wrap: wrap;
+              padding: 30px 0px;
+              background: black;
+            }
+            .category {
+              padding: 15px;
+            }
+            .bottom-header > :first-child {
+              padding-left: 0px;
+            }
+            .bottom-header > :last-child {
+              padding-right: 0px;
+            }
+
+            header {
+              margin-bottom: 25px;
+            }
+            a {
+              font-size: 14px;
+              text-decoration: none;
+            }
+            .is-active {
+              text-decoration: underline;
+            }
+          `}</style>
+          <SearchBar />
         </BottomHeader>
       </Sticky>
     </HeaderDiv>
