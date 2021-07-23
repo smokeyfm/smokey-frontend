@@ -28,3 +28,51 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Gotchas:
+
+- The app has a "Maintenance Mode" (branded fullscreen takeover), simply set `IS_MAINT_MODE=true`, and the `<Header/>` will disappear and `<Home/>` gets taken over by `<ComingSoon/>`. It's fun, try it!
+
+## Deploy URLS:
+
+POL Admin Interface & API
+http://pol-admin-dev.instinct.is/
+http://pol-admin-staging.instinct.is/
+
+POL Frontend Interface
+https://pol-frontend-dev.instinct.is/
+https://pol-frontend-staging.instinct.is/
+
+## Updating a fork:
+
+- `git remote add upstream git@github.com:1instinct/dna-frontend.git`
+- `git fetch upstream`
+- `git checkout main`
+- `git pull upstream main`
+
+TODO:
+
+- Flow / Type Checking
+- ~~React~~
+- ~~SSR~~ (NextJS)
+- State Mgmt (Redux? useContext?)
+- Request Mgmt
+- Pusher / API Integration
+- Styled Components
+- Moving Letters
+- UI Sounds (proprietary: "npm install beeper")
+- Maps
+- File upload (ReactDropzone)
+- Form validation (Formik / React Final Form / YUP / Blitz inspo)
+- Animations / Transitions (ReactSpring, GSAP)
+- Gestures
+- UI Alerts
+- Uptime Monitoring
+- Twilio
+- Unit Testing
+- Chat widget
+- Chatbot
+- Feature Detection
+- Benchmarking
+- Header tag injection (Helmet)
+- Secrets management

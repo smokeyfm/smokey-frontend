@@ -30,19 +30,19 @@ export const SocialLinks = () => {
         <SocialList>
           <SocialListItem>
             <a href="http://www.instagram.com">
-              <SocialIcon src="social-icon-instagram.png" />
+              <SocialIcon src="images/social-icon-instagram.png" />
             </a>
           </SocialListItem>
 
           <SocialListItem>
             <a href="http://www.facebook.com">
-              <SocialIcon src="social-icon-facebook.png" />{" "}
+              <SocialIcon src="images/social-icon-facebook.png" />{" "}
             </a>
           </SocialListItem>
 
           <SocialListItem>
             <a href="http://www.twitter.com">
-              <SocialIcon src="social-icon-twitter.png" />{" "}
+              <SocialIcon src="images/social-icon-twitter.png" />{" "}
             </a>
           </SocialListItem>
         </SocialList>
