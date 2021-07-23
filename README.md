@@ -72,10 +72,11 @@ TODO:
 - Flow / Type Checking
 - ~~React~~
 - ~~SSR~~ (NextJS)
-- State Mgmt (Redux? useContext?)
-- Request Mgmt
+- ~~State Mgmt~~ (hooks/useContext... no Redux, yet)
+- ~~Request Mgmt~~ (React Query)
+- ~~Search~~ (Fuse.js)
 - Pusher / API Integration
-- Styled Components
+- ~~Styled Components~~ (@emotion/styled)
 - Moving Letters
 - UI Sounds (proprietary: "npm install beeper")
 - Maps
@@ -88,8 +89,8 @@ TODO:
 - Twilio
 - Unit Testing
 - Chat widget
-- Chatbot
-- Feature Detection
-- Benchmarking
-- Header tag injection (Helmet)
-- Secrets management
+- Chatbot (Rasa)
+- Browser Feature Detection
+- Speed/Performance Benchmarking (GTMetrix.com API?)
+- Header tags customization (NextJS: `next/header`)
+- ~~Secrets management / Environment variables~~ (`dot-env`)
