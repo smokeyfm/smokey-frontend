@@ -5,7 +5,6 @@ import { LayoutProps } from "./types";
 import { MobileMenu, Foot } from "../../components";
 import { menusData } from "../MobileMenu/data/menusData";
 import { Column } from "../Foot/Foot";
-
 const Logo = styled.div`
   width: 181px;
   height: 45px;
@@ -21,6 +20,7 @@ const Logo = styled.div`
     margin-bottom: 55.07px;
   }
 `;
+const MyLogo: React.FC = () => <Logo>POL</Logo>;
 const CameraIcon = styled.img`
   width: 11px;
   height: auto;
@@ -91,9 +91,24 @@ const columns: Column[] = [
     title: "Information",
     links: [
       {
-        text: "Facebook",
+        text: "accessibility statement",
         url: ""
-      }
+      },
+      {
+        text: "CA Privacy Right",
+        url: ""
+      },
+      {
+        text: "Prop 65",
+        url: ""
+      },
+      {
+        text: "Rewards",
+        url: ""
+      },
+      { text: "Returns / exchanges / damages", url: "" },
+      { text: "Terms of Use & Privacy Policy", url: "" },
+      { text: "contact us", url: "" }
     ]
   },
   {
@@ -144,7 +159,7 @@ export const Layout: React.FC<LayoutProps> = ({
                   background-color: #000;
                 `
               }}
-              footerData={{ logo: null, columns, mobileIconLinks: iconLinks }}
+              footerData={{ logo: <MyLogo />, columns, mobileIconLinks: iconLinks }}
             />
           )}
         </ClassNames>
