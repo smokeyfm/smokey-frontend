@@ -11,7 +11,16 @@ export const GlobalStyles = () => (
           height: 100%;
         }
         body {
-          background: #ffffff;
+          /* background-image: linear-gradient(
+              180deg,
+              rgba(136, 6, 146, 0.8) 0%,
+              rgba(136, 6, 146, 0.6) 67.71%
+            ),
+            url("images/beeper-bg-1.jpg"); */
+          background: url("images/beeper-bg-1.jpg") no-repeat;
+          background-blend-mode: overlay;
+          background-size: cover;
+          background-position: center;
           color: hotpink !important;
           margin: 0;
           padding: 0;

@@ -31,17 +31,17 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Gotchas:
 
-- App only loads using http://0.0.0.0:3000, using "localhost" does not work right now
+- The app has a "Maintenance Mode" (branded fullscreen takeover), simply set `IS_MAINT_MODE=true`, and the `<Header/>` will disappear and `<Home/>` gets taken over by `<ComingSoon/>`. It's fun, try it!
 
 ## Deploy URLS:
 
 POL Admin Interface & API
-http://pol-admin-dev.instinct.is/
-http://pol-admin-staging.instinct.is/
+http://dna-admin-dev.instinct.is/
+http://dna-admin-staging.instinct.is/
 
 POL Frontend Interface
-https://pol-frontend-dev.instinct.is/
-https://pol-frontend-staging.instinct.is/
+https://dna-frontend-dev.instinct.is/
+https://dna-frontend-staging.instinct.is/
 
 ## Keeping Your Code Updated:
 
