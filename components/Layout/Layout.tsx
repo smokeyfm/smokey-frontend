@@ -3,33 +3,20 @@ import styled from "@emotion/styled";
 import { ClassNames } from "@emotion/react";
 import { LayoutProps } from "./types";
 import { Column, Foot } from "../Foot/Foot";
-const Logo = styled.div`
+import { pxIpone } from "../../utils";
+const Logo = styled.img`
   width: 181px;
-  height: 45px;
-  font-size: 24px;
-  line-height: 45px;
-  border: 1px solid #969696;
-  color: #fff;
-  font-weight: bold;
-  font-family: Montserrat;
-  text-align: center;
+  height: auto;
   margin-bottom: 60px;
   @media (max-width: 375px) {
-    width: 21.33vw;
-    height: 5.048vw;
-    font-size: 10px;
-    line-height: 19.83px;
+    width: ${pxIpone(80)};
     margin-bottom: 14.68vw;
+    height: auto;
   }
   @media (max-width: 750px) {
-    width: 21.33vw;
-    height: 5.048vw;
-    font-size: 10px;
-    line-height: 19.83px;
-    margin-bottom: 14.68vw;
   }
 `;
-const MyLogo: React.FC = () => <Logo>POL</Logo>;
+const MyLogo: React.FC = () =><Logo src={'/LOGO.png'}></Logo>;
 const CameraIcon = styled.img`
   width: 11px;
   height: auto;

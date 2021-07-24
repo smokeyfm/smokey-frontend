@@ -19,12 +19,11 @@ const Home = () => {
     <Layout>
       <Banner />
       <Content>
-        {isMobile ? null : <MemberList data={data.memberList} />}
         <Products data={data.productList} title={"Live-Shopping"} />
         {!isMobile ? null : <MemberList data={data.memberList} />}
-        {isMobile ? null :<LatestProducts data={data.latestProducts} />}
-        {isMobile ?<MobileLatest data={data.hotDigs} title={'THE LATEST'}></MobileLatest>:null}
-        {isMobile ? null :<PolProductList data={data.hotDigs} title={"HOTDIGS"} />}
+        {isMobile ? null : <LatestProducts data={data.latestProducts} />}
+        {isMobile ? <MobileLatest data={data.hotDigs} title={"THE LATEST"}></MobileLatest> : null}
+        {isMobile ? null : <PolProductList data={data.hotDigs} title={"HOTDIGS"} />}
         {isMobile ? null : <BigHotDig data={data.bigHotDig} />}
       </Content>
     </Layout>
