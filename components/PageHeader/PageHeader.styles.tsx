@@ -44,7 +44,7 @@ export const LogoDivMo = styled.div`
   }
 `;
 export const HeaderAccount = styled.span`
-  font-family: Roboto;
+  font-family: Roboto Condensed;
   font-size: 13px;
   line-height: 15px;
   color: #000;
@@ -59,9 +59,11 @@ export const ArrowDown = styled(ArrowDropDownIcon)`
     display: none !important;
   }
 `;
-export const ShoppingCart = styled(ShoppingCartIcon)`
-  color: #000;
-  font-size: 10px;
+export const ShoppingCart = styled.img`
+  width: 17px;
+  height: auto;
+  margin-left: 21px;
+  margin-right: 13px;
   @media (max-width: 768px) {
     display: none !important;
   }
@@ -69,6 +71,7 @@ export const ShoppingCart = styled(ShoppingCartIcon)`
 export const FavoriteIcon = styled(FavoriteBorderIcon)`
   font-size: 12px;
   color: #000;
+  margin-right: 13px;
   @media (max-width: 768px) {
     display: none !important;
   }

@@ -20,11 +20,11 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
         <LogoDivMo>POL</LogoDivMo>
         <MySearchIcon />
         <SearchMo src={"/searchMo.png"} />
-        <CartMo src={"/CARTMo.png"} />
+        <CartMo src={"/CART.png"} />
         <UserIconMo src={"/user.png"} />
         <HeaderAccount>MyAccount</HeaderAccount>
         <ArrowDown />
-        <ShoppingCart />
+        <ShoppingCart src={'/CART.png'} />
         <FavoriteIcon />
       </Header>
       <LogoDiv>POL</LogoDiv>

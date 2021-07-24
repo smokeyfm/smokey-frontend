@@ -12,17 +12,20 @@ import {
   ProductPrice,
   MySwiperWrap,
   MySlideWrap,
-  Title
+  Title, ProductMask, MaskTitle, MyProductSubTitle, MyProductSubText, MaskTitleChecked
 } from "./Products.styles";
 import SwiperCore, { Navigation, Thumbs } from "swiper/core";
 import { useMediaQuery } from "react-responsive";
 export type product = {
-  name: string;
+  title:string;
+  subTitle:string;
+  subText:string;
   influencer: string;
   rate: number;
-  price: string;
+  viewer: string;
   img: string;
   avatar: string;
+  status:number;
 };
 export interface ProductsProps {
   data: product[];
@@ -37,7 +40,7 @@ const Products: React.FC<ProductsProps> = (props) => {
       <Title>{title}</Title>
       <Swiper
         loop={true}
-        spaceBetween={10}
+        spaceBetween={0}
         slidesPerView={isMobile ? 2 : 7}
         watchSlidesVisibility={true}
         watchSlidesProgress={true}>
@@ -45,20 +48,27 @@ const Products: React.FC<ProductsProps> = (props) => {
           <SwiperSlide key={index}>
             <MySlideWrap>
               <ProductImgOutterBox>
+                {item.status==1||item.status==3 ? (<ProductMask />) : null}
+                {item.status==1 ?
+                  <MaskTitleChecked>StreamING LIVE  &nbsp;&nbsp;&nbsp; 12 pm PST &nbsp;&nbsp;&nbsp; Check Back SOon</MaskTitleChecked> :null}
+                {item.status==3 ? <MaskTitle>Stream Ended
+                  Watch Replay</MaskTitle> :null}
                 <ProductImg src={item.img} alt={""} />
                 <InfluencerBox>
                   <InfluencerAvatar src={item.avatar} />
                   <InfluencerName as={"span"}>{item.influencer}</InfluencerName>
                 </InfluencerBox>
               </ProductImgOutterBox>
-              <MyProductTitle>{item.name}</MyProductTitle>
+              <MyProductTitle>{item.title}</MyProductTitle>
               <ProductDescBox>
-                <Rating
+               {/* <Rating
                   size={isMobile ? "small" : "large"}
                   name="simple-controlled"
                   value={item.rate}
-                />
-                <ProductPrice as={"span"}>{item.price}</ProductPrice>
+                />*/}
+                <MyProductSubTitle>{item.subTitle}</MyProductSubTitle>
+                <MyProductSubText>{item.subText}</MyProductSubText>
+                <ProductPrice as={"span"}>{item.viewer+'  Viewers'}</ProductPrice>
               </ProductDescBox>
             </MySlideWrap>
           </SwiperSlide>

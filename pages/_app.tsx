@@ -9,6 +9,7 @@ import PageHeader from "../components/PageHeader";
 import styled from "@emotion/styled";
 import "swiper/swiper-bundle.min.css";
 import { menusData } from "../components/MobileMenu/data/menusData";
+import "./app.css"
 
 // Styles
 import { ThemeProvider } from "@emotion/react";
@@ -50,11 +51,14 @@ export default function MyApp({ Component, pageProps }: AppProps) {
               showMenuHeader={true}
               customBurgerIcon={<CustomIcon src={"/BURGER.png"} />}
               pcMenuItemClassName={"pc-menu-item"}
+              pcWrapClassName={'pc-wrap'}
               outterContainerId={"outter-container"}
               pageWrapId={"page-wrap"}
               animationType={"slide"}
               menusData={menusData}
-              right={false}></MobileMenu>
+              right={false}>
+
+            </MobileMenu>
             <Component {...pageProps} />
           </ThemeProvider>
         </Hydrate>
