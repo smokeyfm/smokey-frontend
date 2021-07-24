@@ -32,16 +32,16 @@ export const ProductImg = styled.img`
   object-fit: cover;
   width: 100%;
 `;
-export const ProductMask=styled.div`
+export const ProductMask = styled.div`
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.66);;
-`
-export const MaskTitle=styled.div`
-position: absolute;
+  background-color: rgba(255, 255, 255, 0.66); ;
+`;
+export const MaskTitle = styled.div`
+  position: absolute;
   left: 0;
   right: 0;
   top: 0;
@@ -59,8 +59,8 @@ position: absolute;
     line-height: 23px;
     width: 88px;
   }
-`
-export const MaskTitleChecked=styled.div`
+`;
+export const MaskTitleChecked = styled.div`
   position: absolute;
   left: 0;
   right: 0;
@@ -79,7 +79,7 @@ export const MaskTitleChecked=styled.div`
     line-height: 23px;
     width: 100px;
   }
-`
+`;
 export const InfluencerBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -107,25 +107,26 @@ export const ProductDescBox = styled.div`
   margin-top: ${pxPC(31)};
   align-self: stretch;
 `;
-export const MyProductSubTitle=styled.div`
+export const MyProductSubTitle = styled.div`
   font-family: Roboto Condensed;
   font-size: 8px;
   line-height: 9px;
   text-decoration: underline;
-  color:#000;
+  color: #000;
   text-align: center;
-`
-export const MyProductSubText=styled.div`
-margin-left:${pxPC(4)};
+`;
+export const MyProductSubText = styled.div`
+  margin-left: ${pxPC(4)};
   font-family: Roboto Condensed;
   font-size: 8px;
   line-height: 9px;
   color: rgba(0, 0, 0, 0.33);
-`
+`;
 export const ProductPrice = styled(PriceText)`
   font-family: Roboto Condensed;
   font-size: 7.9px;
   line-height: 9px;
   text-align: center;
   color: #000;
-margin-left: auto`;
+  margin-left: auto;
+`;

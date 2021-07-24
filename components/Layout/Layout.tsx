@@ -16,7 +16,7 @@ const Logo = styled.img`
   @media (max-width: 750px) {
   }
 `;
-const MyLogo: React.FC = () =><Logo src={'/LOGO.png'}></Logo>;
+const MyLogo: React.FC = () => <Logo src={"/LOGO.png"}></Logo>;
 const CameraIcon = styled.img`
   width: 11px;
   height: auto;
