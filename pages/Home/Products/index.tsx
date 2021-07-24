@@ -12,20 +12,25 @@ import {
   ProductPrice,
   MySwiperWrap,
   MySlideWrap,
-  Title, ProductMask, MaskTitle, MyProductSubTitle, MyProductSubText, MaskTitleChecked
+  Title,
+  ProductMask,
+  MaskTitle,
+  MyProductSubTitle,
+  MyProductSubText,
+  MaskTitleChecked
 } from "./Products.styles";
 import SwiperCore, { Navigation, Thumbs } from "swiper/core";
 import { useMediaQuery } from "react-responsive";
 export type product = {
-  title:string;
-  subTitle:string;
-  subText:string;
+  title: string;
+  subTitle: string;
+  subText: string;
   influencer: string;
   rate: number;
   viewer: string;
   img: string;
   avatar: string;
-  status:number;
+  status: number;
 };
 export interface ProductsProps {
   data: product[];
@@ -48,11 +53,13 @@ const Products: React.FC<ProductsProps> = (props) => {
           <SwiperSlide key={index}>
             <MySlideWrap>
               <ProductImgOutterBox>
-                {item.status==1||item.status==3 ? (<ProductMask />) : null}
-                {item.status==1 ?
-                  <MaskTitleChecked>StreamING LIVE  &nbsp;&nbsp;&nbsp; 12 pm PST &nbsp;&nbsp;&nbsp; Check Back SOon</MaskTitleChecked> :null}
-                {item.status==3 ? <MaskTitle>Stream Ended
-                  Watch Replay</MaskTitle> :null}
+                {item.status == 1 || item.status == 3 ? <ProductMask /> : null}
+                {item.status == 1 ? (
+                  <MaskTitleChecked>
+                    StreamING LIVE &nbsp;&nbsp;&nbsp; 12 pm PST &nbsp;&nbsp;&nbsp; Check Back SOon
+                  </MaskTitleChecked>
+                ) : null}
+                {item.status == 3 ? <MaskTitle>Stream Ended Watch Replay</MaskTitle> : null}
                 <ProductImg src={item.img} alt={""} />
                 <InfluencerBox>
                   <InfluencerAvatar src={item.avatar} />
@@ -61,14 +68,14 @@ const Products: React.FC<ProductsProps> = (props) => {
               </ProductImgOutterBox>
               <MyProductTitle>{item.title}</MyProductTitle>
               <ProductDescBox>
-               {/* <Rating
+                {/* <Rating
                   size={isMobile ? "small" : "large"}
                   name="simple-controlled"
                   value={item.rate}
                 />*/}
                 <MyProductSubTitle>{item.subTitle}</MyProductSubTitle>
                 <MyProductSubText>{item.subText}</MyProductSubText>
-                <ProductPrice as={"span"}>{item.viewer+'  Viewers'}</ProductPrice>
+                <ProductPrice as={"span"}>{item.viewer + "  Viewers"}</ProductPrice>
               </ProductDescBox>
             </MySlideWrap>
           </SwiperSlide>

@@ -24,7 +24,7 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
         <UserIconMo src={"/user.png"} />
         <HeaderAccount>MyAccount</HeaderAccount>
         <ArrowDown />
-        <ShoppingCart src={'/CART.png'} />
+        <ShoppingCart src={"/CART.png"} />
         <FavoriteIcon />
       </Header>
       <LogoDiv>POL</LogoDiv>

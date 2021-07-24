@@ -80,7 +80,8 @@ export const ColumnTitle = styled.div`
   }
 `;
 export const ColumnSubTitle = styled.div`
-font-family: "Bebas Neue"`;
+  font-family: "Bebas Neue";
+`;
 export const LinkItem = styled.a`
   font-size: 14px;
   line-height: 150%;
@@ -96,8 +97,7 @@ export const Description = styled.div`
   margin-bottom: 5px;
   font-family: "Bebas Neue";
 `;
-export const IconLink = styled.a`
-`;
+export const IconLink = styled.a``;
 export const IconLinkWrapper = styled.div`
   @media (max-width: 375px) {
     display: none;

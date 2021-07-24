@@ -122,11 +122,11 @@ export const GlobalStyles = () => (
           color: #000;
           font-family: "Bebas Neue";
           font-size: 14px;
-          margin-right: 82px!important;
+          margin-right: 82px !important;
         }
-        .pc-wrap{
-        padding-left: 79px!important;
-        margin-left: 118px!important;
+        .pc-wrap {
+          padding-left: 79px !important;
+          margin-left: 118px !important;
         }
         #__next {
           display: flex;
