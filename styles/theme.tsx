@@ -7,17 +7,13 @@ export const theme = {
     gray: {
       primary: "#666",
       medium: "#999",
+      light:'#c4c4c4',
       background: "#eee"
     },
     black: {
       primary: "#000",
       medium: "#585858",
       light: lighten(0.33, "#000")
-    },
-    grey: {
-      primary: "#666",
-      medium: "#969696",
-      light: "#c4c4c4"
     },
     white: {
       primary: "#fff",
@@ -143,7 +139,6 @@ export const theme = {
       fontSize: "6.2699px",
       lineHeight: "7px",
       color: "#000"
-
-  }
+    }
   }
 };
