@@ -14,23 +14,27 @@ const Container = styled.div`
 const MyMenuItem = styled.div`
   margin-right: 50px;
   line-height: 80px;
+  cursor: pointer!important;
 `;
 const MySubMenuItem = styled.div`
   text-align: center;
   width: 100%;
+  cursor: pointer;
 `;
 const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
   const { pcWrapClassName, menusData, pcMenuItemClassName, onMenuItemClick } = props;
   const [keyPathMap, setKeyPathMap] = useState({});
   const handleClick = useCallback((keyPath, event) => {
+    console.log('enter',keyPath)
     setKeyPathMap((pre) => {
       let ret = { [keyPath]: event.target };
       return ret;
     });
   }, []);
   const handleClose = useCallback((keyPath) => {
+    console.log('close',keyPath)
     setKeyPathMap((pre) => {
-      return { ...pre, [keyPath]: null };
+      return {[keyPath]: null };
     });
   }, []);
   const handleClickMenuItem = useCallback((keyPath: string, key: string) => {
@@ -42,7 +46,7 @@ const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
   const getSubMenuOrItems = (menusData: menuDataItem[], parentKeyPath: string, level: number) => {
     return menusData.map((item, index) => {
       return (
-        <MyMenuItem className={pcMenuItemClassName} key={parentKeyPath + "/" + item.key}>
+        <MyMenuItem onMouseLeave={handleClose.bind(null, `${parentKeyPath}/${item.key}`)} onMouseEnter={handleClick.bind(null, parentKeyPath + "/" + item.key)} className={pcMenuItemClassName} key={parentKeyPath + "/" + item.key}>
           <MySubMenuItem onClick={handleClick.bind(null, parentKeyPath + "/" + item.key)}>
             {item.pcIcon && item.pcIcon()}
             {item.name}
@@ -50,6 +54,7 @@ const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
 
           {item && item.children && (
             <Menu
+                disableScrollLock={true}
               getContentAnchorEl={null}
               transformOrigin={{
                 vertical: "top",
