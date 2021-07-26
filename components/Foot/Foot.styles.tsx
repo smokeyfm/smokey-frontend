@@ -4,7 +4,10 @@ export const Container = styled.div`
   color: #fff;
   padding-bottom: 68px;
   @media (max-width: 375px) {
-    padding-top: 14px;
+    padding-top: 3.733vw;
+  }
+  @media (max-width: 750px) {
+    padding-top: 3.733vw;
   }
 `;
 export const LogoDiv = styled.div`
@@ -19,13 +22,23 @@ export const Grid = styled.div`
   justify-content: space-between;
   grid-template-columns: 111px 148px 67px 173px;
   justify-items: center;
+  font-family: "Bebas Neue";
   @media (max-width: 375px) {
-    padding-left: 54px;
-    padding-right: 13px;
+    padding-left: 14.4vw;
+    padding-right: 3.46vw;
     justify-content: start;
-    grid-template-columns: [a]111px 137px;
+    grid-template-columns: [a]29.6vw 36.5vw;
     justify-content: space-between;
-    row-gap: 42px;
+    row-gap: 11.2vw;
+  }
+  @media (max-width: 750px) {
+    padding-left: 14.4vw;
+    padding-right: 3.46vw;
+    justify-content: start;
+    grid-template-columns: [a]29.6vw 36.5vw;
+    justify-content: space-between;
+    row-gap: 11.2vw;
+    justify-items: start;
   }
 `;
 export const IconLinksMo = styled.div`
@@ -35,6 +48,11 @@ export const IconLinksMo = styled.div`
   display: none;
   @media (max-width: 375px) {
     display: flex;
+    margin-bottom: 40px;
+  }
+  @media (max-width: 750px) {
+    display: flex;
+    margin-bottom: 40px;
   }
 `;
 export const MobileIconLink = styled.a``;
@@ -43,6 +61,7 @@ export const Column = styled.div`
   flex-direction: column;
 `;
 export const ColumnTitle = styled.div`
+  font-family: "Bebas Neue";
   font-size: 14px;
   line-height: 17px;
   color: #fff;
@@ -50,18 +69,27 @@ export const ColumnTitle = styled.div`
   margin-bottom: 22px;
   white-space: nowrap;
   @media (max-width: 375px) {
-    margin-bottom: 9px;
+    margin-bottom: 2.4vw;
+    font-size: 20px;
+    line-height: 24px;
+    color: #eb8b8b;
+  }
+  @media (max-width: 750px) {
+    margin-bottom: 2.4vw;
     font-size: 20px;
     line-height: 24px;
     color: #eb8b8b;
   }
 `;
-export const ColumnSubTitle = styled.div``;
+export const ColumnSubTitle = styled.div`
+  font-family: "Bebas Neue";
+`;
 export const LinkItem = styled.a`
   font-size: 14px;
   line-height: 150%;
   color: #969696;
   font-weight: 400;
+  font-family: "Bebas Neue";
 `;
 export const Description = styled.div`
   color: #969696;
@@ -69,12 +97,14 @@ export const Description = styled.div`
   line-height: 150%;
   font-weight: 400;
   margin-bottom: 5px;
+  font-family: "Bebas Neue";
 `;
-export const IconLink = styled.a`
-  margin-right: 5.82px;
-`;
+export const IconLink = styled.a``;
 export const IconLinkWrapper = styled.div`
   @media (max-width: 375px) {
+    display: none;
+  }
+  @media (max-width: 750px) {
     display: none;
   }
 `;
