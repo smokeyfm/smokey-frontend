@@ -74,6 +74,7 @@ Done!
 ## Testing API Endpoints
 
 https://localhost:8080/apidocs/swagger_ui#/
+
 ## Updating a fork:
 
 - `git remote add upstream git@github.com:1instinct/dna-frontend.git`
