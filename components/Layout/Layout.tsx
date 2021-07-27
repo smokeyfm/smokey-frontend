@@ -159,7 +159,9 @@ export const Layout: React.FC<LayoutProps> = ({
         pageWrapId={"page-wrap"}
         animationType={"slide"}
         menusData={menusData}
-        right={false}></MobileMenu>
+        right={false}>
+
+      </MobileMenu>
       <Content>
         {children}
         {/*<Footer

@@ -26,9 +26,9 @@ const PCHidden = styled.div`
     display: none;
   }
 `;
-const MyLinkText=styled(ListItemText)`
-cursor: pointer!important;
-`
+const MyLinkText = styled(ListItemText)`
+  cursor: pointer !important;
+`;
 const MobileHidden = styled.div`
   @media screen and (max-width: 767px) {
     display: none;
