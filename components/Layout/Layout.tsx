@@ -85,8 +85,8 @@ const columns: Column[] = [
   {
     title: "Contact Info",
     descriptions: [
-      "4920 S. Soto  St.\n" + "Vernon, CA, 90058",
-      "+1 (310) 715-1370",
+      "4920 S.Soto  St.\n" + "Vernon, CA,90058",
+      "+1(310)715-1370",
       "ecom@polclothing.com"
     ],
     iconLinks
@@ -159,7 +159,9 @@ export const Layout: React.FC<LayoutProps> = ({
         pageWrapId={"page-wrap"}
         animationType={"slide"}
         menusData={menusData}
-        right={false}></MobileMenu>
+        right={false}>
+
+      </MobileMenu>
       <Content>
         {children}
         {/*<Footer
