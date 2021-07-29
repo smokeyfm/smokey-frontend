@@ -26,6 +26,9 @@ const PCHidden = styled.div`
     display: none;
   }
 `;
+const MyLinkText = styled(ListItemText)`
+  cursor: pointer !important;
+`;
 const MobileHidden = styled.div`
   @media screen and (max-width: 767px) {
     display: none;
@@ -73,7 +76,7 @@ export const MainMenu = (props: MainMenuProps) => {
                   onClick={handleClick.bind(null, parentKeyPath + "/" + item.key, item.key)}
                   button>
                   <ListItemIcon>{item.icon ? item.icon() : null}</ListItemIcon>
-                  <ListItemText primary={item.name} />
+                  <MyLinkText primary={item.name} />
                   {item &&
                     item.children &&
                     item.children.length != 0 &&

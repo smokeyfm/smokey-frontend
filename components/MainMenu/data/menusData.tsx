@@ -2,6 +2,113 @@ import AccessAlarmIcon from "@material-ui/icons/AccessAlarm";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import LaptopMacIcon from "@material-ui/icons/LaptopMac";
 import { menuDataItem } from "../types";
+import styled from "@emotion/styled";
+export const NewDigWrap = styled.div`
+  display: flex;
+  background-color: #fff;
+  padding-top: 23px;
+  padding-bottom: 23px;
+`;
+export const Cate = styled.div`
+  margin-right: 98px;
+  display: flex;
+  flex-direction: column;
+  &:first-child {
+    margin-left: 99px;
+  }
+  &:last-child {
+    margin-right: 108px;
+  }
+`;
+export const CateItem = styled.div`
+  font-family: Roboto Condensed;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000;
+  text-transform: capitalize;
+  margin-bottom: 5px;
+  cursor: pointer;
+`;
+export const Divider = styled.div`
+  width: 1px;
+  height: 262px;
+  background-color: #000;
+`;
+export const ImgWrapper = styled.div`
+  margin-left: 116px;
+  width: 296px;
+`;
+export const CateTitle = styled.div`
+  font-family: "Roboto CondensedBold";
+  font-size: 14px;
+  line-height: 16px;
+  color: #000;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+`;
+export const ImageTitle = styled.div`
+  font-size: 14px;
+  line-height: 16px;
+  font-family: "Roboto CondensedBold";
+  color: #000;
+  text-transform: uppercase;
+`;
+export const ImageInnerWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+`;
+export const MyImage = styled.img`
+  width: 144px;
+  height: auto;
+`;
+const NewDigs = () => {
+  return (
+    <NewDigWrap>
+      <Cate>
+        <CateTitle>CATEGORies</CateTitle>
+        <CateItem>All Clothing</CateItem>
+        <CateItem>Dresses</CateItem>
+        <CateItem>Tops</CateItem>
+        <CateItem>Pants</CateItem>
+        <CateItem>Skirts</CateItem>
+        <CateItem>Sweaters</CateItem>
+        <CateItem>Denim</CateItem>
+      </Cate>
+      <Cate>
+        <CateTitle>collections</CateTitle>
+        <CateItem>Summer ‘21</CateItem>
+        <CateItem>by POL</CateItem>
+        <CateItem>Plus</CateItem>
+        <CateItem>Denim</CateItem>
+        <CateItem>POL TV</CateItem>
+      </Cate>
+      <Cate>
+        <CateTitle>FEATURED</CateTitle>
+        <CateItem>trend — 90s kids</CateItem>
+        <CateItem>trend — dad’s closet</CateItem>
+        <CateItem>chill summer</CateItem>
+        <CateItem>throw it back</CateItem>
+        <CateItem>back to school</CateItem>
+      </Cate>
+      <Cate>
+        <CateTitle>BRANDS</CateTitle>
+        <CateItem>POL</CateItem>
+        <CateItem>Levi</CateItem>
+        <CateItem>teva</CateItem>
+        <CateItem>doc marten</CateItem>
+      </Cate>
+      <Divider />
+      <ImgWrapper>
+        <ImageTitle>On Sale</ImageTitle>
+        <ImageInnerWrapper>
+          <MyImage src={"/onsale2.png"} />
+          <MyImage src={"/onsale1.png"} />
+        </ImageInnerWrapper>
+      </ImgWrapper>
+    </NewDigWrap>
+  );
+};
 export const menusData: menuDataItem[] = [
   {
     name: "HOT DIGS",
@@ -12,7 +119,8 @@ export const menusData: menuDataItem[] = [
   {
     name: "NEW DIGS",
     key: "newdigs",
-    icon: () => <AssignmentIcon style={{ color: "#fff" }} />
+    icon: () => <AssignmentIcon style={{ color: "#fff" }} />,
+    pcMenuItem: <NewDigs />
   },
   {
     name: "CLOTHING",

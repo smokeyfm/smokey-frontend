@@ -47,7 +47,7 @@ export const EmailInput = styled.input`
     color: ${(props) => props.theme.colors.blue.primary};
   }
   &:focus::placeholder {
-    color: ${(props) => props.theme.colors.pink.primary};
+    color: ${(props) => props.theme.colors.brand.bright};
   }
 `;
 

@@ -269,8 +269,8 @@ const MenuFactory = (styles: MenuFactoryStyles) => {
     }
 
     function onKeyDownOpen(e: KeyboardEvent) {
-      e = e || window.event;
-      switch (e.key) {
+      const anyEvent = e;
+      switch (anyEvent.key) {
         case ESCAPE:
           // Close on ESC, unless disabled
           if (!props.disableCloseOnEsc) {
@@ -294,10 +294,10 @@ const MenuFactory = (styles: MenuFactoryStyles) => {
     }
 
     function onKeyDownClosed(e: KeyboardEvent) {
-      e = e || window.event;
+      const anyEvent = e;
       // Key downs came from menu button
-      if (e.target === document.getElementById("react-burger-menu-btn")) {
-        switch (e.key) {
+      if (anyEvent.target === document.getElementById("react-burger-menu-btn")) {
+        switch (anyEvent.key) {
           case ARROW_DOWN:
           case SPACE:
             // If down arrow, space or enter, open menu and focus on first menuitem
