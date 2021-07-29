@@ -14,7 +14,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-## Learn More
+## NextJS
 
 To learn more about Next.js, take a look at the following resources:
 
@@ -23,15 +23,21 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Styles
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Always use `@emotion/styled` wherever possible. If regular CSS is required, use one of the following style files.
+We manage our global styles in several files:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `./styles/global-styles.tsx` (global stylesheet)
+- `./styles/fonts.css` (global @font-face rules)
+- `./styles/all.css` (global styles injected in at app root)
+- `./styles/theme.tsx` (global theme variables)
+- `./emotion.d.ts` (theme typings)
 
 ## Gotchas:
 
 - The app has a "Maintenance Mode" (branded fullscreen takeover), simply set `IS_MAINT_MODE=true`, and the `<Header/>` will disappear and `<Home/>` gets taken over by `<ComingSoon/>`. It's fun, try it!
+- All the data for the app comes in from our staging server on Heroku, but you can also run the dna-admin CMS+API locally (hint: login only works with a localhost API)
 
 ## Deploy URLS:
 
@@ -67,7 +73,13 @@ Done!
 - `git checkout main`
 - `git pull upstream main`
 
-TODO:
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+# TODO:
 
 - Flow / Type Checking
 - ~~React~~

@@ -1,12 +1,13 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { HeaderProps } from "./types";
 import Sticky from "react-sticky-el";
+import { HeaderProps } from "./types";
 import { useAuth } from "../../config/auth";
 import SearchBar from "../SearchBar";
 import { MainMenu } from "../MainMenu";
 import { menusData } from "../MainMenu/data/menusData";
+import { Cart } from "../Cart/Cart";
 
 import {
   TopHeader,
@@ -23,35 +24,38 @@ const dummyCategories = ["Best Sellers", "Latest", "Seasonal", "Luxury", "On Sal
 export const Header: React.FC<HeaderProps> = (props) => {
   const { pathname } = useRouter();
   const { user, logout } = useAuth();
+  const [cartVisible, setCartVisible] = React.useState(false);
+  const toggleCart = () => setCartVisible((isVisible) => !isVisible);
 
   return (
     <HeaderDiv>
       <TopHeader>
-        <Link href="/">
-          <LinkDiv isActive={pathname === "/"}>Home</LinkDiv>
-        </Link>
+        <div />
         <LogoDiv>
           <Link href="/">
             <LinkDiv isActive>LOGO</LinkDiv>
           </Link>
         </LogoDiv>
-        <>
-          {user ? (
-            <RightSide>
-              <div>{user.data.attributes.email}</div>
-              <button onClick={logout}>LOGOUT</button>
-            </RightSide>
-          ) : (
-            <RightSide>
-              <Link href="/authenticate/login">
-                <LinkDiv isActive={pathname === "/authenticate/login"}>LOG IN</LinkDiv>
-              </Link>
-              <Link href="/authenticate/signup">
-                <LinkDiv isActive={pathname === "/authenticate/signup"}>SIGN UP</LinkDiv>
-              </Link>
-            </RightSide>
-          )}
-        </>
+        <div>
+          <RightSide>
+            {user ? (
+              <>
+                <div>{user.data.attributes.email}</div>
+                <button onClick={logout}>LOGOUT</button>
+              </>
+            ) : (
+              <>
+                <Link href="/authenticate/login">
+                  <LinkDiv isActive={pathname === "/authenticate/login"}>LOG IN</LinkDiv>
+                </Link>
+                <Link href="/authenticate/signup">
+                  <LinkDiv isActive={pathname === "/authenticate/signup"}>SIGN UP</LinkDiv>
+                </Link>
+              </>
+            )}
+            <Cart isVisible={cartVisible} toggle={toggleCart} />
+          </RightSide>
+        </div>
       </TopHeader>
       <Sticky>
         <BottomHeader>
