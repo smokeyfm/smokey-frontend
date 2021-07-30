@@ -4,10 +4,7 @@ export const Container = styled.div`
   color: #fff;
   padding-bottom: 68px;
   @media (max-width: 375px) {
-    padding-top: 3.733vw;
-  }
-  @media (max-width: 750px) {
-    padding-top: 3.733vw;
+    padding-top: 14px;
   }
 `;
 export const LogoDiv = styled.div`
@@ -23,16 +20,8 @@ export const Grid = styled.div`
   grid-template-columns: 111px 148px 67px 173px;
   justify-items: center;
   @media (max-width: 375px) {
-    padding-left: 14.4vw;
-    padding-right: 3.46vw;
-    justify-content: start;
-    grid-template-columns: [a]29.6vw 36.5vw;
-    justify-content: space-between;
-    row-gap: 11.2vw;
-  }
-  @media (max-width: 750px) {
-    padding-left: 14.4vw;
-    padding-right: 3.46vw;
+    padding-left: 54px;
+    padding-right: 13px;
     justify-content: start;
     grid-template-columns: [a]29.6vw 36.5vw;
     justify-content: space-between;
@@ -45,9 +34,6 @@ export const IconLinksMo = styled.div`
   margin-top: 68px;
   display: none;
   @media (max-width: 375px) {
-    display: flex;
-  }
-  @media (max-width: 750px) {
     display: flex;
   }
 `;
@@ -64,13 +50,7 @@ export const ColumnTitle = styled.div`
   margin-bottom: 22px;
   white-space: nowrap;
   @media (max-width: 375px) {
-    margin-bottom: 2.4vw;
-    font-size: 20px;
-    line-height: 24px;
-    color: #eb8b8b;
-  }
-  @media (max-width: 750px) {
-    margin-bottom: 2.4vw;
+    margin-bottom: 9px;
     font-size: 20px;
     line-height: 24px;
     color: #eb8b8b;
@@ -95,9 +75,6 @@ export const IconLink = styled.a`
 `;
 export const IconLinkWrapper = styled.div`
   @media (max-width: 375px) {
-    display: none;
-  }
-  @media (max-width: 750px) {
     display: none;
   }
 `;
