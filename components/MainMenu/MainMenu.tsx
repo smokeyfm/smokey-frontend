@@ -8,8 +8,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
-import CloseIcon from "@material-ui/icons/Close";
-import { MobileMenuProps, menuDataItem } from "./types";
+import { MainMenuProps, menuDataItem } from "./types";
 import { useMediaQuery } from "react-responsive";
 import DesktopMenu from "./DesktopMenu";
 import styled from "@emotion/styled";
@@ -39,7 +38,7 @@ const MenuHeader = styled.div`
   border-bottom: 1px solid #000;
 `;
 const MenuTitle = styled.span``;
-const MenuClose = styled(CloseIcon)`
+const MenuClose = styled.span`
   color: #000;
 `;
 
@@ -51,7 +50,7 @@ const MobileHidden = styled.div`
     display: flex;
   }
 `;
-export const MobileMenu = (props: MobileMenuProps) => {
+export const MainMenu = (props: MainMenuProps) => {
   const {
     showMenuHeader,
     menuFooter,
@@ -136,11 +135,11 @@ export const MobileMenu = (props: MobileMenuProps) => {
           {showMenuHeader ? (
             <MenuHeader>
               <MenuTitle>MENU</MenuTitle>
-              <MenuClose onClick={handleClose} fontSize={"large"} />
+              {/* <MenuClose onClick={handleClose} fontSize={"large"} /> */}
             </MenuHeader>
           ) : null}
           {getSubMenuOrItems(menusData, "", 0)}
-          {menuFooter && menuFooter()}
+          {/* {menuFooter && menuFooter()} */}
         </Menu>
       </PCHidden>
       <MobileHidden>

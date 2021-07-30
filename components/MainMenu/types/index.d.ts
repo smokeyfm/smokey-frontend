@@ -33,9 +33,7 @@ export type menuDataItem = {
   icon?: () => ReactNode;
   pcIcon?: () => ReactNode;
 };
-export interface MobileMenuProps {
-  menuFooter?: () => ReactNode;
-  showMenuHeader?: boolean;
+export interface MainMenuProps {
   pcWrapClassName?: string;
   pcMenuItemClassName?: string;
   onMenuItemClick?: (keyPath: string, key: string) => void;
@@ -61,6 +59,7 @@ export interface MobileMenuProps {
   itemListClassName?: string;
   itemListElement?: "div" | "nav" | FunctionComponent<{ className: string; style: object }>;
   menuClassName?: string;
+  menuFooter?: boolean;
   morphShapeClassName?: string;
   noOverlay?: boolean;
   noTransition?: boolean;
@@ -72,6 +71,7 @@ export interface MobileMenuProps {
   overlayClassName?: string;
   pageWrapId?: string;
   right?: boolean;
+  showMenuHeader?: boolean;
   styles?: BurgerIconStyles;
   width?: number | string;
   outterContainerId?: string;
