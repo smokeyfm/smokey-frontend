@@ -31,7 +31,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Gotchas:
 
-- App only loads using http://0.0.0.0:3000, using "localhost" does not work right now
+- The app has a "Maintenance Mode" (branded fullscreen takeover), simply set `IS_MAINT_MODE=true`, and the `<Header/>` will disappear and `<Home/>` gets taken over by `<ComingSoon/>`. It's fun, try it!
+- All the data for the app comes in from our staging server on Heroku, but you can also run the dna-admin CMS+API locally (hint: login only works with a localhost API)
+- To run against the local API, set the `SPREE_API_URL` environment variable to the local API host/port
 
 ## Deploy URLS:
 
