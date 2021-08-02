@@ -2,7 +2,10 @@ import React from "react";
 import styled from "@emotion/styled";
 import { ClassNames } from "@emotion/react";
 import { LayoutProps } from "./types";
+import { menusData } from "../MainMenu/data/menusData";
+import { MainMenu } from "../components";
 import { Column, Foot } from "../Foot/Foot";
+import { pxIphone } from "../../utils";
 const Logo = styled.div`
   width: 181px;
   height: 45px;
@@ -15,8 +18,8 @@ const Logo = styled.div`
   text-align: center;
   margin-bottom: 60px;
   @media (max-width: 375px) {
-    width: 21.33vw;
-    height: 5.048vw;
+    width: 80px;
+    height: 19.83px;
     font-size: 10px;
     line-height: 19.83px;
     margin-bottom: 14.68vw;
@@ -35,7 +38,7 @@ const CameraIcon = styled.img`
   height: auto;
   margin-right: 3.88px;
   @media (max-width: 375px) {
-    width: 5.522vw;
+    width: 20.71px;
     height: auto;
     margin-right: 2.069vw;
   }
@@ -50,12 +53,7 @@ const FacebookIcon = styled.img`
   height: auto;
   margin-right: 3.88px;
   @media (max-width: 375px) {
-    width: 3.634vw;
-    height: auto;
-    margin-right: 2.069vw;
-  }
-  @media (max-width: 750px) {
-    width: 3.634vw;
+    width: 13.63px;
     height: auto;
     margin-right: 2.069vw;
   }
@@ -65,7 +63,7 @@ const PlayIcon = styled.img`
   height: auto;
   margin-right: 3.88px;
   @media (max-width: 375px) {
-    width: 6.557vw;
+    width: 24.59px;
     height: auto;
     margin-right: 2.069vw;
   }
@@ -79,13 +77,18 @@ const CircleIcon = styled.img`
   width: 10.35px;
   height: auto;
   @media (max-width: 375px) {
-    width: 5.522vw;
+    width: 20.71px;
     height: auto;
   }
-  @media (max-width: 750px) {
-    width: 5.522vw;
-    height: auto;
-  }
+`;
+
+const CustomIcon = styled.img`
+  width: ${pxIphone(37)};
+  height: auto;
+`;
+const MenuFooter = styled.div`
+  position: fixed;
+  bottom: 0;
 `;
 const iconLinks = [
   {
@@ -109,8 +112,8 @@ const columns: Column[] = [
   {
     title: "Contact Info",
     descriptions: [
-      "4920 S. Soto  St.\n" + "Vernon, CA, 90058",
-      "+1 (310) 715-1370",
+      "4920 S.Soto  St.\n" + "Vernon, CA,90058",
+      "+1(310)715-1370",
       "ecom@polclothing.com"
     ],
     iconLinks
@@ -178,6 +181,22 @@ export const Layout: React.FC<LayoutProps> = ({
 }) => {
   return (
     <Container>
+      <MainMenu
+        menuFooter={() => (
+          <MenuFooter>
+            <div>Privacy Policy - Terms & Conditions - RETURN POLICY</div>
+            <div>All Materials Copyright © 2021 POL Clothing</div>
+          </MenuFooter>
+        )}
+        showMenuHeader={true}
+        customBurgerIcon={<CustomIcon src="/BURGER.png" />}
+        pcMenuItemClassName="pc-menu-item"
+        outterContainerId="outter-container"
+        pageWrapId="page-wrap"
+        animationType="slide"
+        menusData={menusData}
+        right={false}
+      />
       <Content>
         {children}
         <ClassNames>

@@ -1,20 +1,20 @@
 import styled from "@emotion/styled";
-import { pxIpone, pxPC } from "../../../utils";
+import { pxIphone, pxPC } from "../../../utils";
 import Avatar from "@material-ui/core/Avatar";
 export const MySwiperContainer = styled.div`
   height: ${pxPC(143)};
   margin-top: ${pxPC(30)};
   @media (max-width: 375px) {
-    margin-top: ${pxIpone(19)};
-    height: ${pxIpone(132)};
+    margin-top: ${pxIphone(19)};
+    height: ${pxIphone(132)};
   }
 `;
 export const MyAvatar = styled(Avatar)`
   width: ${pxPC(89)}!important;
   height: ${pxPC(89)}!important;
   @media (max-width: 375px) {
-    width: ${pxIpone(89)}!important;
-    height: ${pxIpone(89)}!important;
+    width: ${pxIphone(89)}!important;
+    height: ${pxIphone(89)}!important;
   }
 `;
 export const MemberName = styled.div`
@@ -26,8 +26,8 @@ export const MemberName = styled.div`
   text-align: center;
   font-family: "Bebas Neue";
   @media (max-width: 375px) {
-    margin-top: ${pxIpone(9)};
-    line-height: ${pxIpone(24)};
+    margin-top: ${pxIphone(9)};
+    line-height: ${pxIphone(24)};
   }
 `;
 export const MySlideWrap = styled.div`

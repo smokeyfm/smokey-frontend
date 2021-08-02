@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
-import { pxIpone, pxPC } from "../../utils";
+import { pxIphone, pxPC } from "../../utils";
 export const Container = styled.div`
   width: 100%;
   height: ${pxPC(400)};
   background: #000;
   padding-top: ${pxPC(41)};
   @media (max-width: 768px) {
-    height: ${pxIpone(621)};
+    height: ${pxIphone(621)};
   }
 `;
 export const LogoDiv = styled.div`
@@ -67,9 +67,9 @@ export const Title = styled.div`
   margin-bottom: ${pxPC(34)};
   @media (max-width: 768px) {
     color: #eb8b8b;
-    font-size: ${pxIpone(14)};
-    line-height: ${pxIpone(17)};
-    margin-bottom: ${pxIpone(22)};
+    font-size: ${pxIphone(14)};
+    line-height: ${pxIphone(17)};
+    margin-bottom: ${pxIphone(22)};
   }
 `;
 export const LinkItem = styled.div`
@@ -80,9 +80,9 @@ export const LinkItem = styled.div`
   margin-bottom: ${pxPC(12)};
   white-space: pre-wrap;
   @media (max-width: 768px) {
-    font-size: ${pxIpone(14)};
-    line-height: ${pxIpone(17)};
-    margin-bottom: ${pxIpone(13)};
+    font-size: ${pxIphone(14)};
+    line-height: ${pxIphone(17)};
+    margin-bottom: ${pxIphone(13)};
   }
 `;
 export const MyLink = styled.a`
@@ -93,8 +93,8 @@ export const MyLink = styled.a`
   display: block;
   margin-bottom: ${pxPC(7)};
   @media (max-width: 768px) {
-    font-size: ${pxIpone(14)};
-    line-height: ${pxIpone(17)};
-    margin-bottom: ${pxIpone(7)};
+    font-size: ${pxIphone(14)};
+    line-height: ${pxIphone(17)};
+    margin-bottom: ${pxIphone(7)};
   }
 `;

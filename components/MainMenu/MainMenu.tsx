@@ -9,7 +9,7 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
 import CloseIcon from "@material-ui/icons/Close";
-import { MobileMenuProps, menuDataItem } from "./types";
+import { MainMenuProps, menuDataItem } from "./types";
 import { useMediaQuery } from "react-responsive";
 import DesktopMenu from "./DesktopMenu";
 import styled from "@emotion/styled";
@@ -27,22 +27,9 @@ const PCHidden = styled.div`
     display: none;
   }
 `;
-const MenuHeader = styled.div`
-  height: 60px;
-  display: flex !important;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  padding: 0;
-  background-color: #fff;
-  font-size: 8vw !important;
-  border-bottom: 1px solid #000;
+const MyLinkText = styled(ListItemText)`
+  cursor: pointer !important;
 `;
-const MenuTitle = styled.span``;
-const MenuClose = styled(CloseIcon)`
-  color: #000;
-`;
-
 const MobileHidden = styled.div`
   @media screen and (max-width: 767px) {
     display: none;
@@ -51,7 +38,7 @@ const MobileHidden = styled.div`
     display: flex;
   }
 `;
-export const MobileMenu = (props: MobileMenuProps) => {
+export const MainMenu = (props: MainMenuProps) => {
   const {
     showMenuHeader,
     menuFooter,
@@ -98,7 +85,7 @@ export const MobileMenu = (props: MobileMenuProps) => {
                   onClick={handleClick.bind(null, parentKeyPath + "/" + item.key, item.key)}
                   button>
                   <ListItemIcon>{item.icon ? item.icon() : null}</ListItemIcon>
-                  <ListItemText primary={item.name} />
+                  <MyLinkText primary={item.name} />
                   {item &&
                     item.children &&
                     item.children.length != 0 &&
@@ -124,20 +111,17 @@ export const MobileMenu = (props: MobileMenuProps) => {
     );
   };
 
-  {
-    /*<div className={'layout'}>
-      <DesktopMenu onMenuItemClick={onMenuItemClick} pcWrapClassName={classnames(pcWrapClassName)} pcMenuItemClassName={pcMenuItemClassName}  menusData={menusData} />
-      </div>*/
-  }
   return (
     <>
       <PCHidden>
         <Menu isOpen={open} onOpen={handleOpen} onClose={handleClose} {...others}>
           {showMenuHeader ? (
-            <MenuHeader>
-              <MenuTitle>MENU</MenuTitle>
-              <MenuClose onClick={handleClose} fontSize={"large"} />
-            </MenuHeader>
+            <>
+              <div>MENU</div>
+              <div onClick={handleClose}>
+                X
+              </div>
+            </>
           ) : null}
           {getSubMenuOrItems(menusData, "", 0)}
           {menuFooter && menuFooter()}
