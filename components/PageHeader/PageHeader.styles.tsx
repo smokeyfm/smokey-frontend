@@ -3,14 +3,14 @@ import SearchIcon from "@material-ui/icons/Search";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import { pxIpone } from "../../utils";
+import { pxIphone } from "../../utils";
 export const Header = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-top: 14px;
   @media (max-width: 768px) {
-    height: ${pxIpone(60)};
+    height: ${pxIphone(60)};
     margin-top: 0;
   }
 `;
@@ -31,14 +31,14 @@ export const LogoDivMo = styled.div`
   display: none;
   @media (max-width: 768px) {
     display: block;
-    margin-left: ${pxIpone(60)};
+    margin-left: ${pxIphone(60)};
     margin-right: auto;
-    width: ${pxIpone(110)};
-    height: ${pxIpone(31)};
+    width: ${pxIphone(110)};
+    height: ${pxIphone(31)};
     border: 0.5px solid #000;
     text-align: center;
     color: #000;
-    line-height: ${pxIpone(31)};
+    line-height: ${pxIphone(31)};
     font-weight: bold;
     font-size: 17px;
   }
@@ -83,26 +83,26 @@ export const UserIconMo = styled.img`
   display: none;
   @media (max-width: 768px) {
     display: block;
-    width: ${pxIpone(19)};
+    width: ${pxIphone(19)};
     height: auto;
-    margin-right: ${pxIpone(12)};
+    margin-right: ${pxIphone(12)};
   }
 `;
 export const CartMo = styled.img`
   display: none;
   @media (max-width: 768px) {
     display: block;
-    width: ${pxIpone(17)};
+    width: ${pxIphone(17)};
     height: auto;
-    margin-right: ${pxIpone(15)};
+    margin-right: ${pxIphone(15)};
   }
 `;
 export const SearchMo = styled.img`
   display: none;
   @media (max-width: 768px) {
     display: block;
-    width: ${pxIpone(14)};
+    width: ${pxIphone(14)};
     height: auto;
-    margin-right: ${pxIpone(15)};
+    margin-right: ${pxIphone(15)};
   }
 `;

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { pxIpone, pxPC } from "../utils";
+import { pxIphone, pxPC } from "../utils";
 export const ProductTitle = styled.div`
   font-size: ${pxPC(16)};
   line-height: ${pxPC(20)};
@@ -43,8 +43,8 @@ export const XlargeTitle = styled.div`
   text-align: center;
   color: #000;
   @media (max-width: 375px) {
-    font-size: ${pxIpone(24)};
-    line-height: ${pxIpone(29)};
+    font-size: ${pxIphone(24)};
+    line-height: ${pxIphone(29)};
   }
 `;
 export const BtnTitle = styled.div`
