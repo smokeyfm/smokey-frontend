@@ -10,6 +10,7 @@ import { Header } from "../components";
 import { ThemeProvider } from "@emotion/react";
 import { theme } from "../styles/theme";
 import { GlobalStyles } from "../styles/global-styles";
+import "../styles/fonts.css";
 import "./app.css";
 
 const queryClient = new QueryClient();
@@ -22,13 +23,20 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
+  const renderHeader = () => {
+    if (process.env.IS_MAINT_MODE !== "true") {
+      return <Header />;
+    }
+    return;
+  };
+
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <Hydrate state={pageProps.dehydratedState}>
           <ThemeProvider theme={theme}>
             <GlobalStyles />
-            <Header />
+            {renderHeader()}
             <Component {...pageProps} />
           </ThemeProvider>
         </Hydrate>

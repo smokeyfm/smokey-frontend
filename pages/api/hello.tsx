@@ -3,7 +3,7 @@ import { makeClient } from "@spree/storefront-api-v2-sdk";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 const client = makeClient({
-  host: "https://pol-admin-staging.instinct.is/"
+  host: process.env.SPREE_API_URL
 });
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
