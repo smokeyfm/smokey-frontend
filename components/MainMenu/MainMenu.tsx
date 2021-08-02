@@ -118,9 +118,7 @@ export const MainMenu = (props: MainMenuProps) => {
           {showMenuHeader ? (
             <>
               <div>MENU</div>
-              <div onClick={handleClose}>
-                X
-              </div>
+              <div onClick={handleClose}>X</div>
             </>
           ) : null}
           {getSubMenuOrItems(menusData, "", 0)}
