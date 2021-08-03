@@ -13,7 +13,7 @@ import PolProductList from "../../components/POLProductList";
 import { useMediaQuery } from "react-responsive";
 import MobileLatest from "./MobileLatest";
 import data from "./home.json";
-const Home = () => {
+export const Home = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   return (
     <Layout>
@@ -42,6 +42,4 @@ export async function getServerSideProps() {
       dehydratedState: dehydrate(queryClient)
     }
   };
-}
-
-export default Home;
+};
