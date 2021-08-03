@@ -43,6 +43,14 @@ export const LogoDivMo = styled.div`
     font-size: 17px;
   }
 `;
+export const CustomIcon = styled.img`
+  width: ${pxIphone(37)};
+  height: auto;
+`;
+export const MenuFooter = styled.div`
+  position: fixed;
+  bottom: 0;
+`;
 export const HeaderAccount = styled.span`
   font-family: Roboto;
   font-size: 13px;
