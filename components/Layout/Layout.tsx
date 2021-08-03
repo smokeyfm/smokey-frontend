@@ -2,10 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { ClassNames } from "@emotion/react";
 import { LayoutProps } from "./types";
-import { menusData } from "../MainMenu/data/menusData";
-import { MainMenu } from "../components";
 import { Column, Foot } from "../Foot/Foot";
-import { pxIphone } from "../../utils";
 const Logo = styled.div`
   width: 181px;
   height: 45px;
@@ -80,15 +77,6 @@ const CircleIcon = styled.img`
     width: 20.71px;
     height: auto;
   }
-`;
-
-const CustomIcon = styled.img`
-  width: ${pxIphone(37)};
-  height: auto;
-`;
-const MenuFooter = styled.div`
-  position: fixed;
-  bottom: 0;
 `;
 const iconLinks = [
   {
@@ -181,22 +169,6 @@ export const Layout: React.FC<LayoutProps> = ({
 }) => {
   return (
     <Container>
-      <MainMenu
-        menuFooter={() => (
-          <MenuFooter>
-            <div>Privacy Policy - Terms & Conditions - RETURN POLICY</div>
-            <div>All Materials Copyright © 2021 POL Clothing</div>
-          </MenuFooter>
-        )}
-        showMenuHeader={true}
-        customBurgerIcon={<CustomIcon src="/BURGER.png" />}
-        pcMenuItemClassName="pc-menu-item"
-        outterContainerId="outter-container"
-        pageWrapId="page-wrap"
-        animationType="slide"
-        menusData={menusData}
-        right={false}
-      />
       <Content>
         {children}
         <ClassNames>
