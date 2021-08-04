@@ -26,7 +26,8 @@ const MenuFooter = styled.div`
   position: fixed;
   bottom: 0;
 `;
-export default function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps }: AppProps)
+{
   React.useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles) {
@@ -56,7 +57,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
               pageWrapId={"page-wrap"}
               animationType={"slide"}
               menusData={menusData}
-              right={false}></MobileMenu>
+              right={false}>
+
+            </MobileMenu>
             <Component {...pageProps} />
           </ThemeProvider>
         </Hydrate>

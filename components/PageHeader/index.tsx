@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import SearchBar from "../SearchBar";
 import {
   Header,
   LogoDiv,
@@ -18,7 +19,7 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
     <Fragment>
       <Header>
         <LogoDivMo>POL</LogoDivMo>
-        <MySearchIcon />
+        <SearchBar />
         <SearchMo src={"/searchMo.png"} />
         <CartMo src={"/CART.png"} />
         <UserIconMo src={"/user.png"} />
