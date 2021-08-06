@@ -28,7 +28,7 @@ export function focusOnMenuButton() {
 
 export function focusOnMenuItem(siblingType: keyof typeof document.activeElement) {
   if (document?.activeElement?.className.includes("bm-item")) {
-    const sibling: HTMLElement = document.activeElement[siblingType];
+    const sibling = <HTMLElement>document.activeElement[siblingType];
     if (sibling) {
       sibling.focus();
     } else {

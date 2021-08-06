@@ -1,13 +1,8 @@
 import React from "react";
-import { Layout, Header, InfoBox, PostList } from "../components";
+import { Layout, Header, PostList } from "../components";
 
 const ClientOnly = () => {
-  return (
-    <Layout>
-      <InfoBox>ℹ️ This data is loaded on client and not prefetched</InfoBox>
-      <PostList />
-    </Layout>
-  );
+  return <Layout>{/* <PostList /> */}</Layout>;
 };
 
 export default ClientOnly;
