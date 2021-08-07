@@ -8,14 +8,13 @@ export const Header = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-top: 14px;
   @media (max-width: 768px) {
     height: ${pxIpone(60)};
     margin-top: 0;
   }
 `;
 export const LogoDiv = styled.div`
-  margin: 46px auto 0 auto;
+  margin: 14px auto 35px auto;
   width: 181px;
   height: 45px;
   border: 0.67px solid #000;

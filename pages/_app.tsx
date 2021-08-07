@@ -4,11 +4,11 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { AuthProvider } from "../config/auth";
-import { MobileMenu } from "../components";
+import {MainMenu } from "../components";
 import PageHeader from "../components/PageHeader";
 import styled from "@emotion/styled";
 import "swiper/swiper-bundle.min.css";
-import { menusData } from "../components/MobileMenu/data/menusData";
+import { menusData } from "../components/MainMenu/data/menusData";
 import "./app.css";
 
 // Styles
@@ -42,7 +42,7 @@ export default function MyApp({ Component, pageProps }: AppProps)
           <ThemeProvider theme={theme}>
             <GlobalStyles />
             <PageHeader />
-            <MobileMenu
+            <MainMenu
               menuFooter={() => (
                 <MenuFooter>
                   <div>Privacy Policy - Terms & Conditions - RETURN POLICY</div>
@@ -52,14 +52,14 @@ export default function MyApp({ Component, pageProps }: AppProps)
               showMenuHeader={true}
               customBurgerIcon={<CustomIcon src={"/BURGER.png"} />}
               pcMenuItemClassName={"pc-menu-item"}
-              pcWrapClassName={"pc-wrap"}
+              pcWrapClassName={"pc-menu-wrap"}
               outterContainerId={"outter-container"}
               pageWrapId={"page-wrap"}
               animationType={"slide"}
               menusData={menusData}
               right={false}>
 
-            </MobileMenu>
+            </MainMenu>
             <Component {...pageProps} />
           </ThemeProvider>
         </Hydrate>

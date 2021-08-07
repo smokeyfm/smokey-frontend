@@ -11,7 +11,10 @@ export const GlobalStyles = () => (
           height: 100%;
         }
         body {
-          background: #ffffff;
+          background: white;
+          background-blend-mode: overlay;
+          background-size: cover;
+          background-position: center;
           color: hotpink !important;
           margin: 0;
           padding: 0;
@@ -124,9 +127,8 @@ export const GlobalStyles = () => (
           font-size: 14px;
           margin-right: 82px !important;
         }
-        .pc-wrap {
-          padding-left: 79px !important;
-          margin-left: 118px !important;
+        .pc-menu-wrap {
+          padding-bottom: 30px!important;
         }
         #__next {
           display: flex;
