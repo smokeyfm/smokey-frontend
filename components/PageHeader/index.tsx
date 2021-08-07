@@ -17,7 +17,7 @@ export interface PageHeaderProps {}
 const PageHeader: React.FC<PageHeaderProps> = (props) => {
   return (
     <Fragment>
-      <Header>
+      <Header data-test={'hello'}>
         <LogoDivMo>POL</LogoDivMo>
         <SearchBar />
         <SearchMo src={"/searchMo.png"} />

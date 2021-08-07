@@ -7,17 +7,13 @@ export const theme = {
     gray: {
       primary: "#666",
       medium: "#999",
+      light: "#c4c4c4",
       background: "#eee"
     },
     black: {
       primary: "#000",
       medium: "#585858",
       light: lighten(0.33, "#000")
-    },
-    grey: {
-      primary: "#666",
-      medium: "#969696",
-      light: "#c4c4c4"
     },
     white: {
       primary: "#fff",
@@ -29,7 +25,7 @@ export const theme = {
       medium: lighten(0.66, "#7b61ff"),
       light: lighten(0.33, "#7b61ff")
     },
-    barnd: {
+    brand: {
       primary: "#EB8B8B",
       secondary: "#E6CDC0",
       light: "#F9F2EA"

@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 import { IProducts } from "@spree/storefront-api-v2-sdk/types/interfaces/Product";
 import { spreeClient } from "../../config/spree";
+import { QueryKeys } from "../queryKeys";
 
 const fetchProducts = async (page: number = 1) => {
   const response = await spreeClient.products.list({
@@ -13,7 +14,7 @@ const fetchProducts = async (page: number = 1) => {
   }
 };
 const useProducts = (page: number) => {
-  return useQuery<IProducts, false>(["products", page], () => fetchProducts(page));
+  return useQuery<IProducts, false>([QueryKeys.PRODUCTS, page], () => fetchProducts(page));
 };
 
 export { useProducts, fetchProducts };

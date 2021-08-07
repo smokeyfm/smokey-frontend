@@ -51,7 +51,7 @@ const MobileHidden = styled.div`
     display: flex;
   }
 `;
-export const MobileMenu = (props: MobileMenuProps) => {
+export const MainMenu = (props: MobileMenuProps) => {
   const {
     showMenuHeader,
     menuFooter,

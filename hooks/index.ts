@@ -1,3 +1,3 @@
 export * from "./usePosts";
 export * from "./useProducts";
-export { useOnClickOutside } from "./useOnClickOutside";
+export * from "./useOnClickOutside";
