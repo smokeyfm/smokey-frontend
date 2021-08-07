@@ -3,13 +3,14 @@ import styled from "@emotion/styled";
 import { ClassNames } from "@emotion/react";
 import { LayoutProps } from "./types";
 import { Column, Foot } from "../Foot/Foot";
-import { pxIpone } from "../../utils";
+import { pxIphone } from "../../utils";
+
 const Logo = styled.img`
   width: 181px;
   height: auto;
   margin-bottom: 60px;
   @media (max-width: 375px) {
-    width: ${pxIpone(80)};
+    width: ${pxIphone(80)};
     margin-bottom: 14.68vw;
     height: auto;
   }

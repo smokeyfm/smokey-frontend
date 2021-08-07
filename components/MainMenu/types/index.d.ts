@@ -34,7 +34,7 @@ export type menuDataItem = {
   pcIcon?: () => ReactNode;
   pcMenuItem?: ReactNode;
 };
-export interface MobileMenuProps {
+export interface MainMenuProps {
   menuFooter?: () => ReactNode;
   showMenuHeader?: boolean;
   pcWrapClassName?: string;

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { pxPC, pxIpone } from "../../../utils";
+import { pxPC, pxIphone } from "../../../utils";
 import { PriceText, ProductTitle, XlargeTitle, XsmallText } from "../../../styles/BaseStyles";
 export const Title = styled(XlargeTitle)`
   font-family: "Bebas Neue";
@@ -7,14 +7,14 @@ export const Title = styled(XlargeTitle)`
   font-size: 44px;
   line-height: 54px;
   @media (max-width: 375px) {
-    margin-bottom: ${pxIpone(19)};
+    margin-bottom: ${pxIphone(19)};
   }
 `;
 export const MySwiperWrap = styled.div`
   margin-top: ${pxPC(30)};
   overflow: hidden;
   @media (max-width: 375px) {
-    margin-top: ${pxIpone(19)};
+    margin-top: ${pxIphone(19)};
   }
 `;
 export const MySlideWrap = styled.div`
