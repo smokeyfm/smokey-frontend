@@ -8,7 +8,7 @@ export const NewDigWrap = styled.div`
   background-color: #fff;
   padding-top: 23px;
   padding-bottom: 23px;
-  position:relative;
+  position: relative;
   &:before {
     position: absolute;
     content: "";

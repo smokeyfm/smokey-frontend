@@ -128,7 +128,7 @@ export const GlobalStyles = () => (
           margin-right: 82px !important;
         }
         .pc-menu-wrap {
-          padding-bottom: 30px!important;
+          padding-bottom: 30px !important;
         }
         #__next {
           display: flex;
