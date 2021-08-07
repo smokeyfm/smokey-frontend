@@ -9,7 +9,7 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
 import CloseIcon from "@material-ui/icons/Close";
-import { MobileMenuProps, menuDataItem } from "./types";
+import { MainMenuProps, menuDataItem } from "./types";
 import { useMediaQuery } from "react-responsive";
 import DesktopMenu from "./DesktopMenu";
 import styled from "@emotion/styled";
@@ -51,7 +51,7 @@ const MobileHidden = styled.div`
     display: flex;
   }
 `;
-export const MainMenu = (props: MobileMenuProps) => {
+export const MainMenu = (props: MainMenuProps) => {
   const {
     showMenuHeader,
     menuFooter,

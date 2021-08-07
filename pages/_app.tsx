@@ -15,11 +15,11 @@ import "./app.css";
 import { ThemeProvider } from "@emotion/react";
 import { theme } from "../styles/theme";
 import { GlobalStyles } from "../styles/global-styles";
-import { pxIpone } from "../utils";
+import { pxIphone } from "../utils";
 
 const queryClient = new QueryClient();
 const CustomIcon = styled.img`
-  width: ${pxIpone(37)};
+  width: ${pxIphone(37)};
   height: auto;
 `;
 const MenuFooter = styled.div`
