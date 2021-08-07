@@ -50,7 +50,7 @@ const DropDown = styled.div<DropDownProps>`
   left: 0;
   top: 100%;
   width: 100%;
-  z-index:10000;
+  z-index: 10000;
   transition: transform 1s linear;
   display: ${(props) => (props.isActive ? "block" : "none")};
   transform: ${(props) => (props.isActive ? "translateY(0)" : "translateY(-100%)")};
@@ -69,7 +69,7 @@ const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
     timer = setTimeout(() => setCurrentKey(undefined), 300);
   }, []);
   return (
-    <Container  className={pcWrapClassName}>
+    <Container className={pcWrapClassName}>
       {menusData.map((item, index) => (
         <MyMenuItem
           onMouseLeave={handleMouseLeave}
@@ -81,10 +81,10 @@ const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
       ))}
       {menusData.map((item, index) => (
         <DropDown
-          data-test={'abc'}
+          data-test={"abc"}
           onMouseLeave={handleMouseLeave}
           onMouseEnter={handleMouseEnter.bind(null, item)}
-          isActive={currentKey==item.key}
+          isActive={currentKey == item.key}
           key={index}>
           {item.pcMenuItem}
         </DropDown>

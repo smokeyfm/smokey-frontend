@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { AuthProvider } from "../config/auth";
-import {MainMenu } from "../components";
+import { MainMenu } from "../components";
 import PageHeader from "../components/PageHeader";
 import styled from "@emotion/styled";
 import "swiper/swiper-bundle.min.css";
@@ -26,8 +26,7 @@ const MenuFooter = styled.div`
   position: fixed;
   bottom: 0;
 `;
-export default function MyApp({ Component, pageProps }: AppProps)
-{
+export default function MyApp({ Component, pageProps }: AppProps) {
   React.useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles) {
@@ -57,9 +56,7 @@ export default function MyApp({ Component, pageProps }: AppProps)
               pageWrapId={"page-wrap"}
               animationType={"slide"}
               menusData={menusData}
-              right={false}>
-
-            </MainMenu>
+              right={false}></MainMenu>
             <Component {...pageProps} />
           </ThemeProvider>
         </Hydrate>
