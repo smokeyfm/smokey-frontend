@@ -38,6 +38,11 @@ We manage our global styles in several files:
 
 - The app has a "Maintenance Mode" (branded fullscreen takeover), simply set `IS_MAINT_MODE=true`, and the `<Header/>` will disappear and `<Home/>` gets taken over by `<ComingSoon/>`. It's fun, try it!
 - All the data for the app comes in from our staging server on Heroku, but you can also run the dna-admin CMS+API locally (hint: login only works with a localhost API)
+- To run against the local API, set the `SPREE_API_URL` environment
+  variable to the local API host/port
+- Complains about missing `.next/build-manifest.json` are usually indications
+  of a `next` build error. Try running `$(npm bin)/next build` to see the
+  exact error.
 
 ## Deploy URLS:
 
