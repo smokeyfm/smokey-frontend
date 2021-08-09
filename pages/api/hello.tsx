@@ -3,11 +3,11 @@ import { makeClient } from "@spree/storefront-api-v2-sdk";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 const client = makeClient({
-  host: "https://pol-admin-staging.instinct.is/"
+  host: process.env.SPREE_API_URL
 });
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
-  const products = client.products.list({ page: 1 });
+  const products = client.products.list({}, { page: 1 });
   console.log("products: ", products);
   res.statusCode = 200;
   res.json({ name: "John Doe" });
