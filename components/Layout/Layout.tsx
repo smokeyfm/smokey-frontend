@@ -1,83 +1,22 @@
 import React from "react";
-import styled from "@emotion/styled";
 import { ClassNames } from "@emotion/react";
 import { LayoutProps } from "./types";
-import { Column, Foot } from "../Foot/Foot";
-const Logo = styled.div`
-  width: 181px;
-  height: 45px;
-  font-size: 24px;
-  line-height: 45px;
-  border: 1px solid #969696;
-  color: #fff;
-  font-weight: bold;
-  font-family: Montserrat;
-  text-align: center;
-  margin-bottom: 60px;
-  @media (max-width: 375px) {
-    width: 80px;
-    height: 19.83px;
-    font-size: 10px;
-    line-height: 19.83px;
-    margin-bottom: 14.68vw;
-  }
-  @media (max-width: 750px) {
-    width: 21.33vw;
-    height: 5.048vw;
-    font-size: 10px;
-    line-height: 19.83px;
-    margin-bottom: 14.68vw;
-  }
-`;
+import { Header } from "../../components";
+import { Foot } from "../../components";
+import { Column } from "../Foot/Foot";
+
+import {
+  Container,
+  Content,
+  CameraIcon,
+  FacebookIcon,
+  PlayIcon,
+  CircleIcon,
+  Logo
+} from "./Layout.styles";
+
 const MyLogo: React.FC = () => <Logo>POL</Logo>;
-const CameraIcon = styled.img`
-  width: 11px;
-  height: auto;
-  margin-right: 3.88px;
-  @media (max-width: 375px) {
-    width: 20.71px;
-    height: auto;
-    margin-right: 2.069vw;
-  }
-  @media (max-width: 750px) {
-    width: 5.522vw;
-    height: auto;
-    margin-right: 2.069vw;
-  }
-`;
-const FacebookIcon = styled.img`
-  width: 6.81px;
-  height: auto;
-  margin-right: 3.88px;
-  @media (max-width: 375px) {
-    width: 13.63px;
-    height: auto;
-    margin-right: 2.069vw;
-  }
-`;
-const PlayIcon = styled.img`
-  width: 12.29px;
-  height: auto;
-  margin-right: 3.88px;
-  @media (max-width: 375px) {
-    width: 24.59px;
-    height: auto;
-    margin-right: 2.069vw;
-  }
-  @media (max-width: 750px) {
-    width: 6.557vw;
-    height: auto;
-    margin-right: 2.069vw;
-  }
-`;
-const CircleIcon = styled.img`
-  width: 10.35px;
-  height: auto;
-  @media (max-width: 375px) {
-    width: 20.71px;
-    height: auto;
-  }
-`;
+
 const iconLinks = [
   {
     icon: <CameraIcon src={"/camera.png"} />,
@@ -150,25 +89,14 @@ const columns: Column[] = [
     ]
   }
 ];
-export const Container = styled.main`
-  flex: 1;
-  overflow: scroll;
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-`;
-export const Content = styled.div`
-  flex: 1;
-  overflow: scroll;
-`;
+
 export const Layout: React.FC<LayoutProps> = ({
   children
 }: {
   children: JSX.Element[] | JSX.Element;
 }) => {
   return (
-    <Container>
+    <>
       <Content>
         {children}
         <ClassNames>
@@ -184,6 +112,6 @@ export const Layout: React.FC<LayoutProps> = ({
           )}
         </ClassNames>
       </Content>
-    </Container>
+    </>
   );
 };

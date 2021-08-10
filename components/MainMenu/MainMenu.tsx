@@ -8,7 +8,6 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
-import CloseIcon from "@material-ui/icons/Close";
 import { MainMenuProps, menuDataItem } from "./types";
 import { useMediaQuery } from "react-responsive";
 import DesktopMenu from "./DesktopMenu";
@@ -40,8 +39,6 @@ const MobileHidden = styled.div`
 `;
 export const MainMenu = (props: MainMenuProps) => {
   const {
-    showMenuHeader,
-    menuFooter,
     pcWrapClassName,
     pcMenuItemClassName,
     onMenuItemClick,
@@ -52,13 +49,7 @@ export const MainMenu = (props: MainMenuProps) => {
   } = props;
   const Menu = BurgerMenu[animationType as keyof typeof BurgerMenu];
   const [keyPath, setKeyPath] = useState("");
-  const [open, setOpen] = useState(false);
-  const handleOpen = useCallback(() => {
-    setOpen(true);
-  }, []);
-  const handleClose = useCallback(() => {
-    setOpen(false);
-  }, []);
+  const isTabletOrDesktop = useMediaQuery({ minWidth: 768 });
   const handleClick = useCallback((kp, key) => {
     if (onMenuItemClick) {
       onMenuItemClick(kp, key);
@@ -111,19 +102,15 @@ export const MainMenu = (props: MainMenuProps) => {
     );
   };
 
+  {
+    /*<div className={'layout'}>
+      <DesktopMenu onMenuItemClick={onMenuItemClick} pcWrapClassName={classnames(pcWrapClassName)} pcMenuItemClassName={pcMenuItemClassName}  menusData={menusData} />
+      </div>*/
+  }
   return (
     <>
       <PCHidden>
-        <Menu isOpen={open} onOpen={handleOpen} onClose={handleClose} {...others}>
-          {showMenuHeader ? (
-            <>
-              <div>MENU</div>
-              <div onClick={handleClose}>X</div>
-            </>
-          ) : null}
-          {getSubMenuOrItems(menusData, "", 0)}
-          {menuFooter && menuFooter()}
-        </Menu>
+        <Menu {...others}>{getSubMenuOrItems(menusData, "", 0)}</Menu>
       </PCHidden>
       <MobileHidden>
         <DesktopMenu
