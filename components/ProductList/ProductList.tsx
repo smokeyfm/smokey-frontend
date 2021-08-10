@@ -51,7 +51,7 @@ export const ProductList: React.FC<ProductListProps> = () => {
           const imageSource = products?.included?.find((image) => image.id === imageId)?.attributes
             .styles[2].url;
           const source = imageSource
-            ? `https://pol-admin-staging.instinct.is/${imageSource}`
+            ? `${process.env.SPREE_API_URL}/${imageSource}`
             : "https://via.placeholder.com/150";
           return (
             <Link

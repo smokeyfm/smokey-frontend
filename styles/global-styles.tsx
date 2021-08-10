@@ -11,7 +11,10 @@ export const GlobalStyles = () => (
           height: 100%;
         }
         body {
-          background: #ffffff;
+          background: white;
+          background-blend-mode: overlay;
+          background-size: cover;
+          background-position: center;
           color: hotpink !important;
           margin: 0;
           padding: 0;

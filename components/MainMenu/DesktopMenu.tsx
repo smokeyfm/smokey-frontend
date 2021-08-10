@@ -62,7 +62,6 @@ const DropDown = styled.div<DropDownProps>`
   transition: transform 1s linear;
   display: ${(props) => (props.isActive ? "block" : "none")};
   transform: ${(props) => (props.isActive ? "translateY(0)" : "translateY(-100%)")};
-  z-index: 1;
 `;
 
 const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
@@ -77,7 +76,6 @@ const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
   const handleMouseLeave = useCallback(() => {
     timer = setTimeout(() => setCurrentKey(undefined), 300);
   }, []);
-
   return (
     <Container className={pcWrapClassName}>
       {menusData.map((item, index) => (
