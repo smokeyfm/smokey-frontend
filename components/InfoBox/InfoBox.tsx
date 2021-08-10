@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { InfoBoxProps } from "./types";
+
 const Info = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
@@ -9,8 +10,7 @@ const Info = styled.div`
   border-top: 1px solid #ececec;
   border-bottom: 1px solid #ececec;
 `;
-const InfoBox: React.FC<InfoBoxProps> = ({ children }: { children: string }) => (
+
+export const InfoBox: React.FC<InfoBoxProps> = ({ children }: { children: string }) => (
   <Info>{children}</Info>
 );
-
-export { InfoBox };
