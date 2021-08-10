@@ -30,7 +30,7 @@ const LoginForm = () => {
   const { login } = useAuth();
   const router = useRouter();
   return (
-    <Layout>
+    <>
       <h1>{loginForm.title}</h1>
       <Formik
         initialValues={loginForm.fields}
@@ -80,7 +80,7 @@ const LoginForm = () => {
           </Form>
         )}
       </Formik>
-    </Layout>
+    </>
   );
 };
 
@@ -88,7 +88,7 @@ const SignupForm = () => {
   const { register } = useAuth();
   const router = useRouter();
   return (
-    <Layout>
+    <>
       <h1>{signupForm.title}</h1>
       <Formik
         initialValues={signupForm.fields}
@@ -136,13 +136,13 @@ const SignupForm = () => {
           </Form>
         )}
       </Formik>
-    </Layout>
+    </>
   );
 };
 
 const ForgotPasswordForm = () => {
   return (
-    <Layout>
+    <>
       <h1>{forgotPasswordForm.title}</h1>
       <Formik
         initialValues={forgotPasswordForm.fields}
@@ -177,7 +177,7 @@ const ForgotPasswordForm = () => {
           </Form>
         )}
       </Formik>
-    </Layout>
+    </>
   );
 };
 
