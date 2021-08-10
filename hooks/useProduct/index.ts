@@ -1,23 +1,29 @@
 import { useQuery } from "react-query";
 import { IProduct } from "@spree/storefront-api-v2-sdk/types/interfaces/Product";
 import { spreeClient } from "../../config/spree";
+import { QueryKeys } from "../queryKeys";
 
 const fetchProduct = async (id: string): Promise<IProduct> => {
-  const response = await spreeClient.products.show(id, {
-    include: "images"
-  });
-  console.warn("FETCH PRODUCTS");
+  const storage = (await import("../../config/storage")).default;
+  const token = await storage.getToken();
+  const response = await spreeClient.products.show(
+    {
+      bearerToken: token ? token.access_token : undefined
+    },
+    id,
+    {
+      include: "images,default_variant"
+    }
+  );
   if (response.isSuccess()) {
-    console.warn("FETCH PRODUCTS SUCCESS");
     return response.success();
   } else {
-    console.warn("FETCH PRODUCTS FAILED");
     throw new Error("Product request failed");
   }
 };
 
 const useProduct = (id: string) => {
-  return useQuery<IProduct, false>(["product", id], () => fetchProduct(id));
+  return useQuery<IProduct, false>([QueryKeys.PRODUCT, id], () => fetchProduct(id));
 };
 
 export { useProduct, fetchProduct };
