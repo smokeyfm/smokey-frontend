@@ -5,6 +5,7 @@ import { useProduct } from "../hooks/useProduct";
 import { useMutation, useQueryClient } from "react-query";
 import { addItemToCart } from "../hooks/useCart";
 import { QueryKeys } from "../hooks/queryKeys";
+import * as tracking from '../config/tracking';
 
 const ProductDetail = () => {
   const router = useRouter();
@@ -17,12 +18,19 @@ const ProductDetail = () => {
     }
   });
 
+  React.useEffect(() => {
+    if (isSuccess) {
+      tracking.trackEvent({action: 'view-product', category: 'product-detail', label: data?.data?.attributes?.name});
+    }
+  }, [`${id}`, isSuccess]);
+
   if (isLoading) {
     return <div>Loading Product...</div>;
   }
 
   if (isSuccess) {
     const variants = data?.data.relationships.variants.data;
+
     const handleAddToCart = () =>
       addToCart.mutate({
         variant_id: Array.isArray(variants) ? variants[0].id : "",
