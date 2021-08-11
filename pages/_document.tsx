@@ -3,7 +3,7 @@ import uaParser from "ua-parser-js";
 import { Context as ResponsiveContext, MediaQueryAllQueryable } from "react-responsive";
 import * as React from "react";
 import { ServerStyleSheets } from "@material-ui/core/styles";
-import * as tracking from '../config/tracking';
+import * as tracking from "../config/tracking";
 
 const withResponsiveContext = (App: any, req: any) => {
   const contextValue = (() => {
@@ -53,7 +53,8 @@ class MyDocument extends Document {
           />
           {/* <title>{process.env.SITE_TITLE}</title> */}
           <script
-            async src={"https://www.googletagmanager.com/gtag/js?id=" + tracking.GA_TRACKING_CODE}
+            async
+            src={"https://www.googletagmanager.com/gtag/js?id=" + tracking.GA_TRACKING_CODE}
           />
           <script
             dangerouslySetInnerHTML={{
@@ -65,10 +66,9 @@ class MyDocument extends Document {
                   'send_page_view': false,
                   'debug_mode': ${tracking.GA_DEBUG_MODE},
                 });
-              `,
+              `
             }}
           />
-
         </Head>
         <body>
           <Main />
