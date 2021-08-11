@@ -1,12 +1,11 @@
-
 export const GA_TRACKING_CODE = process.env.GA_TRACKING_CODE;
 export const GA_DEBUG_MODE = process.env.GA_DEBUG_MODE;
 
-const TRACKING_ON = process.env.TRACKING !== 'off';
-const TRACKING_VERBOSE = process.env.TRACKING_VERBOSE === 'on';
+const TRACKING_ON = process.env.TRACKING !== "off";
+const TRACKING_VERBOSE = process.env.TRACKING_VERBOSE === "on";
 
-const TRACKING_GA_ON = process.env.TRACKING_PROVIDER_GA !== 'off';
-const TRACKING_KM_ON = process.env.TRACKING_PROVIDER_KM !== 'off';
+const TRACKING_GA_ON = process.env.TRACKING_PROVIDER_GA !== "off";
+const TRACKING_KM_ON = process.env.TRACKING_PROVIDER_KM !== "off";
 
 type TrackingEvent = {
   action: string;
@@ -18,40 +17,34 @@ interface TrackingProvider {
   getName(): string;
   isActive(): boolean;
   trackPageview(url: string): void;
-  trackEvent({action, category, label}: TrackingEvent): void;
-};
+  trackEvent({ action, category, label }: TrackingEvent): void;
+}
 
 const googleAnalyticsProvider: TrackingProvider = {
-
   getName: (): string => {
-    return 'Google Analytics 4';
+    return "Google Analytics 4";
   },
 
-  isActive: (): boolean =>  {
+  isActive: (): boolean => {
     return TRACKING_GA_ON;
   },
 
   trackPageview: (url: string): void => {
-
-    window.gtag('config', GA_TRACKING_CODE, {
-      page_path: url,
-    })
+    window.gtag("config", GA_TRACKING_CODE, {
+      page_path: url
+    });
   },
 
-  trackEvent: ({action, category, label}: TrackingEvent): void => {
-
-    window.gtag('event', action, {
+  trackEvent: ({ action, category, label }: TrackingEvent): void => {
+    window.gtag("event", action, {
       event_category: category,
       event_label: label,
-      value: 0,
-    })
+      value: 0
+    });
   }
-
 };
 
-const trackingProviders: Array<TrackingProvider> = [
-    googleAnalyticsProvider
-];
+const trackingProviders: Array<TrackingProvider> = [googleAnalyticsProvider];
 
 export const trackPageview = (url: string): void => {
   if (!TRACKING_ON) {
@@ -61,7 +54,7 @@ export const trackPageview = (url: string): void => {
   for (let provider of trackingProviders) {
     if (provider.isActive()) {
       if (TRACKING_VERBOSE) {
-        console.log(provider.getName() + ' - trackPageview', url);
+        console.log(provider.getName() + " - trackPageview", url);
       }
 
       provider.trackPageview(url);
@@ -69,7 +62,7 @@ export const trackPageview = (url: string): void => {
   }
 };
 
-export const trackEvent = ({action, category, label}: TrackingEvent): void => {
+export const trackEvent = ({ action, category, label }: TrackingEvent): void => {
   if (!TRACKING_ON) {
     return;
   }
@@ -77,10 +70,10 @@ export const trackEvent = ({action, category, label}: TrackingEvent): void => {
   for (let provider of trackingProviders) {
     if (provider.isActive()) {
       if (TRACKING_VERBOSE) {
-        console.log(provider.getName() + ' - trackEvent', {action, category, label});
+        console.log(provider.getName() + " - trackEvent", { action, category, label });
       }
 
-      provider.trackEvent({action, category, label});
+      provider.trackEvent({ action, category, label });
     }
   }
 };
