@@ -28,6 +28,7 @@ import AutoComplete from "../AutoComplete";
 import { useRouter } from "next/router";
 import { useOnClickOutside } from "../../hooks";
 import { SearchBarProps } from "./types";
+import * as tracking from '../../config/tracking';
 
 const SearchBar = ({
   placeholder = "Search...",
@@ -96,6 +97,8 @@ const SearchBar = ({
       case "Enter":
         if (query.length > 3) {
           if (event.key === "Enter" && query.length > 3) {
+            tracking.trackEvent({action: 'press-enter', category: 'search-bar', label: query});
+
             router.push(`/search?term=${query}`);
           }
         }
@@ -105,6 +108,12 @@ const SearchBar = ({
         break;
     }
   };
+
+  const selectSuggestion = (suggestion: string) => {
+    tracking.trackEvent({action: 'select-suggestion', category: 'search-bar', label: suggestion});
+
+    setQuery(suggestion);
+  }
 
   const labelId = "label-search";
   const dropdownId = "dropdown-search";
@@ -162,7 +171,7 @@ const SearchBar = ({
           toggleVisibility={(e: any) => setIsAutocompleteVisible(e)}
           id={dropdownId}
           labelId={labelId}
-          onSelect={(e: any) => setQuery(e)}
+          onSelect={(e: any) => selectSuggestion(e)}
           query={query}
         />
       ) : null}
