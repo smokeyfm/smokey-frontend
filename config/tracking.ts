@@ -8,8 +8,8 @@ export enum Action {
 }
 
 export enum Category {
-    SEARCH_BAR = "search-bar",
-    PRODUCT_DETAIL = "product-detail"
+  SEARCH_BAR = "search-bar",
+  PRODUCT_DETAIL = "product-detail"
 }
 
 const TRACKING_ON = process.env.TRACKING !== "off";
