@@ -1,6 +1,17 @@
 export const GA_TRACKING_CODE = process.env.GA_TRACKING_CODE;
 export const GA_DEBUG_MODE = process.env.GA_DEBUG_MODE;
 
+export enum Action {
+  PRESS_ENTER = "press-enter",
+  SELECT_SUGGESTION = "select-suggestion",
+  VIEW_PRODUCT = "view-product"
+}
+
+export enum Category {
+    SEARCH_BAR = "search-bar",
+    PRODUCT_DETAIL = "product-detail"
+}
+
 const TRACKING_ON = process.env.TRACKING !== "off";
 const TRACKING_VERBOSE = process.env.TRACKING_VERBOSE === "on";
 

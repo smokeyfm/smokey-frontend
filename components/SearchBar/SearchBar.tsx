@@ -97,7 +97,7 @@ const SearchBar = ({
       case "Enter":
         if (query.length > 3) {
           if (event.key === "Enter" && query.length > 3) {
-            tracking.trackEvent({ action: "press-enter", category: "search-bar", label: query });
+            tracking.trackEvent({ action: tracking.Action.PRESS_ENTER, category: tracking.Category.SEARCH_BAR, label: query });
 
             router.push(`/search?term=${query}`);
           }
@@ -110,7 +110,7 @@ const SearchBar = ({
   };
 
   const selectSuggestion = (suggestion: string) => {
-    tracking.trackEvent({ action: "select-suggestion", category: "search-bar", label: suggestion });
+    tracking.trackEvent({ action: tracking.Action.SELECT_SUGGESTION, category: tracking.Category.SEARCH_BAR, label: suggestion });
 
     setQuery(suggestion);
   };
