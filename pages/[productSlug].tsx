@@ -21,8 +21,8 @@ const ProductDetail = () => {
   React.useEffect(() => {
     if (isSuccess) {
       tracking.trackEvent({
-        action: "view-product",
-        category: "product-detail",
+        action: tracking.Action.VIEW_PRODUCT,
+        category: tracking.Category.PRODUCT_DETAIL,
         label: data?.data?.attributes?.name
       });
     }
