@@ -3,6 +3,7 @@ import { BurgerIconStyles } from "./BurgerIconProps";
 declare global {
   interface Window {
     mina: any;
+    gtag: any;
   }
 }
 export type Path = {
