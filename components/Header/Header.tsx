@@ -60,6 +60,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
       <Sticky>
         <BottomHeader>
           <MainMenu
+            showMenuHeader={true}
             pcMenuItemClassName={"pc-menu-item"}
             outterContainerId={"outer-container"}
             pageWrapId={"page-wrap"}

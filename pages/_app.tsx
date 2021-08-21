@@ -10,12 +10,15 @@ import styled from "@emotion/styled";
 import "swiper/swiper-bundle.min.css";
 import { menusData } from "../components/MainMenu/data/menusData";
 import "./app.css";
+import { Header } from "../components";
 
 // Styles
 import { ThemeProvider } from "@emotion/react";
 import { theme } from "../styles/theme";
 import { GlobalStyles } from "../styles/global-styles";
 import { pxIphone } from "../utils";
+import "../styles/fonts.css";
+import "./app.css";
 
 const queryClient = new QueryClient();
 const CustomIcon = styled.img`
@@ -33,7 +36,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       jssStyles.parentElement?.removeChild(jssStyles);
     }
   }, []);
-
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>

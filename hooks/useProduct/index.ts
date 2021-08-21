@@ -4,15 +4,14 @@ import { spreeClient } from "../../config/spree";
 import { QueryKeys } from "../queryKeys";
 
 const fetchProduct = async (id: string): Promise<IProduct> => {
+  const storage = (await import("../../config/storage")).default;
+  const token = await storage.getToken();
   const response = await spreeClient.products.show(id, {
     include: "images,default_variant"
   });
-  console.warn("FETCH PRODUCTS");
   if (response.isSuccess()) {
-    console.warn("FETCH PRODUCTS SUCCESS");
     return response.success();
   } else {
-    console.warn("FETCH PRODUCTS FAILED");
     throw new Error("Product request failed");
   }
 };

@@ -134,10 +134,10 @@ export const MainMenu = (props: MainMenuProps) => {
       <PCHidden>
         <Menu isOpen={open} onOpen={handleOpen} onClose={handleClose} {...others}>
           {showMenuHeader ? (
-            <MenuHeader>
-              <MenuTitle>MENU</MenuTitle>
-              <MenuClose onClick={handleClose} fontSize={"large"} />
-            </MenuHeader>
+            <>
+              <div>MENU</div>
+              <div onClick={handleClose}>X</div>
+            </>
           ) : null}
           {getSubMenuOrItems(menusData, "", 0)}
           {menuFooter && menuFooter()}
