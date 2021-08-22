@@ -40,7 +40,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             <GlobalStyles />
             <PageHeader />
             <MainMenu
-              showMenuHeader={true}
+              showMenuHeader
               customBurgerIcon={<CustomIcon src={"/BURGER.png"} />}
               pcMenuItemClassName={"pc-menu-item"}
               pcWrapClassName={"pc-menu-wrap"}
