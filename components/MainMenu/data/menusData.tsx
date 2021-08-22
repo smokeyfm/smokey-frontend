@@ -9,7 +9,7 @@ export const NewDigWrap = styled.div`
   padding-top: 23px;
   padding-bottom: 23px;
 `;
-export const Cate = styled.div`
+export const Column = styled.div`
   margin-right: 98px;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@ export const Cate = styled.div`
     margin-right: 108px;
   }
 `;
-export const CateItem = styled.div`
+export const ColumnItem = styled.div`
   font-family: Roboto Condensed;
   font-size: 14px;
   line-height: 16px;
@@ -38,7 +38,7 @@ export const ImgWrapper = styled.div`
   margin-left: 116px;
   width: 296px;
 `;
-export const CateTitle = styled.div`
+export const ColumnTitle = styled.div`
   font-family: "Roboto CondensedBold";
   font-size: 14px;
   line-height: 16px;
@@ -65,39 +65,39 @@ export const MyImage = styled.img`
 const NewDigs = () => {
   return (
     <NewDigWrap>
-      <Cate>
-        <CateTitle>CATEGORies</CateTitle>
-        <CateItem>All Clothing</CateItem>
-        <CateItem>Dresses</CateItem>
-        <CateItem>Tops</CateItem>
-        <CateItem>Pants</CateItem>
-        <CateItem>Skirts</CateItem>
-        <CateItem>Sweaters</CateItem>
-        <CateItem>Denim</CateItem>
-      </Cate>
-      <Cate>
-        <CateTitle>collections</CateTitle>
-        <CateItem>Summer ‘21</CateItem>
-        <CateItem>by POL</CateItem>
-        <CateItem>Plus</CateItem>
-        <CateItem>Denim</CateItem>
-        <CateItem>POL TV</CateItem>
-      </Cate>
-      <Cate>
-        <CateTitle>FEATURED</CateTitle>
-        <CateItem>trend — 90s kids</CateItem>
-        <CateItem>trend — dad’s closet</CateItem>
-        <CateItem>chill summer</CateItem>
-        <CateItem>throw it back</CateItem>
-        <CateItem>back to school</CateItem>
-      </Cate>
-      <Cate>
-        <CateTitle>BRANDS</CateTitle>
-        <CateItem>POL</CateItem>
-        <CateItem>Levi</CateItem>
-        <CateItem>teva</CateItem>
-        <CateItem>doc marten</CateItem>
-      </Cate>
+      <Column>
+        <ColumnTitle>Categories</ColumnTitle>
+        <ColumnItem>All Clothing</ColumnItem>
+        <ColumnItem>Dresses</ColumnItem>
+        <ColumnItem>Tops</ColumnItem>
+        <ColumnItem>Pants</ColumnItem>
+        <ColumnItem>Skirts</ColumnItem>
+        <ColumnItem>Sweaters</ColumnItem>
+        <ColumnItem>Denim</ColumnItem>
+      </Column>
+      <Column>
+        <ColumnTitle>collections</ColumnTitle>
+        <ColumnItem>Summer ‘21</ColumnItem>
+        <ColumnItem>by POL</ColumnItem>
+        <ColumnItem>Plus</ColumnItem>
+        <ColumnItem>Denim</ColumnItem>
+        <ColumnItem>POL TV</ColumnItem>
+      </Column>
+      <Column>
+        <ColumnTitle>FEATURED</ColumnTitle>
+        <ColumnItem>trend — 90s kids</ColumnItem>
+        <ColumnItem>trend — dad’s closet</ColumnItem>
+        <ColumnItem>chill summer</ColumnItem>
+        <ColumnItem>throw it back</ColumnItem>
+        <ColumnItem>back to school</ColumnItem>
+      </Column>
+      <Column>
+        <ColumnTitle>BRANDS</ColumnTitle>
+        <ColumnItem>POL</ColumnItem>
+        <ColumnItem>Levi</ColumnItem>
+        <ColumnItem>teva</ColumnItem>
+        <ColumnItem>doc marten</ColumnItem>
+      </Column>
       <Divider />
       <ImgWrapper>
         <ImageTitle>On Sale</ImageTitle>

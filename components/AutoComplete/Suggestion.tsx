@@ -1,5 +1,5 @@
 import React from "react";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import { nanoid } from "nanoid";
 import { IProduct } from "@spree/storefront-api-v2-sdk/types/interfaces/Product";
 // import { useDispatch } from 'react-redux';
@@ -33,17 +33,17 @@ type OwnProps = {
 };
 
 const Suggestion = ({ suggestion, query, onChange, toggleVisibility }: OwnProps) => {
-  // const Suggestion = ({ suggestion, query, onChange, toggleVisibility }) => {
-  const handleSelection = () => {
+  const router = useRouter();
+  const handleSelection = (e: any) => {
     onChange("");
+    e.preventDefault();
     toggleVisibility(false);
-    Router.push(`/${suggestion.attributes.slug}?id=${suggestion.id}`);
+    router.push(`/${suggestion.attributes.slug}?id=${suggestion.id}`);
   };
 
-  // const dispatch = useDispatch();
   if (suggestion) {
     return (
-      <StyledSuggestionLink onClick={() => handleSelection()}>
+      <StyledSuggestionLink onClick={handleSelection}>
         <StyledSuggestionContent>
           {formatWithHighlight(suggestion.attributes.name, query)}
         </StyledSuggestionContent>
