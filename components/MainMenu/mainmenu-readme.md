@@ -316,13 +316,14 @@ background: 'rgba(0, 0, 0, 0.3)'
 import {MainMenu} from '../components'
 
 <<<<<<< HEAD:components/MainMenu/mainmenu-readme.md
+
 <div id="outter-container">
  <MainMenu pageWrapId="page-wrap" outterContainerId="outter-container" animationType="slide" right={false} styles={styles}>
 
 # </MainMenu>
 
- <MainMenu pageWrapId="page-wrap" outterContainerId="outter-container" animationType="slide" right={false} styles={styles}>
-=======
+# <MainMenu pageWrapId="page-wrap" outterContainerId="outter-container" animationType="slide" right={false} styles={styles}>
+
 <div id="outer-container">
 <<<<<<< HEAD:components/MainMenu/readme.txt
  <MainMenu pageWrapId="page-wrap" outterContainerId="outer-container" animationType="slide" right={false} styles={styles}>
