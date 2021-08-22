@@ -51,10 +51,13 @@ const MobileHidden = styled.div`
     display: flex;
   }
 `;
+const MenuFooter = styled.div`
+  position: fixed;
+  bottom: 0;
+`;
 export const MainMenu = (props: MainMenuProps) => {
   const {
     showMenuHeader,
-    menuFooter,
     pcWrapClassName,
     pcMenuItemClassName,
     onMenuItemClick,
@@ -135,7 +138,10 @@ export const MainMenu = (props: MainMenuProps) => {
             </>
           ) : null}
           {getSubMenuItem(menusData, "", 0)}
-          {menuFooter && menuFooter()}
+          <MenuFooter>
+            <div>Privacy Policy - Terms & Conditions - RETURN POLICY</div>
+            <div>All Materials Copyright © 2021 POL Clothing</div>
+          </MenuFooter>
         </Menu>
       </PCHidden>
       <MobileHidden>
