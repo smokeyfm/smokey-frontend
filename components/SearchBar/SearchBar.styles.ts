@@ -80,7 +80,7 @@ const defaultPrefixStyles = css`
   top: 0;
   height: 100%;
   width: 44px;
-  z-index: 1;
+  z-index: 3;
 `;
 
 export const StyledInputPrefix = styled.div`
