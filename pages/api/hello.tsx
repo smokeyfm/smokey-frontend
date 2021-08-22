@@ -7,7 +7,7 @@ const client = makeClient({
 });
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
-  const products = client.products.list( { page: 1 });
+  const products = client.products.list({ page: 1 });
   console.log("products: ", products);
   res.statusCode = 200;
   res.json({ name: "John Doe" });
