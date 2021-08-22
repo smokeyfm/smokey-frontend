@@ -7,7 +7,7 @@ const fetchProduct = async (id: string): Promise<IProduct> => {
   const storage = (await import("../../config/storage")).default;
   const token = await storage.getToken();
   const response = await spreeClient.products.show(id, {
-    include: "images,default_variant"
+    bearerToken: token ? token.access_token : undefined
   });
   if (response.isSuccess()) {
     return response.success();
