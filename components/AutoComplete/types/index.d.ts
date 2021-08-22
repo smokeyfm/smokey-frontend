@@ -1,3 +1,4 @@
+export * from "./AutoComplete";
 export interface AutoCompleteProps {
   id?: string;
   labelId?: string;

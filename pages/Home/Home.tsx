@@ -1,13 +1,22 @@
 import React from "react";
 import { QueryClient } from "react-query";
 import { dehydrate } from "react-query/hydration";
-import { Layout, InfoBox, ProductList } from "../../components";
+import { ComingSoon, Layout, InfoBox, ProductList } from "../../components";
 import { fetchPosts, fetchProducts } from "../../hooks";
+
+const renderHomeContent = () => {
+  if (process.env.IS_MAINT_MODE == "true") {
+    console.log();
+    return <ComingSoon />;
+  }
+
+  return <ProductList />;
+};
 
 const Home = () => {
   return (
     <Layout>
-      <ProductList />
+      {renderHomeContent()}
       <div className={"test"}></div>
     </Layout>
   );

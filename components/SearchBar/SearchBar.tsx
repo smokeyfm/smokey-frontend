@@ -1,6 +1,7 @@
 import React, {
   useState,
   useEffect,
+  // createRef,
   useRef,
   useCallback,
   KeyboardEvent,
@@ -38,7 +39,7 @@ const SearchBar = ({
   const [query, setQuery] = useState(value);
   // const [searchResults, setSearchResults] = useState([]);
   const [isAutoCompleteVisible, setIsAutocompleteVisible] = useState(false);
-  const anyRef = useRef(null);
+  // const anyRef = createRef();
 
   const handleSearchChange = (e: any) => {
     const { value } = e.target;
@@ -53,16 +54,17 @@ const SearchBar = ({
     setIsAutocompleteVisible(false);
   };
 
-  const dropdownRef = useRef(null);
+  // const dropdownRef = createRef();
 
   const handleClickOutside = useCallback((event: Event) => {
-    // if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-    //   setIsAutocompleteVisible(false);
-    // }
-    console.log(event);
+    const someNode = event.target as Node;
+    if (dropdownRef.current && dropdownRef.current.contains(someNode) !== null) {
+      setIsAutocompleteVisible(false);
+    }
   }, []);
 
-  useOnClickOutside(anyRef, handleClickOutside);
+  // useOnClickOutside(anyRef, handleClickOutside);
+  const { ref: dropdownRef } = useCustomRef<HTMLDivElement>();
 
   const readinessIcon = () => {
     const { data, isLoading, isSuccess } = useProducts(1);
@@ -166,6 +168,12 @@ const SearchBar = ({
       ) : null}
     </StyledSearch>
   );
+};
+
+const useCustomRef = <T extends HTMLElement>() => {
+  const myRef = useRef<T>(null);
+
+  return { ref: myRef };
 };
 
 export default SearchBar;
