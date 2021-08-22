@@ -49,18 +49,17 @@ export interface FootProps {
   classes?: CLASSESTYPE;
   footerData: FooterDataType;
 }
-export const Foot: React.FC<FootProps> = (props) => {
-  const { classes, footerData } = props;
-  let Logo = footerData.logo as React.ComponentType;
-  let gridClass = classes?.grid || "";
-  let columnClass = classes?.columnClassWrapper || "";
-  let columnTitleClass = classes?.columnTitle || "";
-  let subTitleClass = classes?.subTitle || "";
-  let linkItemClass = classes?.linkItem || "";
-  let descClass = classes?.description || "";
-  let iconWrapperClass = classes?.iconWrapperClass || "";
-  let columns = footerData.columns;
-  let mobileIconLinks = footerData.mobileIconLinks;
+export const Foot: React.FC<FootProps> = ({classes,footerData}) => {
+  const Logo = footerData.logo as React.ComponentType;
+  const gridClass = classes?.grid || "";
+  const columnClass = classes?.columnClassWrapper || "";
+  const columnTitleClass = classes?.columnTitle || "";
+  const subTitleClass = classes?.subTitle || "";
+  const linkItemClass = classes?.linkItem || "";
+  const descClass = classes?.description || "";
+  const  iconWrapperClass = classes?.iconWrapperClass || "";
+  const  columns = footerData.columns;
+  const mobileIconLinks = footerData.mobileIconLinks;
   return (
     <Container className={classnames(classes?.root)}>
       {Logo && <LogoDiv>{Logo}</LogoDiv>}
