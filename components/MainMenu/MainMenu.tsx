@@ -8,41 +8,23 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
-import CloseIcon from "@material-ui/icons/Close";
 import { MainMenuProps, menuDataItem } from "./types";
-import { useMediaQuery } from "react-responsive";
 import DesktopMenu from "./DesktopMenu";
 import styled from "@emotion/styled";
 const SiderMenu = styled(List)`
   width: 100%;
 `;
 export interface MenuItemProps {
-  pl: string;
+  paddingLeft: string;
 }
 const MenuItem = styled(ListItem)<MenuItemProps>`
-  padding-left: ${(props) => props.pl}!important;
+  padding-left: ${(props) => props.paddingLeft}!important;
 `;
 const PCHidden = styled.div`
   @media screen and (min-width: 768px) {
     display: none;
   }
 `;
-const MenuHeader = styled.div`
-  height: 60px;
-  display: flex !important;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  padding: 0;
-  background-color: #fff;
-  font-size: 8vw !important;
-  border-bottom: 1px solid #000;
-`;
-const MenuTitle = styled.span``;
-const MenuClose = styled(CloseIcon)`
-  color: #000;
-`;
-
 const MobileHidden = styled.div`
   @media screen and (max-width: 767px) {
     display: none;
@@ -84,7 +66,7 @@ export const MainMenu = (props: MainMenuProps) => {
     });
   }, []);
   const getSubMenuItem = (menusData: menuDataItem[], parentKeyPath: string, level: number) => {
-    const pl = level * 40 + "px";
+    const paddingLeft = level * 40 + "px";
     return (
       <SiderMenu disablePadding>
         {menusData.map((item, index) => {
@@ -92,7 +74,7 @@ export const MainMenu = (props: MainMenuProps) => {
             <Fragment key={parentKeyPath + "/" + item.key}>
               {
                 <MenuItem
-                  pl={pl}
+                  paddingLeft={paddingLeft}
                   onClick={handleClick.bind(null, parentKeyPath + "/" + item.key, item.key)}
                   button>
                   <ListItemIcon>{item.icon ? item.icon() : null}</ListItemIcon>
@@ -121,12 +103,6 @@ export const MainMenu = (props: MainMenuProps) => {
       </SiderMenu>
     );
   };
-
-  {
-    /*<div className={'layout'}>
-      <DesktopMenu onMenuItemClick={onMenuItemClick} pcWrapClassName={classnames(pcWrapClassName)} pcMenuItemClassName={pcMenuItemClassName}  menusData={menusData} />
-      </div>*/
-  }
   return (
     <>
       <PCHidden>
