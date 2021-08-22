@@ -66,12 +66,7 @@ export const MainMenu = (props: MainMenuProps) => {
   const Menu = BurgerMenu[animationType as keyof typeof BurgerMenu];
   const [keyPath, setKeyPath] = useState("");
   const [open, setOpen] = useState(false);
-  const handleOpen = useCallback(() => {
-    setOpen(true);
-  }, []);
-  const handleClose = useCallback(() => {
-    setOpen(false);
-  }, []);
+  const toggleMenu=()=>setOpen(value=>!value)
   const handleClick = useCallback((kp, key) => {
     if (onMenuItemClick) {
       onMenuItemClick(kp, key);
@@ -85,7 +80,7 @@ export const MainMenu = (props: MainMenuProps) => {
       }
     });
   }, []);
-  const getSubMenuOrItems = (menusData: menuDataItem[], parentKeyPath: string, level: number) => {
+  const getSubMenuItem = (menusData: menuDataItem[], parentKeyPath: string, level: number) => {
     const pl = level * 40 + "px";
     return (
       <SiderMenu disablePadding>
@@ -114,7 +109,7 @@ export const MainMenu = (props: MainMenuProps) => {
                   timeout="auto"
                   unmountOnExit
                   in={keyPath.indexOf(parentKeyPath + "/" + item.key) != -1}>
-                  {getSubMenuOrItems(item.children, parentKeyPath + "/" + item.key, level + 1)}
+                  {getSubMenuItem(item.children, parentKeyPath + "/" + item.key, level + 1)}
                 </Collapse>
               )}
             </Fragment>
@@ -132,14 +127,14 @@ export const MainMenu = (props: MainMenuProps) => {
   return (
     <>
       <PCHidden>
-        <Menu isOpen={open} onOpen={handleOpen} onClose={handleClose} {...others}>
+        <Menu isOpen={open} onOpen={toggleMenu} onClose={toggleMenu} {...others}>
           {showMenuHeader ? (
             <>
               <div>MENU</div>
-              <div onClick={handleClose}>X</div>
+              <div onClick={toggleMenu}>X</div>
             </>
           ) : null}
-          {getSubMenuOrItems(menusData, "", 0)}
+          {getSubMenuItem(menusData, "", 0)}
           {menuFooter && menuFooter()}
         </Menu>
       </PCHidden>
