@@ -3,11 +3,13 @@ import AssignmentIcon from "@material-ui/icons/Assignment";
 import LaptopMacIcon from "@material-ui/icons/LaptopMac";
 import { menuDataItem } from "../types";
 import styled from "@emotion/styled";
+
 export const NewDigWrap = styled.div`
   display: flex;
   background-color: #fff;
   padding-top: 23px;
   padding-bottom: 23px;
+  transform: translate3d(0px, 0px, 100px);
 `;
 export const Column = styled.div`
   margin-right: 98px;
