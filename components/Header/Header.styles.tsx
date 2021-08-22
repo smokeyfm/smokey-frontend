@@ -1,29 +1,32 @@
 import styled from "@emotion/styled";
 
 export const TopHeader = styled.div`
-  padding: 30px 0px;
+  padding: 10px 0px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 `;
 export const RightSide = styled.div`
-  width: 10%;
+  width: 33%;
   display: flex;
+  position: absolute;
+  top: 0;
+  right: 10px;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  z-index: 2;
 `;
 export const LogoDiv = styled.div`
+  width: 100%;
   padding: 15px 30px;
-  background: grey;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 export const HeaderDiv = styled.header`
-  margin-bottom: 25px;
-  z-index: 1;
+  z-index: 9;
 `;
 
 export interface LinkDivProps {
@@ -38,10 +41,9 @@ export const BottomHeader = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
-  padding: 30px 0px;
-
+  padding: 0px;
   & > :first-child {
     padding-left: 0px;
   }
