@@ -15,12 +15,14 @@ import MobileLatest from "./MobileLatest";
 import data from "./home.json";
 export const Home = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  const memberList= isMobile ? null :<MemberList data={data.memberList} />
-  const mobileMemberList=!isMobile ? null : <MemberList data={data.memberList} />
-  const latestProducts=isMobile ? null : <LatestProducts data={data.latestProducts} />
-  const mobileLatest=isMobile ? <MobileLatest data={data.hotDigs} title={"THE LATEST"}></MobileLatest> : null
-  const polProductList=isMobile ? null : <PolProductList data={data.hotDigs} title={"HOTDIGS"} />
-  const bigHotDig=isMobile ? null : <BigHotDig data={data.bigHotDig} />
+  const memberList = isMobile ? null : <MemberList data={data.memberList} />;
+  const mobileMemberList = !isMobile ? null : <MemberList data={data.memberList} />;
+  const latestProducts = isMobile ? null : <LatestProducts data={data.latestProducts} />;
+  const mobileLatest = isMobile ? (
+    <MobileLatest data={data.hotDigs} title={"THE LATEST"}></MobileLatest>
+  ) : null;
+  const polProductList = isMobile ? null : <PolProductList data={data.hotDigs} title={"HOTDIGS"} />;
+  const bigHotDig = isMobile ? null : <BigHotDig data={data.bigHotDig} />;
   return (
     <Layout>
       <Banner />

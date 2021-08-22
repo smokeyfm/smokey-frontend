@@ -25,10 +25,6 @@ const CustomIcon = styled.img`
   width: ${pxIphone(37)};
   height: auto;
 `;
-const MenuFooter = styled.div`
-  position: fixed;
-  bottom: 0;
-`;
 export default function MyApp({ Component, pageProps }: AppProps) {
   React.useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
@@ -44,12 +40,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             <GlobalStyles />
             <PageHeader />
             <MainMenu
-              menuFooter={() => (
-                <MenuFooter>
-                  <div>Privacy Policy - Terms & Conditions - RETURN POLICY</div>
-                  <div>All Materials Copyright © 2021 POL Clothing</div>
-                </MenuFooter>
-              )}
               showMenuHeader={true}
               customBurgerIcon={<CustomIcon src={"/BURGER.png"} />}
               pcMenuItemClassName={"pc-menu-item"}

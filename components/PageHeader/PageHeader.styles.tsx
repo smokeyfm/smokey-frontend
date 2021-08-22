@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import SearchIcon from "@material-ui/icons/Search";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import { pxIphone } from "../../utils";
 export const Header = styled.div`
@@ -41,14 +40,6 @@ export const LogoDivMo = styled.div`
     font-weight: bold;
     font-size: 17px;
   }
-`;
-export const CustomIcon = styled.img`
-  width: ${pxIphone(37)};
-  height: auto;
-`;
-export const MenuFooter = styled.div`
-  position: fixed;
-  bottom: 0;
 `;
 export const HeaderAccount = styled.span`
   font-family: Roboto Condensed;
