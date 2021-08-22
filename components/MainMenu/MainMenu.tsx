@@ -11,13 +11,14 @@ import Collapse from "@material-ui/core/Collapse";
 import { MainMenuProps, menuDataItem } from "./types";
 import DesktopMenu from "./DesktopMenu";
 import styled from "@emotion/styled";
+import isPropValid from '@emotion/is-prop-valid'
 const SiderMenu = styled(List)`
   width: 100%;
 `;
 export interface MenuItemProps {
   paddingLeft: string;
 }
-const MenuItem = styled(ListItem)<MenuItemProps>`
+const MenuItem = styled(ListItem,{shouldForwardProp:prop=>isPropValid(prop)&&prop!=='paddingLeft'})<MenuItemProps>`
   padding-left: ${(props) => props.paddingLeft}!important;
 `;
 const PCHidden = styled.div`
