@@ -13,6 +13,7 @@ import { ThemeProvider } from "@emotion/react";
 import { theme } from "../styles/theme";
 import { GlobalStyles } from "../styles/global-styles";
 import "../styles/fonts.css";
+import "swiper/swiper.scss";
 import "./app.css";
 
 const queryClient = new QueryClient();

@@ -23,6 +23,7 @@ export const LogoDiv = styled.div`
 `;
 export const HeaderDiv = styled.header`
   margin-bottom: 25px;
+  z-index: 1;
 `;
 
 export interface LinkDivProps {
