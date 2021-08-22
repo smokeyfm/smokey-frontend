@@ -20,7 +20,6 @@ const fetchProducts = async (page: number = 1) => {
     throw new Error("Products request failed");
   }
 };
-
 const useProducts = (page: number) => {
   return useQuery<IProducts, false>([QueryKeys.PRODUCTS, page], () => fetchProducts(page));
 };

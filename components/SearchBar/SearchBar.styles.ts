@@ -40,8 +40,18 @@ export const ButtonWrapper = styled.div`
   flex-direction: row;
   flex-grow: 1;
 `;
-
-export const SearchButton = styled.button`
+export interface SearchButtonProps {
+  theme?: {
+    colors: {
+      white: { primary: string };
+      blue: {
+        primary: string;
+        medium: string;
+      };
+    };
+  };
+}
+export const SearchButton = styled.button<SearchButtonProps>`
   margin: 16px 10px 10px -55px;
   float: right;
   position: absolute;
@@ -56,8 +66,10 @@ export const SearchButton = styled.button`
     background-color: ${(props) => props.theme.colors.blue.medium};
   }
 `;
-
-export const BrowseButton = styled.button`
+export interface BrowseButtonProps {
+  small?: boolean;
+}
+export const BrowseButton = styled.button<BrowseButtonProps>`
   margin: 10px 10px 10px 20px;
 `;
 
@@ -77,8 +89,19 @@ export const StyledInputPrefix = styled.div`
   padding-right: 10px;
   justify-content: flex-end;
 `;
-
-export const StyledInputPostfix = styled.div`
+export interface StyledInputPostfixProps {
+  theme?: {
+    colors: {
+      blue: {
+        primary: string;
+      };
+      gray: {
+        medium: string;
+      };
+    };
+  };
+}
+export const StyledInputPostfix = styled.div<StyledInputPostfixProps>`
   ${defaultPrefixStyles};
   right: 45px;
   padding-left: 10px;

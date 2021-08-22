@@ -5,7 +5,6 @@ import { IProduct } from "@spree/storefront-api-v2-sdk/types/interfaces/Product"
 // import { useDispatch } from 'react-redux';
 // import { commonOperations } from '@common/ducks';
 import { StyledSuggestionLink, StyledSuggestionContent } from "./AutoComplete.styles";
-
 const formatWithHighlight = (text: string, query: string | undefined) => {
   if (!query) return text;
 
@@ -16,7 +15,6 @@ const formatWithHighlight = (text: string, query: string | undefined) => {
 
   const reg = new RegExp(`(${sanitizeString(query)})`, "gi");
   const textParts = text.split(reg);
-
   return textParts.map((part: any) =>
     part.match(reg) ? (
       part
@@ -27,7 +25,6 @@ const formatWithHighlight = (text: string, query: string | undefined) => {
     )
   );
 };
-
 type OwnProps = {
   suggestion?: any;
   query?: string;
