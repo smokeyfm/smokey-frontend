@@ -13,7 +13,14 @@ const AutoComplete = ({
   onSelect,
   query
 }: AutoCompleteProps) => {
-  const { error, status, data, isLoading, isSuccess } = useProducts(1);
+  const {
+    error,
+    status,
+    data,
+    isLoading,
+    isSuccess
+  }: { error: any; status: any; data: any; isLoading: boolean; isSuccess: boolean } =
+    useProducts(1);
   const [page, setPage] = useState(1);
   const [suggestions, setSuggestions] = useState([]);
   // const [error, setError] = useState('');
@@ -43,7 +50,7 @@ const AutoComplete = ({
   return (
     <StyledAutoComplete role="listbox" aria-labelledby={labelId} id={id}>
       {isVisible &&
-        data?.data?.map((item, index) => {
+        data?.data?.map((item: any, index: any) => {
           return (
             <Suggestion
               suggestion={item}
