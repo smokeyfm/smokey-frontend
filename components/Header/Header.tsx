@@ -31,7 +31,6 @@ export const Header: React.FC<HeaderProps> = (props) => {
     return (
       <HeaderDiv>
         <TopHeader>
-          <div />
           <LogoDiv>
             <Link href="/">
               <LinkDiv isActive>LOGO</LinkDiv>
@@ -39,6 +38,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
           </LogoDiv>
           <div>
             <RightSide>
+              <SearchBar />
               {user ? (
                 <>
                   <div>{user.data.attributes.email}</div>
@@ -58,8 +58,8 @@ export const Header: React.FC<HeaderProps> = (props) => {
             </RightSide>
           </div>
         </TopHeader>
-        <Sticky>
-          <BottomHeader>
+        <BottomHeader>
+          <Sticky>
             <MainMenu
               pcMenuItemClassName={"pc-menu-item"}
               outterContainerId={"outer-container"}
@@ -70,9 +70,8 @@ export const Header: React.FC<HeaderProps> = (props) => {
               menuFooter={false}
               right={false}
             />
-            <SearchBar />
-          </BottomHeader>
-        </Sticky>
+          </Sticky>
+        </BottomHeader>
       </HeaderDiv>
     );
   }
