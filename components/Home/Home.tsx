@@ -42,4 +42,4 @@ export async function getServerSideProps() {
       dehydratedState: dehydrate(queryClient)
     }
   };
-};
+}
