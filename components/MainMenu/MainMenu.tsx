@@ -66,7 +66,7 @@ export const MainMenu = (props: MainMenuProps) => {
   const Menu = BurgerMenu[animationType as keyof typeof BurgerMenu];
   const [keyPath, setKeyPath] = useState("");
   const [open, setOpen] = useState(false);
-  const toggleMenu=()=>setOpen(value=>!value)
+  const toggleMenu = () => setOpen((value) => !value);
   const handleClick = useCallback((kp, key) => {
     if (onMenuItemClick) {
       onMenuItemClick(kp, key);
