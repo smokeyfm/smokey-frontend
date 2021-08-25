@@ -19,7 +19,7 @@ export const Home = () => {
     <Layout>
       <Banner />
       <Content>
-        {isMobile ? null : <MemberList data={data.memberList} />}
+        {/* {isMobile ? null : <MemberList data={data.memberList} />} */}
         <Products data={data.productList} title={"Live-Shopping"} />
         {!isMobile ? null : <MemberList data={data.memberList} />}
         {isMobile ? null : <LatestProducts data={data.latestProducts} />}

@@ -9,7 +9,8 @@ const Container = styled.div`
   flex-wrap: wrap;
   position: relative;
   padding-bottom: 13px;
-  &:after {
+  z-index: 2;
+  /* &:after {
     position: absolute;
     content: "";
     left: 99px;
@@ -17,7 +18,7 @@ const Container = styled.div`
     height: 1px;
     background-color: #000;
     top: 99%;
-  }
+  } */
 `;
 export interface MyMenuItemProps {
   isActive: boolean;
@@ -43,7 +44,6 @@ const MyMenuItem = styled.div<MyMenuItemProps>`
     position: absolute;
     bottom: 0;
     display: ${(props) => (props.isActive ? "block" : "none")};
-    transfrom: ${(props) => (props.isActive ? "translateX(0)" : "translateX(-100%)")};
   }
   &:first-child {
     margin-left: 197px;
