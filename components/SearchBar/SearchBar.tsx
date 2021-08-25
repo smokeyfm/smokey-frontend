@@ -1,7 +1,7 @@
 import React, {
   useState,
   useEffect,
-  // createRef,
+  createRef,
   useRef,
   useCallback,
   KeyboardEvent,
@@ -38,9 +38,7 @@ const SearchBar = ({
 }: SearchBarProps) => {
   const router = useRouter();
   const [query, setQuery] = useState(value);
-  // const [searchResults, setSearchResults] = useState([]);
   const [isAutoCompleteVisible, setIsAutocompleteVisible] = useState(false);
-  // const anyRef = createRef();
 
   const handleSearchChange = (e: any) => {
     const { value } = e.target;
@@ -55,17 +53,16 @@ const SearchBar = ({
     setIsAutocompleteVisible(false);
   };
 
-  // const dropdownRef = createRef();
+  const { ref: dropdownRef } = useCustomRef<HTMLDivElement>();
 
   const handleClickOutside = useCallback((event: Event) => {
     const someNode = event.target as Node;
-    if (dropdownRef.current && dropdownRef.current.contains(someNode) !== null) {
+    if (dropdownRef.current && !dropdownRef.current?.contains(someNode)) {
       setIsAutocompleteVisible(false);
     }
   }, []);
 
-  // useOnClickOutside(anyRef, handleClickOutside);
-  const { ref: dropdownRef } = useCustomRef<HTMLDivElement>();
+  useOnClickOutside(dropdownRef, handleClickOutside);
 
   const readinessIcon = () => {
     const { data, isLoading, isSuccess } = useProducts(1);

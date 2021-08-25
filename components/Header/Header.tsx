@@ -27,50 +27,54 @@ export const Header: React.FC<HeaderProps> = (props) => {
   const [cartVisible, setCartVisible] = React.useState(false);
   const toggleCart = () => setCartVisible((isVisible) => !isVisible);
 
-  return (
-    <HeaderDiv>
-      <TopHeader>
-        <div />
-        <LogoDiv>
-          <Link href="/">
-            <LinkDiv isActive>LOGO</LinkDiv>
-          </Link>
-        </LogoDiv>
-        <div>
-          <RightSide>
-            {user ? (
-              <>
-                <div>{user.data.attributes.email}</div>
-                <button onClick={logout}>LOGOUT</button>
-              </>
-            ) : (
-              <>
-                <Link href="/authenticate/login">
-                  <LinkDiv isActive={pathname === "/authenticate/login"}>LOG IN</LinkDiv>
-                </Link>
-                <Link href="/authenticate/signup">
-                  <LinkDiv isActive={pathname === "/authenticate/signup"}>SIGN UP</LinkDiv>
-                </Link>
-              </>
-            )}
-            <Cart isVisible={cartVisible} toggle={toggleCart} />
-          </RightSide>
-        </div>
-      </TopHeader>
-      <Sticky>
+  if (process.env.IS_MAINT_MODE !== "true") {
+    return (
+      <HeaderDiv>
+        <TopHeader>
+          <LogoDiv>
+            <Link href="/">
+              <LinkDiv isActive>LOGO</LinkDiv>
+            </Link>
+          </LogoDiv>
+          <div>
+            <RightSide>
+              <SearchBar />
+              {user ? (
+                <>
+                  <div>{user.data.attributes.email}</div>
+                  <button onClick={logout}>LOGOUT</button>
+                </>
+              ) : (
+                <>
+                  <Link href="/authenticate/login">
+                    <LinkDiv isActive={pathname === "/authenticate/login"}>LOG IN</LinkDiv>
+                  </Link>
+                  <Link href="/authenticate/signup">
+                    <LinkDiv isActive={pathname === "/authenticate/signup"}>SIGN UP</LinkDiv>
+                  </Link>
+                </>
+              )}
+              <Cart isVisible={cartVisible} toggle={toggleCart} />
+            </RightSide>
+          </div>
+        </TopHeader>
         <BottomHeader>
-          <MainMenu
-            showMenuHeader={true}
-            pcMenuItemClassName={"pc-menu-item"}
-            outterContainerId={"outer-container"}
-            pageWrapId={"page-wrap"}
-            animationType={"slide"}
-            menusData={menusData}
-            right={false}
-          />
-          <SearchBar />
+          <Sticky>
+            <MainMenu
+              pcMenuItemClassName={"pc-menu-item"}
+              outterContainerId={"outer-container"}
+              pageWrapId={"page-wrap"}
+              animationType={"slide"}
+              menusData={menusData}
+              showMenuHeader={true}
+              menuFooter={false}
+              right={false}
+            />
+          </Sticky>
         </BottomHeader>
-      </Sticky>
-    </HeaderDiv>
-  );
+      </HeaderDiv>
+    );
+  }
+
+  return null;
 };
