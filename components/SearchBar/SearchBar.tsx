@@ -1,7 +1,7 @@
 import React, {
   useState,
   useEffect,
-  // createRef,
+  createRef,
   useRef,
   useCallback,
   KeyboardEvent,
@@ -28,6 +28,7 @@ import AutoComplete from "../AutoComplete";
 import { useRouter } from "next/router";
 import { useOnClickOutside } from "../../hooks";
 import { SearchBarProps } from "./types";
+import * as tracking from "../../config/tracking";
 
 const SearchBar = ({
   placeholder = "Search...",
@@ -37,9 +38,7 @@ const SearchBar = ({
 }: SearchBarProps) => {
   const router = useRouter();
   const [query, setQuery] = useState(value);
-  // const [searchResults, setSearchResults] = useState([]);
   const [isAutoCompleteVisible, setIsAutocompleteVisible] = useState(false);
-  // const anyRef = createRef();
 
   const handleSearchChange = (e: any) => {
     const { value } = e.target;
@@ -54,17 +53,16 @@ const SearchBar = ({
     setIsAutocompleteVisible(false);
   };
 
-  // const dropdownRef = createRef();
+  const { ref: dropdownRef } = useCustomRef<HTMLDivElement>();
 
   const handleClickOutside = useCallback((event: Event) => {
     const someNode = event.target as Node;
-    if (dropdownRef.current && dropdownRef.current.contains(someNode) !== null) {
+    if (dropdownRef.current && !dropdownRef.current?.contains(someNode)) {
       setIsAutocompleteVisible(false);
     }
   }, []);
 
-  // useOnClickOutside(anyRef, handleClickOutside);
-  const { ref: dropdownRef } = useCustomRef<HTMLDivElement>();
+  useOnClickOutside(dropdownRef, handleClickOutside);
 
   const readinessIcon = () => {
     const { data, isLoading, isSuccess } = useProducts(1);
@@ -96,6 +94,12 @@ const SearchBar = ({
       case "Enter":
         if (query.length > 3) {
           if (event.key === "Enter" && query.length > 3) {
+            tracking.trackEvent({
+              action: tracking.Action.PRESS_ENTER,
+              category: tracking.Category.SEARCH_BAR,
+              label: query
+            });
+
             router.push(`/search?term=${query}`);
           }
         }
@@ -104,6 +108,16 @@ const SearchBar = ({
       default:
         break;
     }
+  };
+
+  const selectSuggestion = (suggestion: string) => {
+    tracking.trackEvent({
+      action: tracking.Action.SELECT_SUGGESTION,
+      category: tracking.Category.SEARCH_BAR,
+      label: suggestion
+    });
+
+    setQuery(suggestion);
   };
 
   const labelId = "label-search";
@@ -162,7 +176,7 @@ const SearchBar = ({
           toggleVisibility={(e: any) => setIsAutocompleteVisible(e)}
           id={dropdownId}
           labelId={labelId}
-          onSelect={(e: any) => setQuery(e)}
+          onSelect={(e: any) => selectSuggestion(e)}
           query={query}
         />
       ) : null}

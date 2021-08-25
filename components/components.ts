@@ -2,6 +2,7 @@ export * from "./AuthForm";
 export * from "./ComingSoon";
 export * from "./Foot";
 export * from "./Header";
+export * from "./Home";
 export * from "./InfoBox";
 export * from "./Layout";
 export * from "./MainMenu";
