@@ -20,6 +20,7 @@ import { theme } from "../styles/theme";
 import { GlobalStyles } from "../styles/global-styles";
 import { pxIphone } from "../utils";
 import "../styles/fonts.css";
+import "swiper/swiper.scss";
 import "./app.css";
 
 const queryClient = new QueryClient();
@@ -48,13 +49,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
-
-  const renderHeader = () => {
-    if (process.env.IS_MAINT_MODE !== "true") {
-      return <Header />;
-    }
-    return;
-  };
 
   return (
     <QueryClientProvider client={queryClient}>

@@ -81,7 +81,6 @@ const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
       ))}
       {menusData.map((item, index) => (
         <DropDown
-          data-test={"abc"}
           onMouseLeave={handleMouseLeave}
           onMouseEnter={handleMouseEnter.bind(null, item)}
           isActive={currentKey == item.key}

@@ -62,6 +62,7 @@ export interface MainMenuProps {
   itemListClassName?: string;
   itemListElement?: "div" | "nav" | FunctionComponent<{ className: string; style: object }>;
   menuClassName?: string;
+  menuFooter?: boolean;
   morphShapeClassName?: string;
   noOverlay?: boolean;
   noTransition?: boolean;
@@ -73,6 +74,7 @@ export interface MainMenuProps {
   overlayClassName?: string;
   pageWrapId?: string;
   right?: boolean;
+  showMenuHeader?: boolean;
   styles?: BurgerIconStyles;
   width?: number | string;
   outterContainerId?: string;
