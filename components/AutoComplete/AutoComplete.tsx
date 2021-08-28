@@ -9,6 +9,7 @@ const AutoComplete = ({
   id,
   labelId,
   isVisible,
+  setIsSearchLoading,
   toggleVisibility,
   onSelect,
   query
@@ -32,11 +33,8 @@ const AutoComplete = ({
   }, []);
 
   if (isLoading) {
-    return (
-      <StyledAutoComplete role="listbox" aria-labelledby={labelId} id={id}>
-        <h1>Loading {status}</h1>
-      </StyledAutoComplete>
-    );
+    setIsSearchLoading();
+    return null;
   }
 
   if (error) {
@@ -47,6 +45,7 @@ const AutoComplete = ({
     );
   }
 
+  setIsSearchLoading();
   return (
     <StyledAutoComplete role="listbox" aria-labelledby={labelId} id={id}>
       {isVisible &&

@@ -26,19 +26,31 @@ const withResponsiveContext = (App: any, req: any) => {
 };
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    const sheets = new ServerStyleSheets();
+    const sheet = new ServerStyleSheets();
     const originalRenderPage = ctx.renderPage;
-    ctx.renderPage = () =>
-      originalRenderPage({
-        // useful for wrapping the whole react tree
-        enhanceApp: (App) =>
-          withResponsiveContext((props: any) => sheets.collect(<App {...props} />), ctx.req)
-      });
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          // useful for wrapping the whole react tree
+          enhanceApp: (App) =>
+            withResponsiveContext((props: any) => sheet.collect(<App {...props} />), ctx.req)
+        });
 
-    // Run the parent `getInitialProps`, it now includes the custom `renderPage`
-    const initialProps = await Document.getInitialProps(ctx);
+      // Run the parent `getInitialProps`, it now includes the custom `renderPage`
+      const initialProps = await Document.getInitialProps(ctx);
 
-    return initialProps;
+      return {
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        )
+      };
+    } finally {
+      Object.seal(sheet);
+    }
   }
   render() {
     return (
