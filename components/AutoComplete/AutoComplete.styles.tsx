@@ -60,7 +60,7 @@ export const StyledSuggestionLink = styled.div<StyledSuggestionLinkProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 16px 12px 40px;
+  padding: 12px 16px 12px 30px;
   color: ${(props) => props.theme.colors.blue.primary};
 
   font-size: 14px;

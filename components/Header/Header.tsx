@@ -33,7 +33,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
         <TopHeader>
           <LogoDiv>
             <Link href="/">
-              <LinkDiv isActive>LOGO</LinkDiv>
+              <LinkDiv isActive>POL</LinkDiv>
             </Link>
           </LogoDiv>
           <div>
