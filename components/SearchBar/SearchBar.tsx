@@ -1,16 +1,13 @@
 import React, {
   useState,
   useEffect,
-  // createRef,
+  createRef,
   useRef,
   useCallback,
   KeyboardEvent,
   MouseEvent,
   TouchEvent
 } from "react";
-// import { useDispatch, useSelector } from 'react-redux';
-// import { IconSearch, IconClose } from '@components/SVGs';
-import { useProducts } from "../../hooks/useProducts";
 import {
   StyledSearch,
   StyledInputContainer,
@@ -29,6 +26,7 @@ import { useRouter } from "next/router";
 import { useOnClickOutside } from "../../hooks";
 import { SearchBarProps } from "./types";
 import * as tracking from "../../config/tracking";
+import { Search } from "@material-ui/icons";
 
 const SearchBar = ({
   placeholder = "Search...",
@@ -38,9 +36,10 @@ const SearchBar = ({
 }: SearchBarProps) => {
   const router = useRouter();
   const [query, setQuery] = useState(value);
-  // const [searchResults, setSearchResults] = useState([]);
   const [isAutoCompleteVisible, setIsAutocompleteVisible] = useState(false);
-  // const anyRef = createRef();
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isWidthSet, setIsWidthSet] = useState(false);
+  const [isSearchLoading, setIsSearchLoading] = useState(false);
 
   const handleSearchChange = (e: any) => {
     const { value } = e.target;
@@ -55,28 +54,16 @@ const SearchBar = ({
     setIsAutocompleteVisible(false);
   };
 
-  // const dropdownRef = createRef();
+  const { ref: dropdownRef } = useCustomRef<HTMLDivElement>();
 
   const handleClickOutside = useCallback((event: Event) => {
     const someNode = event.target as Node;
-    if (dropdownRef.current && dropdownRef.current.contains(someNode) !== null) {
+    if (dropdownRef.current && !dropdownRef.current?.contains(someNode)) {
       setIsAutocompleteVisible(false);
     }
   }, []);
 
-  // useOnClickOutside(anyRef, handleClickOutside);
-  const { ref: dropdownRef } = useCustomRef<HTMLDivElement>();
-
-  const readinessIcon = () => {
-    const { data, isLoading, isSuccess } = useProducts(1);
-    if (isLoading) return <>...</>;
-
-    if (!isSuccess) {
-      return <>?</>;
-    }
-
-    return <>✅</>;
-  };
+  useOnClickOutside(dropdownRef, handleClickOutside);
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
@@ -123,6 +110,20 @@ const SearchBar = ({
     setQuery(suggestion);
   };
 
+  // Wait to set search width until exanding animation (0.33s) completes
+  const handleSetSearchWidth = () =>
+    setTimeout(() => {
+      setIsWidthSet(!isWidthSet);
+    }, 330);
+
+  // Open Search, unless open then close/hide everything and remove explicit search width
+  const toggleSearch = () => {
+    setIsExpanded(!isExpanded);
+    isWidthSet ? setIsWidthSet(!isWidthSet) : handleSetSearchWidth();
+    setQuery("");
+    isAutoCompleteVisible && setIsAutocompleteVisible(!isAutoCompleteVisible);
+  };
+
   const labelId = "label-search";
   const dropdownId = "dropdown-search";
 
@@ -137,12 +138,11 @@ const SearchBar = ({
       {...rest}>
       <SearchBarWrapper className="is-search-route">
         <SearchInputWrapper>
-          <StyledInputContainer>
+          <StyledInputContainer isExpanded={isExpanded} isWidthSet={isWidthSet}>
             <StyledInputPrefix>
-              <StyledIcon>
-                {/* <IconSearch /> */}
-                <>0: </>
-              </StyledIcon>
+              <i
+                onClick={toggleSearch}
+                className={isSearchLoading ? "bts bt-spinner bt-pulse" : "btr bt-search"}></i>
             </StyledInputPrefix>
             <StyledInput
               onKeyDown={(e: KeyboardEvent) => keyboardEvents(e)}
@@ -156,25 +156,21 @@ const SearchBar = ({
               role="textbox"
               autoComplete="off"
             />
-
-            {readinessIcon}
             {query && (
               <StyledInputPostfix onClick={handleSearchClear}>
-                <StyledIcon className="close-icon">
-                  {/* <IconClose /> */}
-                  <>X</>
-                </StyledIcon>
+                <i className="btr bt-times"></i>
               </StyledInputPostfix>
             )}
           </StyledInputContainer>
         </SearchInputWrapper>
-        <ButtonWrapper>
+        {/* <ButtonWrapper>
           <BrowseButton>Search</BrowseButton>
-        </ButtonWrapper>
+        </ButtonWrapper> */}
       </SearchBarWrapper>
 
       {autoComplete ? (
         <AutoComplete
+          setIsSearchLoading={() => setIsSearchLoading}
           isVisible={isAutoCompleteVisible}
           toggleVisibility={(e: any) => setIsAutocompleteVisible(e)}
           id={dropdownId}
