@@ -13,6 +13,8 @@ import { ThemeProvider } from "@emotion/react";
 import { theme } from "../styles/theme";
 import { GlobalStyles } from "../styles/global-styles";
 import "../styles/fonts.css";
+import "../public/fonts/black-tie/black-tie.css";
+import "swiper/swiper.scss";
 import "./app.css";
 
 const queryClient = new QueryClient();
@@ -39,20 +41,13 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     };
   }, [router.events]);
 
-  const renderHeader = () => {
-    if (process.env.IS_MAINT_MODE !== "true") {
-      return <Header />;
-    }
-    return;
-  };
-
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <Hydrate state={pageProps.dehydratedState}>
           <ThemeProvider theme={theme}>
             <GlobalStyles />
-            {renderHeader()}
+            <Header />
             <Component {...pageProps} />
           </ThemeProvider>
         </Hydrate>
