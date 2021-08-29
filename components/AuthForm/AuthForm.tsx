@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { Layout } from "../Layout";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import styled from "@emotion/styled";
-import { SignupForm } from '../SignupForm';
+import { SignupForm } from "../SignupForm";
 
 import {
   AuthFormType,
