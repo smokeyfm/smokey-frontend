@@ -1,0 +1,257 @@
+{
+  "memberList": [
+    {
+      "name": "Jane Jetson",
+      "avatar": "/1.png"
+    },
+    {
+      "name": "WILMA FLINTSTONE",
+      "avatar": "/2.png"
+    },
+    {
+      "name": "LUCILE BALL",
+      "avatar": "/3.png"
+    },
+    {
+      "name": "Jane Jetson",
+      "avatar": "/9.png"
+    },
+    {
+      "name": "Jane Jetson",
+      "avatar": "/9.png"
+    },
+    {
+      "name": "Jane Jetson",
+      "avatar": "/9.png"
+    },
+    {
+      "name": "Jane Jetson",
+      "avatar": "/9.png"
+    },
+    {
+      "name": "Jane Jetson",
+      "avatar": "/9.png"
+    },
+    {
+      "name": "DIANA PRINCE",
+      "avatar": "./4.png"
+    },
+    {
+      "name": "Jane Jetson",
+      "avatar": "/5.png"
+    },
+    {
+      "name": "Jane Jetson",
+      "avatar": "/6.png"
+    },
+    {
+      "name": "Jane Jetson",
+      "avatar": "/9.png"
+    },
+    {
+      "name": "Jane Jetson",
+      "avatar": "/9.png"
+    },
+    {
+      "name": "Jane Jetson",
+      "avatar": "/9.png"
+    },
+    {
+      "name": "Jane Jetson",
+      "avatar": "/7.png"
+    },
+    {
+      "name": "Jane Jetson",
+      "avatar": "/8.png"
+    },
+    {
+      "name": "Jane Jetson",
+      "avatar": "/9.png"
+    },
+    {
+      "name": "Jane Jetson",
+      "avatar": "/9.png"
+    },
+    {
+      "name": "Jane Jetson",
+      "avatar": "/9.png"
+    },
+    {
+      "name": "Jane Jetson",
+      "avatar": "/9.png"
+    },
+    {
+      "name": "Jane Jetson",
+      "avatar": "/10.png"
+    },
+    {
+      "name": "Jane Jetson",
+      "avatar": "/11.png"
+    }
+  ],
+  "productList": [
+    {
+      "name": "Sheer V Top",
+      "img": "./p1.png",
+      "influencer": "Influencer",
+      "rate": 5,
+      "price": "$24.99",
+      "avatar": "/avatar.png"
+    },
+    {
+      "name": "Sheer V Top",
+      "img": "/p2.png",
+      "influencer": "Influencer",
+      "rate": 5,
+      "price": "$24.99",
+      "avatar": "/avatar.png"
+    },
+    {
+      "name": "Sheer V Top",
+      "img": "/p2.png",
+      "influencer": "Influencer",
+      "rate": 5,
+      "price": "$24.99",
+      "avatar": "/avatar.png"
+    },
+    {
+      "name": "Sheer V Top",
+      "img": "/p2.png",
+      "influencer": "Influencer",
+      "rate": 5,
+      "price": "$24.99",
+      "avatar": "/avatar.png"
+    },
+    {
+      "name": "Sheer V Top",
+      "img": "/p2.png",
+      "influencer": "Influencer",
+      "rate": 5,
+      "price": "$24.99",
+      "avatar": "/avatar.png"
+    },
+    {
+      "name": "Sheer V Top",
+      "img": "/p2.png",
+      "influencer": "Influencer",
+      "rate": 5,
+      "price": "$24.99",
+      "avatar": "/avatar.png"
+    },
+    {
+      "name": "Sheer V Top",
+      "img": "./p3.png",
+      "influencer": "Influencer",
+      "rate": 5,
+      "price": "$24.99",
+      "avatar": "/avatar.png"
+    },
+    {
+      "name": "Sheer V Top",
+      "img": "./p4.png",
+      "influencer": "Influencer",
+      "rate": 5,
+      "price": "$24.99",
+      "avatar": "/avatar.png"
+    },
+    {
+      "name": "Sheer V Top",
+      "img": "./p5.png",
+      "influencer": "Influencer",
+      "rate": 5,
+      "price": "$24.99",
+      "avatar": "/avatar.png"
+    },
+    {
+      "name": "Sheer V Top",
+      "img": "./p6.png",
+      "influencer": "Influencer",
+      "rate": 5,
+      "price": "$24.99",
+      "avatar": "/avatar.png"
+    }
+  ],
+  "latestProducts": [
+    {
+      "img": "/latest1.png"
+    },
+    {
+      "img": "/latest2.png"
+    }
+  ],
+  "hotDigs": [
+    {
+      "title": "POLT130",
+      "desc": "ONLINE EXCLUSIVE",
+      "img": "/h1.png",
+      "rate": 5,
+      "price": "US$18.99"
+    },
+    {
+      "title": "POLT130",
+      "desc": "ONLINE EXCLUSIVE",
+      "img": "/h2.png",
+      "rate": 5,
+      "price": "US$18.99"
+    },
+    {
+      "title": "POLT130",
+      "desc": "ONLINE EXCLUSIVE",
+      "img": "/h3.png",
+      "rate": 5,
+      "price": "US$18.99"
+    },
+    {
+      "title": "POLT130",
+      "desc": "ONLINE EXCLUSIVE",
+      "img": "/h4.png",
+      "rate": 5,
+      "price": "US$18.99"
+    },
+    {
+      "title": "POLT130",
+      "desc": "ONLINE EXCLUSIVE",
+      "img": "/h4.png",
+      "rate": 5,
+      "price": "US$18.99"
+    },
+    {
+      "title": "POLT130",
+      "desc": "ONLINE EXCLUSIVE",
+      "img": "/h4.png",
+      "rate": 5,
+      "price": "US$18.99"
+    },
+    {
+      "title": "POLT130",
+      "desc": "ONLINE EXCLUSIVE",
+      "img": "/h4.png",
+      "rate": 5,
+      "price": "US$18.99"
+    },
+    {
+      "title": "POLT130",
+      "desc": "ONLINE EXCLUSIVE",
+      "img": "/h4.png",
+      "rate": 5,
+      "price": "US$18.99"
+    },
+    {
+      "title": "POLT130",
+      "desc": "ONLINE EXCLUSIVE",
+      "img": "/h4.png",
+      "rate": 5,
+      "price": "US$18.99"
+    },
+    {
+      "title": "POLT130",
+      "desc": "ONLINE EXCLUSIVE",
+      "img": "/h1.png",
+      "rate": 5,
+      "price": "US$18.99"
+    }
+  ],
+  "bigHotDig": {
+    "img": "/bh.png"
+  }
+}
