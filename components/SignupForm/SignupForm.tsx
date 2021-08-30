@@ -3,10 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import styled from "@emotion/styled";
-import {
-  AuthFormType,
-  signupForm,
-} from "../AuthForm/constants";
+import { AuthFormType, signupForm } from "../AuthForm/constants";
 import { useAuth } from "../../config/auth";
 
 const FieldContainer = styled.div`
