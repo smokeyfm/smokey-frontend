@@ -1,13 +1,9 @@
-import React from 'react';
-import Input from '@carvana/showroom-forms/Input';
+import React from "react";
+import Input from "@carvana/showroom-forms/Input";
 
-import { Error } from './FormikInput.styles';
+import { Error } from "./FormikInput.styles";
 
-const FormikDateOfBirth = ({
-  field: { ...fields },
-  form: { touched, errors },
-  ...props
-}) => (
+const FormikDateOfBirth = ({ field: { ...fields }, form: { touched, errors }, ...props }) => (
   <>
     <Input
       id="dateOfBirth"
@@ -17,11 +13,7 @@ const FormikDateOfBirth = ({
       {...fields}
       invalid={Boolean(touched[fields.name] && errors[fields.name]).toString()}
     />
-    {touched[fields.name] && errors[fields.name] ? (
-      <Error>{errors[fields.name]}</Error>
-    ) : (
-      ''
-    )}
+    {touched[fields.name] && errors[fields.name] ? <Error>{errors[fields.name]}</Error> : ""}
   </>
 );
 export default FormikDateOfBirth;

@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 // import { setFieldValue } from 'formik';
 
-import Input from '@carvana/showroom-forms/Input';
+import Input from "@carvana/showroom-forms/Input";
 
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng
-} from 'react-places-autocomplete';
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 
 import {
   Error,
@@ -14,7 +11,7 @@ import {
   SuggestionWrapper,
   SuggestionLoader,
   SuggestionItem
-} from './FormikInput.styles';
+} from "./FormikInput.styles";
 
 // Reference: https://github.com/mui-org/material-ui/issues/18331#issuecomment-569981389
 const FormikAutocomplete = ({
@@ -24,19 +21,19 @@ const FormikAutocomplete = ({
   form,
   ...props
 }) => {
-  const [homeAddress, setHomeAddress] = useState('');
+  const [homeAddress, setHomeAddress] = useState("");
   const [addressSelected, setAddressSelected] = useState(false);
 
   // const { setTouched, setFieldValue, name } = props;
 
-  const handleChange = input => {
+  const handleChange = (input) => {
     // console.log('changing');
     setAddressSelected(false);
     setHomeAddress(input);
     // setFieldValue(name, search, false);
   };
 
-  const handleSelect = address => {
+  const handleSelect = (address) => {
     // geocodeByAddress(address)
     //   .then(results => getLatLng(results[0]))
     //   .then(latLng => console.log('Success', latLng))
@@ -51,31 +48,29 @@ const FormikAutocomplete = ({
       <PlacesAutocomplete
         value={homeAddress || field.value}
         onChange={handleChange}
-        onSelect={address => handleSelect({ name: field.name, address })}
-      >
+        onSelect={(address) => handleSelect({ name: field.name, address })}>
         {({ suggestions, getInputProps, getSuggestionItemProps, loading }) => (
           <>
             <Input
               {...getInputProps({
-                placeholder: 'Home Address...',
-                className: 'location-search-input'
+                placeholder: "Home Address...",
+                className: "location-search-input"
               })}
               selectedTheme="dark"
               invalid={Boolean(touched[fields.name] && errors[fields.name])}
             />
-            {!addressSelected && homeAddress !== '' && (
+            {!addressSelected && homeAddress !== "" && (
               <SuggestionWrapper>
                 {loading && <SuggestionLoader>Loading...</SuggestionLoader>}
-                {suggestions.map(suggestion => {
+                {suggestions.map((suggestion) => {
                   const className = suggestion.active
-                    ? 'suggestion-item active'
-                    : 'suggestion-item';
+                    ? "suggestion-item active"
+                    : "suggestion-item";
                   return (
                     <SuggestionItem
                       {...getSuggestionItemProps(suggestion, {
                         className
-                      })}
-                    >
+                      })}>
                       <span>{suggestion.description}</span>
                     </SuggestionItem>
                   );
@@ -97,11 +92,7 @@ const FormikAutocomplete = ({
             // onChange={ () => console.log('TYPE TYPE')}
             onBlur={ () => setTouched({ [name]: true }) }
           /> */}
-      {touched[fields.name] && errors[fields.name] ? (
-        <Error>{errors[fields.name]}</Error>
-      ) : (
-        ''
-      )}
+      {touched[fields.name] && errors[fields.name] ? <Error>{errors[fields.name]}</Error> : ""}
     </>
   );
 };

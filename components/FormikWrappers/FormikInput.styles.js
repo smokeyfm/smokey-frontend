@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import Checkbox from '@carvana/forms/Checkbox';
+import styled from "styled-components";
+import Checkbox from "@carvana/forms/Checkbox";
 
 export const Error = styled.div`
-  color: ${props => props.theme.carvana.red.primary};
+  color: ${(props) => props.theme.carvana.red.primary};
   text-align: left;
 `;
 
@@ -11,7 +11,7 @@ export const HiddenInput = styled.div`
 `;
 
 export const SuggestionWrapper = styled.div`
-  background: ${props => props.theme.carvana.white.primary};
+  background: ${(props) => props.theme.carvana.white.primary};
   position: relative;
   margin-top: 15px;
   align-items: flex-start;
@@ -26,10 +26,10 @@ export const SuggestionWrapper = styled.div`
   box-shadow: 1px 3px 30px rgba(0, 0, 0, 0.23);
   margin-top: 15px;
   border-radius: 3px;
-  border: 1px solid ${props => props.theme.carvana.gray.light};
+  border: 1px solid ${(props) => props.theme.carvana.gray.light};
   transition: all 0.3s ease-in-out;
 
-  @media (max-width: ${props => props.theme.breakpoints.values.sm}px) {
+  @media (max-width: ${(props) => props.theme.breakpoints.values.sm}px) {
     padding: 20px 0 60px 0;
     justify-content: top;
   }
@@ -44,11 +44,11 @@ export const SuggestionItem = styled.div`
   padding: 5px 10px;
   width: 100%;
   text-align: left;
-  color: ${props => props.theme.carvana.gray.medium};
+  color: ${(props) => props.theme.carvana.gray.medium};
   &.active {
     cursor: pointer;
-    color: ${props => props.theme.carvana.blue.primary};
-    background: ${props => props.theme.carvana.gray.background};
+    color: ${(props) => props.theme.carvana.blue.primary};
+    background: ${(props) => props.theme.carvana.gray.background};
   }
 `;
 
@@ -56,21 +56,15 @@ export const TermsCheckbox = styled(Checkbox)`
   flex-basis: 5%;
 
   > .checkbox-label {
-    color: ${props =>
-      props.accepted
-        ? props.theme.carvana.blue.dark
-        : props.theme.carvana.red.primary};
+    color: ${(props) =>
+      props.accepted ? props.theme.carvana.blue.dark : props.theme.carvana.red.primary};
   }
 
   .checkbox-style {
-    border-color: ${props =>
-      props.accepted
-        ? props.theme.carvana.blue.dark
-        : props.theme.carvana.red.primary};
-    stroke: ${props =>
-      props.accepted
-        ? props.theme.carvana.blue.dark
-        : props.theme.carvana.red.primary};
+    border-color: ${(props) =>
+      props.accepted ? props.theme.carvana.blue.dark : props.theme.carvana.red.primary};
+    stroke: ${(props) =>
+      props.accepted ? props.theme.carvana.blue.dark : props.theme.carvana.red.primary};
   }
 `;
 

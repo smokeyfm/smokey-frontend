@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import { TermsCheckbox } from './FormikInput.styles';
+import { TermsCheckbox } from "./FormikInput.styles";
 
 const FormikCheckbox = ({
   field,
@@ -12,7 +12,7 @@ const FormikCheckbox = ({
   ...props
 }) => {
   const nextParent = () => {
-    console.log('TERM CHECKED: ', field.name, field.value);
+    console.log("TERM CHECKED: ", field.name, field.value);
     handleTermCheckbox();
     setFieldValue(field.name, !accepted, false);
     setTimeout(() => nextTerm(), 333);

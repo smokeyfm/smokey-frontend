@@ -1,4 +1,4 @@
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 const Alert = Swal.mixin({
   customClass: {
@@ -7,12 +7,12 @@ const Alert = Swal.mixin({
     // header: 'header-class',
     // title: 'title-class',
     // closeButton: 'close-button-class',
-    icon: 'alert-icon',
+    icon: "alert-icon",
     // image: 'image-class',
     // content: 'content-class',
     // input: 'input-class',
     // actions: 'actions-class',
-    confirmButton: 'alert-confirm'
+    confirmButton: "alert-confirm"
     // cancelButton: 'cancel-button-class',
     // footer: 'footer-class'
   },

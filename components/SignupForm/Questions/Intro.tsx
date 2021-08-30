@@ -1,68 +1,63 @@
 // Vendor
-import React, { useCallback } from 'react';
-import styled from 'styled-components';
+import React, { useCallback } from "react";
+import styled from "styled-components";
 // import { Field, useFormikContext } from 'formik';
 // import { useMediaQuery } from 'react-responsive';
-import { Carousel } from 'react-responsive-carousel';
+import { Carousel } from "react-responsive-carousel";
 
 // Carvana
-import { Cart, CalendarDates, Finance, LoanCalculator } from '@carvana/icons';
+import { Cart, CalendarDates, Finance, LoanCalculator } from "@carvana/icons";
 // import HaloText from '@carvana/halo-text';
 
 // Local
-import Sebastian from '../Sebastian';
-import {
-  QuestionWrapper,
-  InputGroupWrapper,
-  Title,
-  Description
-} from './Questions.styles';
+import Sebastian from "../Sebastian";
+import { QuestionWrapper, InputGroupWrapper, Title, Description } from "./Questions.styles";
 
 export const ColorizedFinance = styled(Finance)`
-  ${'' /* transform: scale(2); */}
+  ${"" /* transform: scale(2); */}
   & svg {
     width: 5rem;
     height: 5rem;
   }
   & svg g path:first-child {
-    fill: ${props => props.theme.carvana.blue.medium};
+    fill: ${(props) => props.theme.carvana.blue.medium};
   }
 `;
 
 export const ColorizedCalendar = styled(CalendarDates)`
-  ${'' /* transform: scale(2); */}
+  ${"" /* transform: scale(2); */}
   & svg {
     width: 5rem;
     height: 5rem;
   }
   & svg g path:first-child {
-    fill: ${props => props.theme.carvana.blue.medium};
+    fill: ${(props) => props.theme.carvana.blue.medium};
   }
 `;
 
 export const ColorizedLoan = styled(LoanCalculator)`
-  ${'' /* transform: scale(2); */}
+  ${"" /* transform: scale(2); */}
   & svg {
     width: 5rem;
     height: 5rem;
   }
   & svg g path:first-child {
-    fill: ${props => props.theme.carvana.blue.medium};
+    fill: ${(props) => props.theme.carvana.blue.medium};
   }
 `;
 
 export const ColorizedCart = styled(Cart)`
-  ${'' /* transform: scale(2); */}
+  ${"" /* transform: scale(2); */}
   & svg {
     width: 5rem;
     height: 5rem;
   }
   & svg g path:first-child {
-    fill: ${props => props.theme.carvana.blue.medium};
+    fill: ${(props) => props.theme.carvana.blue.medium};
   }
 `;
 
-const partnerName = 'Credit Karma';
+const partnerName = "Credit Karma";
 
 function Intro() {
   // const { errors, touched } = useFormikContext();
@@ -83,14 +78,11 @@ function Intro() {
           infiniteLoop
           showArrows={false}
           showStatus={false}
-          showThumbs={false}
-        >
+          showThumbs={false}>
           <div>
             <ColorizedFinance />
             <Title>Zero Risk</Title>
-            <Description>
-              Carvana offers no risk to your credit prequalification.
-            </Description>
+            <Description>Carvana offers no risk to your credit prequalification.</Description>
           </div>
           <div>
             <ColorizedCalendar />
@@ -105,9 +97,7 @@ function Intro() {
           <div>
             <ColorizedCart />
             <Title>Never Leave The House</Title>
-            <Description>
-              No need to go to the bank or the dealership.
-            </Description>
+            <Description>No need to go to the bank or the dealership.</Description>
           </div>
         </Carousel>
       </InputGroupWrapper>

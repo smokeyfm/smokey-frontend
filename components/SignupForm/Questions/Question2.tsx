@@ -1,22 +1,18 @@
 // Vendor
-import React, { useCallback } from 'react';
+import React, { useCallback } from "react";
 // import NumberFormat from 'react-number-format';
-import { Field, useFormikContext } from 'formik';
+import { Field, useFormikContext } from "formik";
 
 // Local
-import Sebastian from '../Sebastian';
-import { FormikDateOfBirth } from '../FormikWrappers';
-import {
-  QuestionWrapper,
-  InputGroupWrapper,
-  InputWrapper
-} from './Questions.styles';
+import Sebastian from "../Sebastian";
+import { FormikDateOfBirth } from "../FormikWrappers";
+import { QuestionWrapper, InputGroupWrapper, InputWrapper } from "./Questions.styles";
 
 function Question2() {
   // const { errors, touched } = useFormikContext();
 
   const speechMarkup = useCallback(() => {
-    return { __html: 'When is your birthday 🎉?' };
+    return { __html: "When is your birthday 🎉?" };
   });
 
   return (
