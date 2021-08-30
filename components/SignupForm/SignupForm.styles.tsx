@@ -1,5 +1,5 @@
-import Button from '@carvana/forms/Button';
-import styled from 'styled-components';
+import Button from "@carvana/forms/Button";
+import styled from "styled-components";
 
 export const MainWrapper = styled.div`
   position: relative;
@@ -11,7 +11,7 @@ export const MainWrapper = styled.div`
 
 export const InitialTitle = styled.div`
   box-sizing: border-box;
-  color: ${props => props.theme.carvana.white.primary};
+  color: ${(props) => props.theme.carvana.white.primary};
   font-size: 2rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -23,7 +23,7 @@ export const InitialTitle = styled.div`
 
 export const Title = styled.div`
   box-sizing: border-box;
-  color: ${props => props.theme.carvana.white.primary};
+  color: ${(props) => props.theme.carvana.white.primary};
   font-size: 2rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -37,44 +37,44 @@ export const ContentWrapper = styled.div`
   justify-content: center;
   margin: 0 10%;
 
-  @media (max-width: ${props => props.theme.breakpoints.values.sm}px) {
+  @media (max-width: ${(props) => props.theme.breakpoints.values.sm}px) {
     flex-flow: column nowrap;
     margin: 0 5%;
   }
 
-  @media (min-width: ${props => props.theme.breakpoints.values.lg}px) {
+  @media (min-width: ${(props) => props.theme.breakpoints.values.lg}px) {
   }
 `;
 
 export const LeftHalf = styled.div`
-  display: ${props => props.show};
+  display: ${(props) => props.show};
   flex-direction: column;
   flex-basis: 100%;
   flex: 0 0 48%;
-  ${'' /* flex: 1; */}
-  ${'' /* flex-grow: 1; */}
-  ${'' /* flex-basis: 50%; */}
-  background: ${props => props.theme.carvana.white.primary};
-  color: ${props => props.theme.carvana.blue.primary};
-  box-shadow: 1px 3px 8px rgba(0,0,0,0.123);
-  ${'' /* width: 100%; */}
-  ${'' /* margin: 15px; */}
+  ${"" /* flex: 1; */}
+  ${"" /* flex-grow: 1; */}
+  ${"" /* flex-basis: 50%; */}
+  background: ${(props) => props.theme.carvana.white.primary};
+  color: ${(props) => props.theme.carvana.blue.primary};
+  box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.123);
+  ${"" /* width: 100%; */}
+  ${"" /* margin: 15px; */}
   margin: 15px 15px 0 0;
   border-radius: 8px;
   padding: 15px 15px 60px 15px;
   text-align: center;
-  & [data-qa='title'] {
-    color: ${props => props.theme.carvana.blue.dark};
+  & [data-qa="title"] {
+    color: ${(props) => props.theme.carvana.blue.dark};
     font-size: 1.6rem;
   }
 
-  @media (max-width: ${props => props.theme.breakpoints.values.sm}px) {
+  @media (max-width: ${(props) => props.theme.breakpoints.values.sm}px) {
     margin: 15px 0 0 0;
     display: none;
   }
 
-  @media (min-width: ${props => props.theme.breakpoints.values.lg}px) {
-    ${'' /* margin: 15px; */}
+  @media (min-width: ${(props) => props.theme.breakpoints.values.lg}px) {
+    ${"" /* margin: 15px; */}
     margin: 15px 15px 0 0;
   }
 `;
@@ -84,19 +84,19 @@ export const RightHalf = styled.div`
   flex-direction: column;
   flex-basis: 100%;
   flex: 1;
-  width: ${props => (props.isLargeDevice ? '48%' : '100%')};
-  max-width: ${props => (props.isLargeDevice ? '48%' : '100%')};
-  ${'' /* flex: 1; */}
-  ${'' /* flex-grow: 1; */}
-  ${'' /* flex-basis: 50%; */}
+  width: ${(props) => (props.isLargeDevice ? "48%" : "100%")};
+  max-width: ${(props) => (props.isLargeDevice ? "48%" : "100%")};
+  ${"" /* flex: 1; */}
+  ${"" /* flex-grow: 1; */}
+  ${"" /* flex-basis: 50%; */}
   & form {
-    background: ${props => props.theme.carvana.white.primary};
-    color: ${props => props.theme.carvana.blue.primary};
+    background: ${(props) => props.theme.carvana.white.primary};
+    color: ${(props) => props.theme.carvana.blue.primary};
     border-radius: 8px;
-    box-shadow: 1px 8px 8px rgba(0,0,0,0.123);
-    ${'' /* width: 100%; */}
+    box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.123);
+    ${"" /* width: 100%; */}
     & [data-qa='title'] {
-      color: ${props => props.theme.carvana.blue.dark};
+      color: ${(props) => props.theme.carvana.blue.dark};
       font-size: 1.6rem;
     }
   }
@@ -104,45 +104,44 @@ export const RightHalf = styled.div`
 
 export const WizardForm = styled.div`
   padding-top: 0;
-  ${'' /* margin-top: ${props => props.canGoBack ? '120px' : '225px'}; */}
-  background: ${props => props.theme.carvana.white.primary};
-  color: ${props => props.theme.carvana.blue.primary};
+  ${"" /* margin-top: ${props => props.canGoBack ? '120px' : '225px'}; */}
+  background: ${(props) => props.theme.carvana.white.primary};
+  color: ${(props) => props.theme.carvana.blue.primary};
   border-radius: 8px;
-  box-shadow: 1px 8px 8px rgba(0,0,0,0.123);
+  box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.123);
   width: 100%;
-  & [data-qa='title'] {
-    color: ${props => props.theme.carvana.blue.dark};
+  & [data-qa="title"] {
+    color: ${(props) => props.theme.carvana.blue.dark};
     font-size: 1.6rem;
   }
 
-  @media (max-width: ${props =>
-    props.theme.breakpoints.values.sm}px) and (orientation: portrait) {
+  @media (max-width: ${(props) =>
+      props.theme.breakpoints.values.sm}px) and (orientation: portrait) {
     padding-top: 0;
-    margin-top: ${props => (props.canGoBack ? '120px' : '225px')};
+    margin-top: ${(props) => (props.canGoBack ? "120px" : "225px")};
   }
 
   /* iPad Mini 4 --------------- */
-  @media only screen 
-    and (min-device-width : ${props => props.theme.breakpoints.values.sm}px) 
-    and (max-device-width : ${props => props.theme.breakpoints.values.md}px)
-    and (orientation : portrait)
-    and (-webkit-min-device-pixel-ratio: 1)  {
-      margin-top: ${props => (props.canGoBack ? '120px' : '165px')};
-      padding-top: 0;
-  }
-
-  @media (min-width: ${props => props.theme.breakpoints.values.sm}px) and
-         (max-width: ${props => props.theme.breakpoints.values.md}px) {
-    margin-top: ${props => (props.canGoBack ? '120px' : '165px')};
-    padding-top: 0;
-  }
-  
-  @media (min-width: ${props => props.theme.breakpoints.values.md}px) {
-    margin-top: ${props => (props.canGoBack ? '120px' : '165px')};
+  @media only screen and (min-device-width: ${(props) =>
+      props.theme.breakpoints.values.sm}px) and (max-device-width: ${(props) =>
+      props.theme.breakpoints.values
+        .md}px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
+    margin-top: ${(props) => (props.canGoBack ? "120px" : "165px")};
     padding-top: 0;
   }
 
-  @media (min-width: ${props => props.theme.breakpoints.values.lg}px) {
+  @media (min-width: ${(props) => props.theme.breakpoints.values.sm}px) and (max-width: ${(props) =>
+      props.theme.breakpoints.values.md}px) {
+    margin-top: ${(props) => (props.canGoBack ? "120px" : "165px")};
+    padding-top: 0;
+  }
+
+  @media (min-width: ${(props) => props.theme.breakpoints.values.md}px) {
+    margin-top: ${(props) => (props.canGoBack ? "120px" : "165px")};
+    padding-top: 0;
+  }
+
+  @media (min-width: ${(props) => props.theme.breakpoints.values.lg}px) {
     margin-top: 165px;
     padding-top: 0;
   }
@@ -162,7 +161,7 @@ export const WizardActions = styled.div`
     display: none;
   }
 
-  @media (min-width: ${props => props.theme.breakpoints.values.sm}px) {
+  @media (min-width: ${(props) => props.theme.breakpoints.values.sm}px) {
     margin: 0 25px 0 25px;
   }
 `;
@@ -186,11 +185,11 @@ export const SkipAction = styled.div`
   justify-content: center;
   & button {
     width: 100%;
-    color: ${props => props.theme.carvana.blue.medium};
+    color: ${(props) => props.theme.carvana.blue.medium};
     text-transform: capitalize;
   }
 
-  @media (max-width: ${props => props.theme.breakpoints.values.sm}px) {
+  @media (max-width: ${(props) => props.theme.breakpoints.values.sm}px) {
   }
 `;
 
@@ -201,11 +200,11 @@ export const LoginAction = styled.div`
   justify-content: center;
   & button a {
     width: 100%;
-    color: ${props => props.theme.carvana.blue.medium};
+    color: ${(props) => props.theme.carvana.blue.medium};
     text-transform: capitalize;
   }
 
-  @media (max-width: ${props => props.theme.breakpoints.values.sm}px) {
+  @media (max-width: ${(props) => props.theme.breakpoints.values.sm}px) {
   }
 `;
 
@@ -213,7 +212,7 @@ export const Disclaimer = styled.div`
   font-size: 0.7rem;
   text-align: center;
   padding: 15px 20px;
-  color: ${props => props.theme.carvana.gray.medium};
+  color: ${(props) => props.theme.carvana.gray.medium};
 `;
 
 export const CongratsWrapper = styled.div`

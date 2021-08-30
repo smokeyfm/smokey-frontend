@@ -1,15 +1,10 @@
-import React from 'react';
-import Input from '@carvana/showroom-forms/Input';
+import React from "react";
+import Input from "@carvana/showroom-forms/Input";
 // import { Field, useFormikContext } from 'formik';
 
-import { Error } from './FormikInput.styles';
+import { Error } from "./FormikInput.styles";
 
-const FormikInput = ({
-  field: { ...fields },
-  form: { touched, errors },
-  styles,
-  ...props
-}) => (
+const FormikInput = ({ field: { ...fields }, form: { touched, errors }, styles, ...props }) => (
   <>
     <Input
       id="password"
@@ -18,11 +13,7 @@ const FormikInput = ({
       {...fields}
       invalid={Boolean(touched[fields.name] && errors[fields.name])}
     />
-    {touched[fields.name] && errors[fields.name] ? (
-      <Error>{errors[fields.name]}</Error>
-    ) : (
-      ''
-    )}
+    {touched[fields.name] && errors[fields.name] ? <Error>{errors[fields.name]}</Error> : ""}
   </>
 );
 export default FormikInput;

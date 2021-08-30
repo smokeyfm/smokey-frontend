@@ -1,12 +1,12 @@
 /* eslint-disable no-console */
 // Vendor
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from "react";
 // import PropTypes from 'prop-types';
-import { useMediaQuery } from 'react-responsive';
-import styled from 'styled-components';
-import FormikWizard from 'formik-wizard';
-import { useFormikContext } from 'formik';
-import { withWizard } from 'react-albus';
+import { useMediaQuery } from "react-responsive";
+import styled from "styled-components";
+import FormikWizard from "formik-wizard";
+import { useFormikContext } from "formik";
+import { withWizard } from "react-albus";
 
 // import Swal from 'sweetalert2';
 // import 'sweetalert2/src/sweetalert2.scss';
@@ -14,12 +14,12 @@ import { withWizard } from 'react-albus';
 // import { setFieldValue } from 'formik';
 
 // Carvana
-import { ArrowBackDouble, CheckCircle } from '@carvana/icons';
+import { ArrowBackDouble, CheckCircle } from "@carvana/icons";
 
 // Local
 // import Static from '../Static';
-import Alert from '../Alerts';
-import { createUser } from '../../services/AuthService';
+import Alert from "../Alerts";
+import { createUser } from "../../services/AuthService";
 // import { SoftPullService } from '../../services';
 import {
   MainWrapper,
@@ -36,19 +36,14 @@ import {
   SkipAction,
   LoginAction,
   CongratsWrapper
-} from './SignupForm.styles';
-import Questions from '../Questions/Questions';
-import Summary from '../Summary';
-import {
-  Description,
-  Subtitle,
-  LinkOut,
-  StyledModalContent
-} from '../Questions/Questions.styles';
-import { SlideInLeft, SlideOutLeft } from '../Animations';
+} from "./SignupForm.styles";
+import Questions from "../Questions/Questions";
+import Summary from "../Summary";
+import { Description, Subtitle, LinkOut, StyledModalContent } from "../Questions/Questions.styles";
+import { SlideInLeft, SlideOutLeft } from "../Animations";
 
 const StyledCheckCircle = styled(CheckCircle)`
-  color: ${props => props.theme.carvana.blue.medium};
+  color: ${(props) => props.theme.carvana.blue.medium};
 `;
 
 const FormWrapper = ({
@@ -130,65 +125,52 @@ const FormWrapper = ({
         <WizardForm canGoBack={canGoBack}>
           <InitialTitle>
             {isMobile && !canGoBack && (
-              <HaloText
-                dark
-                brand=""
-                headline="Auto Loans for Everyone"
-                body=""
-              />
+              <HaloText dark brand="" headline="Auto Loans for Everyone" body="" />
             )}
           </InitialTitle>
           {children}
           <WizardActions>
-            <PreviousButton
-              onClick={goToPreviousStep}
-              disabled={!canGoBack}
-              ghost
-            >
+            <PreviousButton onClick={goToPreviousStep} disabled={!canGoBack} ghost>
               <ArrowBackDouble />
             </PreviousButton>
             {/* <NextButton type="submit" onClick={() => console.log(wizard, wizard.step, wizard.next)} disabled={isLastStep && !termsAccepted}>{actionLabel || (isLastStep ? 'Submit' : 'Next step')}</NextButton> */}
             {/* <NextButton type={isLastStep ? "submit" : "button"} onClick={() => { */}
             {isLastStep ? (
               <NextButton
-                type={isLastStep ? 'submit' : 'button'}
+                type={isLastStep ? "submit" : "button"}
                 onClick={() => {
                   // console.log('next: ', values, wizard, isLastStep);
-                  console.log('next: ', wizard, isLastStep);
+                  console.log("next: ", wizard, isLastStep);
                   wizard.next();
                 }}
-                disabled={isLastStep && !termsAccepted}
-              >
-                {actionLabel || (isLastStep ? 'Submit' : 'Next step')}
+                disabled={isLastStep && !termsAccepted}>
+                {actionLabel || (isLastStep ? "Submit" : "Next step")}
               </NextButton>
             ) : (
               <NextButton
-                type={isLastStep ? 'submit' : 'button'}
+                type={isLastStep ? "submit" : "button"}
                 onClick={() => {
                   // console.log('next: ', values, wizard, isLastStep);
-                  console.log('next: ', wizard, isLastStep);
+                  console.log("next: ", wizard, isLastStep);
                   wizard.next();
                 }}
-                disabled={isLastStep && !termsAccepted}
-              >
-                {actionLabel || (isLastStep ? 'Submit' : 'Next step')}
+                disabled={isLastStep && !termsAccepted}>
+                {actionLabel || (isLastStep ? "Submit" : "Next step")}
               </NextButton>
             )}
           </WizardActions>
           {!canGoBack && (
             <SkipAction>
-              <button>
-                Not interested in financing? Skip this..
-              </button>
+              <button>Not interested in financing? Skip this..</button>
             </SkipAction>
           )}
           {/* {<div><pre>VALUE: {JSON.stringify(values, null, 2)}</pre></div>} */}
           {canGoBack && (
             <Disclaimer>
-              Don’t worry your information is safe{' '}
+              Don’t worry your information is safe{" "}
               <span role="img" aria-label="lock">
                 🔐
-              </span>{' '}
+              </span>{" "}
               and we never share your information without your consent.
               {/* <Subtitle>– or –</Subtitle> */}
               <LoginAction>
@@ -196,8 +178,7 @@ const FormWrapper = ({
                   <a
                     href="https://www.carvana.com/account/login?returnUrl=/referral-journey"
                     target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                    rel="noopener noreferrer">
                     Already have an account?
                   </a>
                 </button>
@@ -227,7 +208,7 @@ const SignupForm = () => {
     query: `(min-device-width: 768px)`
   });
 
-  const handleSubmit = useCallback(values => {
+  const handleSubmit = useCallback((values) => {
     new Promise((resolve, reject) => {
       // const { firstName, lastName, middleName, suffix } = values[
       //   'personal-info'
@@ -249,22 +230,22 @@ const SignupForm = () => {
       // )
       // .then(res => resolve('createUser caller res:', res))
       // .catch(err => reject(err));
-      console.log('new Promise');
+      console.log("new Promise");
       return Promise.resolve({
         code: 200,
         status: 200,
-        message: 'Congrats!',
+        message: "Congrats!",
         subtitle: `Your new User ID is: ###`
       });
     })
-      .then(res => {
-        console.log('handleSubmit res: ', res);
+      .then((res) => {
+        console.log("handleSubmit res: ", res);
       })
-      .catch(err => {
-        console.log('handleSubmit error: ', err);
+      .catch((err) => {
+        console.log("handleSubmit error: ", err);
         // toggleErrorModal();
         // setErrorMessage(err);
-        Alert.fire({ icon: 'error', title: 'Uh oh!', text: err });
+        Alert.fire({ icon: "error", title: "Uh oh!", text: err });
         // return Promise.resolve({
         //   message: 'Uh oh.',
         //   subtitle: err
@@ -296,9 +277,9 @@ const SignupForm = () => {
   return (
     <MainWrapper>
       <ContentWrapper>
-        <LeftHalf show={isLargeDevice ? 'none' : 'flex'}>
+        <LeftHalf show={isLargeDevice ? "none" : "flex"}>
           <Title>
-            Enjoy The Journey{' '}
+            Enjoy The Journey{" "}
             <span role="img" aria-label="sunglasses">
               😎
             </span>

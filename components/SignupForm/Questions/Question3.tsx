@@ -1,20 +1,13 @@
 // Vendor
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback } from "react";
 // import NumberFormat from 'react-number-format';
-import { Field, useFormikContext } from 'formik';
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng
-} from 'react-places-autocomplete';
+import { Field, useFormikContext } from "formik";
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 
 // Local
-import Sebastian from '../Sebastian';
-import { FormikInput, FormikAutocomplete } from '../FormikWrappers';
-import {
-  QuestionWrapper,
-  InputGroupWrapper,
-  InputWrapper
-} from './Questions.styles';
+import Sebastian from "../Sebastian";
+import { FormikInput, FormikAutocomplete } from "../FormikWrappers";
+import { QuestionWrapper, InputGroupWrapper, InputWrapper } from "./Questions.styles";
 
 // const suggestions = [
 //   '100 Freeman Street Brooklyn NY 11222',
@@ -27,7 +20,7 @@ function Question3() {
   // const { errors, touched } = useFormikContext();
 
   const speechMarkup = useCallback(() => {
-    return { __html: 'Where do you currently live?' };
+    return { __html: "Where do you currently live?" };
   });
 
   return (
@@ -44,12 +37,7 @@ function Question3() {
         </InputWrapper>
         <InputWrapper>
           <span>Live in an apartment?</span>
-          <Field
-            name="unitNumber"
-            id="unitNumber"
-            component={FormikInput}
-            label="Apt / Unit"
-          />
+          <Field name="unitNumber" id="unitNumber" component={FormikInput} label="Apt / Unit" />
         </InputWrapper>
       </InputGroupWrapper>
     </QuestionWrapper>

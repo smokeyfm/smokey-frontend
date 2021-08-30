@@ -1,13 +1,13 @@
 // Vendor
-import React, { useCallback } from 'react';
-import { Field } from 'formik';
+import React, { useCallback } from "react";
+import { Field } from "formik";
 
 // Carvana
-import Button from '@carvana/forms/Button';
+import Button from "@carvana/forms/Button";
 
 // Local
-import Sebastian from '../Sebastian';
-import { FormikInput } from '../FormikWrappers';
+import Sebastian from "../Sebastian";
+import { FormikInput } from "../FormikWrappers";
 import {
   QuestionWrapper,
   InputGroupWrapper,
@@ -15,13 +15,13 @@ import {
   Title,
   Subtitle,
   LinkOut
-} from './Questions.styles';
+} from "./Questions.styles";
 
 function Question1() {
   // const { errors, touched } = useFormikContext()
 
   const speechMarkup = useCallback(() => {
-    return { __html: 'Let’s start with your name.' };
+    return { __html: "Let’s start with your name." };
   });
 
   return (
@@ -29,12 +29,7 @@ function Question1() {
       <Sebastian speech={speechMarkup()} />
       <InputGroupWrapper>
         <InputWrapper>
-          <Field
-            name="firstName"
-            id="firstName"
-            component={FormikInput}
-            label="First Name"
-          />
+          <Field name="firstName" id="firstName" component={FormikInput} label="First Name" />
         </InputWrapper>
         <InputWrapper>
           <Field
@@ -45,12 +40,7 @@ function Question1() {
           />
         </InputWrapper>
         <InputWrapper>
-          <Field
-            name="lastName"
-            id="lastName"
-            component={FormikInput}
-            label="Last Name"
-          />
+          <Field name="lastName" id="lastName" component={FormikInput} label="Last Name" />
         </InputWrapper>
         <InputWrapper>
           <Field

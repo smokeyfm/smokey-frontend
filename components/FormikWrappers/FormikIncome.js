@@ -1,7 +1,7 @@
-import React from 'react';
-import Input from '@carvana/showroom-forms/Input';
+import React from "react";
+import Input from "@carvana/showroom-forms/Input";
 
-import { Error } from './FormikInput.styles';
+import { Error } from "./FormikInput.styles";
 
 const FormikIncome = ({
   field,
@@ -20,11 +20,7 @@ const FormikIncome = ({
       {...fields}
       invalid={touched[fields.name] && errors[fields.name] ? 1 : 0}
     />
-    {touched[fields.name] && errors[fields.name] ? (
-      <Error>{errors[fields.name]}</Error>
-    ) : (
-      ''
-    )}
+    {touched[fields.name] && errors[fields.name] ? <Error>{errors[fields.name]}</Error> : ""}
   </>
 );
 export default FormikIncome;
