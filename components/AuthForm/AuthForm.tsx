@@ -1,13 +1,13 @@
 import * as React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Layout } from "../Layout";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import styled from "@emotion/styled";
+import { SignupForm } from "../SignupForm";
+
 import {
   AuthFormType,
   loginForm,
-  signupForm,
   forgotPasswordForm,
   updatePasswordForm,
   updateEmailForm
@@ -76,62 +76,6 @@ const LoginForm = () => {
                 <a>Reset</a>
               </Link>{" "}
               it here
-            </p>
-          </Form>
-        )}
-      </Formik>
-    </>
-  );
-};
-
-const SignupForm = () => {
-  const { register } = useAuth();
-  const router = useRouter();
-  return (
-    <>
-      <h1>{signupForm.title}</h1>
-      <Formik
-        initialValues={signupForm.fields}
-        validationSchema={signupForm.validate}
-        onSubmit={(values, { setSubmitting }) => {
-          register({ user: values })
-            .then(() => {
-              setSubmitting(false);
-              router.push("/");
-            })
-            .catch(() => {
-              setSubmitting(false);
-            });
-        }}>
-        {({ isSubmitting }) => (
-          <Form>
-            <FieldContainer>
-              <label>EMAIL</label>
-              <Field type="email" name="email" />
-              <ErrorMessage name="email" component="div" />
-            </FieldContainer>
-
-            <FieldContainer>
-              <label>Password</label>
-              <Field type="password" name="password" />
-              <ErrorMessage name="password" component="div" />
-            </FieldContainer>
-
-            <FieldContainer>
-              <label>Confirm Password</label>
-              <Field type="password" name="password_confirmation" />
-              <ErrorMessage name="password_confirmation" component="div" />
-            </FieldContainer>
-            <button type="submit" disabled={isSubmitting}>
-              Submit
-            </button>
-
-            <p>
-              Already have an account{" "}
-              <Link href="/authenticate/login">
-                <a>Log In</a>
-              </Link>{" "}
-              here
             </p>
           </Form>
         )}
