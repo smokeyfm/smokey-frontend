@@ -4,13 +4,17 @@ import { string } from "prop-types";
 declare module "@emotion/react" {
   export interface Theme {
     colors: {
-      purple: {
+      pink: {
+        primary: string;
+      };
+      purple?: {
         light: string;
         primary: string;
       };
       gray: {
         primary: string;
         medium: string;
+        light: string;
         background: string;
       };
       black: {
@@ -29,7 +33,7 @@ declare module "@emotion/react" {
         light: string;
       };
       brand: {
-        bright: string;
+        bright?: string;
         primary: string;
         secondary: string;
         light: string;

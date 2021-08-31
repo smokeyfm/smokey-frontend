@@ -36,6 +36,7 @@ export type menuDataItem = {
   pcMenuItem?: ReactNode;
 };
 export interface MainMenuProps {
+  showMenuHeader?: boolean;
   pcWrapClassName?: string;
   pcMenuItemClassName?: string;
   onMenuItemClick?: (keyPath: string, key: string) => void;
