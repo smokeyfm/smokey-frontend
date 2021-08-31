@@ -10,7 +10,11 @@ export const LatestTitle = styled.div`
   text-align: center;
   color: #000;
   font-size: 44px;
-  height: 54px;
+  height: 67px;
+  font-family: "Bebas Neue";
+  text-decoration: underline;
+  margin-top: 19px;
+  margin-bottom: 19px;
 `;
 export const Grid = styled.div`
   display: grid;

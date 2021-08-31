@@ -57,12 +57,10 @@ export const IconLinksMo = styled.div`
   display: none;
   @media (max-width: 375px) {
     display: flex;
-    margin-bottom: 40px;
   }
 <<<<<<< HEAD
   @media (max-width: 750px) {
     display: flex;
-    margin-bottom: 40px;
   }
 =======
 >>>>>>> @aaron.smulktis/home

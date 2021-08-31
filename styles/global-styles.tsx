@@ -61,6 +61,9 @@ export const GlobalStyles = () => (
         button:focus {
           outline: none;
         }
+        i {
+          color: #000;
+        }
         .bm-burger-button {
           position: fixed;
           width: 36px;
@@ -123,6 +126,12 @@ export const GlobalStyles = () => (
         }
         .pc-menu-item {
           color: #000;
+          font-family: "Bebas Neue";
+          font-size: 14px;
+          margin-right: 82px !important;
+        }
+        .pc-menu-wrap {
+          padding-bottom: 30px !important;
         }
         #__next {
           display: flex;

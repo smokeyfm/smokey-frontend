@@ -1,7 +1,6 @@
 export * from "./AuthForm";
 export * from "./ComingSoon";
 export * from "./Foot";
-export * from "./Footer";
 export * from "./Header";
 export * from "./Home";
 export * from "./InfoBox";
