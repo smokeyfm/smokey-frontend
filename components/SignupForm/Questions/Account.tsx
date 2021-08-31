@@ -1,16 +1,16 @@
 // Vendor
-import React, { useState, useCallback } from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import { Field, useFormikContext } from 'formik';
-import parse from 'html-react-parser';
+import React, { useState, useCallback } from "react";
+import { Carousel } from "react-responsive-carousel";
+import { Field, useFormikContext } from "formik";
+import parse from "html-react-parser";
 
 // Carvana
-import { Modal } from '@material-ui/core';
+import { Modal } from "@material-ui/core";
 
 // Local
-import Sebastian from '../../Sebastian';
-import Static from '../../../utilities/staticData';
-import { FormikInput, FormikPhone, FormikCheckbox } from '../../FormikWrappers';
+import Sebastian from "../../Sebastian";
+import Static from "../../../utilities/staticData";
+import { FormikInput, FormikPhone, FormikCheckbox } from "../../FormikWrappers";
 import {
   Title,
   Subtitle,
@@ -22,9 +22,9 @@ import {
   TermsStatement,
   Term,
   StyledModalContent
-} from './Questions.styles';
-import { ElectronicSignaturesModal } from '../../Terms/ElectronicSignaturesModal';
-import { FinancialPrivacyModal } from '../../Terms/FinancialPrivacyModal';
+} from "./Questions.styles";
+import { ElectronicSignaturesModal } from "../../Terms/ElectronicSignaturesModal";
+import { FinancialPrivacyModal } from "../../Terms/FinancialPrivacyModal";
 
 export const Account = () => {
   // const { values, form, submitForm } = useFormikContext();
@@ -59,22 +59,22 @@ export const Account = () => {
     setCurrentSlide(currentSlide + 1);
   };
 
-  const handleSignatureCheckbox = field => {
+  const handleSignatureCheckbox = (field) => {
     setSignatureCheckbox(!signatureTerms);
     // form.setFieldValue('acceptSignatureTerms', signatureTerms, false);
   };
 
-  const handlePrivacyCheckbox = field => {
+  const handlePrivacyCheckbox = (field) => {
     setPrivacyCheckbox(!privacyTerms);
     // form.setFieldValue(field.name, privacyTerms, false);
   };
 
-  const handleReportingCheckbox = field => {
+  const handleReportingCheckbox = (field) => {
     setReportingCheckbox(!reportingTerms);
     // form.setFieldValue(field.name, reportingTerms, false);
   };
 
-  const handleAuthorizeCheckbox = field => {
+  const handleAuthorizeCheckbox = (field) => {
     setAuthorizeCheckbox(!authorizeTerms);
     // form.setFieldValue(field.name, authorizeTerms, false);
   };
@@ -102,12 +102,7 @@ export const Account = () => {
         </InputWrapper>
 
         <InputWrapper>
-          <Field
-            name="email"
-            id="email"
-            component={FormikInput}
-            label="Email"
-          />
+          <Field name="email" id="email" component={FormikInput} label="Email" />
         </InputWrapper>
 
         <InputWrapper>
@@ -138,11 +133,10 @@ export const Account = () => {
             showStatus={false}
             showThumbs={false}
             selectedItem={currentSlide}
-            onChange={setCurrentSlide}
-          >
+            onChange={setCurrentSlide}>
             <Term>
               <Field type="checkbox" name="acceptSignatureTerms">
-                {formikProps => (
+                {(formikProps) => (
                   <FormikCheckbox
                     {...formikProps}
                     nextTerm={nextSlide}
@@ -152,17 +146,16 @@ export const Account = () => {
                 )}
               </Field>
               <TermsStatement accepted={signatureTerms}>
-                I have read and agree to the{' '}
+                I have read and agree to the{" "}
                 <button type="button" onClick={toggleSignatureModal}>
                   E-SIGN Consent
-                </button>{' '}
-                that enables all transactions and disclosure delivery to occur
-                electronically.
+                </button>{" "}
+                that enables all transactions and disclosure delivery to occur electronically.
               </TermsStatement>
             </Term>
             <Term>
               <Field type="checkbox" name="acceptPrivacyTerms">
-                {formikProps => (
+                {(formikProps) => (
                   <FormikCheckbox
                     {...formikProps}
                     nextTerm={nextSlide}
@@ -172,7 +165,7 @@ export const Account = () => {
                 )}
               </Field>
               <TermsStatement accepted={privacyTerms}>
-                I have received and read Carvana&apos;s{' '}
+                I have received and read Carvana&apos;s{" "}
                 <button type="button" onClick={togglePrivacyModal}>
                   Financial Privacy Policy
                 </button>
@@ -181,7 +174,7 @@ export const Account = () => {
             </Term>
             <Term>
               <Field type="checkbox" name="acceptReportingTerms">
-                {formikProps => (
+                {(formikProps) => (
                   <FormikCheckbox
                     {...formikProps}
                     nextTerm={nextSlide}
@@ -191,21 +184,18 @@ export const Account = () => {
                 )}
               </Field>
               <TermsStatement accepted={reportingTerms}>
-                By clicking &quot;GET TERMS&quot; I give Carvana written consent
-                to obtain, now and periodically, consumer credit reports
-                (Reports) about me from consumer reporting agencies to show
-                current & future credit products & services I prequalify for
-                when financing with Carvana. I understand this authorizes
-                Carvana to get multiple Reports, which may appear as an inquiry
-                on my Report, but will not impact my credit score. This
-                authorization expires when my current account terminates unless
-                I revoke earlier by contacting Carvana at
-                creditoptout@carvana.com
+                By clicking &quot;GET TERMS&quot; I give Carvana written consent to obtain, now and
+                periodically, consumer credit reports (Reports) about me from consumer reporting
+                agencies to show current & future credit products & services I prequalify for when
+                financing with Carvana. I understand this authorizes Carvana to get multiple
+                Reports, which may appear as an inquiry on my Report, but will not impact my credit
+                score. This authorization expires when my current account terminates unless I revoke
+                earlier by contacting Carvana at creditoptout@carvana.com
               </TermsStatement>
             </Term>
             <Term>
               <Field type="checkbox" name="acceptAuthorizeTerms">
-                {formikProps => (
+                {(formikProps) => (
                   <FormikCheckbox
                     {...formikProps}
                     nextTerm={nextSlide}
@@ -215,17 +205,16 @@ export const Account = () => {
                 )}
               </Field>
               <TermsStatement accepted={authorizeTerms}>
-                That by providing my phone number, Carvana, or Carvana&apos;s
-                authorized representatives*, may call and/or send text messages
-                (including by using equipment to automatically dial telephone
-                numbers) about my interest in a purchase, for marketing/sales
-                purposes, or for any other servicing or informational purpose
-                related to my account. You do not have to consent to receiving
-                calls or texts to purchase from Carvana.
+                That by providing my phone number, Carvana, or Carvana&apos;s authorized
+                representatives*, may call and/or send text messages (including by using equipment
+                to automatically dial telephone numbers) about my interest in a purchase, for
+                marketing/sales purposes, or for any other servicing or informational purpose
+                related to my account. You do not have to consent to receiving calls or texts to
+                purchase from Carvana.
                 <br />
                 <strong>
-                  *Including, but not limited to, Bridgecrest Credit Company, GO
-                  Financial and SilverRock Automotive.
+                  *Including, but not limited to, Bridgecrest Credit Company, GO Financial and
+                  SilverRock Automotive.
                 </strong>
               </TermsStatement>
             </Term>
@@ -255,8 +244,7 @@ export const Account = () => {
             Content={StyledModalContent}
             closeModal={togglePrivacyModal}
             isOpen={openPrivacyModal}
-            testHook="test-modal"
-          >
+            testHook="test-modal">
             <ModalContent>
               <ModalCloseButton />
               <FinancialPrivacyModal />
@@ -265,8 +253,7 @@ export const Account = () => {
               onClick={togglePrivacyModal}
               role="button"
               onKeyDown={togglePrivacyModal}
-              tabIndex={0}
-            >
+              tabIndex={0}>
               <ModalBackdrop />
             </div>
           </Modal>

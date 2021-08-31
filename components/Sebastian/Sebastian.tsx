@@ -2,13 +2,13 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
 // Vendor
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { useMediaQuery } from 'react-responsive';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { useMediaQuery } from "react-responsive";
 // import { useSpring, useTransition, config, animated } from 'react-spring';
-import { useSpring, animated } from 'react-spring';
-import Typist from 'react-typist';
-import parse from 'html-react-parser';
+import { useSpring, animated } from "react-spring";
+import Typist from "react-typist";
+import parse from "html-react-parser";
 
 // Local
 // import { FadeIn } from '../Animations';
@@ -19,7 +19,7 @@ import {
   BubbleWrapperMobile,
   BubbleSpeech,
   BubbleDot
-} from './Sebastian.styles';
+} from "./Sebastian.styles";
 
 const Sebastian = ({ speech }) => {
   const [speechReady, setSpeechStatus] = useState(false);
@@ -54,10 +54,7 @@ const Sebastian = ({ speech }) => {
       {isMobile ? (
         <BubbleWrapperMobile speechReady={speechReady}>
           {speechReady ? (
-            <animated.div
-              style={speechProps}
-              dangerouslySetInnerHTML={speech}
-            />
+            <animated.div style={speechProps} dangerouslySetInnerHTML={speech} />
           ) : (
             <>
               {/* <animated.div key={1} style={bubbleProps}>
@@ -76,8 +73,7 @@ const Sebastian = ({ speech }) => {
               avgTypingDelay={50}
               stdTypingDelay={80}
               startDelay={1100}
-              onTypingDone={() => console.log('typed in')}
-            >
+              onTypingDone={() => console.log("typed in")}>
               {parse(speech.__html)}
             </Typist>
           </BubbleSpeech>
@@ -93,7 +89,7 @@ Sebastian.propTypes = {
 };
 
 Sebastian.defaultProps = {
-  speech: ''
+  speech: ""
 };
 
 export default Sebastian;

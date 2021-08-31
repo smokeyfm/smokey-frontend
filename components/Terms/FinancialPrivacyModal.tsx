@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React from 'react';
+import React from "react";
 
 // import { Close } from '@carvana/icons';
 
@@ -10,8 +10,7 @@ export const FinancialPrivacyModal = () => {
         <a
           href="https://assets.cvnaassets.com/compliance-assets/Carvana_Financial_Privacy_Policy.pdf"
           target="_blank"
-          rel="noopener noreferrer"
-        >
+          rel="noopener noreferrer">
           Click HERE to Print
         </a>
         <br />
@@ -23,8 +22,7 @@ export const FinancialPrivacyModal = () => {
             <tr className="fp-modal-table-title">
               <td className="left">F A C T S</td>
               <td className="right">
-                WHAT DOES CARVANA, LLC (&quot;CARVANA&quot;) DO WITH YOUR
-                PERSONAL INFORMATION?
+                WHAT DOES CARVANA, LLC (&quot;CARVANA&quot;) DO WITH YOUR PERSONAL INFORMATION?
               </td>
             </tr>
           </tbody>
@@ -34,11 +32,10 @@ export const FinancialPrivacyModal = () => {
             <tr className="fp-modal-table-content two">
               <td className="left">Why?</td>
               <td className="right">
-                Financial companies choose how they share your personal
-                information. Federal law gives consumers the right to limit some
-                but not all sharing. Federal law also requires us to tell you
-                how we collect, share, and protect your personal information.
-                Please read this notice carefully to understand what we do.
+                Financial companies choose how they share your personal information. Federal law
+                gives consumers the right to limit some but not all sharing. Federal law also
+                requires us to tell you how we collect, share, and protect your personal
+                information. Please read this notice carefully to understand what we do.
               </td>
             </tr>
           </tbody>
@@ -48,9 +45,8 @@ export const FinancialPrivacyModal = () => {
             <tr className="fp-modal-table-content two">
               <td className="left">What?</td>
               <td className="right">
-                The types of personal information we collect and share depend on
-                the product or service you have with us. This information can
-                include:
+                The types of personal information we collect and share depend on the product or
+                service you have with us. This information can include:
                 <ul>
                   <li>Social Security number and income</li>
                   <li>account balances and payment history</li>
@@ -65,11 +61,10 @@ export const FinancialPrivacyModal = () => {
             <tr className="fp-modal-table-content two">
               <td className="left">How?</td>
               <td className="right">
-                All financial companies need to share customers’ personal
-                information to run their everyday business. In the section
-                below, we list the reasons financial companies can share their
-                customers’ personal information; the reasons Carvana chooses to
-                share; and whether you can limit this sharing.
+                All financial companies need to share customers’ personal information to run their
+                everyday business. In the section below, we list the reasons financial companies can
+                share their customers’ personal information; the reasons Carvana chooses to share;
+                and whether you can limit this sharing.
               </td>
             </tr>
           </tbody>
@@ -77,9 +72,7 @@ export const FinancialPrivacyModal = () => {
         <table>
           <tbody>
             <tr className="fp-modal-table-content three title">
-              <td className="left">
-                Reasons we can share your personal information
-              </td>
+              <td className="left">Reasons we can share your personal information</td>
               <td className="middle">Does Carvana share?</td>
               <td className="right">Can you limit this sharing?</td>
             </tr>
@@ -88,9 +81,8 @@ export const FinancialPrivacyModal = () => {
                 <p>
                   <b>For our every day business purposes –</b>
                 </p>
-                such as to process your transactions, maintain your account(s),
-                respond to court orders and legal investigations, or report to
-                credit bureaus
+                such as to process your transactions, maintain your account(s), respond to court
+                orders and legal investigations, or report to credit bureaus
               </td>
               <td className="middle">Yes</td>
               <td className="right">No</td>
@@ -164,30 +156,23 @@ export const FinancialPrivacyModal = () => {
                     Call <strong>(844) 732-2556</strong>, or
                   </li>
                   <li>
-                    Email{' '}
-                    <a href="mailto:privacypolicy@carvana.com">
-                      privacypolicy@carvana.com
-                    </a>{' '}
-                    and include the words &quot;Opt Out&quot; in the subject
-                    line and body of your email.
+                    Email <a href="mailto:privacypolicy@carvana.com">privacypolicy@carvana.com</a>{" "}
+                    and include the words &quot;Opt Out&quot; in the subject line and body of your
+                    email.
                   </li>
                 </ul>
                 <p>
-                  <strong>Please note:</strong> If you are a new customer, we
-                  can begin sharing your information 30 days from the date we
-                  sent this notice. When you are no longer our customer, we
-                  continue to share your information as described in this
-                  notice.
+                  <strong>Please note:</strong> If you are a new customer, we can begin sharing your
+                  information 30 days from the date we sent this notice. When you are no longer our
+                  customer, we continue to share your information as described in this notice.
                 </p>
-                <p>
-                  However, you can contact us at any time to limit our sharing.
-                </p>
+                <p>However, you can contact us at any time to limit our sharing.</p>
               </td>
             </tr>
             <tr className="fp-modal-table-content two">
               <td className="left">Questions?</td>
               <td className="right">
-                Call <strong>(844) 732-2556</strong> or go to{' '}
+                Call <strong>(844) 732-2556</strong> or go to{" "}
                 <a href="http://www.carvana.com">www.carvana.com</a>
               </td>
             </tr>
@@ -215,39 +200,29 @@ export const FinancialPrivacyModal = () => {
             </tr>
             <tr className="tr-white tr-col-2">
               <td>
-                <strong>
-                  How does Carvana protect my personal information?
-                </strong>
+                <strong>How does Carvana protect my personal information?</strong>
               </td>
               <td>
-                To protect your personal information from unauthorized access
-                and use, we use security measures that comply with federal law.
-                These measures include computer safeguards and secured files and
-                buildings.
+                To protect your personal information from unauthorized access and use, we use
+                security measures that comply with federal law. These measures include computer
+                safeguards and secured files and buildings.
               </td>
             </tr>
             <tr className="tr-white tr-col-2">
               <td>
-                <strong>
-                  How does Carvana collect my personal information?
-                </strong>
+                <strong>How does Carvana collect my personal information?</strong>
               </td>
               <td>
                 We collect your personal information, for example, when you
                 <ul>
                   <li>visit our website</li>
-                  <li>
-                    apply for financing or give us your income information
-                  </li>
-                  <li>
-                    provide employment information or give us your contact
-                    information
-                  </li>
+                  <li>apply for financing or give us your income information</li>
+                  <li>provide employment information or give us your contact information</li>
                   <li>pay your bills</li>
                 </ul>
                 <p>
-                  We also collect your personal information from others, such as
-                  credit bureaus, affiliates or other companies.
+                  We also collect your personal information from others, such as credit bureaus,
+                  affiliates or other companies.
                 </p>
               </td>
             </tr>
@@ -259,26 +234,22 @@ export const FinancialPrivacyModal = () => {
                 Federal law gives you the right to limit only
                 <ul>
                   <li>
-                    sharing for affiliates’ everyday business purposes –
-                    information about your creditworthiness
+                    sharing for affiliates’ everyday business purposes – information about your
+                    creditworthiness
                   </li>
-                  <li>
-                    affiliates from using your information to market to you
-                  </li>
+                  <li>affiliates from using your information to market to you</li>
                   <li>sharing for nonaffiliates to market to you</li>
                 </ul>
                 <p>
-                  State laws and individual companies may give you additional
-                  rights to limit sharing. See below for more on your rights
-                  under state law.
+                  State laws and individual companies may give you additional rights to limit
+                  sharing. See below for more on your rights under state law.
                 </p>
               </td>
             </tr>
             <tr className="tr-white tr-col-2">
               <td>
                 <strong>
-                  What happens when I limit sharing for an account I hold
-                  jointly with someone else?
+                  What happens when I limit sharing for an account I hold jointly with someone else?
                 </strong>
               </td>
               <td>
@@ -288,8 +259,7 @@ export const FinancialPrivacyModal = () => {
             <tr className="tr-white tr-col-2">
               <td>
                 <strong>
-                  What happens when I limit sharing for an account I hold
-                  jointly with someone else?
+                  What happens when I limit sharing for an account I hold jointly with someone else?
                 </strong>
               </td>
               <td>Your choices will apply to everyone on your account.</td>
@@ -305,24 +275,21 @@ export const FinancialPrivacyModal = () => {
               </td>
               <td>
                 <p>
-                  Companies related by common ownership or control. They can be
-                  financial and nonfinancial companies.
+                  Companies related by common ownership or control. They can be financial and
+                  nonfinancial companies.
                 </p>
                 <ul>
                   <li>
                     <i>
-                      DriveTime Car Sales Company, LLC (“DriveTime”) and all
-                      institutions in the DriveTime family of companies;
-                      Bridgecrest Acceptance Corporation (“Bridgecrest
-                      Acceptance”); Bridgecrest Credit Company, LLC
-                      (“Bridgecrest Credit”); Driver’s Seat, LLC and DS Nominee
-                      Titleholder, LLC (together, “Driver’s Seat”), are
-                      affiliates. Our other affiliates include companies with
-                      the DriveTime or DT name; financial companies, such as GFC
-                      Lending, LLC d/b/a GO Financial; insurance companies such
-                      as SilverRock Group, Inc., SilverRock Insurance, LLC,
-                      Motion Telematics, LLC and nonfinancial companies, such as
-                      GO Auto Exh LLC.
+                      DriveTime Car Sales Company, LLC (“DriveTime”) and all institutions in the
+                      DriveTime family of companies; Bridgecrest Acceptance Corporation
+                      (“Bridgecrest Acceptance”); Bridgecrest Credit Company, LLC (“Bridgecrest
+                      Credit”); Driver’s Seat, LLC and DS Nominee Titleholder, LLC (together,
+                      “Driver’s Seat”), are affiliates. Our other affiliates include companies with
+                      the DriveTime or DT name; financial companies, such as GFC Lending, LLC d/b/a
+                      GO Financial; insurance companies such as SilverRock Group, Inc., SilverRock
+                      Insurance, LLC, Motion Telematics, LLC and nonfinancial companies, such as GO
+                      Auto Exh LLC.
                     </i>
                   </li>
                 </ul>
@@ -334,15 +301,14 @@ export const FinancialPrivacyModal = () => {
               </td>
               <td>
                 <p>
-                  Companies not related by common ownership or control. They can
-                  be financial and nonfinancial companies.
+                  Companies not related by common ownership or control. They can be financial and
+                  nonfinancial companies.
                 </p>
                 <ul>
                   <li>
                     <i>
-                      Nonaffiliates we share with could include insurance
-                      companies, mortgage companies, credit card companies and
-                      direct marketing companies.
+                      Nonaffiliates we share with could include insurance companies, mortgage
+                      companies, credit card companies and direct marketing companies.
                     </i>
                   </li>
                 </ul>
@@ -353,13 +319,13 @@ export const FinancialPrivacyModal = () => {
                 <strong>Joint Marketing</strong>
               </td>
               <td>
-                A formal agreement between nonaffiliated financial companies
-                that together market financial products or services to you.
+                A formal agreement between nonaffiliated financial companies that together market
+                financial products or services to you.
                 <ul>
                   <li>
                     <i>
-                      Our joint marketing partners could include insurance
-                      companies, automobile dealers and credit card companies.
+                      Our joint marketing partners could include insurance companies, automobile
+                      dealers and credit card companies.
                     </i>
                   </li>
                 </ul>
@@ -373,24 +339,19 @@ export const FinancialPrivacyModal = () => {
             <tr className="tr-white tr-col-2">
               <td colSpan="2">
                 <p>
-                  <strong>California residents:</strong> We will not share
-                  personal information with nonaffiliates to market to you,
-                  except with your express consent. We will not share your
-                  personal and financial information with affiliates or joint
-                  marketing companies, if you instruct us not to do so. To limit
-                  our sharing with affiliates and joint marketing companies,
-                  please send an email to{' '}
-                  <a href="mailto:privacypolicy@carvana.com">
-                    privacypolicy@carvana.com
-                  </a>{' '}
-                  and include the words “Opt Out” in the subject line and body
-                  of your email, or call us at (844)732-2556.
+                  <strong>California residents:</strong> We will not share personal information with
+                  nonaffiliates to market to you, except with your express consent. We will not
+                  share your personal and financial information with affiliates or joint marketing
+                  companies, if you instruct us not to do so. To limit our sharing with affiliates
+                  and joint marketing companies, please send an email to{" "}
+                  <a href="mailto:privacypolicy@carvana.com">privacypolicy@carvana.com</a> and
+                  include the words “Opt Out” in the subject line and body of your email, or call us
+                  at (844)732-2556.
                 </p>
                 <p>
-                  <strong>Vermont residents:</strong> We will not share personal
-                  information with nonaffiliates to market to you, or share
-                  consumer report information about you with affiliates or joint
-                  marketing companies, except with your express consent.
+                  <strong>Vermont residents:</strong> We will not share personal information with
+                  nonaffiliates to market to you, or share consumer report information about you
+                  with affiliates or joint marketing companies, except with your express consent.
                 </p>
               </td>
             </tr>

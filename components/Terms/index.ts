@@ -1,2 +1,2 @@
-export { ElectronicSignaturesModal } from './ElectronicSignaturesModal';
-export { FinancialPrivacyModal } from './FinancialPrivacyModal';
+export { ElectronicSignaturesModal } from "./ElectronicSignaturesModal";
+export { FinancialPrivacyModal } from "./FinancialPrivacyModal";
