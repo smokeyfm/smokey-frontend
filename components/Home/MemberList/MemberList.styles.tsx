@@ -1,6 +1,14 @@
 import styled from "@emotion/styled";
 import { pxIphone, pxPC } from "../../../utils";
 import Avatar from "@material-ui/core/Avatar";
+export const Title = styled.div`
+  font-size: 33px;
+  line-height: 41px;
+  color: #000;
+  text-align: center;
+  font-family: "Bebas Neue";
+  margin-top: 19px;
+`;
 export const MySwiperContainer = styled.div`
   height: ${pxPC(143)};
   margin-top: ${pxPC(30)};
