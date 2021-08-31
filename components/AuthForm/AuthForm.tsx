@@ -1,7 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Layout } from "../Layout";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import styled from "@emotion/styled";
 import { SignupForm } from "../SignupForm";
@@ -9,7 +8,6 @@ import { SignupForm } from "../SignupForm";
 import {
   AuthFormType,
   loginForm,
-  signupForm,
   forgotPasswordForm,
   updatePasswordForm,
   updateEmailForm
