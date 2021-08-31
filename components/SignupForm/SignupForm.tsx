@@ -1,49 +1,17 @@
-/* eslint-disable no-console */
-// Vendor
-import React, { useState, useEffect, useCallback } from "react";
-// import PropTypes from 'prop-types';
-import { useMediaQuery } from "react-responsive";
-import styled from "styled-components";
-import FormikWizard from "formik-wizard";
-import { useFormikContext } from "formik";
-import { withWizard } from "react-albus";
+import * as React from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import styled from "@emotion/styled";
+import { AuthFormType, signupForm } from "../AuthForm/constants";
+import { useAuth } from "../../config/auth";
 
-// import Swal from 'sweetalert2';
-// import 'sweetalert2/src/sweetalert2.scss';
-
-// import { setFieldValue } from 'formik';
-
-// Carvana
-import { ArrowBackDouble, CheckCircle } from "@carvana/icons";
-
-// Local
-// import Static from '../Static';
-import Alert from "../Alerts";
-import { createUser } from "../../services/AuthService";
-// import { SoftPullService } from '../../services';
-import {
-  MainWrapper,
-  InitialTitle,
-  Title,
-  ContentWrapper,
-  LeftHalf,
-  RightHalf,
-  WizardForm,
-  WizardActions,
-  PreviousButton,
-  NextButton,
-  Disclaimer,
-  SkipAction,
-  LoginAction,
-  CongratsWrapper
-} from "./SignupForm.styles";
-import Questions from "../Questions/Questions";
-import Summary from "../Summary";
-import { Description, Subtitle, LinkOut, StyledModalContent } from "../Questions/Questions.styles";
-import { SlideInLeft, SlideOutLeft } from "../Animations";
-
-const StyledCheckCircle = styled(CheckCircle)`
-  color: ${(props) => props.theme.carvana.blue.medium};
+const FieldContainer = styled.div`
+  margin: 15px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 `;
 
 const FormWrapper = ({
