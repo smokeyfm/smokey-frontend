@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Sticky from "react-sticky-el";
@@ -16,7 +16,13 @@ import {
   HeaderDiv,
   LinkDiv,
   BottomHeader,
-  Category
+  Category,
+  UserIconMo,
+  CartMo,
+  HeaderAccount,
+  ArrowDown,
+  ShoppingCart,
+  FavoriteIcon
 } from "./Header.styles";
 
 const dummyCategories = ["Best Sellers", "Latest", "Seasonal", "Luxury", "On Sale", "Coming Soon"];
@@ -33,6 +39,10 @@ export const Header: React.FC<HeaderProps> = (props) => {
     return null;
   }
 
+  useEffect(() => {
+    console.log(user && user.data.attributes);
+  }, []);
+
   return (
     <HeaderDiv>
       <TopHeader>
@@ -47,10 +57,17 @@ export const Header: React.FC<HeaderProps> = (props) => {
             {user ? (
               <>
                 <div>{user.data.attributes.email}</div>
+                <UserIconMo src={"/user.png"} />
+                <ArrowDown />
                 <button onClick={logout}>LOGOUT</button>
               </>
             ) : (
               <>
+                {/* <CartMo src={"/CART.png"} /> */}
+                {/* <HeaderAccount>MyAccount</HeaderAccount> */}
+                {/* <ShoppingCart src={"/CART.png"} /> */}
+                <i className="btb bt-shopping-cart" />
+                <FavoriteIcon />
                 <Link href="/authenticate/login">
                   <LinkDiv isActive={pathname === "/authenticate/login"}>LOG IN</LinkDiv>
                 </Link>
@@ -63,7 +80,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
           </RightSide>
         </div>
       </TopHeader>
-      <BottomHeader>
+      {/* <BottomHeader>
         <Sticky>
           <MainMenu
             pcMenuItemClassName={"pc-menu-item"}
@@ -76,7 +93,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
             right={false}
           />
         </Sticky>
-      </BottomHeader>
+      </BottomHeader> */}
     </HeaderDiv>
   );
 };

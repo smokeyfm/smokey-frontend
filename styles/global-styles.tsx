@@ -61,6 +61,9 @@ export const GlobalStyles = () => (
         button:focus {
           outline: none;
         }
+        i {
+          color: #000;
+        }
         .bm-burger-button {
           position: fixed;
           width: 36px;
