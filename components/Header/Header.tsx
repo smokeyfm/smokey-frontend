@@ -27,7 +27,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
   const [cartVisible, setCartVisible] = React.useState(false);
   const toggleCart = () => setCartVisible((isVisible) => !isVisible);
 
-  if (process.env.IS_MAINT_MODE !== "true") {
+  if (process.env.IS_MAINT_MODE) {
     return (
       <HeaderDiv>
         <TopHeader>
