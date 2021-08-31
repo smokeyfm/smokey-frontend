@@ -6,15 +6,9 @@ import { QueryKeys } from "../queryKeys";
 const fetchProduct = async (id: string): Promise<IProduct> => {
   const storage = (await import("../../config/storage")).default;
   const token = await storage.getToken();
-  const response = await spreeClient.products.show(
-    {
-      bearerToken: token ? token.access_token : undefined
-    },
-    id,
-    {
-      include: "images,default_variant"
-    }
-  );
+  const response = await spreeClient.products.show({
+    bearerToken: token ? token.access_token : undefined
+  }, id);
   if (response.isSuccess()) {
     return response.success();
   } else {
