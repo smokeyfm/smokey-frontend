@@ -10,10 +10,7 @@ const fetchProduct = async (id: string): Promise<IProduct> => {
     {
       bearerToken: token ? token.access_token : undefined
     },
-    id,
-    {
-      include: "images,default_variant"
-    }
+    id
   );
   if (response.isSuccess()) {
     return response.success();
