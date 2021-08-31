@@ -40,6 +40,7 @@ const SearchBar = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const [isWidthSet, setIsWidthSet] = useState(false);
   const [isSearchLoading, setIsSearchLoading] = useState(false);
+  const [isSearchInputFocusable, setIsSearchInputFocusable] = useState(false);
 
   const handleSearchChange = (e: any) => {
     const { value } = e.target;
@@ -66,6 +67,7 @@ const SearchBar = ({
   useOnClickOutside(dropdownRef, handleClickOutside);
 
   useEffect(() => {
+    !isSearchInputFocusable && setIsSearchInputFocusable(!isSearchInputFocusable);
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("touchstart", handleClickOutside);
 
@@ -118,10 +120,11 @@ const SearchBar = ({
     }, 330);
 
   // Open Search, unless open then close/hide everything and remove explicit search width
-  const searchRef = createRef();
+  const searchRef = createRef<HTMLInputElement>();
 
   const toggleSearch = () => {
-    searchRef.current.focus();
+    const currSearchElement = searchRef.current!;
+    if (currSearchElement) { currSearchElement.focus() }
     setIsExpanded(!isExpanded);
     isWidthSet ? setIsWidthSet(!isWidthSet) : handleSetSearchWidth();
     setQuery("");

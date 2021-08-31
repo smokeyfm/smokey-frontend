@@ -5,11 +5,15 @@ import { LayoutProps } from "./types";
 import { Column, Foot } from "../Foot/Foot";
 import { pxIphone } from "../../utils";
 
-interface LogoType {
+type LogoTypeFC = {
   imageFile: string;
   isDark: boolean;
+};
+
+type LogoType = {
   src: string;
-}
+  isDark: boolean;
+};
 
 const Logo = styled.img<LogoType>`
   width: 181px;
@@ -25,8 +29,8 @@ const Logo = styled.img<LogoType>`
   }
 `;
 
-export const MyLogo: React.FC = (props: { imageFile: string; isDark: boolean }) => (
-  <Logo src={props.imageFile} isDark={props.isDark} {...props} />
+export const MyLogo: React.FC<LogoTypeFC> = ({ imageFile, isDark }) => (
+  <Logo src={imageFile} isDark={isDark} />
 );
 
 const CameraIcon = styled.img`
@@ -187,7 +191,7 @@ export const Layout: React.FC<LayoutProps> = ({
                   background-color: #000;
                 `
               }}
-              footerData={{ logo: <MyLogo src="/logo.png" />, columns, mobileIconLinks: iconLinks }}
+              footerData={{ logo: <MyLogo imageFile="/logo.png" isDark={false} />, columns, mobileIconLinks: iconLinks }}
             />
           )}
         </ClassNames>
