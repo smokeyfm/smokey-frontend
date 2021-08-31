@@ -4,7 +4,11 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { AuthProvider } from "../config/auth";
-import { Header, ComingSoon } from "../components";
+import { MainMenu, Header, ComingSoon } from "../components";
+import styled from "@emotion/styled";
+import "swiper/swiper-bundle.min.css";
+import { menusData } from "../components/MainMenu/data/menusData";
+import "./app.css";
 import { useRouter } from "next/router";
 import * as tracking from "../config/tracking";
 
@@ -51,6 +55,17 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     return (
       <>
         <Header />
+        <MainMenu
+          showMenuHeader
+          customBurgerIcon={<i className="btb bt-bars" />}
+          pcMenuItemClassName={"pc-menu-item"}
+          pcWrapClassName={"pc-menu-wrap"}
+          outterContainerId={"outter-container"}
+          pageWrapId={"page-wrap"}
+          animationType={"slide"}
+          menusData={menusData}
+          right={false}
+        />
         <Component {...pageProps} />
       </>
     );
