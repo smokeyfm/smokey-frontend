@@ -5,10 +5,17 @@ import { LayoutProps } from "./types";
 import { Column, Foot } from "../Foot/Foot";
 import { pxIphone } from "../../utils";
 
-const Logo = styled.img`
+interface LogoType {
+  imageFile: string;
+  isDark: boolean;
+  src: string;
+}
+
+const Logo = styled.img<LogoType>`
   width: 181px;
   height: auto;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
+  ${(p) => (p.isDark ? "filter: invert(1);" : null)};
   @media (max-width: 375px) {
     width: ${pxIphone(80)};
     margin-bottom: 14.68vw;
@@ -17,7 +24,11 @@ const Logo = styled.img`
   @media (max-width: 750px) {
   }
 `;
-const MyLogo: React.FC = () => <Logo src={"/LOGO.png"}></Logo>;
+
+export const MyLogo: React.FC = (props: { imageFile: string; isDark: boolean }) => (
+  <Logo src={props.imageFile} isDark={props.isDark} {...props} />
+);
+
 const CameraIcon = styled.img`
   width: 11px;
   height: auto;
@@ -176,7 +187,7 @@ export const Layout: React.FC<LayoutProps> = ({
                   background-color: #000;
                 `
               }}
-              footerData={{ logo: <MyLogo />, columns, mobileIconLinks: iconLinks }}
+              footerData={{ logo: <MyLogo src="/logo.png" />, columns, mobileIconLinks: iconLinks }}
             />
           )}
         </ClassNames>

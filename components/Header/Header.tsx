@@ -4,6 +4,7 @@ import Link from "next/link";
 import Sticky from "react-sticky-el";
 import { HeaderProps } from "./types";
 import { useAuth } from "../../config/auth";
+import { MyLogo } from "../Layout/Layout";
 import SearchBar from "../SearchBar";
 import { MainMenu } from "../MainMenu";
 import { menusData } from "../MainMenu/data/menusData";
@@ -48,7 +49,9 @@ export const Header: React.FC<HeaderProps> = (props) => {
       <TopHeader>
         <LogoDiv>
           <Link href="/">
-            <LinkDiv isActive>POL</LinkDiv>
+            <LinkDiv isActive>
+              <MyLogo isDark imageFile="/logo.png" />
+            </LinkDiv>
           </Link>
         </LogoDiv>
         <div>
