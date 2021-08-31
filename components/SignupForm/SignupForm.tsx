@@ -3,12 +3,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useMediaQuery } from "react-responsive";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import FormikWizard from 'formik-wizard';
+import FormikWizard from "formik-wizard";
 import styled from "@emotion/styled";
 import { AuthFormType, signupForm } from "../AuthForm/constants";
 import { useAuth } from "../../config/auth";
-import { SlideInLeft, SlideOutLeft } from '../Animations';
-import { Questions } from './Questions';
+import { SlideInLeft, SlideOutLeft } from "../Animations";
+import { Questions } from "./Questions";
 
 import {
   MainWrapper,
@@ -25,7 +25,7 @@ import {
   LoginAction,
   Disclaimer,
   CongratsWrapper
-} from './SignupForm.styles';
+} from "./SignupForm.styles";
 
 const FieldContainer = styled.div`
   margin: 15px 0px;

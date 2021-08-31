@@ -1,5 +1,5 @@
-import { keyframes } from '@emotion/react';
-import styled from '@emotion/styled';
+import { keyframes } from "@emotion/react";
+import styled from "@emotion/styled";
 
 const fadeInOut = keyframes`
   0% { opacity: 1; }
@@ -18,16 +18,14 @@ export const SebastianWrapper = styled.div`
   position: relative;
   top: -150px;
   left: 0px;
-  ${'' /* width: 105%; */}
+  ${"" /* width: 105%; */}
 `;
 
 export const SebastianImage = styled.div`
   position: relative;
   left: 25px;
   bottom: -25px;
-  background: url('${
-    process.env.CVNA_APP_CDN_URL
-  }/images/sebastian2.png') no-repeat;
+  background: url("${process.env.CVNA_APP_CDN_URL}/images/sebastian2.png") no-repeat;
   background-size: 48px 48px;
   width: 48px;
   height: 48px;
@@ -60,11 +58,12 @@ export const SebastianImage = styled.div`
     bottom: -130px;
   }
 
-  @media only screen and (max-width: ${props =>
-    props.theme.breakpoints.values.sm}px) {
+  @media only screen and (max-width: ${(props) => props.theme.breakpoints.values.sm}px) {
     position: absolute;
-    ${'' /* left: 25px;
-    bottom: -35px; */}
+    ${
+      "" /* left: 25px;
+    bottom: -35px; */
+    }
     left: 0px;
     bottom: -130px;
   }
@@ -72,8 +71,8 @@ export const SebastianImage = styled.div`
 
 export const BubbleWrapper = styled.div`
   border-radius: 8px;
-  border: 1px solid ${props => props.theme.carvana.gray.medium};
-  background: ${props => props.theme.carvana.white.primary};
+  border: 1px solid ${(props) => props.theme.carvana.gray.medium};
+  background: ${(props) => props.theme.carvana.white.primary};
   margin: 0 0 -35px 0;
   padding: 15px;
   &:after {
@@ -81,10 +80,8 @@ export const BubbleWrapper = styled.div`
     position: relative;
     left: 80px;
     bottom: -30px;
-    content: ' ';
-    background: url('${
-      process.env.CVNA_APP_CDN_URL
-    }/images/bubble-arrow.svg') no-repeat;
+    content: " ";
+    background: url("${process.env.CVNA_APP_CDN_URL}/images/bubble-arrow.svg") no-repeat;
     background-size: 29px 16px;
     width: 29px;
     height: 16px;
@@ -98,22 +95,22 @@ export const BubbleWrapperMobile = styled.div`
   left: 68px;
   bottom: -90px;
   font-size: 0.9rem;
-  padding: ${props => (props.speechReady ? '10px 14px' : 'auto')};
-  width: ${props => (props.speechReady ? 'auto' : `${width * 0.8}px`)};
-  height: ${props => (props.speechReady ? 'auto' : `${height * 0.8}px`)};
+  padding: ${(props) => (props.speechReady ? "10px 14px" : "auto")};
+  width: ${(props) => (props.speechReady ? "auto" : `${width * 0.8}px`)};
+  height: ${(props) => (props.speechReady ? "auto" : `${height * 0.8}px`)};
   align-items: center;
   justify-content: space-around;
-  border-radius: ${props => (props.speechReady ? 20 : 36)}px;
-  background-color: ${props => props.theme.carvana.white.primary};
+  border-radius: ${(props) => (props.speechReady ? 20 : 36)}px;
+  background-color: ${(props) => props.theme.carvana.white.primary};
   box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.25);
-  color: ${props => props.theme.carvana.gray.dark};
+  color: ${(props) => props.theme.carvana.gray.dark};
   &::before,
   &::after {
     position: absolute;
-    content: ' ';
-    background: ${props => props.theme.carvana.white.primary};
+    content: " ";
+    background: ${(props) => props.theme.carvana.white.primary};
     border-radius: 100%;
-    ${'' /* box-shadow: 5px 8px 20px rgba(0,0,0,0.25); */}
+    ${"" /* box-shadow: 5px 8px 20px rgba(0,0,0,0.25); */}
   }
 
   &::before {
@@ -132,7 +129,7 @@ export const BubbleWrapperMobile = styled.div`
 `;
 
 export const BubbleSpeech = styled.div`
-  color: ${props => props.theme.carvana.gray.dark};
+  color: ${(props) => props.theme.carvana.gray.dark};
   font-size: 1rem;
   font-weight: 300;
   text-align: left;
@@ -142,7 +139,7 @@ export const BubbleDot = styled.div`
   width: ${width / 8}px;
   height: ${width / 8}px;
   border-radius: 100%;
-  background-color: ${props => props.theme.carvana.gray.medium};
+  background-color: ${(props) => props.theme.carvana.gray.medium};
 
   animation: ${fadeInOut} 1.5s linear infinite;
   animation-delay: 0.25s;

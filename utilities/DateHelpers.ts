@@ -6,9 +6,9 @@ export const addDays = (date, days) => {
   return dat;
 };
 
-export const isADate = maybeDate => {
-  if (maybeDate == null || maybeDate === '') return false;
-  if (Object.prototype.toString.call(maybeDate) === '[object Date]') {
+export const isADate = (maybeDate) => {
+  if (maybeDate == null || maybeDate === "") return false;
+  if (Object.prototype.toString.call(maybeDate) === "[object Date]") {
     if (Number.isNaN(maybeDate.getTime())) {
       return false;
     }
@@ -17,20 +17,18 @@ export const isADate = maybeDate => {
   return false;
 };
 
-export const toShortDateZeroFill = date => {
+export const toShortDateZeroFill = (date) => {
   if (!isADate(date)) return null;
   const monthFormat = `0${date.getMonth() + 1}`;
   const dayFormat = `0${date.getDate()}`;
-  return `${monthFormat.slice(-2)}/${dayFormat.slice(
-    -2
-  )}/${date.getFullYear()}`;
+  return `${monthFormat.slice(-2)}/${dayFormat.slice(-2)}/${date.getFullYear()}`;
 };
 
 export const dayDiff = (date1, date2) => {
   return Math.round(Math.abs((date1.getTime() - date2.getTime()) / oneDay));
 };
 
-export const daysSinceToday = date => {
+export const daysSinceToday = (date) => {
   if (!isADate(date)) return null;
   return dayDiff(new Date(), date);
 };
@@ -38,22 +36,19 @@ export const daysSinceToday = date => {
 export const daysThisYear = () => {
   const now = new Date();
   const start = new Date(now.getFullYear(), 0, 0);
-  const diff =
-    now -
-    start +
-    (start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000;
+  const diff = now - start + (start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000;
   const oneDayThisYear = 1000 * 60 * 60 * 24;
   const day = Math.floor(diff / oneDayThisYear);
   return day;
 };
 
-export const normalizeDate = value => {
+export const normalizeDate = (value) => {
   if (!value) {
     return value;
   }
 
-  const onlyNums = value.replace(/[^\d]/g, '');
-  const trailingSlash = value.slice(-1) === '/' ? '/' : '';
+  const onlyNums = value.replace(/[^\d]/g, "");
+  const trailingSlash = value.slice(-1) === "/" ? "/" : "";
   if (onlyNums.length === 1 && trailingSlash) {
     return `0${onlyNums}${trailingSlash}`;
   }
@@ -66,8 +61,5 @@ export const normalizeDate = value => {
   if (onlyNums.length <= 4) {
     return `${onlyNums.slice(0, 2)}/${onlyNums.slice(2)}${trailingSlash}`;
   }
-  return `${onlyNums.slice(0, 2)}/${onlyNums.slice(2, 4)}/${onlyNums.slice(
-    4,
-    8
-  )}`;
+  return `${onlyNums.slice(0, 2)}/${onlyNums.slice(2, 4)}/${onlyNums.slice(4, 8)}`;
 };

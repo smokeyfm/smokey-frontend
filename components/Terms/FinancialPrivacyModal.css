@@ -24,13 +24,13 @@
 }
 
 .fp-modal-container ul li:before {
-  content: '';
+  content: "";
   display: inline-block;
   margin-left: -25px;
   margin-right: 5px;
   height: 15px;
   width: 15px;
-  background: url('/favicon.ico') no-repeat;
+  background: url("/favicon.ico") no-repeat;
   background-size: 100%;
 }
 
