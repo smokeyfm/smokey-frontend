@@ -9,25 +9,24 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
 import { MainMenuProps, menuDataItem } from "./types";
-import { useMediaQuery } from "react-responsive";
 import DesktopMenu from "./DesktopMenu";
 import styled from "@emotion/styled";
+import isPropValid from "@emotion/is-prop-valid";
 const SiderMenu = styled(List)`
   width: 100%;
 `;
 export interface MenuItemProps {
-  pl: string;
+  paddingLeft: string;
 }
-const MenuItem = styled(ListItem)<MenuItemProps>`
-  padding-left: ${(props) => props.pl}!important;
+const MenuItem = styled(ListItem, {
+  shouldForwardProp: (prop) => isPropValid(prop) && prop !== "paddingLeft"
+})<MenuItemProps>`
+  padding-left: ${(props) => props.paddingLeft}!important;
 `;
 const PCHidden = styled.div`
   @media screen and (min-width: 768px) {
     display: none;
   }
-`;
-const MyLinkText = styled(ListItemText)`
-  cursor: pointer !important;
 `;
 const MobileHidden = styled.div`
   @media screen and (max-width: 767px) {
@@ -37,8 +36,13 @@ const MobileHidden = styled.div`
     display: flex;
   }
 `;
+const MenuFooter = styled.div`
+  position: fixed;
+  bottom: 0;
+`;
 export const MainMenu = (props: MainMenuProps) => {
   const {
+    showMenuHeader,
     pcWrapClassName,
     pcMenuItemClassName,
     onMenuItemClick,
@@ -49,7 +53,8 @@ export const MainMenu = (props: MainMenuProps) => {
   } = props;
   const Menu = BurgerMenu[animationType as keyof typeof BurgerMenu];
   const [keyPath, setKeyPath] = useState("");
-  const isTabletOrDesktop = useMediaQuery({ minWidth: 768 });
+  const [open, setOpen] = useState(false);
+  const toggleMenu = () => setOpen((value) => !value);
   const handleClick = useCallback((kp, key) => {
     if (onMenuItemClick) {
       onMenuItemClick(kp, key);
@@ -63,8 +68,8 @@ export const MainMenu = (props: MainMenuProps) => {
       }
     });
   }, []);
-  const getSubMenuOrItems = (menusData: menuDataItem[], parentKeyPath: string, level: number) => {
-    const pl = level * 40 + "px";
+  const getSubMenuItem = (menusData: menuDataItem[], parentKeyPath: string, level: number) => {
+    const paddingLeft = level * 40 + "px";
     return (
       <SiderMenu disablePadding>
         {menusData.map((item, index) => {
@@ -72,11 +77,11 @@ export const MainMenu = (props: MainMenuProps) => {
             <Fragment key={parentKeyPath + "/" + item.key}>
               {
                 <MenuItem
-                  pl={pl}
+                  paddingLeft={paddingLeft}
                   onClick={handleClick.bind(null, parentKeyPath + "/" + item.key, item.key)}
                   button>
                   <ListItemIcon>{item.icon ? item.icon() : null}</ListItemIcon>
-                  <MyLinkText primary={item.name} />
+                  <ListItemText primary={item.name} />
                   {item &&
                     item.children &&
                     item.children.length != 0 &&
@@ -92,7 +97,7 @@ export const MainMenu = (props: MainMenuProps) => {
                   timeout="auto"
                   unmountOnExit
                   in={keyPath.indexOf(parentKeyPath + "/" + item.key) != -1}>
-                  {getSubMenuOrItems(item.children, parentKeyPath + "/" + item.key, level + 1)}
+                  {getSubMenuItem(item.children, parentKeyPath + "/" + item.key, level + 1)}
                 </Collapse>
               )}
             </Fragment>
@@ -101,16 +106,22 @@ export const MainMenu = (props: MainMenuProps) => {
       </SiderMenu>
     );
   };
-
-  {
-    /*<div className={'layout'}>
-      <DesktopMenu onMenuItemClick={onMenuItemClick} pcWrapClassName={classnames(pcWrapClassName)} pcMenuItemClassName={pcMenuItemClassName}  menusData={menusData} />
-      </div>*/
-  }
   return (
     <>
       <PCHidden>
-        <Menu {...others}>{getSubMenuOrItems(menusData, "", 0)}</Menu>
+        <Menu isOpen={open} onOpen={toggleMenu} onClose={toggleMenu} {...others}>
+          {showMenuHeader ? (
+            <>
+              <div>MENU</div>
+              <div onClick={toggleMenu}>X</div>
+            </>
+          ) : null}
+          {getSubMenuItem(menusData, "", 0)}
+          <MenuFooter>
+            <div>Privacy Policy - Terms & Conditions - RETURN POLICY</div>
+            <div>All Materials Copyright © 2021 POL Clothing</div>
+          </MenuFooter>
+        </Menu>
       </PCHidden>
       <MobileHidden>
         <DesktopMenu

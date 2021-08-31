@@ -32,7 +32,7 @@ export const BigTitle = styled.div`
 export const LargeTitle = styled.div`
   font-family: "Bebas Neue";
   font-size: ${pxPC(39)};
-  line-height: ${pxPC(38)};
+  line-height: ${pxPC(48)};
   text-align: center;
   color: #000;
 `;

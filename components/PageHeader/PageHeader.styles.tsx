@@ -1,21 +1,19 @@
 import styled from "@emotion/styled";
 import SearchIcon from "@material-ui/icons/Search";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import { pxIphone } from "../../utils";
 export const Header = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-top: 14px;
   @media (max-width: 768px) {
     height: ${pxIphone(60)};
     margin-top: 0;
   }
 `;
 export const LogoDiv = styled.div`
-  margin: 46px auto 0 auto;
+  margin: 14px auto 35px auto;
   width: 181px;
   height: 45px;
   border: 0.67px solid #000;
@@ -43,16 +41,8 @@ export const LogoDivMo = styled.div`
     font-size: 17px;
   }
 `;
-export const CustomIcon = styled.img`
-  width: ${pxIphone(37)};
-  height: auto;
-`;
-export const MenuFooter = styled.div`
-  position: fixed;
-  bottom: 0;
-`;
 export const HeaderAccount = styled.span`
-  font-family: Roboto;
+  font-family: Roboto Condensed;
   font-size: 13px;
   line-height: 15px;
   color: #000;
@@ -67,9 +57,11 @@ export const ArrowDown = styled(ArrowDropDownIcon)`
     display: none !important;
   }
 `;
-export const ShoppingCart = styled(ShoppingCartIcon)`
-  color: #000;
-  font-size: 10px;
+export const ShoppingCart = styled.img`
+  width: 17px;
+  height: auto;
+  margin-left: 21px;
+  margin-right: 13px;
   @media (max-width: 768px) {
     display: none !important;
   }
@@ -77,6 +69,7 @@ export const ShoppingCart = styled(ShoppingCartIcon)`
 export const FavoriteIcon = styled(FavoriteBorderIcon)`
   font-size: 12px;
   color: #000;
+  margin-right: 13px;
   @media (max-width: 768px) {
     display: none !important;
   }

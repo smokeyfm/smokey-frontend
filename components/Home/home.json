@@ -91,84 +91,114 @@
   ],
   "productList": [
     {
-      "name": "Sheer V Top",
+      "title": "Maeve Tuesday Tee",
+      "subTitle": "Sheer Top",
       "img": "./p1.png",
       "influencer": "Influencer",
       "rate": 5,
-      "price": "$24.99",
-      "avatar": "/avatar.png"
+      "viewer": "211k",
+      "avatar": "/avatar.png",
+      "status": 1,
+      "subText": "+ 7 more"
     },
     {
-      "name": "Sheer V Top",
       "img": "/p2.png",
       "influencer": "Influencer",
       "rate": 5,
-      "price": "$24.99",
-      "avatar": "/avatar.png"
+      "viewer": "302k",
+      "avatar": "/avatar.png",
+      "status": 2,
+      "title": "Whole Lotta Love",
+      "subTitle": "Sheer Top",
+      "subText": "+ 7 more"
     },
     {
-      "name": "Sheer V Top",
       "img": "/p2.png",
       "influencer": "Influencer",
       "rate": 5,
-      "price": "$24.99",
-      "avatar": "/avatar.png"
+      "viewer": "154k",
+      "avatar": "/avatar.png",
+      "status": 3,
+      "title": "Maeve Tuesday Tee",
+      "subTitle": "Sheer Top",
+      "subText": "+ 7 more"
     },
     {
-      "name": "Sheer V Top",
       "img": "/p2.png",
       "influencer": "Influencer",
       "rate": 5,
-      "price": "$24.99",
-      "avatar": "/avatar.png"
+      "viewer": "211k",
+      "avatar": "/avatar.png",
+      "status": 2,
+      "title": "Whole Lotta Love",
+      "subTitle": "Sheer Top",
+      "subText": "+ 7 more"
     },
     {
-      "name": "Sheer V Top",
       "img": "/p2.png",
       "influencer": "Influencer",
       "rate": 5,
-      "price": "$24.99",
-      "avatar": "/avatar.png"
+      "viewer": "154k",
+      "avatar": "/avatar.png",
+      "status": 3,
+      "title": "Maeve Tuesday Tee",
+      "subTitle": "Sheer Top",
+      "subText": "+ 7 more"
     },
     {
-      "name": "Sheer V Top",
       "img": "/p2.png",
       "influencer": "Influencer",
       "rate": 5,
-      "price": "$24.99",
-      "avatar": "/avatar.png"
+      "viewer": "302k",
+      "avatar": "/avatar.png",
+      "status": 3,
+      "title": "Maeve Tuesday Tee",
+      "subTitle": "Sheer Top",
+      "subText": "+ 7 more"
     },
     {
-      "name": "Sheer V Top",
       "img": "./p3.png",
       "influencer": "Influencer",
       "rate": 5,
-      "price": "$24.99",
-      "avatar": "/avatar.png"
+      "viewer": "211k",
+      "avatar": "/avatar.png",
+      "status": 2,
+      "title": "Whole Lotta Love",
+      "subTitle": "Sheer Top",
+      "subText": "+ 7 more"
     },
     {
-      "name": "Sheer V Top",
       "img": "./p4.png",
       "influencer": "Influencer",
       "rate": 5,
-      "price": "$24.99",
-      "avatar": "/avatar.png"
+      "viewer": "154k",
+      "avatar": "/avatar.png",
+      "status": 1,
+      "title": "Maeve Tuesday Tee",
+      "subTitle": "Sheer Top",
+      "subText": "+ 7 more"
     },
     {
-      "name": "Sheer V Top",
       "img": "./p5.png",
       "influencer": "Influencer",
       "rate": 5,
-      "price": "$24.99",
-      "avatar": "/avatar.png"
+      "viewer": "211k",
+      "avatar": "/avatar.png",
+      "status": 3,
+      "title": "Maeve Tuesday Tee",
+      "subTitle": "Sheer Top",
+      "subText": "+ 7 more"
     },
     {
-      "name": "Sheer V Top",
       "img": "./p6.png",
       "influencer": "Influencer",
       "rate": 5,
-      "price": "$24.99",
-      "avatar": "/avatar.png"
+      "viewer": "154k",
+      "avatar": "/avatar.png",
+      "status": 2,
+      "title": "Whole Lotta Love",
+      "subTitle": "Sheer Top",
+      "subText": "+ 7 more"
     }
   ],
   "latestProducts": [
