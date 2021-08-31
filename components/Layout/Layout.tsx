@@ -1,22 +1,80 @@
 import React from "react";
+import styled from "@emotion/styled";
 import { ClassNames } from "@emotion/react";
 import { LayoutProps } from "./types";
-import { Header } from "../../components";
-import { Foot } from "../../components";
-import { Column } from "../Foot/Foot";
+import { Column, Foot } from "../Foot/Foot";
+import { pxIphone } from "../../utils";
 
-import {
-  Container,
-  Content,
-  CameraIcon,
-  FacebookIcon,
-  PlayIcon,
-  CircleIcon,
-  Logo
-} from "./Layout.styles";
-
-const MyLogo: React.FC = () => <Logo>POL</Logo>;
-
+const Logo = styled.img`
+  width: 181px;
+  height: auto;
+  margin-bottom: 60px;
+  @media (max-width: 375px) {
+    width: ${pxIphone(80)};
+    margin-bottom: 14.68vw;
+    height: auto;
+  }
+  @media (max-width: 750px) {
+  }
+`;
+const MyLogo: React.FC = () => <Logo src={"/LOGO.png"}></Logo>;
+const CameraIcon = styled.img`
+  width: 11px;
+  height: auto;
+  margin-right: 3.88px;
+  @media (max-width: 375px) {
+    width: 5.522vw;
+    height: auto;
+    margin-right: 2.069vw;
+  }
+  @media (max-width: 750px) {
+    width: 5.522vw;
+    height: auto;
+    margin-right: 2.069vw;
+  }
+`;
+const FacebookIcon = styled.img`
+  width: 6.81px;
+  height: auto;
+  margin-right: 3.88px;
+  @media (max-width: 375px) {
+    width: 3.634vw;
+    height: auto;
+    margin-right: 2.069vw;
+  }
+  @media (max-width: 750px) {
+    width: 3.634vw;
+    height: auto;
+    margin-right: 2.069vw;
+  }
+`;
+const PlayIcon = styled.img`
+  width: 12.29px;
+  height: auto;
+  margin-right: 3.88px;
+  @media (max-width: 375px) {
+    width: 6.557vw;
+    height: auto;
+    margin-right: 2.069vw;
+  }
+  @media (max-width: 750px) {
+    width: 6.557vw;
+    height: auto;
+    margin-right: 2.069vw;
+  }
+`;
+const CircleIcon = styled.img`
+  width: 10.35px;
+  height: auto;
+  @media (max-width: 375px) {
+    width: 5.522vw;
+    height: auto;
+  }
+  @media (max-width: 750px) {
+    width: 5.522vw;
+    height: auto;
+  }
+`;
 const iconLinks = [
   {
     icon: <CameraIcon src={"/camera.png"} />,
@@ -39,8 +97,8 @@ const columns: Column[] = [
   {
     title: "Contact Info",
     descriptions: [
-      "4920 S.Soto  St.\n" + "Vernon, CA,90058",
-      "+1(310)715-1370",
+      "4920 S. Soto  St.\n" + "Vernon, CA, 90058",
+      "+1 (310) 715-1370",
       "ecom@polclothing.com"
     ],
     iconLinks
@@ -89,14 +147,25 @@ const columns: Column[] = [
     ]
   }
 ];
-
+export const Container = styled.main`
+  flex: 1;
+  overflow: scroll;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+export const Content = styled.div`
+  flex: 1;
+  overflow: scroll;
+`;
 export const Layout: React.FC<LayoutProps> = ({
   children
 }: {
   children: JSX.Element[] | JSX.Element;
 }) => {
   return (
-    <>
+    <Container>
       <Content>
         {children}
         <ClassNames>
@@ -112,6 +181,6 @@ export const Layout: React.FC<LayoutProps> = ({
           )}
         </ClassNames>
       </Content>
-    </>
+    </Container>
   );
 };
