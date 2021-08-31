@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { AuthProvider } from "../config/auth";
-import { Header } from "../components";
+import { Header, ComingSoon } from "../components";
 import { useRouter } from "next/router";
 import * as tracking from "../config/tracking";
 
@@ -41,14 +41,28 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     };
   }, [router.events]);
 
+  const isMaint = process.env.IS_MAINT_MODE;
+
+  const renderHomeContent = () => {
+    if (isMaint && isMaint === "true") {
+      return <ComingSoon />;
+    }
+
+    return (
+      <>
+        <Header />
+        <Component {...pageProps} />
+      </>
+    );
+  };
+
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <Hydrate state={pageProps.dehydratedState}>
           <ThemeProvider theme={theme}>
             <GlobalStyles />
-            <Header />
-            <Component {...pageProps} />
+            {renderHomeContent()}
           </ThemeProvider>
         </Hydrate>
       </AuthProvider>
