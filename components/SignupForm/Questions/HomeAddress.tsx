@@ -5,8 +5,8 @@ import { Field, useFormikContext } from "formik";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 
 // Local
-import Sebastian from "../Sebastian";
-import { FormikInput, FormikAutocomplete } from "../FormikWrappers";
+import Sebastian from "../../Sebastian";
+import { FormikInput, FormikAutocomplete } from "../../FormikWrappers";
 import { QuestionWrapper, InputGroupWrapper, InputWrapper } from "./Questions.styles";
 
 // const suggestions = [
@@ -14,7 +14,7 @@ import { QuestionWrapper, InputGroupWrapper, InputWrapper } from "./Questions.st
 //   '100 Freeman Road Birmingham KY 19278'
 // ];
 
-function Question3() {
+export const HomeAddress = () => {
   // const [homeAddress, setHomeAddress] = useState('');
 
   // const { errors, touched } = useFormikContext();
@@ -42,6 +42,4 @@ function Question3() {
       </InputGroupWrapper>
     </QuestionWrapper>
   );
-}
-
-export default Question3;
+};

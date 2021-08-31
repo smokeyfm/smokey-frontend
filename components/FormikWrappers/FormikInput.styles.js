@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Checkbox from "@carvana/forms/Checkbox";
+import styled from "@emotion/styled";
+import { Checkbox } from "@material-ui/core";
 
 export const Error = styled.div`
   color: ${(props) => props.theme.carvana.red.primary};

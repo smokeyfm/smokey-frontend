@@ -10,4 +10,5 @@ export * from "./MainMenu";
 export * from "./NotifyForm";
 export * from "./PostList";
 export * from "./ProductList";
+export * from "./SignupForm";
 export * from "./SocialLinks";

@@ -1,6 +1,7 @@
 import { fadeIn, slideInRight, slideOutLeft } from "react-animations";
 import { useSpring, animated } from "react-spring";
-import styled, { keyframes } from "styled-components";
+import { keyframes } from "@emotion/react";
+import styled from "@emotion/styled";
 
 export const fadeInKeyframes = keyframes`
   0% { opacity: 0; }
