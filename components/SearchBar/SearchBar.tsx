@@ -76,6 +76,7 @@ const SearchBar = ({
   }, []);
 
   const keyboardEvents = (event: KeyboardEvent) => {
+    // TO DO: handle UP & DOWN keys
     switch (event.key) {
       case "Escape":
       case "Tab":
@@ -117,7 +118,10 @@ const SearchBar = ({
     }, 330);
 
   // Open Search, unless open then close/hide everything and remove explicit search width
+  const searchRef = createRef();
+
   const toggleSearch = () => {
+    searchRef.current.focus();
     setIsExpanded(!isExpanded);
     isWidthSet ? setIsWidthSet(!isWidthSet) : handleSetSearchWidth();
     setQuery("");
@@ -145,6 +149,7 @@ const SearchBar = ({
                 className={isSearchLoading ? "bts bt-spinner bt-pulse" : "btr bt-search"}></i>
             </StyledInputPrefix>
             <StyledInput
+              ref={searchRef}
               onKeyDown={(e: KeyboardEvent) => keyboardEvents(e)}
               tabIndex={0}
               value={query}

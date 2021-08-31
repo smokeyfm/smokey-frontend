@@ -27,7 +27,6 @@ export const LogoDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
   cursor: pointer;
 `;
 export const HeaderDiv = styled.header`
@@ -49,7 +48,7 @@ export const BottomHeader = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   padding: 0px;
-  & > :first-child {
+  & > :first-of-type {
     padding-left: 0px;
   }
   & > :last-child {
