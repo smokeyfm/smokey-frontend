@@ -1,5 +1,5 @@
 import React from "react";
-import Input from "@carvana/showroom-forms/Input";
+import { Input } from "@material-ui/core";
 
 import { Error } from "./FormikInput.styles";
 

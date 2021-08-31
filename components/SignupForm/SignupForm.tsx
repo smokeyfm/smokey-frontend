@@ -1,10 +1,31 @@
-import * as React from "react";
+import { useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useMediaQuery } from "react-responsive";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import FormikWizard from 'formik-wizard';
 import styled from "@emotion/styled";
 import { AuthFormType, signupForm } from "../AuthForm/constants";
 import { useAuth } from "../../config/auth";
+import { SlideInLeft, SlideOutLeft } from '../Animations';
+import { Questions } from './Questions';
+
+import {
+  MainWrapper,
+  InitialTitle,
+  Title,
+  ContentWrapper,
+  LeftHalf,
+  RightHalf,
+  WizardForm,
+  WizardActions,
+  PreviousButton,
+  NextButton,
+  SkipAction,
+  LoginAction,
+  Disclaimer,
+  CongratsWrapper
+} from './SignupForm.styles';
 
 const FieldContainer = styled.div`
   margin: 15px 0px;
@@ -158,7 +179,7 @@ const FormWrapper = ({
   }
 };
 
-const SignupForm = () => {
+export const SignupForm = () => {
   // useEffect(() => {
   //   getWizard();
   // });
@@ -252,7 +273,6 @@ const SignupForm = () => {
               😎
             </span>
           </Title>
-          <Summary />
         </LeftHalf>
         <RightHalf isLargeDevice={isLargeDevice}>
           <SlideInLeft>
@@ -289,5 +309,3 @@ const SignupForm = () => {
 };
 
 SignupForm.propTypes = {};
-
-export default SignupForm;

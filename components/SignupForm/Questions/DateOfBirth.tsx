@@ -4,11 +4,11 @@ import React, { useCallback } from "react";
 import { Field, useFormikContext } from "formik";
 
 // Local
-import Sebastian from "../Sebastian";
-import { FormikDateOfBirth } from "../FormikWrappers";
+import Sebastian from "../../Sebastian";
+import { FormikDateOfBirth } from "../../FormikWrappers";
 import { QuestionWrapper, InputGroupWrapper, InputWrapper } from "./Questions.styles";
 
-function Question2() {
+export const DateOfBirth = () => {
   // const { errors, touched } = useFormikContext();
 
   const speechMarkup = useCallback(() => {
@@ -30,6 +30,4 @@ function Question2() {
       </InputGroupWrapper>
     </QuestionWrapper>
   );
-}
-
-export default Question2;
+};

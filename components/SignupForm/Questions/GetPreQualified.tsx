@@ -1,16 +1,12 @@
 // Vendor
 import React, { useCallback } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 // import { Field, useFormikContext } from 'formik';
 // import { useMediaQuery } from 'react-responsive';
 import { Carousel } from "react-responsive-carousel";
 
-// Carvana
-import { Cart, CalendarDates, Finance, LoanCalculator } from "@carvana/icons";
-// import HaloText from '@carvana/halo-text';
-
 // Local
-import Sebastian from "../Sebastian";
+import Sebastian from "../../Sebastian";
 import { QuestionWrapper, InputGroupWrapper, Title, Description } from "./Questions.styles";
 
 export const ColorizedFinance = styled(Finance)`
@@ -59,7 +55,7 @@ export const ColorizedCart = styled(Cart)`
 
 const partnerName = "Credit Karma";
 
-function Intro() {
+export const GetPreQualified = () => {
   // const { errors, touched } = useFormikContext();
 
   const speechMarkup = useCallback(() => {
@@ -103,6 +99,4 @@ function Intro() {
       </InputGroupWrapper>
     </QuestionWrapper>
   );
-}
-
-export default Intro;
+};
