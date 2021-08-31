@@ -3,7 +3,6 @@ import AssignmentIcon from "@material-ui/icons/Assignment";
 import LaptopMacIcon from "@material-ui/icons/LaptopMac";
 import { menuDataItem } from "../types";
 import styled from "@emotion/styled";
-
 export const NewDigWrap = styled.div`
   display: flex;
   background-color: #fff;
@@ -15,7 +14,7 @@ export const Column = styled.div`
   margin-right: 98px;
   display: flex;
   flex-direction: column;
-  &:first-child {
+  &:first-of-type {
     margin-left: 99px;
   }
   &:last-child {
