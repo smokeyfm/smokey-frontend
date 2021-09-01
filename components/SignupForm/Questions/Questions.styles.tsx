@@ -103,9 +103,10 @@ export const TermsStatement = styled.p`
   flex-basis: 100%;
   color: ${(props) =>
     props.accepted ? props.theme.colors.brand.dark : props.theme.colors.red.primary};
-  height: 50px;
+  height: auto;
   overflow-y: scroll;
   margin: 0;
+  max-width: 420px;
 
   & button {
     cursor: pointer;
