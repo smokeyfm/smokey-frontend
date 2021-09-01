@@ -1,5 +1,5 @@
 import React from "react";
-import { Input } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 
 import { Error } from "./FormikInput.styles";
 
@@ -11,9 +11,9 @@ const FormikIncome = ({
 }) => (
   <>
     {/* <Input id="income" variant="income" input="number" selectedTheme="dark" {...props} {...fields} invalid={Boolean(touched[fields.name] && errors[fields.name])} /> */}
-    <Input
+    <TextField
       id="income"
-      variant="income"
+      variant="outlined"
       input="number"
       selectedTheme="dark"
       {...props}

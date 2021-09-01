@@ -36,7 +36,6 @@ export const HomeAddress = () => {
           />
         </InputWrapper>
         <InputWrapper>
-          <span>Live in an apartment?</span>
           <Field name="unitNumber" id="unitNumber" component={FormikInput} label="Apt / Unit" />
         </InputWrapper>
       </InputGroupWrapper>

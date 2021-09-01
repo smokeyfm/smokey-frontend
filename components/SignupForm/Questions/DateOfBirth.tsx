@@ -24,7 +24,7 @@ export const DateOfBirth = () => {
             name="dateOfBirth"
             id="dateOfBirth"
             component={FormikDateOfBirth}
-            labeltext="Date of Birth"
+            label="Date of Birth"
           />
         </InputWrapper>
       </InputGroupWrapper>

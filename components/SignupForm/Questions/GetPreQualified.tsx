@@ -9,58 +9,58 @@ import { Carousel } from "react-responsive-carousel";
 import Sebastian from "../../Sebastian";
 import { QuestionWrapper, InputGroupWrapper, Title, Description } from "./Questions.styles";
 
-export const ColorizedFinance = styled(Finance)`
+export const ColorizedFinance = styled.i`
   ${"" /* transform: scale(2); */}
   & svg {
     width: 5rem;
     height: 5rem;
   }
   & svg g path:first-child {
-    fill: ${(props) => props.theme.carvana.blue.medium};
+    fill: ${(props) => props.theme.colors.brand.medium};
   }
 `;
 
-export const ColorizedCalendar = styled(CalendarDates)`
+export const ColorizedCalendar = styled.i`
   ${"" /* transform: scale(2); */}
   & svg {
     width: 5rem;
     height: 5rem;
   }
   & svg g path:first-child {
-    fill: ${(props) => props.theme.carvana.blue.medium};
+    fill: ${(props) => props.theme.colors.brand.medium};
   }
 `;
 
-export const ColorizedLoan = styled(LoanCalculator)`
+export const ColorizedLoan = styled.i`
   ${"" /* transform: scale(2); */}
   & svg {
     width: 5rem;
     height: 5rem;
   }
   & svg g path:first-child {
-    fill: ${(props) => props.theme.carvana.blue.medium};
+    fill: ${(props) => props.theme.colors.brand.medium};
   }
 `;
 
-export const ColorizedCart = styled(Cart)`
+export const ColorizedCart = styled.i`
   ${"" /* transform: scale(2); */}
   & svg {
     width: 5rem;
     height: 5rem;
   }
   & svg g path:first-child {
-    fill: ${(props) => props.theme.carvana.blue.medium};
+    fill: ${(props) => props.theme.colors.brand.medium};
   }
 `;
 
-const partnerName = "Credit Karma";
+const partnerName = "POL";
 
 export const GetPreQualified = () => {
   // const { errors, touched } = useFormikContext();
 
   const speechMarkup = useCallback(() => {
     return {
-      __html: `Welcome from <strong>${partnerName}</strong>!<br /> Get pre-qualified for a loan ✨with no risk to your credit score.`
+      __html: `Welcome from <strong>${partnerName}</strong>!<br /> Create your account, and you'll be surfing the latest trends in no-time.`
     };
   });
 
@@ -76,24 +76,24 @@ export const GetPreQualified = () => {
           showStatus={false}
           showThumbs={false}>
           <div>
-            <ColorizedFinance />
+            <ColorizedFinance className="bts bt-money" />
             <Title>Zero Risk</Title>
-            <Description>Carvana offers no risk to your credit prequalification.</Description>
+            <Description>Signup for free!</Description>
           </div>
           <div>
-            <ColorizedCalendar />
-            <Title>Over A Month To Decide</Title>
-            <Description>Real terms that are valid for 45 days.</Description>
+            <ColorizedCalendar className="bts bt-calendar" />
+            <Title>Free Shipping</Title>
+            <Description>One your first order.</Description>
           </div>
           <div>
-            <ColorizedLoan />
-            <Title>Customizable Terms</Title>
-            <Description>Structure the loan the way you want.</Description>
+            <ColorizedLoan className="bts bt-folder" />
+            <Title>Keep Items Organized</Title>
+            <Description>Save favorites!</Description>
           </div>
           <div>
-            <ColorizedCart />
-            <Title>Never Leave The House</Title>
-            <Description>No need to go to the bank or the dealership.</Description>
+            <ColorizedCart className="bts bt-shopping-cart" />
+            <Title>Easy Checkout</Title>
+            <Description>We accept all payment methods.</Description>
           </div>
         </Carousel>
       </InputGroupWrapper>

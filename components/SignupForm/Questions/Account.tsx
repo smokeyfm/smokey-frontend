@@ -3,8 +3,6 @@ import React, { useState, useCallback } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { Field, useFormikContext } from "formik";
 import parse from "html-react-parser";
-
-// Carvana
 import { Modal } from "@material-ui/core";
 
 // Local
@@ -97,7 +95,7 @@ export const Account = () => {
             name="phoneNumber"
             id="phoneNumber"
             component={FormikPhone}
-            labeltext="Mobile Phone"
+            label="Phone"
           />
         </InputWrapper>
 
@@ -165,7 +163,7 @@ export const Account = () => {
                 )}
               </Field>
               <TermsStatement accepted={privacyTerms}>
-                I have received and read Carvana&apos;s{" "}
+                I have received and read the 
                 <button type="button" onClick={togglePrivacyModal}>
                   Financial Privacy Policy
                 </button>
@@ -184,13 +182,13 @@ export const Account = () => {
                 )}
               </Field>
               <TermsStatement accepted={reportingTerms}>
-                By clicking &quot;GET TERMS&quot; I give Carvana written consent to obtain, now and
+                By clicking &quot;GET TERMS&quot; I give {process.env.SITE_TITLE} written consent to obtain, now and
                 periodically, consumer credit reports (Reports) about me from consumer reporting
                 agencies to show current & future credit products & services I prequalify for when
-                financing with Carvana. I understand this authorizes Carvana to get multiple
+                financing with {process.env.SITE_TITLE}. I understand this authorizes {process.env.SITE_TITLE} to get multiple
                 Reports, which may appear as an inquiry on my Report, but will not impact my credit
                 score. This authorization expires when my current account terminates unless I revoke
-                earlier by contacting Carvana at creditoptout@carvana.com
+                earlier by contacting {process.env.SITE_TITLE} at creditoptout@carvana.com
               </TermsStatement>
             </Term>
             <Term>
@@ -205,12 +203,12 @@ export const Account = () => {
                 )}
               </Field>
               <TermsStatement accepted={authorizeTerms}>
-                That by providing my phone number, Carvana, or Carvana&apos;s authorized
+                That by providing my phone number, {process.env.SITE_TITLE}, or {process.env.SITE_TITLE}&apos;s authorized
                 representatives*, may call and/or send text messages (including by using equipment
                 to automatically dial telephone numbers) about my interest in a purchase, for
                 marketing/sales purposes, or for any other servicing or informational purpose
                 related to my account. You do not have to consent to receiving calls or texts to
-                purchase from Carvana.
+                purchase from {process.env.SITE_TITLE}.
                 <br />
                 <strong>
                   *Including, but not limited to, Bridgecrest Credit Company, GO Financial and
@@ -222,7 +220,7 @@ export const Account = () => {
             {/* <Term>
               <Field type="checkbox" name="acceptConstentTerms" component={FormikCheckbox} className={'form-check-input ' + (errors.acceptTerms && touched.acceptTerms ? ' is-invalid' : '')} />
               <TermsStatement accepted={Terms}>
-                Consumer Report: By clicking &quot;GET TERMS&quot;, I give Carvana written consent to obtain consumer reports from one or more consumer reporting agencies to show me credit options I prequalify for when financing with Carvana. Retrieving my pre-qualification credit terms generates a soft credit inquiry, which is visible only to me and does not affect my credit score.
+                Consumer Report: By clicking &quot;GET TERMS&quot;, I give {process.env.SITE_TITLE} written consent to obtain consumer reports from one or more consumer reporting agencies to show me credit options I prequalify for when financing with {process.env.SITE_TITLE}. Retrieving my pre-qualification credit terms generates a soft credit inquiry, which is visible only to me and does not affect my credit score.
               </TermsStatement>
             </Term> */}
           </Carousel>
@@ -230,32 +228,35 @@ export const Account = () => {
           <Modal
             aria-labelledby="modal-title"
             aria-describedby="modal-description"
-            // headerText="Electronic Signatures, Transactions & Records"
-            // Content={StyledModalContent}
             onClose={toggleSignatureModal}
             open={openSignatureModal}
-            // testHook="test-modal"
           >
-            <ElectronicSignaturesModal />
+            <StyledModalContent>
+              <ElectronicSignaturesModal />
+              <button
+                onClick={togglePrivacyModal}
+                role="button"
+                onKeyDown={togglePrivacyModal}
+                tabIndex={0}>
+              </button>
+            </StyledModalContent>
           </Modal>
 
           <Modal
-            headerText="Financial Privacy Policy"
-            Content={StyledModalContent}
-            closeModal={togglePrivacyModal}
-            isOpen={openPrivacyModal}
-            testHook="test-modal">
-            <ModalContent>
-              <ModalCloseButton />
+            aria-labelledby="modal-title"
+            aria-describedby="modal-description"
+            onClose={togglePrivacyModal}
+            open={openPrivacyModal}
+          >
+            <StyledModalContent>
               <FinancialPrivacyModal />
-            </ModalContent>
-            <div
-              onClick={togglePrivacyModal}
-              role="button"
-              onKeyDown={togglePrivacyModal}
-              tabIndex={0}>
-              <ModalBackdrop />
-            </div>
+              <button
+                onClick={togglePrivacyModal}
+                role="button"
+                onKeyDown={togglePrivacyModal}
+                tabIndex={0}>
+              </button>
+            </StyledModalContent>
           </Modal>
         </TermsWrapper>
       </InputGroupWrapper>

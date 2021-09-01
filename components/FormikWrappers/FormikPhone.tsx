@@ -1,5 +1,6 @@
 import React from "react";
-import { Input } from "@material-ui/core";
+import InputMask from 'react-input-mask';
+import { TextField } from "@material-ui/core";
 // import { Field, useFormikContext } from 'formik';
 
 import { Error } from "./FormikInput.styles";
@@ -7,14 +8,17 @@ import { Error } from "./FormikInput.styles";
 const FormikPhone = ({ field: { ...fields }, form: { touched, errors }, styles, ...props }) => (
   <>
     {/* <Input id="phoneNumber" variant="phoneNumber" selectedTheme="dark" {...props} {...fields} invalid={Boolean(touched[fields.name] && errors[fields.name])}/> */}
-    <Input
+    <InputMask
+      mask="+1 999 999 9999"
+      maskChar=" "
       id="phoneNumber"
-      variant="phoneNumber"
       selectedTheme="dark"
       {...props}
       {...fields}
       invalid={touched[fields.name] && errors[fields.name] ? 1 : 0}
-    />
+    >
+      {(inputProps) => <TextField variant="outlined" {...props} />}
+    </InputMask>
     {touched[fields.name] && errors[fields.name] ? <Error>{errors[fields.name]}</Error> : ""}
   </>
 );

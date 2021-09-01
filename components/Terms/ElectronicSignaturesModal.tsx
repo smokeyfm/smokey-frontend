@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 // import { Close } from '@carvana/icons';
 
 export const ElectronicSignaturesModal = () => {
-  const advocatePhoneNumber = "1.800.333.4554";
   return (
     <div className="es-modal-container">
       <div className="es-modal-content-container">
@@ -15,68 +14,30 @@ export const ElectronicSignaturesModal = () => {
 
         <p className="es-modal-content-title bold">Definitions:</p>
         <p className="es-modal-text">
-          “We,” “us,” “our” and “Carvana” means Carvana LLC, its successors, assigns, parents,
-          subsidiaries, affiliates, service providers and other contractual partners.
-        </p>
-        <p className="es-modal-text">“You” and “your” means the person giving this consent.</p>
-        <p className="es-modal-text">
-          “Records” means all documents related to the sale and financing of a used motor vehicle
-          from Carvana, such as your credit application, your retail installment contract, consumer
-          disclosures, billing statements, online bill payments and payment authorizations,
-          transaction histories, privacy policies, and all other communication or information
-          related to the product or service you obtain from us, including any records we are
-          required by law to provide to you in writing.
+          Aute commodo adipisicing cupidatat elit cupidatat proident. Culpa duis incididunt proident excepteur. Et tempor aliqua dolor irure pariatur. Non sit esse cupidatat id aliquip tempor ut ad. Duis aliqua consectetur ullamco elit aliquip non ad culpa. Dolore dolore amet id culpa fugiat aliquip veniam aute fugiat sit amet elit eu nisi. Aute occaecat adipisicing laborum velit quis magna.
         </p>
 
         <p className="es-modal-content-title bold">Scope of consent:</p>
         <p className="es-modal-text">
-          By giving your consent, you agree to conduct transactions with Carvana electronically,
-          including using electronic signatures. You agree that such electronic signatures will
-          consist of clicking on buttons and/or checking boxes where indicated. You also consent to
-          the use of electronic Records, including Records sent to you electronically, instead of
-          receiving them on paper or by regular mail. We may provide Records to you electronically
-          by posting them online or by email, which may include the Records as attachments or as
-          embedded links. Your consent will be effective unless you withdraw it in the manner
-          provided below. Your consent will apply to any transaction or agreement that you may enter
-          into with us in the future that modifies or extends your original transaction.
+          Tempor nisi cillum deserunt ut ex. Incididunt proident voluptate ad sint dolore fugiat. Eiusmod labore irure sint aute ipsum. Tempor ad eiusmod Lorem amet sint proident nostrud aute cupidatat adipisicing.
         </p>
 
         <p className="es-modal-content-title bold">How to update your contact information:</p>
         <p className="es-modal-text">
-          You agree to provide us with your accurate email address and personal contact information
-          and to promptly notify us of any changes. If you have a working email address, your
-          personal contact information must include that email address. You can update your
-          information (including your email address) on our website or by contacting us at{" "}
-          {advocatePhoneNumber}. If email is undeliverable to your email address for three
-          consecutive months, your consent will be considered withdrawn and we will send you future
-          Records in writing.
+          Deserunt ut sit sunt quis elit sint occaecat pariatur duis in consectetur Lorem consequat. Fugiat irure enim ipsum elit excepteur. Ad sint laborum laboris duis voluptate pariatur proident et do nostrud. Occaecat nisi sit sit ipsum duis anim cupidatat culpa do adipisicing aute.
         </p>
 
         <p className="es-modal-content-title bold">Obtaining paper copies:</p>
         <p className="es-modal-text">
-          You may obtain a paper copy of a Record by printing it from your electronic device or by
-          contacting us at {advocatePhoneNumber}. We may charge you a reasonable service charge for
-          providing you with a paper copy of any Record. The request for a paper copy of a Record
-          will not by itself constitute a withdrawal of your consent to receive Records
-          electronically. We reserve the right, but are not required, to send a paper copy of any
-          Record you authorize us to provide electronically.
+          Incididunt id dolore et anim duis cillum sint excepteur esse. Aute reprehenderit consectetur cillum adipisicing ut duis commodo culpa adipisicing. Cupidatat nulla culpa veniam occaecat est veniam ullamco sint nisi mollit laborum.
         </p>
 
         <p className="es-modal-content-title bold">Withdrawing consent:</p>
         <p className="es-modal-text">
-          If you do not consent to the use of electronic signatures and Records, you will not be
-          able to complete your purchase of a motor vehicle. In addition, if you give your consent,
-          but withdraw it before completing your purchase, you will not be able to complete your
-          purchase. After you have completed your purchase, you may at any time withdraw your
-          consent to receive Records electronically, and instead elect at any time to use the U.S.
-          Postal Service to obtain Records, by updating your profile information through your online
-          account or by contacting us at {advocatePhoneNumber}.
+          Culpa esse non et aute aliquip fugiat elit sunt occaecat mollit cupidatat ea cillum esse. Labore nulla eiusmod sit irure quis anim mollit. Voluptate culpa ullamco esse veniam incididunt culpa aliquip laborum consequat minim mollit. Officia reprehenderit commodo est labore exercitation sit amet esse duis et adipisicing irure proident aute. Culpa enim minim id velit ea anim ipsum mollit incididunt tempor pariatur velit. Amet exercitation do nisi ea. Commodo commodo esse enim proident eiusmod enim ipsum velit sunt.
         </p>
         <p className="es-modal-text">
-          We will not impose any fee if you withdraw your consent to receive Records electronically
-          but our communications with you may be slower. If you withdraw your consent to receive
-          Records electronically, such withdrawal will not apply to Records that were furnished to
-          you electronically before the date on which the withdrawal of your consent takes effect.
+          Aliqua eiusmod amet veniam tempor quis exercitation eiusmod voluptate est sunt voluptate nostrud. Duis dolor consequat consequat proident aliqua incididunt. Sunt aute magna consequat elit nulla dolore sunt anim Lorem ullamco ullamco cupidatat. Proident minim consequat incididunt cupidatat ullamco anim id duis occaecat minim elit cupidatat. Ad consectetur nisi tempor do consequat incididunt cupidatat. Occaecat est excepteur amet id pariatur aliquip aliquip anim aliquip occaecat fugiat.
         </p>
 
         <p className="es-modal-content-title bold">Hardware and software requirements:</p>
@@ -116,7 +77,7 @@ export const ElectronicSignaturesModal = () => {
             </a>
             ). The browser must have cookies enabled.
           </li>
-          <li>Access to the email address used to create an account for Carvana.com.</li>
+          <li>Access to the email address used to create an account for {window.location}.</li>
           <li>
             Sufficient electronic storage capacity on your computer&quot;s hard drive or other data
             storage unit, to store copies of your records.
@@ -136,13 +97,7 @@ export const ElectronicSignaturesModal = () => {
         </ul>
 
         <p className="es-modal-text">
-          Should the hardware or software requirements for using Electronic Signatures and Records
-          change, the revised requirements will be displayed during your next logged-in session on
-          our website and we may require that you give new consent for electronic signatures,
-          communications and transactions based on the revised requirements. By providing us your
-          current email address and accessing this Agreement on this website, you are confirming
-          that you have the required hardware and software to conduct electronic transactions with
-          Carvana.
+          Elit sint non non cillum laborum. Excepteur aliquip laborum id tempor dolor pariatur cillum quis excepteur id do magna duis incididunt. Veniam quis anim pariatur mollit est adipisicing. Do irure id Lorem fugiat Lorem dolore do do. Anim ad amet fugiat officia cillum nulla nulla fugiat. Aliqua aliquip veniam pariatur voluptate nostrud magna veniam culpa proident commodo nulla ea.
         </p>
 
         <p className="es-modal-text bold">Rev June 2018</p>

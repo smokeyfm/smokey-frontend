@@ -8,7 +8,7 @@ export const FinancialPrivacyModal = () => {
     <div className="fp-modal-container">
       <div className="fp-revision-and-print">
         <a
-          href="https://assets.cvnaassets.com/compliance-assets/Carvana_Financial_Privacy_Policy.pdf"
+          href={`${window.location}/privacy_policy.pdf`}
           target="_blank"
           rel="noopener noreferrer">
           Click HERE to Print
@@ -22,7 +22,7 @@ export const FinancialPrivacyModal = () => {
             <tr className="fp-modal-table-title">
               <td className="left">F A C T S</td>
               <td className="right">
-                WHAT DOES CARVANA, LLC (&quot;CARVANA&quot;) DO WITH YOUR PERSONAL INFORMATION?
+                WHAT DO WE DO WITH YOUR PERSONAL INFORMATION?
               </td>
             </tr>
           </tbody>
@@ -63,7 +63,7 @@ export const FinancialPrivacyModal = () => {
               <td className="right">
                 All financial companies need to share customers’ personal information to run their
                 everyday business. In the section below, we list the reasons financial companies can
-                share their customers’ personal information; the reasons Carvana chooses to share;
+                share their customers’ personal information; the reasons {process.env.SITE_TITLE} chooses to share;
                 and whether you can limit this sharing.
               </td>
             </tr>
@@ -73,7 +73,7 @@ export const FinancialPrivacyModal = () => {
           <tbody>
             <tr className="fp-modal-table-content three title">
               <td className="left">Reasons we can share your personal information</td>
-              <td className="middle">Does Carvana share?</td>
+              <td className="middle">Do we share?</td>
               <td className="right">Can you limit this sharing?</td>
             </tr>
             <tr className="fp-modal-table-content three">
@@ -153,10 +153,10 @@ export const FinancialPrivacyModal = () => {
               <td className="right">
                 <ul>
                   <li>
-                    Call <strong>(844) 732-2556</strong>, or
+                    Call <strong>(555) 555-5555</strong>, or
                   </li>
                   <li>
-                    Email <a href="mailto:privacypolicy@carvana.com">privacypolicy@carvana.com</a>{" "}
+                    Email <a href="mailto:privacypolicy@company.com">privacypolicy@company.com</a>{" "}
                     and include the words &quot;Opt Out&quot; in the subject line and body of your
                     email.
                   </li>
@@ -172,8 +172,8 @@ export const FinancialPrivacyModal = () => {
             <tr className="fp-modal-table-content two">
               <td className="left">Questions?</td>
               <td className="right">
-                Call <strong>(844) 732-2556</strong> or go to{" "}
-                <a href="http://www.carvana.com">www.carvana.com</a>
+                Call <strong>(555) 555-5555</strong> or go to{" "}
+                <a href={window.location}>www.{window.location}</a>
               </td>
             </tr>
           </tbody>
@@ -190,7 +190,7 @@ export const FinancialPrivacyModal = () => {
                 <strong>Who is providing this notice?</strong>
               </td>
               <td>
-                <i>Carvana, LLC (“Carvana”)</i>
+                <i>{process.env.SITE_TITLE}</i>
               </td>
             </tr>
             <tr className="fp-modal-table-content one-blue">
@@ -200,7 +200,7 @@ export const FinancialPrivacyModal = () => {
             </tr>
             <tr className="tr-white tr-col-2">
               <td>
-                <strong>How does Carvana protect my personal information?</strong>
+                <strong>How do we protect your personal information?</strong>
               </td>
               <td>
                 To protect your personal information from unauthorized access and use, we use
@@ -210,7 +210,7 @@ export const FinancialPrivacyModal = () => {
             </tr>
             <tr className="tr-white tr-col-2">
               <td>
-                <strong>How does Carvana collect my personal information?</strong>
+                <strong>How do we collect your personal information?</strong>
               </td>
               <td>
                 We collect your personal information, for example, when you
@@ -281,15 +281,7 @@ export const FinancialPrivacyModal = () => {
                 <ul>
                   <li>
                     <i>
-                      DriveTime Car Sales Company, LLC (“DriveTime”) and all institutions in the
-                      DriveTime family of companies; Bridgecrest Acceptance Corporation
-                      (“Bridgecrest Acceptance”); Bridgecrest Credit Company, LLC (“Bridgecrest
-                      Credit”); Driver’s Seat, LLC and DS Nominee Titleholder, LLC (together,
-                      “Driver’s Seat”), are affiliates. Our other affiliates include companies with
-                      the DriveTime or DT name; financial companies, such as GFC Lending, LLC d/b/a
-                      GO Financial; insurance companies such as SilverRock Group, Inc., SilverRock
-                      Insurance, LLC, Motion Telematics, LLC and nonfinancial companies, such as GO
-                      Auto Exh LLC.
+                      Quis nisi nostrud incididunt sunt cillum duis tempor laborum enim cupidatat sunt aliquip esse commodo. Eiusmod aliquip non nisi ipsum irure pariatur eiusmod deserunt in duis pariatur reprehenderit. Pariatur magna irure eiusmod irure anim amet mollit consectetur qui nostrud fugiat excepteur. Elit ipsum in quis anim culpa dolore ex. Laborum dolore veniam non laborum ullamco eu officia voluptate nisi reprehenderit ut ea consequat et. Qui consectetur est reprehenderit ullamco amet cillum sit laboris id qui aliqua. Id occaecat sit est eu.
                     </i>
                   </li>
                 </ul>
@@ -344,9 +336,9 @@ export const FinancialPrivacyModal = () => {
                   share your personal and financial information with affiliates or joint marketing
                   companies, if you instruct us not to do so. To limit our sharing with affiliates
                   and joint marketing companies, please send an email to{" "}
-                  <a href="mailto:privacypolicy@carvana.com">privacypolicy@carvana.com</a> and
+                  <a href="mailto:privacypolicy@company.com">privacypolicy@company.com</a> and
                   include the words “Opt Out” in the subject line and body of your email, or call us
-                  at (844)732-2556.
+                  at (555)555-5555.
                 </p>
                 <p>
                   <strong>Vermont residents:</strong> We will not share personal information with

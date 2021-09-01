@@ -12,6 +12,7 @@ declare module "@emotion/react" {
         primary: string;
       };
       gray: {
+        dark: string;
         primary: string;
         medium: string;
         light: string;
@@ -161,6 +162,25 @@ declare module "@emotion/react" {
         fontSize: string;
         lineHeight: string;
         color: string;
+      };
+    };
+    breakpoints: {
+      values: {
+        ss: number;
+        xs: number;
+        sm: number;
+        md: number;
+        lg: number;
+        lgxl: number;
+        xl: number;
+      };
+      heights: {
+        xs: number;
+        sm: number;
+        md: number;
+        lg: number;
+        lgxl: number;
+        xl: number;
       };
     };
   }
