@@ -76,14 +76,9 @@ export const GetPreQualified = () => {
           showStatus={false}
           showThumbs={false}>
           <div>
-            <ColorizedFinance className="bts bt-money" />
-            <Title>Zero Risk</Title>
-            <Description>Signup for free!</Description>
-          </div>
-          <div>
             <ColorizedCalendar className="bts bt-calendar" />
             <Title>Free Shipping</Title>
-            <Description>One your first order.</Description>
+            <Description>(On your first order)</Description>
           </div>
           <div>
             <ColorizedLoan className="bts bt-folder" />

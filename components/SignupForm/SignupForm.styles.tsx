@@ -169,11 +169,12 @@ export const WizardActions = styled.div`
 export const PreviousButton = styled(Button)`
   flex-basis: 30%;
   flex-grow: 1;
-  margin-right: 0.5rem;
+  margin-right: 0.5rem !important;
 `;
 
 export const NextButton = styled(Button)`
-  margin-left: 0.5rem;
+  background: ${p => p.theme.colors.brand.primary} !important;
+  margin-left: 0.5rem !important;
   flex-basis: 70%;
   flex-grow: 2;
 `;

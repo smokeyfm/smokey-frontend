@@ -111,17 +111,25 @@ const FormWrapper = ({
           </InitialTitle>
           {children}
           <WizardActions>
-            <PreviousButton onClick={goToPreviousStep} disabled={!canGoBack} ghost>
-              <i className="bts bt-angles-left" />
-            </PreviousButton>
+            {canGoBack && (
+              <PreviousButton
+                variant="outlined"
+                onClick={goToPreviousStep}
+                disabled={!canGoBack}
+                ghost>
+                <i className="bts bt-angles-left" />
+              </PreviousButton>
+            )}
             {/* <NextButton type="submit" onClick={() => console.log(wizard, wizard.step, wizard.next)} disabled={isLastStep && !termsAccepted}>{actionLabel || (isLastStep ? 'Submit' : 'Next step')}</NextButton> */}
             {/* <NextButton type={isLastStep ? "submit" : "button"} onClick={() => { */}
             {isLastStep ? (
               <NextButton
+                variant="contained"
+                color="primary"
                 type={isLastStep ? "submit" : "button"}
                 onClick={() => {
                   // console.log('next: ', values, wizard, isLastStep);
-                  console.log("next: ", wizard, isLastStep);
+                  // console.log("next: ", wizard, isLastStep);
                   wizard.next();
                 }}
                 disabled={isLastStep && !termsAccepted}>
@@ -129,10 +137,12 @@ const FormWrapper = ({
               </NextButton>
             ) : (
               <NextButton
+                variant="contained"
+                color="primary"
                 type={isLastStep ? "submit" : "button"}
                 onClick={() => {
                   // console.log('next: ', values, wizard, isLastStep);
-                  console.log("next: ", wizard, isLastStep);
+                  // console.log("next: ", wizard, isLastStep);
                   wizard.next();
                 }}
                 disabled={isLastStep && !termsAccepted}>
