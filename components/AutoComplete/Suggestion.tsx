@@ -1,11 +1,10 @@
 import React from "react";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import { nanoid } from "nanoid";
 import { IProduct } from "@spree/storefront-api-v2-sdk/types/interfaces/Product";
 // import { useDispatch } from 'react-redux';
 // import { commonOperations } from '@common/ducks';
 import { StyledSuggestionLink, StyledSuggestionContent } from "./AutoComplete.styles";
-
 const formatWithHighlight = (text: string, query: string | undefined) => {
   if (!query) return text;
 
@@ -16,7 +15,6 @@ const formatWithHighlight = (text: string, query: string | undefined) => {
 
   const reg = new RegExp(`(${sanitizeString(query)})`, "gi");
   const textParts = text.split(reg);
-
   return textParts.map((part: any) =>
     part.match(reg) ? (
       part
@@ -27,7 +25,6 @@ const formatWithHighlight = (text: string, query: string | undefined) => {
     )
   );
 };
-
 type OwnProps = {
   suggestion?: any;
   query?: string;
@@ -36,17 +33,17 @@ type OwnProps = {
 };
 
 const Suggestion = ({ suggestion, query, onChange, toggleVisibility }: OwnProps) => {
-  // const Suggestion = ({ suggestion, query, onChange, toggleVisibility }) => {
-  const handleSelection = () => {
+  const router = useRouter();
+  const handleSelection = (e: any) => {
     onChange("");
+    e.preventDefault();
     toggleVisibility(false);
-    Router.push(`/${suggestion.attributes.slug}?id=${suggestion.id}`);
+    router.push(`/${suggestion.attributes.slug}?id=${suggestion.id}`);
   };
 
-  // const dispatch = useDispatch();
   if (suggestion) {
     return (
-      <StyledSuggestionLink onClick={() => handleSelection()}>
+      <StyledSuggestionLink onClick={handleSelection}>
         <StyledSuggestionContent>
           {formatWithHighlight(suggestion.attributes.name, query)}
         </StyledSuggestionContent>

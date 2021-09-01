@@ -9,15 +9,6 @@ const Container = styled.div`
   flex-wrap: wrap;
   position: relative;
   padding-bottom: 13px;
-  &:after {
-    position: absolute;
-    content: "";
-    left: 99px;
-    right: 99px;
-    height: 1px;
-    background-color: #000;
-    top: 99%;
-  }
 `;
 export interface MyMenuItemProps {
   isActive: boolean;
@@ -59,6 +50,7 @@ const DropDown = styled.div<DropDownProps>`
   left: 0;
   top: 100%;
   width: 100%;
+  z-index: 10000;
   transition: transform 1s linear;
   display: ${(props) => (props.isActive ? "block" : "none")};
   transform: ${(props) => (props.isActive ? "translateY(0)" : "translateY(-100%)")};

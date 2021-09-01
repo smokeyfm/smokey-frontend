@@ -4,10 +4,14 @@ export const Container = styled.div`
   color: #fff;
   padding-bottom: 68px;
   @media (max-width: 375px) {
+<<<<<<< HEAD
     padding-top: 3.733vw;
   }
   @media (max-width: 750px) {
     padding-top: 3.733vw;
+=======
+    padding-top: 14px;
+>>>>>>> @aaron.smulktis/home
   }
 `;
 export const LogoDiv = styled.div`
@@ -24,6 +28,7 @@ export const Grid = styled.div`
   justify-items: center;
   font-family: "Bebas Neue";
   @media (max-width: 375px) {
+<<<<<<< HEAD
     padding-left: 14.4vw;
     padding-right: 3.46vw;
     justify-content: start;
@@ -34,6 +39,10 @@ export const Grid = styled.div`
   @media (max-width: 750px) {
     padding-left: 14.4vw;
     padding-right: 3.46vw;
+=======
+    padding-left: 54px;
+    padding-right: 13px;
+>>>>>>> @aaron.smulktis/home
     justify-content: start;
     grid-template-columns: [a]29.6vw 36.5vw;
     justify-content: space-between;
@@ -48,12 +57,13 @@ export const IconLinksMo = styled.div`
   display: none;
   @media (max-width: 375px) {
     display: flex;
-    margin-bottom: 40px;
   }
+<<<<<<< HEAD
   @media (max-width: 750px) {
     display: flex;
-    margin-bottom: 40px;
   }
+=======
+>>>>>>> @aaron.smulktis/home
 `;
 export const MobileIconLink = styled.a``;
 export const Column = styled.div`
@@ -69,6 +79,7 @@ export const ColumnTitle = styled.div`
   margin-bottom: 22px;
   white-space: nowrap;
   @media (max-width: 375px) {
+<<<<<<< HEAD
     margin-bottom: 2.4vw;
     font-size: 20px;
     line-height: 24px;
@@ -76,6 +87,9 @@ export const ColumnTitle = styled.div`
   }
   @media (max-width: 750px) {
     margin-bottom: 2.4vw;
+=======
+    margin-bottom: 9px;
+>>>>>>> @aaron.smulktis/home
     font-size: 20px;
     line-height: 24px;
     color: #eb8b8b;

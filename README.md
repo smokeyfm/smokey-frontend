@@ -98,7 +98,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - UI Sounds (proprietary: "npm install beeper")
 - Maps
 - File upload (ReactDropzone)
-- Form validation (Formik / React Final Form / YUP / Blitz inspo)
+- ~~Form validation (Formik)~~
 - Animations / Transitions (ReactSpring, GSAP)
 - Gestures
 - UI Alerts

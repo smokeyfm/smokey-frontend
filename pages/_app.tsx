@@ -4,6 +4,12 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { AuthProvider } from "../config/auth";
+import { MainMenu } from "../components";
+import PageHeader from "../components/PageHeader";
+import styled from "@emotion/styled";
+import "swiper/swiper-bundle.min.css";
+import { menusData } from "../components/MainMenu/data/menusData";
+import "./app.css";
 import { Header } from "../components";
 import { useRouter } from "next/router";
 import * as tracking from "../config/tracking";
@@ -12,11 +18,17 @@ import * as tracking from "../config/tracking";
 import { ThemeProvider } from "@emotion/react";
 import { theme } from "../styles/theme";
 import { GlobalStyles } from "../styles/global-styles";
+import { pxIphone } from "../utils";
 import "../styles/fonts.css";
+import "../public/fonts/black-tie/black-tie.css";
+import "swiper/swiper.scss";
 import "./app.css";
 
 const queryClient = new QueryClient();
-
+const CustomIcon = styled.img`
+  width: ${pxIphone(37)};
+  height: auto;
+`;
 export default function MyApp({ Component, pageProps }: AppProps) {
   React.useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
@@ -39,20 +51,23 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     };
   }, [router.events]);
 
-  const renderHeader = () => {
-    if (process.env.IS_MAINT_MODE !== "true") {
-      return <Header />;
-    }
-    return;
-  };
-
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <Hydrate state={pageProps.dehydratedState}>
           <ThemeProvider theme={theme}>
             <GlobalStyles />
-            {renderHeader()}
+            <PageHeader />
+            <MainMenu
+              showMenuHeader
+              customBurgerIcon={<CustomIcon src={"/BURGER.png"} />}
+              pcMenuItemClassName={"pc-menu-item"}
+              pcWrapClassName={"pc-menu-wrap"}
+              outterContainerId={"outter-container"}
+              pageWrapId={"page-wrap"}
+              animationType={"slide"}
+              menusData={menusData}
+              right={false}></MainMenu>
             <Component {...pageProps} />
           </ThemeProvider>
         </Hydrate>
