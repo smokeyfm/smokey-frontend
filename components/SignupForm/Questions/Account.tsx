@@ -1,5 +1,5 @@
 // Vendor
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, createRef } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { Field, useFormikContext } from "formik";
 import parse from "html-react-parser";
@@ -83,6 +83,8 @@ export const Account = () => {
 
   const { title, subtitle, description } = Static.questions.account;
 
+  const passwordRef = createRef();
+
   return (
     <QuestionWrapper>
       <Sebastian speech={speechMarkup()} />
@@ -105,6 +107,9 @@ export const Account = () => {
             variant="password"
             component={FormikInput}
             label="Password"
+    
+            ref={passwordRef}
+            type="password"
           />
         </InputWrapper>
 
@@ -115,6 +120,9 @@ export const Account = () => {
             variant="password"
             component={FormikInput}
             label="Re-type Password"
+
+            ref={passwordRef}
+            type="password"
           />
         </InputWrapper>
 

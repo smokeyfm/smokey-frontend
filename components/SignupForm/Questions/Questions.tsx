@@ -56,7 +56,7 @@ export const Questions = [
   {
     id: "get-prequalified",
     component: GetPreQualified,
-    actionLabel: "Get Pre-Qualified"
+    actionLabel: "Get Started"
   },
   {
     id: "personal-info",
@@ -223,7 +223,7 @@ export const Questions = [
       acceptReportingTerms: bool().oneOf([true], "Accept Terms & Conditions is required"),
       acceptAuthorizeTerms: bool().oneOf([true], "Accept Terms & Conditions is required")
     }),
-    actionLabel: "Get Terms",
+    actionLabel: "Signup",
     onAction: (sectionValues) => {
       window.scrollTo(0, 0);
       const phone = parseFloat(sectionValues.phoneNumber.replace(/\$|,/g, ""));
