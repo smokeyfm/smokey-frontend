@@ -5,6 +5,7 @@ export const theme = {
       primary: "hotpink"
     },
     gray: {
+      dark: "#333",
       primary: "#666",
       medium: "#999",
       light: "#c4c4c4",
@@ -139,6 +140,25 @@ export const theme = {
       fontSize: "6.2699px",
       lineHeight: "7px",
       color: "#000"
+    }
+  },
+  breakpoints: {
+    values: {
+      ss: 375,
+      xs: 414,
+      sm: 768,
+      md: 1024,
+      lg: 1280,
+      lgxl: 1440,
+      xl: 1800
+    },
+    heights: {
+      xs: 414,
+      sm: 768,
+      md: 1024,
+      lg: 1280,
+      lgxl: 1440,
+      xl: 1800
     }
   }
 };

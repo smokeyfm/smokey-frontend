@@ -71,8 +71,8 @@ export const SebastianImage = styled.div`
 
 export const BubbleWrapper = styled.div`
   border-radius: 8px;
-  border: 1px solid ${(props) => props.theme.carvana.gray.medium};
-  background: ${(props) => props.theme.carvana.white.primary};
+  border: 1px solid ${(props) => props.theme.colors.gray.medium};
+  background: ${(props) => props.theme.colors.white.primary};
   margin: 0 0 -35px 0;
   padding: 15px;
   &:after {
@@ -101,14 +101,14 @@ export const BubbleWrapperMobile = styled.div`
   align-items: center;
   justify-content: space-around;
   border-radius: ${(props) => (props.speechReady ? 20 : 36)}px;
-  background-color: ${(props) => props.theme.carvana.white.primary};
+  background-color: ${(props) => props.theme.colors.white.primary};
   box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.25);
-  color: ${(props) => props.theme.carvana.gray.dark};
+  color: ${(props) => props.theme.colors.gray.dark};
   &::before,
   &::after {
     position: absolute;
     content: " ";
-    background: ${(props) => props.theme.carvana.white.primary};
+    background: ${(props) => props.theme.colors.white.primary};
     border-radius: 100%;
     ${"" /* box-shadow: 5px 8px 20px rgba(0,0,0,0.25); */}
   }
@@ -129,7 +129,7 @@ export const BubbleWrapperMobile = styled.div`
 `;
 
 export const BubbleSpeech = styled.div`
-  color: ${(props) => props.theme.carvana.gray.dark};
+  color: ${(props) => props.theme.colors.gray.dark};
   font-size: 1rem;
   font-weight: 300;
   text-align: left;
@@ -139,7 +139,7 @@ export const BubbleDot = styled.div`
   width: ${width / 8}px;
   height: ${width / 8}px;
   border-radius: 100%;
-  background-color: ${(props) => props.theme.carvana.gray.medium};
+  background-color: ${(props) => props.theme.colors.gray.medium};
 
   animation: ${fadeInOut} 1.5s linear infinite;
   animation-delay: 0.25s;

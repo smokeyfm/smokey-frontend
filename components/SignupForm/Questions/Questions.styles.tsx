@@ -1,16 +1,16 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { Modal } from "@material-ui/core";
 
 export const QuestionWrapper = styled.div`
-  color: ${(props) => props.theme.carvana.blue.primary};
+  color: ${(props) => props.theme.colors.brand.primary};
   ${"" /* width: 100%; */}
   margin: 15px 0 15px 0;
 `;
 
 export const InputGroupWrapper = styled.div`
   ${
-    "" /* background: ${props => props.theme.carvana.white.primary};
-  color: ${props => props.theme.carvana.blue.primary};
+    "" /* background: ${props => props.theme.colors.white.primary};
+  color: ${props => props.theme.colors.brand.primary};
   box-shadow: 1px 3px 8px rgba(0,0,0,0.123);
   width: 100%;
   margin: 15px 15px 0 0px;
@@ -24,7 +24,7 @@ export const InputGroupWrapper = styled.div`
     padding: 30px 0px 0px 0px;
   }
   & [data-qa="title"] {
-    color: ${(props) => props.theme.carvana.blue.dark};
+    color: ${(props) => props.theme.colors.brand.dark};
     font-size: 1.6rem;
   }
   & .carousel .thumbs-wrapper {
@@ -40,15 +40,15 @@ export const InputGroupWrapper = styled.div`
   & .carousel .control-dots .dot {
     width: 5px;
     height: 5px;
-    background: ${(props) => props.theme.carvana.gray.dark};
+    background: ${(props) => props.theme.colors.gray.dark};
     box-shadow: none;
     &:focus {
       outline: none;
     }
   }
   & .carousel .control-dots .dot.selected {
-    background: ${(props) => props.theme.carvana.white.primary};
-    box-shadow: 0 0 0 7px ${(props) => props.theme.carvana.blue.primary};
+    background: ${(props) => props.theme.colors.white.primary};
+    box-shadow: 0 0 0 7px ${(props) => props.theme.colors.brand.primary};
   }
 `;
 
@@ -56,24 +56,24 @@ export const InputWrapper = styled.div`
   text-align: left;
   margin: 10px 25px;
 
-  & .jHdjnz {
-    width: auto;
+  & .MuiFormControl-root.MuiTextField-root {
+    width: 100%;
   }
 `;
 
 export const Title = styled.h1`
   margin: 5px 15px;
-  color: ${(props) => props.theme.carvana.blue.dark};
+  color: ${(props) => props.theme.colors.brand.dark};
 `;
 
 export const Subtitle = styled.h3`
   margin: 5px 15px;
-  color: ${(props) => props.theme.carvana.blue.dark};
+  color: ${(props) => props.theme.colors.brand.dark};
 `;
 
 export const Description = styled.p`
   margin: 5px 15px 25px 15px;
-  color: ${(props) => props.theme.carvana.gray.medium};
+  color: ${(props) => props.theme.colors.gray.medium};
 `;
 
 export const LinkOut = styled.a`
@@ -102,7 +102,7 @@ export const TermsStatement = styled.p`
   text-align: left;
   flex-basis: 100%;
   color: ${(props) =>
-    props.accepted ? props.theme.carvana.blue.dark : props.theme.carvana.red.primary};
+    props.accepted ? props.theme.colors.brand.dark : props.theme.colors.red.primary};
   height: 50px;
   overflow-y: scroll;
   margin: 0;
@@ -113,7 +113,7 @@ export const TermsStatement = styled.p`
     font-weight: 700;
     text-decoration: underline;
     color: ${(props) =>
-      props.accepted ? props.theme.carvana.blue.dark : props.theme.carvana.red.primary};
+      props.accepted ? props.theme.colors.brand.dark : props.theme.colors.red.primary};
   }
 
   @media (max-width: ${(props) => props.theme.breakpoints.values.sm}px) {
@@ -121,14 +121,11 @@ export const TermsStatement = styled.p`
   }
 `;
 
-export const StyledModalContent = styled(ModalContent)`
+export const StyledModalContent = styled.div`
   ${"" /* Modal Header Container */}
-  & .gkBGAw {
-    z-index: 1052;
-    & h5 {
-      margin: 0 10%;
-    }
-  }
+  max-width: 50%;
+  overflow-y: scroll;
+  background: ${p => p.theme.colors.white.primary};
 `;
 
 // export const StyledModalHeader = styled(ModalHeader)`

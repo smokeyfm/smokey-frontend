@@ -1,14 +1,15 @@
 import { useCallback } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useMediaQuery } from "react-responsive";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import FormikWizard from "formik-wizard";
-import styled from "@emotion/styled";
+import { useFormikContext } from 'formik';
+import { withWizard } from 'react-albus';
 import { AuthFormType, signupForm } from "../AuthForm/constants";
 import { useAuth } from "../../config/auth";
 import { SlideInLeft, SlideOutLeft } from "../Animations";
 import { Questions } from "./Questions";
+
 
 import {
   MainWrapper,
@@ -26,14 +27,6 @@ import {
   Disclaimer,
   CongratsWrapper
 } from "./SignupForm.styles";
-
-const FieldContainer = styled.div`
-  margin: 15px 0px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-`;
 
 const FormWrapper = ({
   steps,
@@ -120,7 +113,7 @@ const FormWrapper = ({
           {children}
           <WizardActions>
             <PreviousButton onClick={goToPreviousStep} disabled={!canGoBack} ghost>
-              <ArrowBackDouble />
+              <i className="bts bt-angles-left" />
             </PreviousButton>
             {/* <NextButton type="submit" onClick={() => console.log(wizard, wizard.step, wizard.next)} disabled={isLastStep && !termsAccepted}>{actionLabel || (isLastStep ? 'Submit' : 'Next step')}</NextButton> */}
             {/* <NextButton type={isLastStep ? "submit" : "button"} onClick={() => { */}
@@ -150,7 +143,7 @@ const FormWrapper = ({
           </WizardActions>
           {!canGoBack && (
             <SkipAction>
-              <button>Not interested in financing? Skip this..</button>
+              <a href={`${window.location}/login`}>Not interested in financing? Skip this..</a>
             </SkipAction>
           )}
           {/* {<div><pre>VALUE: {JSON.stringify(values, null, 2)}</pre></div>} */}
@@ -163,14 +156,12 @@ const FormWrapper = ({
               and we never share your information without your consent.
               {/* <Subtitle>– or –</Subtitle> */}
               <LoginAction>
-                <button>
-                  <a
-                    href="https://www.carvana.com/account/login?returnUrl=/referral-journey"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    Already have an account?
-                  </a>
-                </button>
+                <a
+                  href={`${window.location}/login`}
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  Already have an account?
+                </a>
               </LoginAction>
             </Disclaimer>
           )}
@@ -288,22 +279,6 @@ export const SignupForm = () => {
           </SlideInLeft>
         </RightHalf>
       </ContentWrapper>
-
-      {/* <Modal
-        headerText=""
-        Content={StyledModalContent}
-        closeModal={toggleErrorModal}
-        isOpen={hasErrorModal}
-        testHook="error-modal"
-        variant="contained"
-      >
-        <ModalContent>
-          <ModalCloseButton />
-          <h1>Uh oh!</h1>
-          <p>{errorMessage}</p>
-        </ModalContent>
-        <ModalBackdrop />
-      </Modal> */}
     </MainWrapper>
   );
 };

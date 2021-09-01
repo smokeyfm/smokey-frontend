@@ -1,13 +1,13 @@
 import React from "react";
-import { Input } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 
 import { Error } from "./FormikInput.styles";
 
 const FormikDateOfBirth = ({ field: { ...fields }, form: { touched, errors }, ...props }) => (
   <>
-    <Input
+    <TextField
       id="dateOfBirth"
-      variant="dateOfBirth"
+      variant="outlined"
       selectedTheme="dark"
       {...props}
       {...fields}

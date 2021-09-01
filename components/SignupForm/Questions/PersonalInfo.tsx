@@ -1,8 +1,6 @@
 // Vendor
 import React, { useCallback } from "react";
 import { Field } from "formik";
-
-// Carvana
 import { Button } from "@material-ui/core";
 
 // Local
@@ -31,25 +29,25 @@ export const PersonalInfo = () => {
         <InputWrapper>
           <Field name="firstName" id="firstName" component={FormikInput} label="First Name" />
         </InputWrapper>
-        <InputWrapper>
+        {/* <InputWrapper>
           <Field
             name="middleName"
             id="middleName"
             component={FormikInput}
             label="Middle Name (if on license)"
           />
-        </InputWrapper>
+        </InputWrapper> */}
         <InputWrapper>
           <Field name="lastName" id="lastName" component={FormikInput} label="Last Name" />
         </InputWrapper>
-        <InputWrapper>
+        {/* <InputWrapper>
           <Field
             name="suffix"
             id="suffix"
             component={FormikInput}
             label="Suffix (if on license.. Sr, Jr)"
           />
-        </InputWrapper>
+        </InputWrapper> */}
       </InputGroupWrapper>
     </QuestionWrapper>
   );

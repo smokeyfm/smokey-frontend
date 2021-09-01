@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import { setFieldValue } from 'formik';
 
-import { Input } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 
@@ -51,11 +51,12 @@ const FormikAutocomplete = ({
         onSelect={(address) => handleSelect({ name: field.name, address })}>
         {({ suggestions, getInputProps, getSuggestionItemProps, loading }) => (
           <>
-            <Input
+            <TextField
               {...getInputProps({
-                placeholder: "Home Address...",
+                label: "Home Address",
                 className: "location-search-input"
               })}
+              variant="outlined"
               selectedTheme="dark"
               invalid={Boolean(touched[fields.name] && errors[fields.name])}
             />

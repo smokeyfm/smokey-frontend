@@ -11,7 +11,7 @@ export const MainWrapper = styled.div`
 
 export const InitialTitle = styled.div`
   box-sizing: border-box;
-  color: ${(props) => props.theme.carvana.white.primary};
+  color: ${(props) => props.theme.colors.white.primary};
   font-size: 2rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -23,7 +23,7 @@ export const InitialTitle = styled.div`
 
 export const Title = styled.div`
   box-sizing: border-box;
-  color: ${(props) => props.theme.carvana.white.primary};
+  color: ${(props) => props.theme.colors.white.primary};
   font-size: 2rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -54,8 +54,8 @@ export const LeftHalf = styled.div`
   ${"" /* flex: 1; */}
   ${"" /* flex-grow: 1; */}
   ${"" /* flex-basis: 50%; */}
-  background: ${(props) => props.theme.carvana.white.primary};
-  color: ${(props) => props.theme.carvana.blue.primary};
+  background: ${(props) => props.theme.colors.white.primary};
+  color: ${(props) => props.theme.colors.brand.primary};
   box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.123);
   ${"" /* width: 100%; */}
   ${"" /* margin: 15px; */}
@@ -64,7 +64,7 @@ export const LeftHalf = styled.div`
   padding: 15px 15px 60px 15px;
   text-align: center;
   & [data-qa="title"] {
-    color: ${(props) => props.theme.carvana.blue.dark};
+    color: ${(props) => props.theme.colors.brand.dark};
     font-size: 1.6rem;
   }
 
@@ -90,13 +90,13 @@ export const RightHalf = styled.div`
   ${"" /* flex-grow: 1; */}
   ${"" /* flex-basis: 50%; */}
   & form {
-    background: ${(props) => props.theme.carvana.white.primary};
-    color: ${(props) => props.theme.carvana.blue.primary};
+    background: ${(props) => props.theme.colors.white.primary};
+    color: ${(props) => props.theme.colors.brand.primary};
     border-radius: 8px;
     box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.123);
     ${"" /* width: 100%; */}
     & [data-qa='title'] {
-      color: ${(props) => props.theme.carvana.blue.dark};
+      color: ${(props) => props.theme.colors.brand.dark};
       font-size: 1.6rem;
     }
   }
@@ -105,13 +105,13 @@ export const RightHalf = styled.div`
 export const WizardForm = styled.div`
   padding-top: 0;
   ${"" /* margin-top: ${props => props.canGoBack ? '120px' : '225px'}; */}
-  background: ${(props) => props.theme.carvana.white.primary};
-  color: ${(props) => props.theme.carvana.blue.primary};
+  background: ${(props) => props.theme.colors.white.primary};
+  color: ${(props) => props.theme.colors.brand.primary};
   border-radius: 8px;
   box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.123);
   width: 100%;
   & [data-qa="title"] {
-    color: ${(props) => props.theme.carvana.blue.dark};
+    color: ${(props) => props.theme.colors.brand.dark};
     font-size: 1.6rem;
   }
 
@@ -185,7 +185,7 @@ export const SkipAction = styled.div`
   justify-content: center;
   & button {
     width: 100%;
-    color: ${(props) => props.theme.carvana.blue.medium};
+    color: ${(props) => props.theme.colors.brand.medium};
     text-transform: capitalize;
   }
 
@@ -200,7 +200,7 @@ export const LoginAction = styled.div`
   justify-content: center;
   & button a {
     width: 100%;
-    color: ${(props) => props.theme.carvana.blue.medium};
+    color: ${(props) => props.theme.colors.brand.medium};
     text-transform: capitalize;
   }
 
@@ -212,7 +212,7 @@ export const Disclaimer = styled.div`
   font-size: 0.7rem;
   text-align: center;
   padding: 15px 20px;
-  color: ${(props) => props.theme.carvana.gray.medium};
+  color: ${(props) => props.theme.colors.gray.medium};
 `;
 
 export const CongratsWrapper = styled.div`
