@@ -173,7 +173,7 @@ export const PreviousButton = styled(Button)`
 `;
 
 export const NextButton = styled(Button)`
-  background: ${p => p.theme.colors.brand.primary} !important;
+  background: ${(p) => p.theme.colors.brand.primary} !important;
   margin-left: 0.5rem !important;
   flex-basis: 70%;
   flex-grow: 2;

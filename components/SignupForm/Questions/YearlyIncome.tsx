@@ -23,7 +23,7 @@ export const YearlyIncome = () => {
             id="yearlyIncome"
             component={FormikIncome}
             InputProps={{
-              startAdornment: <InputAdornment position="start">$</InputAdornment>,
+              startAdornment: <InputAdornment position="start">$</InputAdornment>
             }}
             label="Yearly Income"
           />

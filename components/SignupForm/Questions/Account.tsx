@@ -107,7 +107,6 @@ export const Account = () => {
             variant="password"
             component={FormikInput}
             label="Password"
-    
             ref={passwordRef}
             type="password"
           />
@@ -120,7 +119,6 @@ export const Account = () => {
             variant="password"
             component={FormikInput}
             label="Re-type Password"
-
             ref={passwordRef}
             type="password"
           />
