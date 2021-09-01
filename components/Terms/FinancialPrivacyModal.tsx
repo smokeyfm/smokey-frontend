@@ -7,10 +7,7 @@ export const FinancialPrivacyModal = () => {
   return (
     <div className="fp-modal-container">
       <div className="fp-revision-and-print">
-        <a
-          href={`${window.location}/privacy_policy.pdf`}
-          target="_blank"
-          rel="noopener noreferrer">
+        <a href={`${window.location}/privacy_policy.pdf`} target="_blank" rel="noopener noreferrer">
           Click HERE to Print
         </a>
         <br />
@@ -21,9 +18,7 @@ export const FinancialPrivacyModal = () => {
           <tbody>
             <tr className="fp-modal-table-title">
               <td className="left">F A C T S</td>
-              <td className="right">
-                WHAT DO WE DO WITH YOUR PERSONAL INFORMATION?
-              </td>
+              <td className="right">WHAT DO WE DO WITH YOUR PERSONAL INFORMATION?</td>
             </tr>
           </tbody>
         </table>
@@ -63,8 +58,8 @@ export const FinancialPrivacyModal = () => {
               <td className="right">
                 All financial companies need to share customers’ personal information to run their
                 everyday business. In the section below, we list the reasons financial companies can
-                share their customers’ personal information; the reasons {process.env.SITE_TITLE} chooses to share;
-                and whether you can limit this sharing.
+                share their customers’ personal information; the reasons {process.env.SITE_TITLE}{" "}
+                chooses to share; and whether you can limit this sharing.
               </td>
             </tr>
           </tbody>
@@ -281,7 +276,14 @@ export const FinancialPrivacyModal = () => {
                 <ul>
                   <li>
                     <i>
-                      Quis nisi nostrud incididunt sunt cillum duis tempor laborum enim cupidatat sunt aliquip esse commodo. Eiusmod aliquip non nisi ipsum irure pariatur eiusmod deserunt in duis pariatur reprehenderit. Pariatur magna irure eiusmod irure anim amet mollit consectetur qui nostrud fugiat excepteur. Elit ipsum in quis anim culpa dolore ex. Laborum dolore veniam non laborum ullamco eu officia voluptate nisi reprehenderit ut ea consequat et. Qui consectetur est reprehenderit ullamco amet cillum sit laboris id qui aliqua. Id occaecat sit est eu.
+                      Quis nisi nostrud incididunt sunt cillum duis tempor laborum enim cupidatat
+                      sunt aliquip esse commodo. Eiusmod aliquip non nisi ipsum irure pariatur
+                      eiusmod deserunt in duis pariatur reprehenderit. Pariatur magna irure eiusmod
+                      irure anim amet mollit consectetur qui nostrud fugiat excepteur. Elit ipsum in
+                      quis anim culpa dolore ex. Laborum dolore veniam non laborum ullamco eu
+                      officia voluptate nisi reprehenderit ut ea consequat et. Qui consectetur est
+                      reprehenderit ullamco amet cillum sit laboris id qui aliqua. Id occaecat sit
+                      est eu.
                     </i>
                   </li>
                 </ul>

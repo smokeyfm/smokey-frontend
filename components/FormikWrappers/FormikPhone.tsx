@@ -1,5 +1,5 @@
 import React from "react";
-import InputMask from 'react-input-mask';
+import InputMask from "react-input-mask";
 import { TextField } from "@material-ui/core";
 // import { Field, useFormikContext } from 'formik';
 
@@ -15,8 +15,7 @@ const FormikPhone = ({ field: { ...fields }, form: { touched, errors }, styles, 
       selectedTheme="dark"
       {...props}
       {...fields}
-      invalid={touched[fields.name] && errors[fields.name] ? 1 : 0}
-    >
+      invalid={touched[fields.name] && errors[fields.name] ? 1 : 0}>
       {(inputProps) => <TextField variant="outlined" {...props} />}
     </InputMask>
     {touched[fields.name] && errors[fields.name] ? <Error>{errors[fields.name]}</Error> : ""}

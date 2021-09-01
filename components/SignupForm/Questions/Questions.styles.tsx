@@ -125,7 +125,7 @@ export const StyledModalContent = styled.div`
   ${"" /* Modal Header Container */}
   max-width: 50%;
   overflow-y: scroll;
-  background: ${p => p.theme.colors.white.primary};
+  background: ${(p) => p.theme.colors.white.primary};
 `;
 
 // export const StyledModalHeader = styled(ModalHeader)`
