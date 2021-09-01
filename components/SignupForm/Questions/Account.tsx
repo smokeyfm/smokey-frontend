@@ -91,12 +91,7 @@ export const Account = () => {
         <Subtitle>{parse(subtitle)}</Subtitle>
         <Description>{parse(description)}</Description>
         <InputWrapper>
-          <Field
-            name="phoneNumber"
-            id="phoneNumber"
-            component={FormikPhone}
-            label="Phone"
-          />
+          <Field name="phoneNumber" id="phoneNumber" component={FormikPhone} label="Phone" />
         </InputWrapper>
 
         <InputWrapper>
@@ -163,7 +158,7 @@ export const Account = () => {
                 )}
               </Field>
               <TermsStatement accepted={privacyTerms}>
-                I have received and read the 
+                I have received and read the
                 <button type="button" onClick={togglePrivacyModal}>
                   Financial Privacy Policy
                 </button>
@@ -182,13 +177,14 @@ export const Account = () => {
                 )}
               </Field>
               <TermsStatement accepted={reportingTerms}>
-                By clicking &quot;GET TERMS&quot; I give {process.env.SITE_TITLE} written consent to obtain, now and
-                periodically, consumer credit reports (Reports) about me from consumer reporting
-                agencies to show current & future credit products & services I prequalify for when
-                financing with {process.env.SITE_TITLE}. I understand this authorizes {process.env.SITE_TITLE} to get multiple
-                Reports, which may appear as an inquiry on my Report, but will not impact my credit
-                score. This authorization expires when my current account terminates unless I revoke
-                earlier by contacting {process.env.SITE_TITLE} at creditoptout@carvana.com
+                By clicking &quot;GET TERMS&quot; I give {process.env.SITE_TITLE} written consent to
+                obtain, now and periodically, consumer credit reports (Reports) about me from
+                consumer reporting agencies to show current & future credit products & services I
+                prequalify for when financing with {process.env.SITE_TITLE}. I understand this
+                authorizes {process.env.SITE_TITLE} to get multiple Reports, which may appear as an
+                inquiry on my Report, but will not impact my credit score. This authorization
+                expires when my current account terminates unless I revoke earlier by contacting{" "}
+                {process.env.SITE_TITLE} at creditoptout@carvana.com
               </TermsStatement>
             </Term>
             <Term>
@@ -203,12 +199,12 @@ export const Account = () => {
                 )}
               </Field>
               <TermsStatement accepted={authorizeTerms}>
-                That by providing my phone number, {process.env.SITE_TITLE}, or {process.env.SITE_TITLE}&apos;s authorized
-                representatives*, may call and/or send text messages (including by using equipment
-                to automatically dial telephone numbers) about my interest in a purchase, for
-                marketing/sales purposes, or for any other servicing or informational purpose
-                related to my account. You do not have to consent to receiving calls or texts to
-                purchase from {process.env.SITE_TITLE}.
+                That by providing my phone number, {process.env.SITE_TITLE}, or{" "}
+                {process.env.SITE_TITLE}&apos;s authorized representatives*, may call and/or send
+                text messages (including by using equipment to automatically dial telephone numbers)
+                about my interest in a purchase, for marketing/sales purposes, or for any other
+                servicing or informational purpose related to my account. You do not have to consent
+                to receiving calls or texts to purchase from {process.env.SITE_TITLE}.
                 <br />
                 <strong>
                   *Including, but not limited to, Bridgecrest Credit Company, GO Financial and
@@ -229,16 +225,14 @@ export const Account = () => {
             aria-labelledby="modal-title"
             aria-describedby="modal-description"
             onClose={toggleSignatureModal}
-            open={openSignatureModal}
-          >
+            open={openSignatureModal}>
             <StyledModalContent>
               <ElectronicSignaturesModal />
               <button
                 onClick={togglePrivacyModal}
                 role="button"
                 onKeyDown={togglePrivacyModal}
-                tabIndex={0}>
-              </button>
+                tabIndex={0}></button>
             </StyledModalContent>
           </Modal>
 
@@ -246,16 +240,14 @@ export const Account = () => {
             aria-labelledby="modal-title"
             aria-describedby="modal-description"
             onClose={togglePrivacyModal}
-            open={openPrivacyModal}
-          >
+            open={openPrivacyModal}>
             <StyledModalContent>
               <FinancialPrivacyModal />
               <button
                 onClick={togglePrivacyModal}
                 role="button"
                 onKeyDown={togglePrivacyModal}
-                tabIndex={0}>
-              </button>
+                tabIndex={0}></button>
             </StyledModalContent>
           </Modal>
         </TermsWrapper>

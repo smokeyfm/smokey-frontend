@@ -20,9 +20,9 @@ import { pxIphone } from "../utils";
 import "../styles/fonts.css";
 import "../public/fonts/black-tie/black-tie.css";
 import "swiper/swiper.scss";
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import '../components/Terms/ElectronicSignaturesModal.css';
-import '../components/Terms/FinancialPrivacyModal.css';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "../components/Terms/ElectronicSignaturesModal.css";
+import "../components/Terms/FinancialPrivacyModal.css";
 import "./app.css";
 
 const queryClient = new QueryClient();

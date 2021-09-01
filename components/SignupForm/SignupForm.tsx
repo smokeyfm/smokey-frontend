@@ -3,13 +3,12 @@ import Link from "next/link";
 import { useMediaQuery } from "react-responsive";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import FormikWizard from "formik-wizard";
-import { useFormikContext } from 'formik';
-import { withWizard } from 'react-albus';
+import { useFormikContext } from "formik";
+import { withWizard } from "react-albus";
 import { AuthFormType, signupForm } from "../AuthForm/constants";
 import { useAuth } from "../../config/auth";
 import { SlideInLeft, SlideOutLeft } from "../Animations";
 import { Questions } from "./Questions";
-
 
 import {
   MainWrapper,
@@ -156,10 +155,7 @@ const FormWrapper = ({
               and we never share your information without your consent.
               {/* <Subtitle>– or –</Subtitle> */}
               <LoginAction>
-                <a
-                  href={`${window.location}/login`}
-                  target="_blank"
-                  rel="noopener noreferrer">
+                <a href={`${window.location}/login`} target="_blank" rel="noopener noreferrer">
                   Already have an account?
                 </a>
               </LoginAction>

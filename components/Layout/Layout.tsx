@@ -191,7 +191,11 @@ export const Layout: React.FC<LayoutProps> = ({
                   background-color: #000;
                 `
               }}
-              footerData={{ logo: <MyLogo imageFile="/logo.png" isDark={false} />, columns, mobileIconLinks: iconLinks }}
+              footerData={{
+                logo: <MyLogo imageFile="/logo.png" isDark={false} />,
+                columns,
+                mobileIconLinks: iconLinks
+              }}
             />
           )}
         </ClassNames>
