@@ -65,8 +65,8 @@ export const GlobalStyles = () => (
           position: fixed;
           width: 36px;
           height: 30px;
-          left: 36px;
-          top: 36px;
+          left: 1.06vw;
+          top: 3.73vw;
         }
         .bm-burger-button button:focus {
           outline: 2px solid #000;
@@ -98,22 +98,24 @@ export const GlobalStyles = () => (
           top: 0;
         }
         .bm-menu {
-          background: #373a47;
-          padding: 2.5em 1.5em 0;
+          background: #fff;
+          padding: 2.93vw 4.26vw;
           fontsize: 1.15em;
           height: 100%;
+          width: 100vw;
         }
         .bm-morph-shape {
           fill: #373a47;
         }
         .bm-item-list {
           color: #b8b7ad;
-          padding: 0.8em;
+          padding: 0 0em;
           height: 100%;
         }
         .bm-item {
           display: block;
           padding: 0.8em;
+          color: #000;
         }
         .bm-overlay {
           top: 0;
@@ -121,6 +123,17 @@ export const GlobalStyles = () => (
         }
         .pc-menu-item {
           color: #000;
+          font-family: "Bebas Neue";
+          font-size: 14px;
+          margin-right: 82px !important;
+        }
+        .pc-menu-wrap {
+          padding-bottom: 30px !important;
+        }
+        #__next {
+          display: flex;
+          flex-direction: column;
+          height: 100vh;
         }
       `}
     />
