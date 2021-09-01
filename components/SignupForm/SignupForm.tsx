@@ -152,7 +152,7 @@ const FormWrapper = ({
           </WizardActions>
           {!canGoBack && (
             <SkipAction>
-              <a href={`${window.location}/login`}>Not interested in financing? Skip this..</a>
+              <Link href='/authenticate/login'>Not interested in financing? Skip this..</Link>
             </SkipAction>
           )}
           {/* {<div><pre>VALUE: {JSON.stringify(values, null, 2)}</pre></div>} */}
@@ -165,9 +165,9 @@ const FormWrapper = ({
               and we never share your information without your consent.
               {/* <Subtitle>– or –</Subtitle> */}
               <LoginAction>
-                <a href={`${window.location}/login`} target="_blank" rel="noopener noreferrer">
+                <Link href='/authenticate/login' target="_blank" rel="noopener noreferrer">
                   Already have an account?
-                </a>
+                </Link>
               </LoginAction>
             </Disclaimer>
           )}

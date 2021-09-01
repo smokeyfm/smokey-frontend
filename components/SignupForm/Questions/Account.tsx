@@ -133,7 +133,7 @@ export const Account = () => {
             showThumbs={false}
             selectedItem={currentSlide}
             onChange={setCurrentSlide}>
-            <Term>
+            {/* <Term>
               <Field type="checkbox" name="acceptSignatureTerms">
                 {(formikProps) => (
                   <FormikCheckbox
@@ -151,7 +151,7 @@ export const Account = () => {
                 </button>{" "}
                 that enables all transactions and disclosure delivery to occur electronically.
               </TermsStatement>
-            </Term>
+            </Term> */}
             <Term>
               <Field type="checkbox" name="acceptPrivacyTerms">
                 {(formikProps) => (
@@ -164,9 +164,9 @@ export const Account = () => {
                 )}
               </Field>
               <TermsStatement accepted={privacyTerms}>
-                I have received and read the
+                I have received and read the&nbsp;
                 <button type="button" onClick={togglePrivacyModal}>
-                  Financial Privacy Policy
+                  Privacy Policy
                 </button>
                 .
               </TermsStatement>
@@ -183,17 +183,11 @@ export const Account = () => {
                 )}
               </Field>
               <TermsStatement accepted={reportingTerms}>
-                By clicking &quot;GET TERMS&quot; I give {process.env.SITE_TITLE} written consent to
-                obtain, now and periodically, consumer credit reports (Reports) about me from
-                consumer reporting agencies to show current & future credit products & services I
-                prequalify for when financing with {process.env.SITE_TITLE}. I understand this
-                authorizes {process.env.SITE_TITLE} to get multiple Reports, which may appear as an
-                inquiry on my Report, but will not impact my credit score. This authorization
-                expires when my current account terminates unless I revoke earlier by contacting{" "}
-                {process.env.SITE_TITLE} at creditoptout@carvana.com
+                By clicking &quot;Signup&quot; I agree to the&nbsp;
+                <button type="button" onClick={toggleSignatureModal}>Terms &amp; Conditions</button>
               </TermsStatement>
             </Term>
-            <Term>
+            {/* <Term>
               <Field type="checkbox" name="acceptAuthorizeTerms">
                 {(formikProps) => (
                   <FormikCheckbox
@@ -217,7 +211,7 @@ export const Account = () => {
                   SilverRock Automotive.
                 </strong>
               </TermsStatement>
-            </Term>
+            </Term> */}
             {/* Below term appears below current Softpull form submit buttons */}
             {/* <Term>
               <Field type="checkbox" name="acceptConstentTerms" component={FormikCheckbox} className={'form-check-input ' + (errors.acceptTerms && touched.acceptTerms ? ' is-invalid' : '')} />
