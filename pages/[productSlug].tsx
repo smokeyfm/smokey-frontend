@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useRouter } from "next/router";
 import { Layout } from "../components";
-import { useProduct } from "../hooks/useProduct";
+import { useProduct, fetchProduct } from "../hooks/useProduct";
 import { useMutation, useQueryClient } from "react-query";
 import { addItemToCart } from "../hooks/useCart";
 import { QueryKeys } from "../hooks/queryKeys";
@@ -20,6 +20,15 @@ const ProductDetail = () => {
 
   React.useEffect(() => {
     if (isSuccess) {
+      // On page load, set focus on the product contaniner, because otherwise the arrow keys (left/right) won't work
+      const productContainer = Array.from(
+        document.getElementsByClassName("product-container")
+      ).shift();
+
+      if (productContainer) {
+        (productContainer as HTMLElement).focus();
+      }
+
       tracking.trackEvent({
         action: tracking.Action.VIEW_PRODUCT,
         category: tracking.Category.PRODUCT_DETAIL,
@@ -40,21 +49,25 @@ const ProductDetail = () => {
         variant_id: Array.isArray(variants) ? variants[0].id : "",
         quantity: 1
       });
+
     const handleKeyPress = (event: React.KeyboardEvent) => {
       switch (event.key) {
         case "ArrowLeft":
         case "ArrowRight":
-          console.log("ARROW KEY", event.key);
-          // TODO
-          //
-          // fetch the product (useProduct() ?) and on success do a Router.push(), e.g:
-          // Router.push(`/${product.attributes.slug}?id=${product.id}`);
-          //
-          // NOTE: if product.id == 1 then we can't go back; and if there is no next product then we can't go forward ...
-          // in these cases, we need to display a message to the user
+          let productId: number = parseInt(`${id}`);
+          productId = event.key == "ArrowLeft" ? productId - 1 : productId + 1;
+
+          fetchProduct(`${productId}`)
+            .then((product) => {
+              router.push(`/${product?.data?.attributes?.slug}?id=${product?.data?.id}`);
+            })
+            .catch(() => {
+              /* product not found */
+            });
           break;
       }
     };
+
     const imageSource =
       Array.isArray(data?.included) && data?.included[0]?.attributes?.styles?.[2].url;
     const source = imageSource
@@ -74,6 +87,7 @@ const ProductDetail = () => {
       </Layout>
     );
   }
+
   return <div>PRODUCT NOT FOUND</div>;
 };
 
