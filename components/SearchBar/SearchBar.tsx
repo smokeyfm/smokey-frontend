@@ -124,7 +124,9 @@ const SearchBar = ({
 
   const toggleSearch = () => {
     const currSearchElement = searchRef.current!;
-    if (currSearchElement) { currSearchElement.focus() }
+    if (currSearchElement) {
+      currSearchElement.focus();
+    }
     setIsExpanded(!isExpanded);
     isWidthSet ? setIsWidthSet(!isWidthSet) : handleSetSearchWidth();
     setQuery("");
