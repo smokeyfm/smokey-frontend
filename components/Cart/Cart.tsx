@@ -26,7 +26,7 @@ export const Cart = ({ isVisible, toggle }: Props) => {
 
   return (
     <>
-      <button onClick={toggle} style={{width: 'auto'}}>
+      <button onClick={toggle} style={{ width: "auto" }}>
         <i className="btb bt-shopping-cart" />
       </button>
       {isVisible && (
