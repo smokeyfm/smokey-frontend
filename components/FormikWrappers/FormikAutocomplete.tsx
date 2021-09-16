@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import { setFieldValue } from 'formik';
+import { useField } from 'formik';
 
 import { TextField } from "@material-ui/core";
 
@@ -13,14 +14,31 @@ import {
   SuggestionItem
 } from "./FormikInput.styles";
 
+// interface FormikAutocompleteType {
+//   name: string;
+//   type: string;
+//   placeholder: string;
+//   props: any;
+// }
+
 // Reference: https://github.com/mui-org/material-ui/issues/18331#issuecomment-569981389
-const FormikAutocomplete: React.FC<any> = ({
-  field,
-  fields: { ...fields },
-  form: { setFieldValue, touched, errors },
-  form,
-  ...props
-}) => {
+// const FormikAutocomplete: React.FC<FormikAutocompleteType> = ({
+//   field,
+//   fields: { ...fields },
+//   form: { setFieldValue, touched, errors },
+//   form,
+//   ...props
+// }) => {
+const FormikAutocomplete: React.FC<any> = (props) => {
+  const [
+    field,
+    { error, touched },
+  ] = useField({
+    name: props.name,
+    type: props.name,
+  });
+
+  const { form: { setFieldValue } } = props;
   const [homeAddress, setHomeAddress] = useState("");
   const [addressSelected, setAddressSelected] = useState(false);
 
@@ -40,7 +58,7 @@ const FormikAutocomplete: React.FC<any> = ({
     //   .catch(error => console.error('Error', error));
     setAddressSelected(true);
     setHomeAddress(address.address);
-    form.setFieldValue(address.name, address.address, false);
+    setFieldValue(address.name, address.address, false);
   };
 
   return (
@@ -56,6 +74,7 @@ const FormikAutocomplete: React.FC<any> = ({
                 label: "Home Address",
                 className: "location-search-input"
               })}
+              type="text"
               variant="outlined"
               // selectedTheme="dark"
               // invalid={Boolean(touched[fields.name] && errors[fields.name])}
@@ -93,7 +112,7 @@ const FormikAutocomplete: React.FC<any> = ({
             // onChange={ () => console.log('TYPE TYPE')}
             onBlur={ () => setTouched({ [name]: true }) }
           /> */}
-      {touched[fields.name] && errors[fields.name] ? <Error>{errors[fields.name]}</Error> : ""}
+      {/* {touched[field.name] && errors[field.name] ? <Error>{errors[field.name]}</Error> : ""} */}
     </>
   );
 };
