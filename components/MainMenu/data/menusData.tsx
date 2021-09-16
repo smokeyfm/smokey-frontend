@@ -14,7 +14,7 @@ export const Column = styled.div`
   margin-right: 98px;
   display: flex;
   flex-direction: column;
-  &:first-child {
+  &:first-of-type {
     margin-left: 99px;
   }
   &:last-child {

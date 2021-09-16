@@ -28,8 +28,8 @@ const AutoComplete = ({
 
   useEffect(() => {
     // getSearchData();
-    data ? console.log("stuff: ", data) : null;
-    console.log("suggestions: ", suggestions, "data: ", data);
+    // data ? console.log("stuff: ", data) : null;
+    // console.log("suggestions: ", suggestions, "data: ", data);
   }, []);
 
   if (isLoading) {
