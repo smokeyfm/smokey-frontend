@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import { setFieldValue } from 'formik';
-import { useField } from 'formik';
+import { useField } from "formik";
 
 import { TextField } from "@material-ui/core";
 
@@ -30,15 +30,14 @@ import {
 //   ...props
 // }) => {
 const FormikAutocomplete: React.FC<any> = (props) => {
-  const [
-    field,
-    { error, touched },
-  ] = useField({
+  const [field, { error, touched }] = useField({
     name: props.name,
-    type: props.name,
+    type: props.name
   });
 
-  const { form: { setFieldValue } } = props;
+  const {
+    form: { setFieldValue }
+  } = props;
   const [homeAddress, setHomeAddress] = useState("");
   const [addressSelected, setAddressSelected] = useState(false);
 
