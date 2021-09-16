@@ -8,6 +8,7 @@ export * from "./Layout";
 export * from "./MainMenu";
 export * from "./NotifyForm";
 export * from "./PostList";
+export * from "./ProductDetails";
 export * from "./ProductList";
 export * from "./SignupForm";
 export * from "./SocialLinks";

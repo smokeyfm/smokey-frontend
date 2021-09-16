@@ -9,6 +9,7 @@ const Container = styled.div`
   flex-wrap: wrap;
   position: relative;
   padding-bottom: 13px;
+  justify-content: center;
 `;
 export interface MyMenuItemProps {
   isActive: boolean;
@@ -37,7 +38,7 @@ const MyMenuItem = styled.div<MyMenuItemProps>`
     transfrom: ${(props) => (props.isActive ? "translateX(0)" : "translateX(-100%)")};
   }
   &:first-of-type {
-    margin-left: 197px;
+    margin-left: 82px;
   }
 `;
 export interface DropDownProps {
