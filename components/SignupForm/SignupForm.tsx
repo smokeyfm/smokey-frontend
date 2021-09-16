@@ -9,6 +9,7 @@ import { AuthFormType, signupForm } from "../AuthForm/constants";
 import { useAuth } from "../../config/auth";
 import { SlideInLeft, SlideOutLeft } from "../Animations";
 import { Questions } from "./Questions";
+import { Alert } from "../components";
 
 import {
   MainWrapper,
@@ -27,7 +28,7 @@ import {
   CongratsWrapper
 } from "./SignupForm.styles";
 
-const FormWrapper = ({
+const FormWrapper: React.FC<any> = ({
   steps,
   children,
   // onEachStepSubmit,
@@ -70,7 +71,7 @@ const FormWrapper = ({
   });
 
   // const { values, Formik, Form, Field } = useFormikContext();
-  const { values } = useFormikContext();
+  const { values }: any = useFormikContext();
 
   // const { step } = this.props;
   const termsAccepted = !!(
@@ -92,31 +93,23 @@ const FormWrapper = ({
     case 200:
       window.scrollTo(0, 0);
       return (
-        <CongratsWrapper>
-          <CheckCircle />
-          <Title>{status.message}</Title>
-          <Subtitle>{status.subtitle}</Subtitle>
+        <>
+          <i className="bts bt-check-circle"></i>
+          <h1>{status.message}</h1>
+          <p>{status.subtitle}</p>
 
           {/* <p>Need to fix something?</p>
-          <PreviousButton onClick={goToPreviousStep} disabled={!canGoBack} ghost>← Go Back</PreviousButton> */}
-        </CongratsWrapper>
+          <PreviousButton onClick={goToPreviousStep} disabled={!canGoBack}>← Go Back</PreviousButton> */}
+        </>
       );
     default:
       return (
         <WizardForm canGoBack={canGoBack}>
-          <InitialTitle>
-            {isMobile && !canGoBack && (
-              <HaloText dark brand="" headline="Auto Loans for Everyone" body="" />
-            )}
-          </InitialTitle>
+          <InitialTitle>{isMobile && !canGoBack && <h1>Auto Loans for Everyone</h1>}</InitialTitle>
           {children}
           <WizardActions>
             {canGoBack && (
-              <PreviousButton
-                variant="outlined"
-                onClick={goToPreviousStep}
-                disabled={!canGoBack}
-                ghost>
+              <PreviousButton variant="outlined" onClick={goToPreviousStep} disabled={!canGoBack}>
                 <i className="bts bt-angles-left" />
               </PreviousButton>
             )}
@@ -165,9 +158,8 @@ const FormWrapper = ({
               and we never share your information without your consent.
               {/* <Subtitle>– or –</Subtitle> */}
               <LoginAction>
-                <Link href="/authenticate/login" target="_blank" rel="noopener noreferrer">
-                  Already have an account?
-                </Link>
+                {/* <Link href="/authenticate/login" target="_blank" rel="noopener noreferrer"> */}
+                <Link href="/authenticate/login">Already have an account?</Link>
               </LoginAction>
             </Disclaimer>
           )}
@@ -237,7 +229,7 @@ export const SignupForm = () => {
         //   subtitle: err
         // })
       });
-  });
+  }, []);
 
   // We assume this method cannot be called on the last step
   // const showNextStep = ({ setFieldTouched }) => {
@@ -276,8 +268,8 @@ export const SignupForm = () => {
             <FormikWizard
               steps={Questions}
               onSubmit={handleSubmit}
-              step={0}
-              validator={() => ({})}
+              // step={0}
+              // validator={() => ({})}
               // albusProps={{step: 0, onNext: (context) => handleSubmit.bind(this, context)}}
               // albusProps={{(context) => console.log(context)}}
               render={FormWrapper}

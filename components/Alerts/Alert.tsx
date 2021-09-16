@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-const Alert = Swal.mixin({
+export const Alert = Swal.mixin({
   customClass: {
     // container: 'container-class',
     // popup: 'popup-class',
@@ -18,5 +18,3 @@ const Alert = Swal.mixin({
   },
   buttonsStyling: false
 });
-
-export default Alert;

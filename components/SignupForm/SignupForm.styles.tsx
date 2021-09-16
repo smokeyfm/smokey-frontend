@@ -46,7 +46,11 @@ export const ContentWrapper = styled.div`
   }
 `;
 
-export const LeftHalf = styled.div`
+interface LeftHalfType {
+  show?: string;
+}
+
+export const LeftHalf = styled.div<LeftHalfType>`
   display: ${(props) => props.show};
   flex-direction: column;
   flex-basis: 100%;
@@ -64,7 +68,7 @@ export const LeftHalf = styled.div`
   padding: 15px 15px 60px 15px;
   text-align: center;
   & [data-qa="title"] {
-    color: ${(props) => props.theme.colors.brand.dark};
+    color: ${(props) => props.theme.colors.brand.primary};
     font-size: 1.6rem;
   }
 
@@ -79,7 +83,11 @@ export const LeftHalf = styled.div`
   }
 `;
 
-export const RightHalf = styled.div`
+interface RightHalfType {
+  isLargeDevice?: boolean;
+}
+
+export const RightHalf = styled.div<RightHalfType>`
   display: flex;
   flex-direction: column;
   flex-basis: 100%;
@@ -96,13 +104,17 @@ export const RightHalf = styled.div`
     box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.123);
     ${"" /* width: 100%; */}
     & [data-qa='title'] {
-      color: ${(props) => props.theme.colors.brand.dark};
+      color: ${(props) => props.theme.colors.brand.primary};
       font-size: 1.6rem;
     }
   }
 `;
 
-export const WizardForm = styled.div`
+interface WizardFormType {
+  canGoBack?: boolean;
+}
+
+export const WizardForm = styled.div<WizardFormType>`
   padding-top: 0;
   ${"" /* margin-top: ${props => props.canGoBack ? '120px' : '225px'}; */}
   background: ${(props) => props.theme.colors.white.primary};
@@ -111,7 +123,7 @@ export const WizardForm = styled.div`
   box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.123);
   width: 100%;
   & [data-qa="title"] {
-    color: ${(props) => props.theme.colors.brand.dark};
+    color: ${(props) => props.theme.colors.brand.primary};
     font-size: 1.6rem;
   }
 
@@ -186,7 +198,7 @@ export const SkipAction = styled.div`
   justify-content: center;
   & button {
     width: 100%;
-    color: ${(props) => props.theme.colors.brand.medium};
+    color: ${(props) => props.theme.colors.brand.primary};
     text-transform: capitalize;
   }
 
@@ -201,7 +213,7 @@ export const LoginAction = styled.div`
   justify-content: center;
   & button a {
     width: 100%;
-    color: ${(props) => props.theme.colors.brand.medium};
+    color: ${(props) => props.theme.colors.brand.primary};
     text-transform: capitalize;
   }
 

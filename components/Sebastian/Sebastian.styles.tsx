@@ -1,5 +1,6 @@
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
+import { boolean } from "yup/lib/locale";
 
 const fadeInOut = keyframes`
   0% { opacity: 1; }
@@ -58,7 +59,7 @@ export const SebastianImage = styled.div`
     bottom: -130px;
   }
 
-  @media only screen and (max-width: ${(props) => props.theme.breakpoints.values.sm}px) {
+  @media only screen and (max-width: ${(props: any) => props.theme.breakpoints.values.sm}px) {
     position: absolute;
     ${
       "" /* left: 25px;
@@ -71,8 +72,8 @@ export const SebastianImage = styled.div`
 
 export const BubbleWrapper = styled.div`
   border-radius: 8px;
-  border: 1px solid ${(props) => props.theme.colors.gray.medium};
-  background: ${(props) => props.theme.colors.white.primary};
+  border: 1px solid ${(props: any) => props.theme.colors.gray.medium};
+  background: ${(props: any) => props.theme.colors.white.primary};
   margin: 0 0 -35px 0;
   padding: 15px;
   &:after {
@@ -88,7 +89,11 @@ export const BubbleWrapper = styled.div`
   }
 `;
 
-export const BubbleWrapperMobile = styled.div`
+interface BubbleWrapperType {
+  speechReady: boolean;
+}
+
+export const BubbleWrapperMobile = styled.div<BubbleWrapperType>`
   transition: all 0.33s ease-in-out;
   display: flex;
   position: absolute;
@@ -129,7 +134,7 @@ export const BubbleWrapperMobile = styled.div`
 `;
 
 export const BubbleSpeech = styled.div`
-  color: ${(props) => props.theme.colors.gray.dark};
+  color: ${(props: any) => props.theme.colors.gray.dark};
   font-size: 1rem;
   font-weight: 300;
   text-align: left;
@@ -139,7 +144,7 @@ export const BubbleDot = styled.div`
   width: ${width / 8}px;
   height: ${width / 8}px;
   border-radius: 100%;
-  background-color: ${(props) => props.theme.colors.gray.medium};
+  background-color: ${(props: any) => props.theme.colors.gray.medium};
 
   animation: ${fadeInOut} 1.5s linear infinite;
   animation-delay: 0.25s;

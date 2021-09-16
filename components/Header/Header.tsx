@@ -63,7 +63,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
                 <UserIconMo src={"/user.png"} />
                 <ArrowDown />
                 <FavoriteIcon />
-                <button onClick={logout}>LOGOUT</button>
+                <button onClick={() => logout}>LOGOUT</button>
               </>
             ) : (
               <>

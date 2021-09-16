@@ -3,7 +3,7 @@ import { TextField } from "@material-ui/core";
 
 import { Error } from "./FormikInput.styles";
 
-const FormikIncome = ({
+const FormikIncome: React.FC<any> = ({
   field,
   field: { ...fields },
   form: { touched, errors, name },

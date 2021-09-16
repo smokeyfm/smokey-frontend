@@ -21,7 +21,7 @@ import {
   BubbleDot
 } from "./Sebastian.styles";
 
-const Sebastian = ({ speech }) => {
+const Sebastian: React.FC<any> = ({ speech }) => {
   const [speechReady, setSpeechStatus] = useState(false);
   // const [show, set] = useState(false);
 

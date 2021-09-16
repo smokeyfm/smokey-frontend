@@ -21,7 +21,7 @@ const TRACKING_KM_ON = process.env.TRACKING_PROVIDER_KM !== "off";
 type TrackingEvent = {
   action: string;
   category: string;
-  label: string;
+  label?: string;
 };
 
 interface TrackingProvider {

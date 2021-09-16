@@ -4,7 +4,12 @@ import { Input } from "@material-ui/core";
 
 import { Error } from "./FormikInput.styles";
 
-const FormikInput = ({ field: { ...fields }, form: { touched, errors }, styles, ...props }) => (
+const FormikInput: React.FC<any> = ({
+  field: { ...fields },
+  form: { touched, errors },
+  styles,
+  ...props
+}) => (
   <>
     <Input
       id="password"

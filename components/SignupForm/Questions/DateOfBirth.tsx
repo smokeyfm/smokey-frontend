@@ -13,7 +13,7 @@ export const DateOfBirth = () => {
 
   const speechMarkup = useCallback(() => {
     return { __html: "When is your birthday 🎉?" };
-  });
+  }, []);
 
   return (
     <QuestionWrapper>

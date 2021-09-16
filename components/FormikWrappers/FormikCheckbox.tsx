@@ -2,7 +2,7 @@ import React from "react";
 
 import { TermsCheckbox } from "./FormikInput.styles";
 
-const FormikCheckbox = ({
+const FormikCheckbox: React.FC<any> = ({
   field,
   fields: { ...fields },
   form: { setFieldValue, touched, errors },

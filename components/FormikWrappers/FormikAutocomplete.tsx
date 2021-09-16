@@ -14,7 +14,7 @@ import {
 } from "./FormikInput.styles";
 
 // Reference: https://github.com/mui-org/material-ui/issues/18331#issuecomment-569981389
-const FormikAutocomplete = ({
+const FormikAutocomplete: React.FC<any> = ({
   field,
   fields: { ...fields },
   form: { setFieldValue, touched, errors },
@@ -26,14 +26,14 @@ const FormikAutocomplete = ({
 
   // const { setTouched, setFieldValue, name } = props;
 
-  const handleChange = (input) => {
+  const handleChange = (input: any) => {
     // console.log('changing');
     setAddressSelected(false);
     setHomeAddress(input);
     // setFieldValue(name, search, false);
   };
 
-  const handleSelect = (address) => {
+  const handleSelect = (address: any) => {
     // geocodeByAddress(address)
     //   .then(results => getLatLng(results[0]))
     //   .then(latLng => console.log('Success', latLng))
@@ -57,8 +57,8 @@ const FormikAutocomplete = ({
                 className: "location-search-input"
               })}
               variant="outlined"
-              selectedTheme="dark"
-              invalid={Boolean(touched[fields.name] && errors[fields.name])}
+              // selectedTheme="dark"
+              // invalid={Boolean(touched[fields.name] && errors[fields.name])}
             />
             {!addressSelected && homeAddress !== "" && (
               <SuggestionWrapper>

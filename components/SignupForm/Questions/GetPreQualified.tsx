@@ -16,7 +16,7 @@ export const ColorizedFinance = styled.i`
     height: 5rem;
   }
   & svg g path:first-child {
-    fill: ${(props) => props.theme.colors.brand.medium};
+    fill: ${(props) => props.theme.colors.brand.primary};
   }
 `;
 
@@ -27,7 +27,7 @@ export const ColorizedCalendar = styled.i`
     height: 5rem;
   }
   & svg g path:first-child {
-    fill: ${(props) => props.theme.colors.brand.medium};
+    fill: ${(props) => props.theme.colors.brand.primary};
   }
 `;
 
@@ -38,7 +38,7 @@ export const ColorizedLoan = styled.i`
     height: 5rem;
   }
   & svg g path:first-child {
-    fill: ${(props) => props.theme.colors.brand.medium};
+    fill: ${(props) => props.theme.colors.brand.primary};
   }
 `;
 
@@ -49,7 +49,7 @@ export const ColorizedCart = styled.i`
     height: 5rem;
   }
   & svg g path:first-child {
-    fill: ${(props) => props.theme.colors.brand.medium};
+    fill: ${(props) => props.theme.colors.brand.primary};
   }
 `;
 
@@ -62,7 +62,7 @@ export const GetPreQualified = () => {
     return {
       __html: `Welcome from <strong>${partnerName}</strong>!<br /> Create your account, and you'll be surfing the latest trends in no-time.`
     };
-  });
+  }, []);
 
   return (
     <QuestionWrapper>

@@ -11,7 +11,7 @@ import { QuestionWrapper, InputGroupWrapper, InputWrapper } from "./Questions.st
 export const YearlyIncome = () => {
   const speechMarkup = useCallback(() => {
     return { __html: "How much do you make each year?" };
-  });
+  }, []);
 
   return (
     <QuestionWrapper>
