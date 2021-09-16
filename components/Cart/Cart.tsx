@@ -26,7 +26,7 @@ export const Cart = ({ isVisible, toggle }: Props) => {
 
   return (
     <>
-      <button onClick={toggle}>CART</button>
+      <button onClick={toggle}><i className="btb bt-shopping-cart" /></button>
       {isVisible && (
         <div className="cart-modal">
           <h2>Cart</h2>

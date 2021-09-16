@@ -40,7 +40,7 @@ const SearchBar = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const [isWidthSet, setIsWidthSet] = useState(false);
   const [isSearchLoading, setIsSearchLoading] = useState(false);
-  const [isSearchInputFocusable, setIsSearchInputFocusable] = useState(false);
+  // const [isSearchInputFocusable, setIsSearchInputFocusable] = useState(false);
 
   const handleSearchChange = (e: any) => {
     const { value } = e.target;
@@ -67,7 +67,7 @@ const SearchBar = ({
   useOnClickOutside(dropdownRef, handleClickOutside);
 
   useEffect(() => {
-    !isSearchInputFocusable && setIsSearchInputFocusable(!isSearchInputFocusable);
+    // !isSearchInputFocusable && setIsSearchInputFocusable(!isSearchInputFocusable);
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("touchstart", handleClickOutside);
 

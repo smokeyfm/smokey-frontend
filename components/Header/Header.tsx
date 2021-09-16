@@ -62,6 +62,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
                 <div>{user.data.attributes.email}</div>
                 <UserIconMo src={"/user.png"} />
                 <ArrowDown />
+                <FavoriteIcon />
                 <button onClick={logout}>LOGOUT</button>
               </>
             ) : (
@@ -69,8 +70,6 @@ export const Header: React.FC<HeaderProps> = (props) => {
                 {/* <CartMo src={"/CART.png"} /> */}
                 {/* <HeaderAccount>MyAccount</HeaderAccount> */}
                 {/* <ShoppingCart src={"/CART.png"} /> */}
-                <i className="btb bt-shopping-cart" />
-                <FavoriteIcon />
                 <Link href="/authenticate/login">
                   <LinkDiv isActive={pathname === "/authenticate/login"}>LOG IN</LinkDiv>
                 </Link>
