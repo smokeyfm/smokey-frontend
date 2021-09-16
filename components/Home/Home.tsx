@@ -27,9 +27,9 @@ export const Home = () => {
     <Layout>
       <Banner />
       <Content>
-        {memberList}
+        {/* {memberList} */}
         <Products data={data.productList} title={"Live-Shopping"} />
-        {mobileMemberList}
+        {/* {mobileMemberList} */}
         {latestProducts}
         {mobileLatest}
         {polProductList}

@@ -36,7 +36,7 @@ const MyMenuItem = styled.div<MyMenuItemProps>`
     display: ${(props) => (props.isActive ? "block" : "none")};
     transfrom: ${(props) => (props.isActive ? "translateX(0)" : "translateX(-100%)")};
   }
-  &:first-child {
+  &:first-of-type {
     margin-left: 197px;
   }
 `;
