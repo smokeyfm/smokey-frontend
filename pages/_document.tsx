@@ -81,6 +81,7 @@ class MyDocument extends Document {
               `
             }}
           />
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUqxah2mT_0iaosOBBSIKRy0lw7f6wdLA&libraries=places" />
         </Head>
         <body>
           <Main />
