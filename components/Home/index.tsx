@@ -1,5 +1,6 @@
-import React, { Component, createRef } from 'react'
-import Popup from '../Modal/index'
+import React, { Component, createRef } from 'react';
+import SC from 'soundcloud';
+import Popup from '../Modal/index';
 import YouTubeIframe from '../video';
 import ReactAudioPlayer from 'react-audio-player';
 import Image from 'next/image'
@@ -78,17 +79,31 @@ export default class HomeComponent extends Component<Props, S> {
     // });
   }
   ApiCall() {
-    fetch(
-      "https://api.soundcloud.com/users/6319082/playlists?client_id=" +
-        `${client_id}`
-    )
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          this.setState({ songs: result[0].tracks }, () => this.GetUrl());
-        },
-        (error) => {}
-      );
+    SC.initialize({
+      client_id: `${process.env.SC_CLIENT_ID}`,
+      redirect_uri: 'https://smokey.fm/player'
+    });
+    SC.get('/user/6319082/tracks')
+      .then(tracks => {
+        console.log('Latest tracks: ', tracks);
+        return tracks.json();
+      })
+      .then(result => {
+        this.setState({ songs: result[0].tracks }, () => this.GetUrl());
+      },
+      (error) => {}
+    );
+    // fetch(
+    //   "https://api.soundcloud.com/users/6319082/playlists?client_id=" +
+    //     `${client_id}`
+    // )
+    //   .then((res) => res.json())
+    //   .then(
+    //     (result) => {
+    //       this.setState({ songs: result[0].tracks }, () => this.GetUrl());
+    //     },
+    //     (error) => {}
+    //   );
   }
   GetCurrentTimeAndDuration = () => {
     this.setState({ currentTime: this.rap.audioEl.current.currentTime });

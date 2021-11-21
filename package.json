@@ -29,6 +29,7 @@
     "react-rangeslider": "^2.2.0",
     "react-youtube": "^7.13.1",
     "resolve-from": "^5.0.0",
+    "soundcloud": "^3.3.2",
     "soundcloud-api-client": "^0.0.9",
     "video-react": "^0.14.1"
   },

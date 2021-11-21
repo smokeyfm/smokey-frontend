@@ -6,7 +6,7 @@ class MyDocument extends Document {
       <Html lang='en'>
         <Head>
           <link rel="icon" href="/img/favicon.ico" />
-          <meta charset="utf-8" />
+          <meta charSet="utf-8" />
           <meta name="description" content="⚕Original video radio by Aaron Smulktis" />
           <meta name="keywords" content="" />
 
