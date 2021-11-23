@@ -63,7 +63,7 @@ class MyDocument extends Document {
         "contactType": "General Inquiry"
       }]
     `;
-    
+
     return (
       <Html>
         <Head>
@@ -92,20 +92,23 @@ class MyDocument extends Document {
               `
             }}
           />
-
           <meta charSet="utf-8" />
           <link rel="icon" href="/img/favicon.ico" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0, minimal-ui" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0, minimal-ui"
+          />
           <title>{process.env.PAGE_TITLE}</title>
           <meta name="description" content="The Building Blocks of Material Instincts" />
           <meta name="keywords" content="" /> /
-
           <meta name="robots" content="noodp" />
           <link rel="canonical" href="http://dna.instinct.is" /> /
-
           <meta property="og:locale" content="en_US" />
           <meta property="og:type" content="website" />
-          <meta property="og:title" content="Instinct DNA – The Building Blocks of Material Instincts" />
+          <meta
+            property="og:title"
+            content="Instinct DNA – The Building Blocks of Material Instincts"
+          />
           <meta property="og:description" content="" />
           <meta property="og:url" content="http://dna.instinct.is" />
           <meta property="og:site_name" content="Instinct DNA" />
@@ -115,22 +118,23 @@ class MyDocument extends Document {
           <meta property="og:image" content="public/img/open-graph-instinct-dna.jpg" />
           <meta property="og:image:width" content="406" />
           <meta property="og:image:height" content="406" />
-
           <script src="https://js.stripe.com/v3/" type="text/javascript"></script>
-
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:description" content="The Building Blocks of Material Instincts" />
           <meta name="twitter:title" content="Instinct DNA" />
           <meta name="twitter:site" content="http://dna.instinct.is" />
-          <meta name="twitter:image" content="http://dna.instinct.is/img/open-graph-instinct-dna.jpg" />
+          <meta
+            name="twitter:image"
+            content="http://dna.instinct.is/img/open-graph-instinct-dna.jpg"
+          />
           <meta name="twitter:creator" content="@aaronsmulktis" />
-
           <link rel="pingback" href="http://dna.instinct.is" />
-
-          <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css" />
-
+          <link
+            href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css"
+            rel="stylesheet"
+            type="text/css"
+          />
           <script type="application/ld+json">{OpenGraphObject}</script>
-
           {/* <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
