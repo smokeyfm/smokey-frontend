@@ -6,6 +6,7 @@ export * from "./Home";
 export * from "./InfoBox";
 export * from "./Layout";
 export * from "./MainMenu";
+export * from "./MediaPlayer";
 export * from "./NotifyForm";
 export * from "./PostList";
 export * from "./ProductList";

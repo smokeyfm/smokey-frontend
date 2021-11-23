@@ -48,6 +48,9 @@ module.exports = {
         systemvars: true
       })
     ];
+    config.node = {
+      fs: "empty"
+    };
     config.resolve = {
       ...config.resolve,
       alias: {

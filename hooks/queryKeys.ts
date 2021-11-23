@@ -1,5 +1,6 @@
 export enum QueryKeys {
   CART = "CART",
   PRODUCTS = "PRODUCTS",
-  PRODUCT = "PRODUCT"
+  PRODUCT = "PRODUCT",
+  TRACKS = "TRACKS"
 }
