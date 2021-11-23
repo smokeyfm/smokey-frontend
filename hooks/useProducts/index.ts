@@ -1,25 +1,22 @@
 import { useQuery } from "react-query";
-import { makeClient } from "@spree/storefront-api-v2-sdk";
 import { IProducts } from "@spree/storefront-api-v2-sdk/types/interfaces/Product";
-// When using the SDK in a <script> tag or as part of a Webpack bundle
-// targeted for the browser, instead use:
-// import { makeClient } from '@spree/storefront-api-v2-sdk/dist/client'
+import { spreeClient } from "../../config/spree";
+import { QueryKeys } from "../queryKeys";
 
-const client = makeClient({
-  host: process.env.SPREE_API_URL || "http://localhost:8080",
-});
-
-const fetchProducts = async (page = 1) => {
-  const response = await client.products.list({
-    include: "images",
+const fetchProducts = async (page: number = 1) => {
+  const storage = (await import("../../config/storage")).default;
+  const token = await storage.getToken();
+  const response = await spreeClient.products.list({
+    bearerToken: token ? token.access_token : undefined
   });
-  return response.success();
+  if (response.isSuccess()) {
+    return response.success();
+  } else {
+    throw new Error("Products request failed");
+  }
 };
-
 const useProducts = (page: number) => {
-  return useQuery<IProducts, false>(["products", page], () =>
-    fetchProducts(page)
-  );
+  return useQuery<IProducts, false>([QueryKeys.PRODUCTS, page], () => fetchProducts(page));
 };
 
 export { useProducts, fetchProducts };

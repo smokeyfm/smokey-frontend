@@ -1,4 +1,6 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# IDE
+.vscode
+.idea
 
 # dependencies
 /node_modules
@@ -25,6 +27,14 @@ yarn-error.log*
 
 # local env files
 .env.local
+.env.development
 .env.development.local
+.env.test
 .env.test.local
+.env.production
 .env.production.local
+envvars.txt
+
+.env.DNA.development
+.env.DNA.production
+.env.DNA.staging
