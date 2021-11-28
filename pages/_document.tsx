@@ -151,6 +151,7 @@ class MyDocument extends Document {
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(g, s);
           </script> */}
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUqxah2mT_0iaosOBBSIKRy0lw7f6wdLA&libraries=places" />
         </Head>
         <body>
           <Main />
