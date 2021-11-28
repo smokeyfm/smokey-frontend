@@ -75,8 +75,6 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
-          {/* <title>{process.env.SITE_TITLE}</title> */}
-          <script async type="text/javascript" src="http://l2.io/ip.js?var=myip" />
           <script
             async
             src={"https://www.googletagmanager.com/gtag/js?id=" + tracking.GA_TRACKING_CODE}
