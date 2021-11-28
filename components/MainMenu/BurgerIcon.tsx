@@ -51,7 +51,8 @@ const BurgerIcon = (props: BurgerIconProps) => {
             style={{
               ...getLineStyle(bar),
               ...styles?.bmBurgerBars
-            }}></span>
+            }}
+          ></span>
         ))}
       </span>
     );
@@ -62,7 +63,8 @@ const BurgerIcon = (props: BurgerIconProps) => {
       style={{
         ...{ zIndex: 1000 },
         ...styles?.bmBurgerButton
-      }}>
+      }}
+    >
       <button
         id="react-burger-menu-btn"
         onClick={onClick}
@@ -78,7 +80,8 @@ const BurgerIcon = (props: BurgerIconProps) => {
             onIconHoverChange({ isMouseIn: false });
           }
         }}
-        style={buttonStyle}>
+        style={buttonStyle}
+      >
         Open Menu
       </button>
       {icon}

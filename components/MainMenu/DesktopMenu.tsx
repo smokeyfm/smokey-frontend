@@ -75,7 +75,8 @@ const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
           onMouseLeave={handleMouseLeave}
           isActive={currentKey == item.key}
           key={index}
-          onMouseEnter={handleMouseEnter.bind(null, item)}>
+          onMouseEnter={handleMouseEnter.bind(null, item)}
+        >
           {item.name}
         </MyMenuItem>
       ))}
@@ -84,7 +85,8 @@ const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
           onMouseLeave={handleMouseLeave}
           onMouseEnter={handleMouseEnter.bind(null, item)}
           isActive={currentKey == item.key}
-          key={index}>
+          key={index}
+        >
           {item.pcMenuItem}
         </DropDown>
       ))}

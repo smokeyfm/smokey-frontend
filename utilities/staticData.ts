@@ -27,7 +27,7 @@ const Static = {
   errors: {
     isRequired: "Required",
     minDateOfBirth: "You cannot have a Date of Birth prior to 1900",
-    maxDatOfBirth: "You must be 18 years of age",
+    maxDateOfBirth: "You must be 18 years of age",
     annualIncomeMin: "Annual Income must be at least $4,000",
     annualIncomeMax: "Annual Income cannot be greater than $9,999,999",
     phoneNumberValid: "Please enter a valid Phone Number",

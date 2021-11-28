@@ -88,7 +88,11 @@ export const BubbleWrapper = styled.div`
   }
 `;
 
-export const BubbleWrapperMobile = styled.div`
+interface BubbleWrapperMobileType {
+  speechReady: boolean;
+}
+
+export const BubbleWrapperMobile = styled.div<BubbleWrapperMobileType>`
   transition: all 0.33s ease-in-out;
   display: flex;
   position: absolute;

@@ -3,7 +3,11 @@ import { TextField } from "@material-ui/core";
 
 import { Error } from "./FormikInput.styles";
 
-const FormikDateOfBirth = ({ field: { ...fields }, form: { touched, errors }, ...props }) => (
+export const FormikDateOfBirth = ({
+  field: { ...fields },
+  form: { touched, errors },
+  ...props
+}: any) => (
   <>
     <TextField
       id="dateOfBirth"
@@ -16,4 +20,3 @@ const FormikDateOfBirth = ({ field: { ...fields }, form: { touched, errors }, ..
     {touched[fields.name] && errors[fields.name] ? <Error>{errors[fields.name]}</Error> : ""}
   </>
 );
-export default FormikDateOfBirth;

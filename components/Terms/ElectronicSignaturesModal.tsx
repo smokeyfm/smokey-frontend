@@ -81,7 +81,8 @@ export const ElectronicSignaturesModal = () => {
             <a
               href="https://www.microsoft.com/en-us/windows/microsoft-edge"
               target="_blank"
-              rel="noopener noreferrer">
+              rel="noopener noreferrer"
+            >
               https://www.microsoft.com/en-us/windows/microsoft-edge
             </a>
             ), the current version of Mozilla Firefox (see{" "}

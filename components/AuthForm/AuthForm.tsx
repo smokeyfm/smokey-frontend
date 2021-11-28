@@ -44,7 +44,8 @@ const LoginForm = () => {
             .catch(() => {
               setSubmitting(false);
             });
-        }}>
+        }}
+      >
         {({ isSubmitting }) => (
           <Form>
             <FieldContainer>
@@ -100,7 +101,8 @@ const ForgotPasswordForm = () => {
             .catch(() => {
               setSubmitting(false);
             });
-        }}>
+        }}
+      >
         {({ isSubmitting }) => (
           <Form>
             <FieldContainer>

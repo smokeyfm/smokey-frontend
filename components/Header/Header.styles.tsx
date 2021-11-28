@@ -22,7 +22,7 @@ export const RightSide = styled.div`
   z-index: 2;
 `;
 export const LogoDiv = styled.div`
-  width: 180px;
+  width: 355px;
   padding: 15px 30px;
   display: flex;
   align-items: center;

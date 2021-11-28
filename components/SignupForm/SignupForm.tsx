@@ -9,11 +9,15 @@ import { AuthFormType, signupForm } from "../AuthForm/constants";
 import { useAuth } from "../../config/auth";
 import { SlideInLeft, SlideOutLeft } from "../Animations";
 import { Questions } from "./Questions";
+import { Alert } from "../Alerts";
+
+import FormikWizardStepType from "formik-wizard";
 
 import {
   MainWrapper,
   InitialTitle,
   Title,
+  Subtitle,
   ContentWrapper,
   LeftHalf,
   RightHalf,
@@ -42,7 +46,7 @@ const FormWrapper = ({
   // onFinalSubmit,
   showNextStep,
   actionLabel
-}) => {
+}: any) => {
   // const [state, setState] = useState({
   //   errorMessage: '',
   //   stepNumber: 0
@@ -70,7 +74,7 @@ const FormWrapper = ({
   });
 
   // const { values, Formik, Form, Field } = useFormikContext();
-  const { values } = useFormikContext();
+  const { values }: any = useFormikContext();
 
   // const { step } = this.props;
   const termsAccepted = !!(
@@ -93,7 +97,6 @@ const FormWrapper = ({
       window.scrollTo(0, 0);
       return (
         <CongratsWrapper>
-          <CheckCircle />
           <Title>{status.message}</Title>
           <Subtitle>{status.subtitle}</Subtitle>
 
@@ -105,9 +108,7 @@ const FormWrapper = ({
       return (
         <WizardForm canGoBack={canGoBack}>
           <InitialTitle>
-            {isMobile && !canGoBack && (
-              <HaloText dark brand="" headline="Auto Loans for Everyone" body="" />
-            )}
+            {isMobile && !canGoBack && <h1>Welcome! Let's get you started..</h1>}
           </InitialTitle>
           {children}
           <WizardActions>
@@ -116,7 +117,8 @@ const FormWrapper = ({
                 variant="outlined"
                 onClick={goToPreviousStep}
                 disabled={!canGoBack}
-                ghost>
+                ghost
+              >
                 <i className="bts bt-angles-left" />
               </PreviousButton>
             )}
@@ -132,7 +134,8 @@ const FormWrapper = ({
                   // console.log("next: ", wizard, isLastStep);
                   wizard.next();
                 }}
-                disabled={isLastStep && !termsAccepted}>
+                disabled={isLastStep && !termsAccepted}
+              >
                 {actionLabel || (isLastStep ? "Submit" : "Next step")}
               </NextButton>
             ) : (
@@ -145,7 +148,8 @@ const FormWrapper = ({
                   // console.log("next: ", wizard, isLastStep);
                   wizard.next();
                 }}
-                disabled={isLastStep && !termsAccepted}>
+                disabled={isLastStep && !termsAccepted}
+              >
                 {actionLabel || (isLastStep ? "Submit" : "Next step")}
               </NextButton>
             )}
@@ -165,9 +169,7 @@ const FormWrapper = ({
               and we never share your information without your consent.
               {/* <Subtitle>– or –</Subtitle> */}
               <LoginAction>
-                <Link href="/authenticate/login" target="_blank" rel="noopener noreferrer">
-                  Already have an account?
-                </Link>
+                <Link href="/authenticate/login">Already have an account?</Link>
               </LoginAction>
             </Disclaimer>
           )}
@@ -237,7 +239,7 @@ export const SignupForm = () => {
         //   subtitle: err
         // })
       });
-  });
+  }, []);
 
   // We assume this method cannot be called on the last step
   // const showNextStep = ({ setFieldTouched }) => {
@@ -276,8 +278,8 @@ export const SignupForm = () => {
             <FormikWizard
               steps={Questions}
               onSubmit={handleSubmit}
-              step={0}
-              validator={() => ({})}
+              // step={0}
+              // validator={() => ({})}
               // albusProps={{step: 0, onNext: (context) => handleSubmit.bind(this, context)}}
               // albusProps={{(context) => console.log(context)}}
               render={FormWrapper}

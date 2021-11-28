@@ -57,29 +57,29 @@ export const Account = () => {
     setCurrentSlide(currentSlide + 1);
   };
 
-  const handleSignatureCheckbox = (field) => {
+  const handleSignatureCheckbox = (field: any) => {
     setSignatureCheckbox(!signatureTerms);
     // form.setFieldValue('acceptSignatureTerms', signatureTerms, false);
   };
 
-  const handlePrivacyCheckbox = (field) => {
+  const handlePrivacyCheckbox = (field: any) => {
     setPrivacyCheckbox(!privacyTerms);
     // form.setFieldValue(field.name, privacyTerms, false);
   };
 
-  const handleReportingCheckbox = (field) => {
+  const handleReportingCheckbox = (field: any) => {
     setReportingCheckbox(!reportingTerms);
     // form.setFieldValue(field.name, reportingTerms, false);
   };
 
-  const handleAuthorizeCheckbox = (field) => {
+  const handleAuthorizeCheckbox = (field: any) => {
     setAuthorizeCheckbox(!authorizeTerms);
     // form.setFieldValue(field.name, authorizeTerms, false);
   };
 
   const speechMarkup = useCallback(() => {
     return { __html: Static.questions.account.sebastian };
-  });
+  }, []);
 
   const { title, subtitle, description } = Static.questions.account;
 
@@ -128,11 +128,12 @@ export const Account = () => {
           {/* https://jasonwatmore.com/post/2020/02/08/react-formik-required-checkbox-example */}
           <Carousel
             showArrows={false}
-            renderIndicator={false}
+            // renderIndicator={false}
             showStatus={false}
             showThumbs={false}
             selectedItem={currentSlide}
-            onChange={setCurrentSlide}>
+            onChange={setCurrentSlide}
+          >
             {/* <Term>
               <Field type="checkbox" name="acceptSignatureTerms">
                 {(formikProps) => (
@@ -154,7 +155,7 @@ export const Account = () => {
             </Term> */}
             <Term>
               <Field type="checkbox" name="acceptPrivacyTerms">
-                {(formikProps) => (
+                {(formikProps: any) => (
                   <FormikCheckbox
                     {...formikProps}
                     nextTerm={nextSlide}
@@ -173,7 +174,7 @@ export const Account = () => {
             </Term>
             <Term>
               <Field type="checkbox" name="acceptReportingTerms">
-                {(formikProps) => (
+                {(formikProps: any) => (
                   <FormikCheckbox
                     {...formikProps}
                     nextTerm={nextSlide}
@@ -227,14 +228,16 @@ export const Account = () => {
             aria-labelledby="modal-title"
             aria-describedby="modal-description"
             onClose={toggleSignatureModal}
-            open={openSignatureModal}>
+            open={openSignatureModal}
+          >
             <StyledModalContent>
               <ElectronicSignaturesModal />
               <button
                 onClick={togglePrivacyModal}
                 role="button"
                 onKeyDown={togglePrivacyModal}
-                tabIndex={0}></button>
+                tabIndex={0}
+              ></button>
             </StyledModalContent>
           </Modal>
 
@@ -242,14 +245,16 @@ export const Account = () => {
             aria-labelledby="modal-title"
             aria-describedby="modal-description"
             onClose={togglePrivacyModal}
-            open={openPrivacyModal}>
+            open={openPrivacyModal}
+          >
             <StyledModalContent>
               <FinancialPrivacyModal />
               <button
                 onClick={togglePrivacyModal}
                 role="button"
                 onKeyDown={togglePrivacyModal}
-                tabIndex={0}></button>
+                tabIndex={0}
+              ></button>
             </StyledModalContent>
           </Modal>
         </TermsWrapper>

@@ -9,7 +9,11 @@ import { Carousel } from "react-responsive-carousel";
 import Sebastian from "../../Sebastian";
 import { QuestionWrapper, InputGroupWrapper, Title, Description } from "./Questions.styles";
 
-export const ColorizedFinance = styled.i`
+interface GenericThemeType {
+  theme?: any;
+}
+
+export const ColorizedFinance = styled.i<GenericThemeType>`
   ${"" /* transform: scale(2); */}
   & svg {
     width: 5rem;
@@ -20,7 +24,7 @@ export const ColorizedFinance = styled.i`
   }
 `;
 
-export const ColorizedCalendar = styled.i`
+export const ColorizedCalendar = styled.i<GenericThemeType>`
   ${"" /* transform: scale(2); */}
   & svg {
     width: 5rem;
@@ -31,7 +35,7 @@ export const ColorizedCalendar = styled.i`
   }
 `;
 
-export const ColorizedLoan = styled.i`
+export const ColorizedLoan = styled.i<GenericThemeType>`
   ${"" /* transform: scale(2); */}
   & svg {
     width: 5rem;
@@ -42,7 +46,7 @@ export const ColorizedLoan = styled.i`
   }
 `;
 
-export const ColorizedCart = styled.i`
+export const ColorizedCart = styled.i<GenericThemeType>`
   ${"" /* transform: scale(2); */}
   & svg {
     width: 5rem;
@@ -53,7 +57,7 @@ export const ColorizedCart = styled.i`
   }
 `;
 
-const partnerName = "POL";
+const partnerName = "Smokey Records LLC";
 
 export const GetPreQualified = () => {
   // const { errors, touched } = useFormikContext();
@@ -62,7 +66,7 @@ export const GetPreQualified = () => {
     return {
       __html: `Welcome from <strong>${partnerName}</strong>!<br /> Create your account, and you'll be surfing the latest trends in no-time.`
     };
-  });
+  }, []);
 
   return (
     <QuestionWrapper>
@@ -74,7 +78,8 @@ export const GetPreQualified = () => {
           infiniteLoop
           showArrows={false}
           showStatus={false}
-          showThumbs={false}>
+          showThumbs={false}
+        >
           <div>
             <ColorizedCalendar className="bts bt-calendar" />
             <Title>Free Shipping</Title>

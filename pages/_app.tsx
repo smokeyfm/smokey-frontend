@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import type { AppProps /*, AppContext */ } from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
@@ -32,7 +32,7 @@ const CustomIcon = styled.img`
   height: auto;
 `;
 export default function MyApp({ Component, pageProps }: AppProps) {
-  React.useEffect(() => {
+  useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles) {
       jssStyles.parentElement?.removeChild(jssStyles);
@@ -41,7 +41,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   const router = useRouter();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleRouteChange = (url: string) => {
       tracking.trackPageview(url);
     };

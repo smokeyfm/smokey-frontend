@@ -14,26 +14,26 @@ import {
 } from "./FormikInput.styles";
 
 // Reference: https://github.com/mui-org/material-ui/issues/18331#issuecomment-569981389
-const FormikAutocomplete = ({
+export const FormikAutocomplete = ({
   field,
   fields: { ...fields },
   form: { setFieldValue, touched, errors },
   form,
   ...props
-}) => {
+}: any) => {
   const [homeAddress, setHomeAddress] = useState("");
   const [addressSelected, setAddressSelected] = useState(false);
 
   // const { setTouched, setFieldValue, name } = props;
 
-  const handleChange = (input) => {
+  const handleChange = (input: any) => {
     // console.log('changing');
     setAddressSelected(false);
     setHomeAddress(input);
     // setFieldValue(name, search, false);
   };
 
-  const handleSelect = (address) => {
+  const handleSelect = (address: any) => {
     // geocodeByAddress(address)
     //   .then(results => getLatLng(results[0]))
     //   .then(latLng => console.log('Success', latLng))
@@ -48,7 +48,8 @@ const FormikAutocomplete = ({
       <PlacesAutocomplete
         value={homeAddress || field.value}
         onChange={handleChange}
-        onSelect={(address) => handleSelect({ name: field.name, address })}>
+        onSelect={(address) => handleSelect({ name: field.name, address })}
+      >
         {({ suggestions, getInputProps, getSuggestionItemProps, loading }) => (
           <>
             <TextField
@@ -57,8 +58,8 @@ const FormikAutocomplete = ({
                 className: "location-search-input"
               })}
               variant="outlined"
-              selectedTheme="dark"
-              invalid={Boolean(touched[fields.name] && errors[fields.name])}
+              // selectedTheme="dark"
+              // invalid={Boolean(touched[fields.name] && errors[fields.name])}
             />
             {!addressSelected && homeAddress !== "" && (
               <SuggestionWrapper>
@@ -71,7 +72,8 @@ const FormikAutocomplete = ({
                     <SuggestionItem
                       {...getSuggestionItemProps(suggestion, {
                         className
-                      })}>
+                      })}
+                    >
                       <span>{suggestion.description}</span>
                     </SuggestionItem>
                   );
@@ -97,4 +99,3 @@ const FormikAutocomplete = ({
     </>
   );
 };
-export default FormikAutocomplete;

@@ -4,7 +4,12 @@ import { TextField } from "@material-ui/core";
 
 import { Error } from "./FormikInput.styles";
 
-const FormikInput = ({ field: { ...fields }, form: { touched, errors }, styles, ...props }) => (
+const FormikInput = ({
+  field: { ...fields },
+  form: { touched, errors },
+  styles,
+  ...props
+}: any) => (
   <>
     <TextField
       id="email"

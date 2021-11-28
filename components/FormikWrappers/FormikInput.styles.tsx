@@ -52,7 +52,12 @@ export const SuggestionItem = styled.div`
   }
 `;
 
-export const TermsCheckbox = styled(Checkbox)`
+interface TermsCheckboxType {
+  accepted: boolean;
+  theme: any;
+}
+
+export const TermsCheckbox = styled(Checkbox)<TermsCheckboxType>`
   flex-basis: 5%;
 
   > .checkbox-label {

@@ -1,12 +1,12 @@
 const oneDay = 24 * 60 * 60 * 1000;
 
-export const addDays = (date, days) => {
+export const addDays = (date: any, days: any) => {
   const dat = new Date(date);
   dat.setDate(dat.getDate() + days);
   return dat;
 };
 
-export const isADate = (maybeDate) => {
+export const isADate = (maybeDate: any) => {
   if (maybeDate == null || maybeDate === "") return false;
   if (Object.prototype.toString.call(maybeDate) === "[object Date]") {
     if (Number.isNaN(maybeDate.getTime())) {
@@ -17,32 +17,32 @@ export const isADate = (maybeDate) => {
   return false;
 };
 
-export const toShortDateZeroFill = (date) => {
+export const toShortDateZeroFill = (date: any) => {
   if (!isADate(date)) return null;
   const monthFormat = `0${date.getMonth() + 1}`;
   const dayFormat = `0${date.getDate()}`;
   return `${monthFormat.slice(-2)}/${dayFormat.slice(-2)}/${date.getFullYear()}`;
 };
 
-export const dayDiff = (date1, date2) => {
+export const dayDiff = (date1: any, date2: any) => {
   return Math.round(Math.abs((date1.getTime() - date2.getTime()) / oneDay));
 };
 
-export const daysSinceToday = (date) => {
+export const daysSinceToday = (date: any) => {
   if (!isADate(date)) return null;
   return dayDiff(new Date(), date);
 };
 
 export const daysThisYear = () => {
-  const now = new Date();
-  const start = new Date(now.getFullYear(), 0, 0);
+  const now: any = new Date();
+  const start: any = new Date(now.getFullYear(), 0, 0);
   const diff = now - start + (start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000;
   const oneDayThisYear = 1000 * 60 * 60 * 24;
   const day = Math.floor(diff / oneDayThisYear);
   return day;
 };
 
-export const normalizeDate = (value) => {
+export const normalizeDate = (value: any) => {
   if (!value) {
     return value;
   }

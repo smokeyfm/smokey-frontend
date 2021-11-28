@@ -7,7 +7,7 @@ import { pxIphone } from "../../utils";
 
 type LogoTypeFC = {
   imageFile: string;
-  isDark: boolean;
+  isDark?: boolean;
 };
 
 type LogoType = {
