@@ -36,27 +36,25 @@ export const Header: React.FC<HeaderProps> = (props) => {
               <LinkDiv isActive>POL</LinkDiv>
             </Link>
           </LogoDiv>
-          <div>
-            <RightSide>
-              <SearchBar />
-              {user ? (
-                <>
-                  <div>{user.data.attributes.email}</div>
-                  <button onClick={logout}>LOGOUT</button>
-                </>
-              ) : (
-                <>
-                  <Link href="/authenticate/login">
-                    <LinkDiv isActive={pathname === "/authenticate/login"}>LOG IN</LinkDiv>
-                  </Link>
-                  <Link href="/authenticate/signup">
-                    <LinkDiv isActive={pathname === "/authenticate/signup"}>SIGN UP</LinkDiv>
-                  </Link>
-                </>
-              )}
-              <Cart isVisible={cartVisible} toggle={toggleCart} />
-            </RightSide>
-          </div>
+          <RightSide>
+            <SearchBar />
+            {user ? (
+              <>
+                <div>{user.data.attributes.email}</div>
+                <button onClick={logout}>LOGOUT</button>
+              </>
+            ) : (
+              <>
+                <Link href="/authenticate/login">
+                  <LinkDiv isActive={pathname === "/authenticate/login"}>LOG IN</LinkDiv>
+                </Link>
+                <Link href="/authenticate/signup">
+                  <LinkDiv isActive={pathname === "/authenticate/signup"}>SIGN UP</LinkDiv>
+                </Link>
+              </>
+            )}
+            <Cart isVisible={cartVisible} toggle={toggleCart} />
+          </RightSide>
         </TopHeader>
         <BottomHeader>
           <Sticky>

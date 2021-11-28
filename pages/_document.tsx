@@ -74,7 +74,6 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
-          {/* <title>{process.env.SITE_TITLE}</title> */}
           <script
             async
             src={"https://www.googletagmanager.com/gtag/js?id=" + tracking.GA_TRACKING_CODE}
@@ -100,9 +99,9 @@ class MyDocument extends Document {
           />
           <title>{process.env.PAGE_TITLE}</title>
           <meta name="description" content="The Building Blocks of Material Instincts" />
-          <meta name="keywords" content="" /> /
+          <meta name="keywords" content="" />
           <meta name="robots" content="noodp" />
-          <link rel="canonical" href="http://dna.instinct.is" /> /
+          <link rel="canonical" href="http://dna.instinct.is" />
           <meta property="og:locale" content="en_US" />
           <meta property="og:type" content="website" />
           <meta
