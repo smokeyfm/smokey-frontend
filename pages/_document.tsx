@@ -97,7 +97,6 @@ class MyDocument extends Document {
             name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0, minimal-ui"
           />
-          <title>{process.env.PAGE_TITLE}</title>
           <meta name="description" content="The Building Blocks of Material Instincts" />
           <meta name="keywords" content="" />
           <meta name="robots" content="noodp" />

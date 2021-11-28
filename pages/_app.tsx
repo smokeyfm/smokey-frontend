@@ -10,6 +10,7 @@ import "swiper/swiper-bundle.min.css";
 import { menusData } from "../components/MainMenu/data/menusData";
 import "./app.css";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import * as tracking from "../config/tracking";
 
 // Styles
@@ -84,6 +85,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <Hydrate state={pageProps.dehydratedState}>
           <ThemeProvider theme={theme}>
             <GlobalStyles />
+            <Head>
+              <title>{process.env.PAGE_TITLE}</title>
+            </Head>
             {renderHomeContent()}
           </ThemeProvider>
         </Hydrate>
