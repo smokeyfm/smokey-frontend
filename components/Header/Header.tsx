@@ -50,7 +50,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
         <LogoDiv>
           <Link href="/">
             <LinkDiv isActive>
-              <MyLogo imageFile="/logo.png" />
+              <MyLogo imageFile="/logo.png" isDark />
             </LinkDiv>
           </Link>
         </LogoDiv>

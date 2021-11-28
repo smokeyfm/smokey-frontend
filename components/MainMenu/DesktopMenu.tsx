@@ -9,35 +9,37 @@ const Container = styled.div`
   flex-wrap: wrap;
   position: relative;
   padding-bottom: 13px;
+  justify-content: center;
 `;
 export interface MyMenuItemProps {
   isActive: boolean;
 }
 const MyMenuItem = styled.div<MyMenuItemProps>`
-  margin-right: 82px;
   font-family: "Bebas Neue";
   font-size: 14px;
   line-height: 150%;
-  color: #000;
+  color: ${p => p.theme.colors.black.primary};
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   cursor: pointer;
+  text-align: center;
+  margin-right: 30px;
   &:after {
     transition: transform 1s linear;
-    width: 57px;
+    width: 120%;
     height: 1px;
-    background-color: #000;
+    background-color: ${p => p.theme.colors.black.primary};
     content: "";
     position: absolute;
     bottom: 0;
     display: ${(props) => (props.isActive ? "block" : "none")};
     transfrom: ${(props) => (props.isActive ? "translateX(0)" : "translateX(-100%)")};
   }
-  &:first-of-type {
-    margin-left: 197px;
+  &:last-of-type {
+    margin-right: 0px !important;
   }
 `;
 export interface DropDownProps {
