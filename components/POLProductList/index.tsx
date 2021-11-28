@@ -32,7 +32,8 @@ const PolProductList: React.FC<PolProductListProps> = (props) => {
         spaceBetween={20}
         slidesPerView={4}
         watchSlidesVisibility={true}
-        watchSlidesProgress={true}>
+        watchSlidesProgress={true}
+      >
         {data.map((item, index) => (
           <SwiperSlide key={index}>
             <ProductImgOutterBox>

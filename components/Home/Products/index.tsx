@@ -48,7 +48,8 @@ const Products: React.FC<ProductsProps> = (props) => {
         spaceBetween={0}
         slidesPerView={isMobile ? 2 : 7}
         watchSlidesVisibility={true}
-        watchSlidesProgress={true}>
+        watchSlidesProgress={true}
+      >
         {data.map((item, index) => (
           <SwiperSlide key={index}>
             <MySlideWrap>

@@ -40,6 +40,7 @@ const SearchBar = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const [isWidthSet, setIsWidthSet] = useState(false);
   const [isSearchLoading, setIsSearchLoading] = useState(false);
+  // const [isSearchInputFocusable, setIsSearchInputFocusable] = useState(false);
 
   const handleSearchChange = (e: any) => {
     const { value } = e.target;
@@ -66,6 +67,7 @@ const SearchBar = ({
   useOnClickOutside(dropdownRef, handleClickOutside);
 
   useEffect(() => {
+    // !isSearchInputFocusable && setIsSearchInputFocusable(!isSearchInputFocusable);
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("touchstart", handleClickOutside);
 
@@ -76,6 +78,7 @@ const SearchBar = ({
   }, []);
 
   const keyboardEvents = (event: KeyboardEvent) => {
+    // TO DO: handle UP & DOWN keys
     switch (event.key) {
       case "Escape":
       case "Tab":
@@ -117,7 +120,13 @@ const SearchBar = ({
     }, 330);
 
   // Open Search, unless open then close/hide everything and remove explicit search width
+  const searchRef = createRef<HTMLInputElement>();
+
   const toggleSearch = () => {
+    const currSearchElement = searchRef.current!;
+    if (currSearchElement) {
+      currSearchElement.focus();
+    }
     setIsExpanded(!isExpanded);
     isWidthSet ? setIsWidthSet(!isWidthSet) : handleSetSearchWidth();
     setQuery("");
@@ -135,16 +144,19 @@ const SearchBar = ({
       aria-expanded={isAutoCompleteVisible}
       ref={dropdownRef}
       aria-labelledby={labelId}
-      {...rest}>
+      {...rest}
+    >
       <SearchBarWrapper className="is-search-route">
         <SearchInputWrapper>
           <StyledInputContainer isExpanded={isExpanded} isWidthSet={isWidthSet}>
             <StyledInputPrefix>
               <i
                 onClick={toggleSearch}
-                className={isSearchLoading ? "bts bt-spinner bt-pulse" : "btr bt-search"}></i>
+                className={isSearchLoading ? "bts bt-spinner bt-pulse" : "btr bt-search"}
+              ></i>
             </StyledInputPrefix>
             <StyledInput
+              ref={searchRef}
               onKeyDown={(e: KeyboardEvent) => keyboardEvents(e)}
               tabIndex={0}
               value={query}

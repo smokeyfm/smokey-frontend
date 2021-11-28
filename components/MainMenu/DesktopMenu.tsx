@@ -36,7 +36,7 @@ const MyMenuItem = styled.div<MyMenuItemProps>`
     display: ${(props) => (props.isActive ? "block" : "none")};
     transfrom: ${(props) => (props.isActive ? "translateX(0)" : "translateX(-100%)")};
   }
-  &:first-child {
+  &:first-of-type {
     margin-left: 197px;
   }
 `;
@@ -75,7 +75,8 @@ const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
           onMouseLeave={handleMouseLeave}
           isActive={currentKey == item.key}
           key={index}
-          onMouseEnter={handleMouseEnter.bind(null, item)}>
+          onMouseEnter={handleMouseEnter.bind(null, item)}
+        >
           {item.name}
         </MyMenuItem>
       ))}
@@ -84,7 +85,8 @@ const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
           onMouseLeave={handleMouseLeave}
           onMouseEnter={handleMouseEnter.bind(null, item)}
           isActive={currentKey == item.key}
-          key={index}>
+          key={index}
+        >
           {item.pcMenuItem}
         </DropDown>
       ))}

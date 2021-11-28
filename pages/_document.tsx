@@ -69,12 +69,14 @@ class MyDocument extends Document {
         <Head>
           <link
             rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+          ></link>
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
           {/* <title>{process.env.SITE_TITLE}</title> */}
+          <script async type="text/javascript" src="http://l2.io/ip.js?var=myip" />
           <script
             async
             src={"https://www.googletagmanager.com/gtag/js?id=" + tracking.GA_TRACKING_CODE}
@@ -86,9 +88,11 @@ class MyDocument extends Document {
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
                 gtag('config', "${tracking.GA_TRACKING_CODE}", {
+                  'custom_map': {'dimension1': 'ip'},
                   'send_page_view': false,
                   'debug_mode': ${tracking.GA_DEBUG_MODE},
                 });
+                gtag('event', 'ip_address', {'ip': myip});
               `
             }}
           />
@@ -153,6 +157,7 @@ class MyDocument extends Document {
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(g, s);
           </script> */}
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUqxah2mT_0iaosOBBSIKRy0lw7f6wdLA&libraries=places" />
         </Head>
         <body>
           <Main />

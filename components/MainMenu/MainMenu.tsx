@@ -79,7 +79,8 @@ export const MainMenu = (props: MainMenuProps) => {
                 <MenuItem
                   paddingLeft={paddingLeft}
                   onClick={handleClick.bind(null, parentKeyPath + "/" + item.key, item.key)}
-                  button>
+                  button
+                >
                   <ListItemIcon>{item.icon ? item.icon() : null}</ListItemIcon>
                   <ListItemText primary={item.name} />
                   {item &&
@@ -96,7 +97,8 @@ export const MainMenu = (props: MainMenuProps) => {
                 <Collapse
                   timeout="auto"
                   unmountOnExit
-                  in={keyPath.indexOf(parentKeyPath + "/" + item.key) != -1}>
+                  in={keyPath.indexOf(parentKeyPath + "/" + item.key) != -1}
+                >
                   {getSubMenuItem(item.children, parentKeyPath + "/" + item.key, level + 1)}
                 </Collapse>
               )}

@@ -347,12 +347,14 @@ const MenuFactory = (styles: MenuFactoryStyles) => {
           id={props.id}
           className={`bm-menu-wrap ${props.className}`.trim()}
           style={getStyles("menuWrap")}
-          aria-hidden={!isOpen}>
+          aria-hidden={!isOpen}
+        >
           {styles.svg && (
             <div
               id="bm-morph-shape"
               className={`bm-morph-shape ${props.morphShapeClassName}`.trim()}
-              style={getStyles("morphShape" as keyof BaseStyles)}>
+              style={getStyles("morphShape" as keyof BaseStyles)}
+            >
               <svg width="100%" height="100%" viewBox="0 0 100 800" preserveAspectRatio="none">
                 <path d={styles.svg.pathInitial} />
               </svg>
