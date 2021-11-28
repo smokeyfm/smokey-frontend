@@ -105,9 +105,9 @@ class MyDocument extends Document {
           />
           <title>{process.env.PAGE_TITLE}</title>
           <meta name="description" content="The Building Blocks of Material Instincts" />
-          <meta name="keywords" content="" /> /
+          <meta name="keywords" content="" />
           <meta name="robots" content="noodp" />
-          <link rel="canonical" href="http://dna.instinct.is" /> /
+          <link rel="canonical" href="http://dna.instinct.is" />
           <meta property="og:locale" content="en_US" />
           <meta property="og:type" content="website" />
           <meta
