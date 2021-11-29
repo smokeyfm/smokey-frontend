@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useMediaQuery } from "react-responsive";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Sticky from "react-sticky-el";
@@ -21,6 +22,7 @@ import {
   UserIconMo,
   CartMo,
   HeaderAccount,
+  HeaderOptions,
   ArrowDown,
   ShoppingCart,
   FavoriteIcon
@@ -31,6 +33,7 @@ const dummyCategories = ["Best Sellers", "Latest", "Seasonal", "Luxury", "On Sal
 export const Header: React.FC<HeaderProps> = (props) => {
   const { pathname } = useRouter();
   const { user, logout } = useAuth();
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   const [cartVisible, setCartVisible] = React.useState(false);
   const toggleCart = () => setCartVisible((isVisible) => !isVisible);
 
@@ -54,48 +57,29 @@ export const Header: React.FC<HeaderProps> = (props) => {
             </LinkDiv>
           </Link>
         </LogoDiv>
-        <div>
-          <RightSide>
-            <SearchBar />
-            {user ? (
-              <>
-                <div>{user.data.attributes.email}</div>
-                <UserIconMo src={"/user.png"} />
-                <ArrowDown />
-                <FavoriteIcon />
-                <button onClick={logout}>LOGOUT</button>
-              </>
-            ) : (
-              <>
-                {/* <CartMo src={"/CART.png"} /> */}
-                {/* <HeaderAccount>MyAccount</HeaderAccount> */}
-                {/* <ShoppingCart src={"/CART.png"} /> */}
-                <Link href="/authenticate/login">
-                  <LinkDiv isActive={pathname === "/authenticate/login"}>LOG IN</LinkDiv>
-                </Link>
-                <Link href="/authenticate/signup">
-                  <LinkDiv isActive={pathname === "/authenticate/signup"}>SIGN UP</LinkDiv>
-                </Link>
-              </>
-            )}
-            <Cart isVisible={cartVisible} toggle={toggleCart} />
-          </RightSide>
-        </div>
+        <RightSide>
+          {isMobile ? null : <SearchBar />}
+          {user ? (
+            <HeaderAccount>
+              <div>{user.data.attributes.email}</div>
+              <UserIconMo src={"/user.png"} />
+              <ArrowDown />
+              <FavoriteIcon />
+              <button onClick={logout}>LOGOUT</button>
+            </HeaderAccount>
+          ) : (
+            <HeaderOptions>
+              <Link href="/authenticate/login">
+                <LinkDiv isActive={pathname === "/authenticate/login"}>LOG IN</LinkDiv>
+              </Link>
+              <Link href="/authenticate/signup">
+                <LinkDiv isActive={pathname === "/authenticate/signup"}>SIGN UP</LinkDiv>
+              </Link>
+            </HeaderOptions>
+          )}
+          <Cart isVisible={cartVisible} toggle={toggleCart} />
+        </RightSide>
       </TopHeader>
-      {/* <BottomHeader>
-        <Sticky>
-          <MainMenu
-            pcMenuItemClassName={"pc-menu-item"}
-            outterContainerId={"outer-container"}
-            pageWrapId={"page-wrap"}
-            animationType={"slide"}
-            menusData={menusData}
-            showMenuHeader={true}
-            menuFooter={false}
-            right={false}
-          />
-        </Sticky>
-      </BottomHeader> */}
     </HeaderDiv>
   );
 };

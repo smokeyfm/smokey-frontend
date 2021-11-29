@@ -1,64 +1,11 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { IDesktopMenuProps } from "./types/DesktopMenu";
 import { menuDataItem } from "./types";
-import styled from "@emotion/styled";
-const Container = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  position: relative;
-  padding-bottom: 13px;
-  justify-content: center;
-`;
-export interface MyMenuItemProps {
-  isActive: boolean;
-}
-const MyMenuItem = styled.div<MyMenuItemProps>`
-  font-family: "Bebas Neue";
-  font-size: 14px;
-  line-height: 150%;
-  color: ${(p) => p.theme.colors.black.primary};
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  cursor: pointer;
-  text-align: center;
-  margin-right: 30px;
-  &:after {
-    transition: transform 1s linear;
-    width: 120%;
-    height: 1px;
-    background-color: ${(p) => p.theme.colors.black.primary};
-    content: "";
-    position: absolute;
-    bottom: 0;
-    display: ${(props) => (props.isActive ? "block" : "none")};
-    transfrom: ${(props) => (props.isActive ? "translateX(0)" : "translateX(-100%)")};
-  }
-  &:last-of-type {
-    margin-right: 0px !important;
-  }
-`;
-export interface DropDownProps {
-  isActive: boolean;
-}
-let timer: any;
-const DropDown = styled.div<DropDownProps>`
-  position: absolute;
-  background-color: #fff;
-  left: 0;
-  top: 100%;
-  width: 100%;
-  z-index: 10000;
-  transition: transform 1s linear;
-  display: ${(props) => (props.isActive ? "block" : "none")};
-  transform: ${(props) => (props.isActive ? "translateY(0)" : "translateY(-100%)")};
-`;
+
+import { Container, MyMenuItem, DropDown } from "./DesktopMenu.styles";
 
 const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
+  let timer: any;
   const { pcWrapClassName, menusData, pcMenuItemClassName, onMenuItemClick } = props;
   const [currentKey, setCurrentKey] = useState();
   const handleMouseEnter = useCallback((item) => {

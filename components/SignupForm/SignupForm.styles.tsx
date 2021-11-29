@@ -73,7 +73,7 @@ export const LeftHalf = styled.div<LeftHalfType>`
   ${"" /* flex-basis: 50%; */}
   background: ${(props) => props.theme.colors.white.primary};
   color: ${(props) => props.theme.colors.brand.primary};
-  box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.123);
+  /* box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.123); */
   ${"" /* width: 100%; */}
   ${"" /* margin: 15px; */}
   margin: 15px 15px 0 0;
@@ -115,7 +115,7 @@ export const RightHalf = styled.div<RightHalfType>`
     background: ${(props) => props.theme.colors.white.primary};
     color: ${(props) => props.theme.colors.brand.primary};
     border-radius: 8px;
-    box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.123);
+    /* box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.123); */
     ${"" /* width: 100%; */}
     & [data-qa='title'] {
       color: ${(props) => props.theme.colors.brand.dark};
@@ -135,7 +135,7 @@ export const WizardForm = styled.div<WizardFormType>`
   background: ${(props) => props.theme.colors.white.primary};
   color: ${(props) => props.theme.colors.brand.primary};
   border-radius: 8px;
-  box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.123);
+  box-shadow: 0px 22px 33px rgba(0, 0, 0, 0.066);
   width: 100%;
   & [data-qa="title"] {
     color: ${(props) => props.theme.colors.brand.dark};

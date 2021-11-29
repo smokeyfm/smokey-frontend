@@ -3,6 +3,8 @@ import { LargeTitle, BtnTitle } from "../../../styles/BaseStyles";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import { pxIphone, pxPC } from "../../../utils";
 export const Container = styled.div`
+  display: flex;
+  justify-content: left;
   height: ${pxPC(719)};
   background-image: url(/banner.png);
   background-size: cover;
@@ -16,11 +18,13 @@ export const BannerTitle = styled(LargeTitle)`
   display: flex;
   flex-direction: column;
   position: absolute;
-  left: ${pxPC(296)};
-  top: ${pxPC(183)};
+  text-align: left;
+  left: ${pxPC(100)};
+  bottom: ${pxPC(200)};
   @media (max-width: 768px) {
-    top: ${pxIphone(47)};
-    left: ${pxIphone(0)};
+    left: auto;
+    margin: 0 20px;
+    bottom: ${pxIphone(100)};
     font-size: ${pxIphone(33)};
     line-height: ${pxIphone(41)};
   }
@@ -43,6 +47,5 @@ export const BannerBtn = styled(ButtonBase)`
     line-height: ${pxIphone(24)};
     margin-top: ${pxIphone(10)}!important;
     padding: ${pxIphone(6)} ${pxIphone(20)} !important;
-    margin-left: ${pxIphone(24)}!important;
   }
 `;
