@@ -1,4 +1,4 @@
-export const cartStyles = {
+export const cartStyles: any = {
   bmBurgerButton: {
     position: "fixed",
     width: "36px",

@@ -1,4 +1,4 @@
-export const menuStyles = {
+export const menuStyles: any = {
   bmBurgerButton: {
     position: "fixed",
     width: "36px",

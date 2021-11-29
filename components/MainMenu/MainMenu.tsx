@@ -133,7 +133,7 @@ export const MainMenu = (props: MainMenuProps) => {
           onOpen={toggleMenu}
           onClose={toggleMenu}
           styles={menuStyles}
-          {...others}
+          // {...others}
         >
           {/* <BurgerMenu width={220} isOpen={open} onOpen={toggleMenu} onClose={toggleMenu} {...others}> */}
           {showMenuHeader ? (
