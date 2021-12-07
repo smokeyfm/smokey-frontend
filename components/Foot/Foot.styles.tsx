@@ -3,7 +3,7 @@ export const Container = styled.div`
   padding-top: 41px;
   color: #fff;
   padding-bottom: 68px;
-  @media (max-width: ${p => p.theme.breakpoints.values.xs}px) {
+  @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
     padding-top: 14px;
   }
 `;
@@ -19,7 +19,7 @@ export const Grid = styled.div`
   grid-template-columns: 111px 148px 67px 173px;
   justify-items: center;
   font-family: "Bebas Neue";
-  @media (max-width: ${p => p.theme.breakpoints.values.xs}px) {
+  @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
     display: flex;
     flex-direction: column;
     padding: 40px 20px;
@@ -35,7 +35,7 @@ export const IconLinksMo = styled.div`
   align-items: center;
   margin-top: 68px;
   display: none;
-  @media (max-width: ${p => p.theme.breakpoints.values.xs}px) {
+  @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
     display: flex;
   }
 `;
@@ -52,7 +52,7 @@ export const ColumnTitle = styled.div`
   font-weight: 400;
   margin-bottom: 22px;
   white-space: nowrap;
-  @media (max-width: ${p => p.theme.breakpoints.values.xs}px) {
+  @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
     margin-bottom: 9px;
     font-size: 20px;
     line-height: 24px;
@@ -79,7 +79,7 @@ export const Description = styled.div`
 `;
 export const IconLink = styled.a``;
 export const IconLinkWrapper = styled.div`
-  @media (max-width: ${p => p.theme.breakpoints.values.xs}px) {
+  @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
     display: none;
   }
   @media (max-width: 750px) {
