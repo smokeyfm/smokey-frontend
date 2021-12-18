@@ -32,7 +32,7 @@ const Logo = styled.img<LogoType>`
   }
 `;
 
-export const MyLogo: React.FC<LogoTypeFC> = ({ imageFile, isDark }) => (
+export const MyLogo: React.FC<LogoTypeFC> = ({ imageFile, isDark }: any) => (
   <Logo src={imageFile} isDark={isDark} />
 );
 

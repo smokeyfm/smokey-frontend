@@ -71,6 +71,10 @@ When there are lots of active changes occuring on this repo, make sure to regula
 Done!
 …now you will be up-to-date with latest code. Do this before you submit your PR, and you can be sure it will be a clean merge.
 
+## Testing API Endpoints
+
+https://localhost:8080/apidocs/swagger_ui#/
+
 ## Updating a fork:
 
 - `git remote add upstream git@github.com:1instinct/dna-frontend.git`

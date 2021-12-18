@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import Link from "next/link";
 import { useMediaQuery } from "react-responsive";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, FormikProps } from "formik";
 import FormikWizard from "formik-wizard";
 import { useFormikContext } from "formik";
 import { withWizard } from "react-albus";
@@ -31,7 +31,7 @@ import {
   CongratsWrapper
 } from "./SignupForm.styles";
 
-const FormWrapper = ({
+const FormWrapper: React.FC<any> = ({
   steps,
   children,
   // onEachStepSubmit,
@@ -101,7 +101,7 @@ const FormWrapper = ({
           <Subtitle>{status.subtitle}</Subtitle>
 
           {/* <p>Need to fix something?</p>
-          <PreviousButton onClick={goToPreviousStep} disabled={!canGoBack} ghost>← Go Back</PreviousButton> */}
+          <PreviousButton onClick={goToPreviousStep} disabled={!canGoBack}>← Go Back</PreviousButton> */}
         </CongratsWrapper>
       );
     default:

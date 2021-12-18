@@ -31,19 +31,22 @@ interface StyledInputContainerType {
 export const StyledInputContainer = styled.div<StyledInputContainerType>`
   position: relative;
   display: inline-block;
-  width: ${(p) => (p.isExpanded ? "236px" : "0%")};
+  width: ${(p) => (p.isExpanded ? "195px" : "0%")};
   transition: 0.33s all ease-in-out;
 
   & > input {
+    transition: 0.33s all ease-in-out;
+    background: transparent;
+    padding-left: ${(p) => (p.isExpanded ? "34px" : 0)};
+    margin-right: 10px;
     border-bottom: ${(p) => (p.isExpanded ? "1px solid black" : 0)};
-    width: ${(p) => (p.isWidthSet ? "180px" : "100%")};
+    width: ${(p) => (p.isWidthSet ? "140px" : "100%")};
     ${(p) => (p.isExpanded ? "padding: 0px 26px 0 30px;" : null)}
   }
 `;
 
 export const StyledInput = styled.input`
   font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
-  padding-left: 34px;
   border: 0;
   outline: none;
 `;
@@ -61,7 +64,7 @@ const defaultPrefixStyles = css`
 
 export const StyledInputPrefix = styled.div`
   ${defaultPrefixStyles};
-  left: 5px;
+  left: 0px;
   justify-content: flex-start;
 
   & > i {

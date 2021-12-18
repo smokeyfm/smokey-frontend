@@ -20,7 +20,7 @@ export const ColorizedFinance = styled.i<GenericThemeType>`
     height: 5rem;
   }
   & svg g path:first-child {
-    fill: ${(props) => props.theme.colors.brand.medium};
+    fill: ${(props) => props.theme.colors.brand.primary};
   }
 `;
 
@@ -31,7 +31,7 @@ export const ColorizedCalendar = styled.i<GenericThemeType>`
     height: 5rem;
   }
   & svg g path:first-child {
-    fill: ${(props) => props.theme.colors.brand.medium};
+    fill: ${(props) => props.theme.colors.brand.primary};
   }
 `;
 
@@ -42,7 +42,7 @@ export const ColorizedLoan = styled.i<GenericThemeType>`
     height: 5rem;
   }
   & svg g path:first-child {
-    fill: ${(props) => props.theme.colors.brand.medium};
+    fill: ${(props) => props.theme.colors.brand.primary};
   }
 `;
 
@@ -53,7 +53,7 @@ export const ColorizedCart = styled.i<GenericThemeType>`
     height: 5rem;
   }
   & svg g path:first-child {
-    fill: ${(props) => props.theme.colors.brand.medium};
+    fill: ${(props) => props.theme.colors.brand.primary};
   }
 `;
 

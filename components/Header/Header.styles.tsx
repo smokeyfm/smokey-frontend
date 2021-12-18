@@ -1,6 +1,7 @@
+import styled from "@emotion/styled";
+import { Badge, Popover } from "@material-ui/core";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import styled from "@emotion/styled";
 import { pxIphone } from "../../utils";
 
 export const TopHeader = styled.div`
@@ -56,7 +57,7 @@ export const Category = styled.a`
 `;
 
 export const RightSide = styled.div`
-  width: 33%;
+  width: auto;
   display: flex;
   position: absolute;
   top: 0;
@@ -77,8 +78,8 @@ export const HeaderOptions = styled.div`
   justify-content: space-evenly;
   margin: 0 20px;
   justify-content: space-around;
-  width: 200px;
   & > a {
+    margin: 0 10px;
     font-family: ${(p) => p.theme.typography.titleMD.fontFamily};
     font-size: ${(p) => p.theme.typography.titleMD.fontSize};
     font-weight: ${(p) => p.theme.typography.titleMD.fontWeight};
@@ -96,18 +97,22 @@ export const HeaderAccount = styled.div`
   justify-content: space-evenly;
   margin: 0 20px;
   justify-content: space-around;
-  width: 200px;
-  & > a {
-    font-family: ${(p) => p.theme.typography.titleMD.fontFamily};
-    font-size: ${(p) => p.theme.typography.titleMD.fontSize};
-    font-weight: ${(p) => p.theme.typography.titleMD.fontWeight};
-    line-height: ${(p) => p.theme.typography.titleMD.lineHeight};
-    color: ${(p) => p.theme.typography.titleMD.color};
-  }
   color: #000;
   @media (max-width: 768px) {
     display: none;
   }
+`;
+
+export const AccountEmail = styled.div`
+  display: flex;
+  justify-contents: center;
+  align-items: center;
+  margin: 0 10px;
+`;
+
+export const AccountMenu = styled(Popover)`
+  padding: 20px 10px;
+  border: 1px solid red;
 `;
 
 export const ArrowDown = styled(ArrowDropDownIcon)`
