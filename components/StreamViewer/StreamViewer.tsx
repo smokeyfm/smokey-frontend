@@ -1,22 +1,29 @@
-import React from "react";
-import { VideoJS } from "../VideoJS";
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
 
-export const StreamViewer = () => {
+import { StreamViewerWrapper, StreamVideo, StreamHeaderFade } from "./StreamViewer.styles";
+
+export const StreamViewer = ({ props }: any) => {
+  const router = useRouter();
+  const { streamId } = router.query;
+
   const playerRef = React.useRef(null);
 
-  const videoJsOptions = {
-    // lookup the options in the docs for more options
-    autoplay: true,
-    controls: true,
-    responsive: true,
-    fluid: true,
-    sources: [
-      {
-        src: "https://stream.mux.com/ZH4K9sCgB02BNwBNshJ8cAgppZiwXXzEbvLDAI00rtgM4.m3u8",
-        type: "application/x-mpegURL"
+  const videoJsOptions = streamId
+    ? {
+        // lookup the options in the docs for more options
+        autoplay: true,
+        controls: true,
+        responsive: true,
+        fluid: true,
+        sources: [
+          {
+            src: `https://stream.mux.com/${streamId}.m3u8`,
+            type: "application/x-mpegURL"
+          }
+        ]
       }
-    ]
-  };
+    : null;
 
   const handlePlayerReady = (player: any) => {
     playerRef.current = player;
@@ -41,10 +48,15 @@ export const StreamViewer = () => {
   //   playerRef.current.autoplay(false);
   // };
 
+  useEffect(() => {
+    console.log(streamId);
+  }, []);
+
   return (
-    <>
-      <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
-    </>
+    <StreamViewerWrapper>
+      <StreamVideo options={videoJsOptions} onReady={handlePlayerReady} />
+      <StreamHeaderFade />
+    </StreamViewerWrapper>
   );
 };
 

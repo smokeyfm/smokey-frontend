@@ -85,7 +85,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           <ThemeProvider theme={theme}>
             <GlobalStyles />
             <Head>
-              <title>POL Clothing</title>
+              <title>{process.env.PAGE_TITLE}</title>
               <meta
                 name="viewport"
                 content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0, minimal-ui"

@@ -27,7 +27,7 @@ export const cartStyles: any = {
   },
   bmMenu: {
     background: "#fff",
-    padding: "2.93vw 4.26vw",
+    padding: "10%",
     fontsize: "1.15em",
     height: "100%"
     /* width: '100vw' */

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { VideoJS } from "../VideoJS";
 
 export const StreamViewerWrapper = styled.div`
   position: fixed;
@@ -10,12 +11,10 @@ export const StreamViewerWrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  background red;
-  opacity: 0.5;
   backdrop-filter: blur(15px);
 `;
 
-export const StreamVideo = styled.video`
+export const StreamVideo = styled(VideoJS)`
   // width: 50%;
   // height: 50%;
   width: 800px;
@@ -23,4 +22,18 @@ export const StreamVideo = styled.video`
   cursor: pointer;
   padding-top: 40px;
   padding-bottom: 40px;
+  mix-blend-mode: hard-light;
+`;
+
+export const StreamHeaderFade = styled.div`
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  width: 100%;
+  height: 200px;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+  pointer-event: none;
 `;

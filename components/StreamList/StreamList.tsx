@@ -23,7 +23,7 @@ import {
 } from "./StreamList.styles";
 import SwiperCore, { Navigation, Thumbs } from "swiper/core";
 import { useMediaQuery } from "react-responsive";
-import { IStream } from "../../../typings/stream";
+import { IStream } from "../../typings/stream";
 export interface StreamListProps {
   data: IStream[];
   title: string;
@@ -37,7 +37,7 @@ export const StreamList: React.FC<StreamListProps> = (props) => {
 
   const handleClick = (i: any) => {
     console.log(i);
-    router.push(`/stream/${i}`);
+    router.push(`/tv/${i}`);
   };
 
   return (

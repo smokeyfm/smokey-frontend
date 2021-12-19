@@ -9,6 +9,8 @@ export const NewDigWrap = styled.div`
   padding-top: 23px;
   padding-bottom: 23px;
   transform: translate3d(0px, 0px, 100px);
+  justify-content: center;
+  align-items: flex-start;
 `;
 export const Column = styled.div`
   margin-right: 98px;

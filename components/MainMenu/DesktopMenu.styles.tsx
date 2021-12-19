@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-
+import Link from "next/link";
 export interface MyMenuItemProps {
   isActive: boolean;
 }
@@ -19,7 +19,7 @@ export const Container = styled.div`
   gap: 40px;
 `;
 
-export const MyMenuItem = styled.div<MyMenuItemProps>`
+export const MyMenuItem = styled.div<any>`
   font-family: "Bebas Neue";
   font-size: 14px;
   line-height: 150%;
@@ -52,7 +52,35 @@ export const DropDown = styled.div<DropDownProps>`
   width: 100%;
   z-index: 10000;
   transition: all 1s linear;
-  display: ${(props) => (props.isActive ? "block" : "none")};
+  display: ${(props) => (props.isActive ? "flex" : "none")};
   transform: ${(props) => (props.isActive ? "translateY(0)" : "translateY(-100%)")};
   box-shadow: 0 6px 12px rgb(0 0 0 / 5%);
+  flex-direction: row;
+  justify-content: center;
+  padding: 0 20px 20px 20px;
+`;
+
+export const DropDownColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px 40px 20px;
+`;
+
+export const DropDownHeader = styled.h4``;
+
+export const DropDownLink = styled(Link)`
+  color: ${(p) => p.theme.colors.black.primary} !important;
+`;
+
+export const DropDownAdvert = styled.div`
+  margin: 0 20px;
+  padding: 10px;
+`;
+
+export const Vr = styled.div`
+  display: block;
+  width: 2px;
+  min-height: 100%;
+  border-right: 1px solid black;
+  position: relative;
 `;

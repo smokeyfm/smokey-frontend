@@ -28,7 +28,7 @@ import {
   ProductInfoBox,
   ProductDescription,
   Detail
-} from "./ProductDetails.styles";
+} from "./Category.styles";
 
 const settings = {
   speed: 500,
@@ -36,7 +36,7 @@ const settings = {
   Infinite: false
 };
 
-export const ProductDetails = () => {
+export const Category = () => {
   const router = useRouter();
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const { id } = router.query;

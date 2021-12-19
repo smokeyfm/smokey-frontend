@@ -12,12 +12,13 @@ export type LatestProduct = {
 };
 export interface LatestProductsProps {
   data: LatestProduct[];
+  title: string;
 }
 const LatestProducts: React.FC<LatestProductsProps> = (props) => {
   const { data } = props;
   return (
     <Container>
-      <Title>THE LATEST</Title>
+      <Title>{props.title}</Title>
       <ProductsBox>
         {data.map((item, index) => (
           <ProductItem key={index}>

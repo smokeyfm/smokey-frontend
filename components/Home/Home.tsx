@@ -4,34 +4,24 @@ import { QueryClient } from "react-query";
 import { dehydrate } from "react-query/hydration";
 import { Layout, InfoBox, ProductList } from "../components";
 import { fetchStreams, fetchProducts, useProducts, useStreams } from "../../hooks";
+import Hero from "./Hero";
 import Banner from "./Banner";
-import BigHotDig from "./BigHotDig";
 import { Content } from "./Home.styles";
 import LatestProducts from "./LatestProducts";
 import MemberList from "./MemberList";
-import { StreamList } from "./StreamList";
-import PolProductList from "../../components/POLProductList";
+import { StreamList } from "../StreamList";
+import PolProductList from "../PolProductList";
 import { useMediaQuery } from "react-responsive";
 import MobileLatest from "./MobileLatest";
 import homeData from "./home.json";
 export const Home = (props: any) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  const memberList = isMobile ? null : <MemberList data={homeData.memberList} />;
-  const mobileMemberList = !isMobile ? null : <MemberList data={homeData.memberList} />;
-  const latestProducts = isMobile ? null : <LatestProducts data={homeData.latestProducts} />;
-  const mobileLatest = isMobile ? (
-    <MobileLatest data={homeData.hotDigs} title={"THE LATEST"}></MobileLatest>
-  ) : null;
-  const polProductList = isMobile ? null : (
-    <PolProductList data={homeData.hotDigs} title={"HOTDIGS"} />
-  );
-  const bigHotDig = isMobile ? null : <BigHotDig data={homeData.bigHotDig} />;
 
   const {
     error: productError,
     status: productStatus,
     data: productData,
-    isLoading: productIsLoading,
+    isLoading: productsAreLoading,
     isSuccess: productIsSuccess
   }: { error: any; status: any; data: any; isLoading: boolean; isSuccess: boolean } = useProducts(
     1
@@ -41,9 +31,21 @@ export const Home = (props: any) => {
     error: streamError,
     status: streamStatus,
     data: streamData,
-    isLoading: streamIsLoading,
+    isLoading: streamsAreLoading,
     isSuccess: streamIsSuccess
   }: { error: any; status: any; data: any; isLoading: boolean; isSuccess: boolean } = useStreams(1);
+
+  const memberList = isMobile ? null : <MemberList data={homeData.memberList} />;
+  const mobileMemberList = !isMobile ? null : <MemberList data={homeData.memberList} />;
+  const advertList = isMobile ? null : <LatestProducts data={homeData.latestProducts} title="" />;
+  const advertListMobile = isMobile ? (
+    <MobileLatest data={homeData.hotDigs} title={""}></MobileLatest>
+  ) : null;
+  const polProductList = isMobile ? null : (
+    // <PolProductList data={homeData.hotDigs} title={"New Drops This Week"} />
+    <PolProductList data={productData} title={"New Drops This Week"} />
+  );
+  const banner = isMobile ? null : <Banner data={homeData.bigHotDig} />;
 
   useEffect(() => {
     console.log(streamData?.response_data, productData);
@@ -51,15 +53,15 @@ export const Home = (props: any) => {
 
   return (
     <Layout>
-      <Banner />
+      <Hero />
       <Content>
         {/* {memberList} */}
         <StreamList data={streamData?.response_data} title={"Live-Shopping"} />
         {/* {mobileMemberList} */}
-        {latestProducts}
-        {mobileLatest}
-        {polProductList}
-        {bigHotDig}
+        {advertList}
+        {advertListMobile}
+        {!productsAreLoading && polProductList}
+        {banner}
       </Content>
     </Layout>
   );

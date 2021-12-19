@@ -10,7 +10,7 @@ import { MyLogo } from "../Layout/Layout";
 import SearchBar from "../SearchBar";
 import { MainMenu } from "../MainMenu";
 import { menusData } from "../MainMenu/data/menusData";
-import { Cart } from "../Cart/Cart";
+import { CartSidebar } from "../CartSidebar/CartSidebar";
 
 import {
   TopHeader,
@@ -118,7 +118,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
             </HeaderOptions>
           )}
           <Badge badgeContent={4} color="primary">
-            <Cart isVisible={cartVisible} toggle={toggleCart} />
+            <CartSidebar isVisible={cartVisible} toggle={toggleCart} />
           </Badge>
         </RightSide>
       </TopHeader>

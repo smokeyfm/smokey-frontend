@@ -3,14 +3,14 @@ import { slide as BurgerMenu } from "react-burger-menu";
 import { useCart } from "../../hooks/useCart";
 import { cartStyles } from "./cartStyles";
 
-import { CartWrapper, CartButton } from "./Cart.styles";
+import { CartWrapper, CartButton } from "./CartSidebar.styles";
 
 interface Props {
   isVisible: boolean;
   toggle: () => void;
 }
 
-export const Cart = ({ isVisible, toggle }: Props) => {
+export const CartSidebar = ({ isVisible, toggle }: Props) => {
   const { data, isLoading, isError } = useCart();
 
   if (isLoading) {
