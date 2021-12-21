@@ -61,9 +61,7 @@ export const Category = () => {
     1
   );
 
-  const polProductList = isMobile ? null : (
-    <PolProductList data={productData} title={"HOTDIGS"} />
-  );
+  const polProductList = isMobile ? null : <PolProductList data={productData} title={"HOTDIGS"} />;
   const latestProducts = isMobile ? null : (
     <LatestProducts data={homeData.latestProducts} title="" />
   );
