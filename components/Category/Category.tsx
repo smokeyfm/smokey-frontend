@@ -1,5 +1,8 @@
 import * as React from "react";
 import { useRouter } from "next/router";
+import { QueryClient } from "react-query";
+import { dehydrate } from "react-query/hydration";
+import { fetchStreams, fetchProducts, useProducts, useStreams } from "../../hooks";
 import { Layout } from "../components";
 import { useProduct, fetchProduct } from "../../hooks/useProduct";
 import { useMutation, useQueryClient } from "react-query";
@@ -48,8 +51,18 @@ export const Category = () => {
     }
   });
 
+  const {
+    error: productError,
+    status: productStatus,
+    data: productData,
+    isLoading: productsAreLoading,
+    isSuccess: productIsSuccess
+  }: { error: any; status: any; data: any; isLoading: boolean; isSuccess: boolean } = useProducts(
+    1
+  );
+
   const polProductList = isMobile ? null : (
-    <PolProductList data={homeData.hotDigs} title={"HOTDIGS"} />
+    <PolProductList data={productData} title={"HOTDIGS"} />
   );
   const latestProducts = isMobile ? null : (
     <LatestProducts data={homeData.latestProducts} title="" />
@@ -243,3 +256,17 @@ export const Category = () => {
 
   return <div>PRODUCT NOT FOUND</div>;
 };
+
+export async function getServerSideProps() {
+  const queryClient = new QueryClient();
+
+  // await queryClient.prefetchQuery(["posts", 1], () => fetchPosts(1));
+  await queryClient.prefetchQuery(["streams", 1], () => fetchStreams(1));
+  await queryClient.prefetchQuery(["products", 1], () => fetchProducts(1));
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient)
+    }
+  };
+}
