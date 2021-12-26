@@ -6,7 +6,7 @@ export const ComingSoon = () => {
   return (
     <>
       <Container>
-        <Logo src="Beeper-Logo-v3_@2x.png" />
+        <Logo src="logo-tagline.svg" />
         <Text>A NEW MOBILE MUSIC EXPERIENCE COMING TO A “WHERE EVER YOU ARE” NEAR YOU.</Text>
         <NotifyForm />
         <SocialLinks />

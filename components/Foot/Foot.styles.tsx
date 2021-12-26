@@ -4,14 +4,7 @@ export const Container = styled.div`
   color: #fff;
   padding-bottom: 68px;
   @media (max-width: 375px) {
-<<<<<<< HEAD
-    padding-top: 3.733vw;
-  }
-  @media (max-width: 750px) {
-    padding-top: 3.733vw;
-=======
     padding-top: 14px;
->>>>>>> @aaron.smulktis/home
   }
 `;
 export const LogoDiv = styled.div`

@@ -32,17 +32,14 @@ export const EmailInput = styled.input`
   text-align: left;
   width: 300px;
   height: 36.15px;
-  background: #eccfed;
-  border: 1.89432px solid rgba(255, 0, 138, 0.15);
+  border: none;
   box-sizing: border-box;
-  box-shadow: -6.76748px -6.76748px 27.0772px rgb(144 0 147 / 70%),
-    6.76871px 6.76748px 27.0749px #000000, inset 2.70748px 2.70748px 20.3061px #1a0300;
-  border-radius: 36.1511px;
   position: absolute;
   left: 50%;
   margin-left: -150px;
   outline: none;
   padding: 8px 15px;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='4' stroke-dasharray='11%2c 33%2c 66%2c 10' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
   &::placeholder {
     color: ${(props) => props.theme.colors.blue.primary};
   }
@@ -52,23 +49,26 @@ export const EmailInput = styled.input`
 `;
 
 export const Button = styled.button`
-  color: #ce8dd0;
+  transition: 0.33s all ease-in-out;
+  color: #000;
   text-align: center;
   width: 201px;
   height: 36.15px;
   margin-left: -100px;
-  background: #430098;
-  border: 1.89432px solid rgba(255, 0, 138, 0.15);
+  background: rgb(154, 154, 154);
+  background: linear-gradient(90deg, rgba(154, 154, 154, 0) 0%, rgba(154, 154, 154, 1) 100%);
+  border: none;
   box-sizing: border-box;
-  box-shadow: -6.76748px -6.76748px 27.0772px rgb(144 0 147 / 70%),
-    6.76871px 6.76748px 27.0749px #000000, inset 2.70748px 2.70748px 20.3061px #1a0300;
-  border-radius: 36.1511px;
   position: relative;
   top: 0;
   right: 0;
   width: 75px;
   cursor: pointer;
   float: right;
+  &:hover {
+    transition: 0.33s all ease-in-out;
+    background: linear-gradient(90deg, rgba(2, 0, 36, 0) 0%, rgba(0, 0, 0, 1) 100%);
+  }
 `;
 
 export const MailTo = styled.a`

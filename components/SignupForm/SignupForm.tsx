@@ -169,7 +169,9 @@ const FormWrapper = ({
               and we never share your information without your consent.
               {/* <Subtitle>– or –</Subtitle> */}
               <LoginAction>
-                <Link href="/authenticate/login">Already have an account?</Link>
+                <Link href="/authenticate/login" target="_blank" rel="noopener noreferrer">
+                  Already have an account?
+                </Link>
               </LoginAction>
             </Disclaimer>
           )}
