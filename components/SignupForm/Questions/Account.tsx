@@ -184,7 +184,9 @@ export const Account = () => {
               </Field>
               <TermsStatement accepted={reportingTerms}>
                 By clicking &quot;Signup&quot; I agree to the&nbsp;
-                <button type="button" onClick={toggleSignatureModal}>Terms &amp; Conditions</button>
+                <button type="button" onClick={toggleSignatureModal}>
+                  Terms &amp; Conditions
+                </button>
               </TermsStatement>
             </Term>
             {/* <Term>
