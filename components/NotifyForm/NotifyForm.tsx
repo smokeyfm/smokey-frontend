@@ -44,11 +44,11 @@ export const NotifyForm = () => {
               onChange={(e) => handleChange(e)}
             />
             <Button id="signup-button" type="submit">
-              SIGN UP
+              GET UPDATES
             </Button>
           </form>
         </FormWrapper>
-        <MailTo id="mailto" href="mailto:hey@beeper.buzz">
+        <MailTo id="mailto" href={`mailto:${process.env.CONTACT_EMAIL}`}>
           Got Questions? We’d love to hear from you.
         </MailTo>
       </Container>

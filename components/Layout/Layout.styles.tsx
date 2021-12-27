@@ -8,8 +8,11 @@ export const Container = styled.main`
   max-height: calc(100% - 235px);
 `;
 export const Content = styled.div`
+  width: 100%;
   flex: 1;
-  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 `;
 
 export const CameraIcon = styled.img`

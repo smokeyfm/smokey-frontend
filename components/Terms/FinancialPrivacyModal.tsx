@@ -148,7 +148,7 @@ export const FinancialPrivacyModal = () => {
               <td className="right">
                 <ul>
                   <li>
-                    Call <strong>(555) 555-5555</strong>, or
+                    Call <strong>{process.env.COMPANY_PHONE}</strong>, or
                   </li>
                   <li>
                     Email <a href="mailto:privacypolicy@company.com">privacypolicy@company.com</a>{" "}
@@ -167,8 +167,8 @@ export const FinancialPrivacyModal = () => {
             <tr className="fp-modal-table-content two">
               <td className="left">Questions?</td>
               <td className="right">
-                Call <strong>(555) 555-5555</strong> or go to{" "}
-                <a href={window.location}>www.{window.location}</a>
+                Call <strong>{process.env.COMPANY_PHONE}</strong> or go to{" "}
+                <a href={process.env.COMPANY_LEGAL_URL}>www.{process.env.COMPANY_LEGAL_URL}</a>
               </td>
             </tr>
           </tbody>
@@ -176,7 +176,7 @@ export const FinancialPrivacyModal = () => {
         <table>
           <tbody>
             <tr className="fp-modal-table-content one-blue">
-              <td colSpan="2">
+              <td colSpan={2}>
                 <strong>Who we are</strong>
               </td>
             </tr>
@@ -189,7 +189,7 @@ export const FinancialPrivacyModal = () => {
               </td>
             </tr>
             <tr className="fp-modal-table-content one-blue">
-              <td colSpan="2">
+              <td colSpan={2}>
                 <strong>What we do</strong>
               </td>
             </tr>
@@ -260,7 +260,7 @@ export const FinancialPrivacyModal = () => {
               <td>Your choices will apply to everyone on your account.</td>
             </tr>
             <tr className="fp-modal-table-content one-blue">
-              <td colSpan="2">
+              <td colSpan={2}>
                 <strong>Definitions</strong>
               </td>
             </tr>
@@ -326,12 +326,12 @@ export const FinancialPrivacyModal = () => {
               </td>
             </tr>
             <tr className="fp-modal-table-content one-blue">
-              <td colSpan="2">
+              <td colSpan={2}>
                 <strong>Other important information</strong>
               </td>
             </tr>
             <tr className="tr-white tr-col-2">
-              <td colSpan="2">
+              <td colSpan={2}>
                 <p>
                   <strong>California residents:</strong> We will not share personal information with
                   nonaffiliates to market to you, except with your express consent. We will not

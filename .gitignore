@@ -26,13 +26,16 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env.local
+.env
+.env.dev
 .env.development
 .env.development.local
+.env.local
 .env.staging
 .env.staging.local
 .env.test
 .env.test.local
+.env.prod
 .env.production
 .env.production.local
 envvars.txt

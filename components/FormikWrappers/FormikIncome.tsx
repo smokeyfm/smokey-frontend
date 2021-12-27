@@ -3,12 +3,12 @@ import { TextField } from "@material-ui/core";
 
 import { Error } from "./FormikInput.styles";
 
-const FormikIncome = ({
+export const FormikIncome = ({
   field,
   field: { ...fields },
   form: { touched, errors, name },
   ...props
-}) => (
+}: any) => (
   <>
     {/* <Input id="income" variant="income" input="number" selectedTheme="dark" {...props} {...fields} invalid={Boolean(touched[fields.name] && errors[fields.name])} /> */}
     <TextField
@@ -23,4 +23,3 @@ const FormikIncome = ({
     {touched[fields.name] && errors[fields.name] ? <Error>{errors[fields.name]}</Error> : ""}
   </>
 );
-export default FormikIncome;

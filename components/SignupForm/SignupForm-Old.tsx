@@ -40,7 +40,8 @@ export const SignupForm = () => {
             .catch(() => {
               setSubmitting(false);
             });
-        }}>
+        }}
+      >
         {({ isSubmitting }) => (
           <Form>
             <FieldContainer>

@@ -144,14 +144,16 @@ const SearchBar = ({
       aria-expanded={isAutoCompleteVisible}
       ref={dropdownRef}
       aria-labelledby={labelId}
-      {...rest}>
+      {...rest}
+    >
       <SearchBarWrapper className="is-search-route">
         <SearchInputWrapper>
           <StyledInputContainer isExpanded={isExpanded} isWidthSet={isWidthSet}>
             <StyledInputPrefix>
               <i
                 onClick={toggleSearch}
-                className={isSearchLoading ? "bts bt-spinner bt-pulse" : "btr bt-search"}></i>
+                className={isSearchLoading ? "bts bt-spinner bt-pulse" : "btr bt-search"}
+              ></i>
             </StyledInputPrefix>
             <StyledInput
               ref={searchRef}

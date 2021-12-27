@@ -21,7 +21,7 @@ import {
   BubbleDot
 } from "./Sebastian.styles";
 
-const Sebastian = ({ speech }) => {
+const Sebastian = ({ speech }: any) => {
   const [speechReady, setSpeechStatus] = useState(false);
   // const [show, set] = useState(false);
 
@@ -73,7 +73,8 @@ const Sebastian = ({ speech }) => {
               avgTypingDelay={50}
               stdTypingDelay={80}
               startDelay={1100}
-              onTypingDone={() => console.log("typed in")}>
+              onTypingDone={() => console.log("typed in")}
+            >
               {parse(speech.__html)}
             </Typist>
           </BubbleSpeech>

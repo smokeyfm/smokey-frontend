@@ -21,7 +21,7 @@ export const HomeAddress = () => {
 
   const speechMarkup = useCallback(() => {
     return { __html: "Where do you currently live?" };
-  });
+  }, []);
 
   return (
     <QuestionWrapper>

@@ -7,7 +7,7 @@ import { pxIphone } from "../../utils";
 
 type LogoTypeFC = {
   imageFile: string;
-  isDark: boolean;
+  isDark?: boolean;
 };
 
 type LogoType = {
@@ -20,16 +20,19 @@ const Logo = styled.img<LogoType>`
   height: auto;
   margin-bottom: 20px;
   ${(p) => (p.isDark ? "filter: invert(1);" : null)};
+  box-shadow: 0 10px 22px rgba(255, 255, 255, 0.1);
   @media (max-width: 375px) {
     width: ${pxIphone(80)};
     margin-bottom: 14.68vw;
     height: auto;
   }
   @media (max-width: 750px) {
+    margin-bottom: 0;
+    margin-top: 6px;
   }
 `;
 
-export const MyLogo: React.FC<LogoTypeFC> = ({ imageFile, isDark }) => (
+export const MyLogo: React.FC<LogoTypeFC> = ({ imageFile, isDark }: any) => (
   <Logo src={imageFile} isDark={isDark} />
 );
 

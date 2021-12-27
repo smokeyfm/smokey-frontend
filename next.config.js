@@ -37,7 +37,6 @@ const DEPLOY_ENV_MAPPING = {
 const envFile = path.join(__dirname, `.env.DNA.${DEPLOY_ENV_MAPPING[DEPLOY_ENV]}`);
 loadEnvVariables();
 const isLocalDevEnvironment = !process.env.DEPLOY_ENV;
-console.log("process.env.TEST", process.env.TEST);
 module.exports = {
   webpack: (config, { webpack }) => {
     config.plugins = config.plugins || [];

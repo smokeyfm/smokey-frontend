@@ -30,7 +30,7 @@ export const StyledAutoComplete = styled.div<StyledAutoCompleteProps>`
   &::-webkit-scrollbar-thumb {
     border-radius: 12px;
     height: 80px;
-    background-color: ${(props) => props.theme.colors.blue.primary};
+    background-color: ${(props) => props.theme.colors.black.primary};
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.33);
     transition: 1s all ease-in-out;
     &:active {
@@ -61,7 +61,7 @@ export const StyledSuggestionLink = styled.div<StyledSuggestionLinkProps>`
   justify-content: space-between;
   align-items: center;
   padding: 12px 16px 12px 30px;
-  color: ${(props) => props.theme.colors.blue.primary};
+  color: ${(props) => props.theme.colors.black.primary};
 
   font-size: 14px;
   font-weight: 700;
@@ -71,7 +71,7 @@ export const StyledSuggestionLink = styled.div<StyledSuggestionLinkProps>`
   &:hover {
     text-decoration: none;
     background-color: ${(props) => props.theme.colors.gray.background};
-    color: ${(props) => props.theme.colors.blue.primary};
+    color: ${(props) => props.theme.colors.black.primary};
   }
 
   mark {

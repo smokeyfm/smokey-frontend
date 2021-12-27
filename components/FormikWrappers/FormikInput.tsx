@@ -4,7 +4,12 @@ import { TextField } from "@material-ui/core";
 
 import { Error } from "./FormikInput.styles";
 
-const FormikInput = ({ field: { ...fields }, form: { touched, errors }, styles, ...props }) => (
+export const FormikInput = ({
+  field: { ...fields },
+  form: { touched, errors },
+  styles,
+  ...props
+}: any) => (
   <>
     <TextField
       selectedTheme="dark"
@@ -16,4 +21,3 @@ const FormikInput = ({ field: { ...fields }, form: { touched, errors }, styles, 
     {touched[fields.name] && errors[fields.name] ? <Error>{errors[fields.name]}</Error> : ""}
   </>
 );
-export default FormikInput;

@@ -1,6 +1,7 @@
+import styled from "@emotion/styled";
+import { Badge, Popover } from "@material-ui/core";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import styled from "@emotion/styled";
 import { pxIphone } from "../../utils";
 
 export const TopHeader = styled.div`
@@ -9,20 +10,14 @@ export const TopHeader = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+    height: 30px;
+  }
 `;
-export const RightSide = styled.div`
-  width: 33%;
-  display: flex;
-  position: absolute;
-  top: 0;
-  right: 10px;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 2;
-`;
+
 export const LogoDiv = styled.div`
-  width: 180px;
+  width: 355px;
   padding: 15px 30px;
   display: flex;
   align-items: center;
@@ -41,6 +36,7 @@ export const LinkDiv = styled.a<LinkDivProps>`
   font-size: 14px;
   text-decoration: none;
 `;
+
 export const BottomHeader = styled.div`
   display: flex;
   flex-direction: row;
@@ -55,19 +51,70 @@ export const BottomHeader = styled.div`
     padding-right: 0px;
   }
 `;
+
 export const Category = styled.a`
   padding: 15px;
 `;
 
-export const HeaderAccount = styled.span`
-  font-family: Roboto Condensed;
-  font-size: 13px;
-  line-height: 15px;
+export const RightSide = styled.div`
+  width: auto;
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+
+  @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+    justify-content: flex-end;
+  }
+`;
+
+export const HeaderOptions = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 0 20px;
+  justify-content: space-around;
+  & > a {
+    margin: 0 10px;
+    font-family: ${(p) => p.theme.typography.titleMD.fontFamily};
+    font-size: ${(p) => p.theme.typography.titleMD.fontSize};
+    font-weight: ${(p) => p.theme.typography.titleMD.fontWeight};
+    line-height: ${(p) => p.theme.typography.titleMD.lineHeight};
+    color: ${(p) => p.theme.typography.titleMD.color};
+  }
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+export const HeaderAccount = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 0 20px;
+  justify-content: space-around;
   color: #000;
   @media (max-width: 768px) {
     display: none;
   }
 `;
+
+export const AccountEmail = styled.div`
+  display: flex;
+  justify-contents: center;
+  align-items: center;
+  margin: 0 10px;
+`;
+
+export const AccountMenu = styled(Popover)`
+  padding: 20px 10px;
+  border: 1px solid red;
+`;
+
 export const ArrowDown = styled(ArrowDropDownIcon)`
   margin-left: 5px;
   color: #000;
@@ -75,6 +122,7 @@ export const ArrowDown = styled(ArrowDropDownIcon)`
     display: none !important;
   }
 `;
+
 export const ShoppingCart = styled.img`
   width: 17px;
   height: auto;

@@ -1,6 +1,10 @@
 import { Button } from "@material-ui/core";
 import styled from "@emotion/styled";
 
+interface GenericThemeType {
+  theme?: any;
+}
+
 export const MainWrapper = styled.div`
   position: relative;
   z-index: 1;
@@ -31,6 +35,14 @@ export const Title = styled.div`
   padding: 40px 0 15px;
 `;
 
+export const Subtitle = styled.div`
+  box-sizing: border-box;
+  color: ${(props) => props.theme.colors.white.primary};
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 20px 0 15px;
+`;
+
 export const ContentWrapper = styled.div`
   display: flex;
   flex-flow: row nowrap;
@@ -46,7 +58,12 @@ export const ContentWrapper = styled.div`
   }
 `;
 
-export const LeftHalf = styled.div`
+interface LeftHalfType {
+  show?: any;
+  theme?: any;
+}
+
+export const LeftHalf = styled.div<LeftHalfType>`
   display: ${(props) => props.show};
   flex-direction: column;
   flex-basis: 100%;
@@ -56,7 +73,7 @@ export const LeftHalf = styled.div`
   ${"" /* flex-basis: 50%; */}
   background: ${(props) => props.theme.colors.white.primary};
   color: ${(props) => props.theme.colors.brand.primary};
-  box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.123);
+  /* box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.123); */
   ${"" /* width: 100%; */}
   ${"" /* margin: 15px; */}
   margin: 15px 15px 0 0;
@@ -64,7 +81,7 @@ export const LeftHalf = styled.div`
   padding: 15px 15px 60px 15px;
   text-align: center;
   & [data-qa="title"] {
-    color: ${(props) => props.theme.colors.brand.dark};
+    color: ${(props) => props.theme.colors.brand.primary};
     font-size: 1.6rem;
   }
 
@@ -79,7 +96,12 @@ export const LeftHalf = styled.div`
   }
 `;
 
-export const RightHalf = styled.div`
+interface RightHalfType {
+  isLargeDevice?: boolean;
+  theme?: any;
+}
+
+export const RightHalf = styled.div<RightHalfType>`
   display: flex;
   flex-direction: column;
   flex-basis: 100%;
@@ -93,25 +115,30 @@ export const RightHalf = styled.div`
     background: ${(props) => props.theme.colors.white.primary};
     color: ${(props) => props.theme.colors.brand.primary};
     border-radius: 8px;
-    box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.123);
+    /* box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.123); */
     ${"" /* width: 100%; */}
     & [data-qa='title'] {
-      color: ${(props) => props.theme.colors.brand.dark};
+      color: ${(props) => props.theme.colors.brand.primary};
       font-size: 1.6rem;
     }
   }
 `;
 
-export const WizardForm = styled.div`
+interface WizardFormType {
+  canGoBack: boolean;
+  theme?: any;
+}
+
+export const WizardForm = styled.div<WizardFormType>`
   padding-top: 0;
   ${"" /* margin-top: ${props => props.canGoBack ? '120px' : '225px'}; */}
   background: ${(props) => props.theme.colors.white.primary};
   color: ${(props) => props.theme.colors.brand.primary};
   border-radius: 8px;
-  box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.123);
+  box-shadow: 0px 22px 33px rgba(0, 0, 0, 0.066);
   width: 100%;
   & [data-qa="title"] {
-    color: ${(props) => props.theme.colors.brand.dark};
+    color: ${(props) => props.theme.colors.brand.primary};
     font-size: 1.6rem;
   }
 
@@ -166,7 +193,11 @@ export const WizardActions = styled.div`
   }
 `;
 
-export const PreviousButton = styled(Button)`
+interface PreviousButtonType {
+  ghost?: boolean;
+}
+
+export const PreviousButton = styled(Button)<PreviousButtonType>`
   flex-basis: 30%;
   flex-grow: 1;
   margin-right: 0.5rem !important;
@@ -179,14 +210,14 @@ export const NextButton = styled(Button)`
   flex-grow: 2;
 `;
 
-export const SkipAction = styled.div`
+export const SkipAction = styled.div<GenericThemeType>`
   margin: 7px 0 15px 0;
   padding: 0 15px 15px 15px;
   display: flex;
   justify-content: center;
   & button {
     width: 100%;
-    color: ${(props) => props.theme.colors.brand.medium};
+    color: ${(props) => props.theme.colors.brand.primary};
     text-transform: capitalize;
   }
 
@@ -194,14 +225,14 @@ export const SkipAction = styled.div`
   }
 `;
 
-export const LoginAction = styled.div`
+export const LoginAction = styled.div<GenericThemeType>`
   margin: 7px 0 15px 0;
   padding: 0 15px 15px 15px;
   display: flex;
   justify-content: center;
   & button a {
     width: 100%;
-    color: ${(props) => props.theme.colors.brand.medium};
+    color: ${(props) => props.theme.colors.brand.primary};
     text-transform: capitalize;
   }
 

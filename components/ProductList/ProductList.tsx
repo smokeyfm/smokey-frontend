@@ -62,7 +62,8 @@ export const ProductList: React.FC<ProductListProps> = () => {
                   slug: product.attributes.slug,
                   id: product.id
                 }
-              }}>
+              }}
+            >
               <ProductContainer>
                 <MyImg src={source} />
                 <MyH1>{product.attributes.name}</MyH1>

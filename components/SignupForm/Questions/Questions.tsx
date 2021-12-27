@@ -2,12 +2,12 @@
 
 // Vendor
 // import { object, shape, number, integer, string } from 'yup';
-import { ref, addMethod, mixed, test, object, string, bool, date } from "yup";
+import { ref, addMethod, mixed, object, string, bool, date } from "yup";
 
 // Local
 import Static from "../../../utilities/staticData";
 import constants from "../../../utilities/constants";
-import Alert from "../../Alerts";
+import { Alert } from "../../Alerts";
 import { GetPreQualified } from "./GetPreQualified";
 import { PersonalInfo } from "./PersonalInfo";
 import { DateOfBirth } from "./DateOfBirth";
@@ -21,9 +21,9 @@ import { toShortDateZeroFill } from "../../../utilities/DateHelpers";
 //   firstName: Yup.string()
 //     .min(2, "Too Short!")
 //     .max(50, "Too Long!")
-//     .required("Required"),
+//     .defined("Required"),
 //   address: Yup.object().shape({
-//     line1: Yup.string().required("Required")
+//     line1: Yup.string().defined("Required")
 //   }),
 //   dob: Yup.object().shape({
 //     day: Yup.number()
@@ -36,23 +36,44 @@ import { toShortDateZeroFill } from "../../../utilities/DateHelpers";
 
 const today = new Date();
 
-const equalTo = (reference, msg) => {
-  return mixed().test({
-    name: "equalTo",
-    exclusive: false,
-    message: msg || `Password must be the same as ${reference}`,
-    params: {
-      reference: reference.path
-    },
-    test(value) {
-      return value === this.resolve(reference);
-    }
-  });
+// const equalTo = ({reference, msg}: any) => {
+//   return mixed().test({
+//     name: "equalTo",
+//     exclusive: false,
+//     message: msg || `Password must be the same as ${reference}`,
+//     params: {
+//       reference: reference.path
+//     },
+//     test(value) {
+//       return value === this.resolve(reference);
+//     }
+//   });
+// };
+
+// addMethod(string, "equalTo", equalTo);
+
+export declare type FormikErrors<Values> = {
+  [K in keyof Values]?: Values[K] extends any[]
+    ? Values[K][number] extends object
+      ? FormikErrors<Values[K][number]>[] | string | string[]
+      : string | string[]
+    : Values[K] extends object
+    ? FormikErrors<Values[K]>
+    : string;
 };
 
-addMethod(string, "equalTo", equalTo);
+interface QuestionsType {
+  id: string;
+  component: any;
+  validationSchema?: any;
+  validate?: (values: any) => void | object | Promise<FormikErrors<any>>;
+  initialValues?: any;
+  actionLabel?: string;
+  onAction?: any;
+  keepValuesOnPrevious?: boolean;
+}
 
-export const Questions = [
+export const Questions: QuestionsType[] = [
   {
     id: "get-prequalified",
     component: GetPreQualified,
@@ -68,16 +89,16 @@ export const Questions = [
       suffix: ""
     },
     validationSchema: object().shape({
-      firstName: string().required(Static.errors.isRequired),
+      firstName: string().defined(Static.errors.isRequired),
       middleName: string(),
-      lastName: string().required(Static.errors.isRequired),
+      lastName: string().defined(Static.errors.isRequired),
       suffix: string()
     }),
-    actionLabel: "Next",
-    onAction: () => {
-      // window.scrollTo(0,0);
-      console.log("action taken");
-    }
+    actionLabel: "Next"
+    // onAction: () => {
+    //   // window.scrollTo(0,0);
+    //   console.log("action taken");
+    // }
   },
   {
     id: "date-of-birth",
@@ -93,7 +114,7 @@ export const Questions = [
             ? currentValue
             : new Date("")
         )
-        .required(Static.errors.isRequired)
+        .defined(Static.errors.isRequired)
         .typeError("Invalid date")
         .min(new Date("1/1/1900"), Static.errors.minDateOfBirth)
         .max(
@@ -110,7 +131,7 @@ export const Questions = [
       //         ? currentValue
       //         : new Date('')
       //     )
-      //     .required(Static.errors.isRequired)
+      //     .defined(Static.errors.isRequired)
       //     .typeError('Invalid date')
       //     .min(new Date('1/1/1900'), Static.errors.minDateOfBirth)
       //     .max(
@@ -123,13 +144,13 @@ export const Questions = [
       //     )
       // })
     }),
-    actionLabel: "Next",
-    onAction: (sectionValues) => {
-      window.scrollTo(0, 0);
-      // if (sectionValues.dateOfBirth === '1 infinite loop') {
-      //   throw new Error('You old enough?')
-      // }
-    }
+    actionLabel: "Next"
+    // onAction: (sectionValues: any) => {
+    //   window.scrollTo(0, 0);
+    //   // if (sectionValues.dateOfBirth === '1 infinite loop') {
+    //   //   throw new Error('You old enough?')
+    //   // }
+    // }
   },
   {
     id: "home-address",
@@ -139,17 +160,17 @@ export const Questions = [
       unitNumber: ""
     },
     validationSchema: object().shape({
-      homeAddress: string().required(Static.errors.isRequired),
+      homeAddress: string().defined(Static.errors.isRequired),
       unitNumber: string()
     }),
-    actionLabel: "Next",
-    onAction: (sectionValues) => {
-      window.scrollTo(0, 0);
-      // console.log('ADDRESS ACTION VALS: ', sectionValues);
-      if (sectionValues.homeAddress === "1 infinite loop") {
-        throw new Error("Please reformat address");
-      }
-    }
+    actionLabel: "Next"
+    // onAction: (sectionValues: any) => {
+    //   window.scrollTo(0, 0);
+    //   // console.log('ADDRESS ACTION VALS: ', sectionValues);
+    //   if (sectionValues.homeAddress === "1 infinite loop") {
+    //     throw new Error("Please reformat address");
+    //   }
+    // }
   },
   {
     id: "yearly-income",
@@ -158,18 +179,18 @@ export const Questions = [
       yearlyIncome: ""
     },
     validationSchema: object().shape({
-      yearlyIncome: string().required(Static.errors.isRequired)
+      yearlyIncome: string().defined(Static.errors.isRequired)
     }),
     // validationSchema: object().shape({
     //   // eslint-disable-next-line no-restricted-globals
     //   yearlyIncome: number().transform(value => (isNaN(value) ? parseInt(value, 10) : value))
-    //     .required(Static.errors.isRequired)
+    //     .defined(Static.errors.isRequired)
     //     .min(constants.MIN_ANNUAL_INCOME, Static.errors.annualIncomeMin
     //     )
     //     .max(constants.MAX_ANNUAL_INCOME, Static.errors.annualIncomeMax),
     // }),
     actionLabel: "Next",
-    onAction: (sectionValues) => {
+    onAction: (sectionValues: any) => {
       window.scrollTo(0, 0);
       const incomeNumber = parseFloat(sectionValues.yearlyIncome.replace(/\$|,/g, ""));
       // console.log("THE MONEY: ", incomeNumber);
@@ -207,27 +228,27 @@ export const Questions = [
     },
     validationSchema: object().shape({
       phoneNumber: string()
-        .required(Static.errors.isRequired)
+        .defined(Static.errors.isRequired)
         .min(constants.PHONE_LENGTH, Static.errors.phoneNumberValid)
         .max(constants.PHONE_LENGTH, Static.errors.phoneNumberValid)
         .matches(constants.PHONE_REGEX, Static.errors.phoneNumberValid),
-      email: string().required(Static.errors.isRequired),
+      email: string().defined(Static.errors.isRequired),
       password: string()
-        .required(Static.errors.isRequired)
+        .defined(Static.errors.isRequired)
         .matches(constants.PASSWORD_REGEX, Static.errors.passwordValid),
       passwordConfirm: string()
         .required(Static.errors.isRequired)
-        .equalTo(ref("password"), Static.errors.passwordMatch),
+        .oneOf([ref("password"), null], "Passwords must match"),
       acceptSignatureTerms: bool().oneOf([true], "Accept Terms & Conditions is required"),
       acceptPrivacyTerms: bool().oneOf([true], "Accept Terms & Conditions is required"),
       acceptReportingTerms: bool().oneOf([true], "Accept Terms & Conditions is required"),
       acceptAuthorizeTerms: bool().oneOf([true], "Accept Terms & Conditions is required")
     }),
     actionLabel: "Signup",
-    onAction: (sectionValues) => {
+    onAction: (sectionValues: any) => {
       window.scrollTo(0, 0);
       const phone = parseFloat(sectionValues.phoneNumber.replace(/\$|,/g, ""));
-      console.log("PHONE: ", phone);
+      // console.log("PHONE: ", phone);
       if (phone < 15000) {
         throw new Error("Something is wrong with your account details.");
       }

@@ -2,7 +2,7 @@ import React from "react";
 
 import { TermsCheckbox } from "./FormikInput.styles";
 
-const FormikCheckbox = ({
+export const FormikCheckbox = ({
   field,
   fields: { ...fields },
   form: { setFieldValue, touched, errors },
@@ -10,7 +10,7 @@ const FormikCheckbox = ({
   handleTermCheckbox,
   nextTerm,
   ...props
-}) => {
+}: any) => {
   const nextParent = () => {
     console.log("TERM CHECKED: ", field.name, field.value);
     handleTermCheckbox();
@@ -33,4 +33,3 @@ const FormikCheckbox = ({
     </>
   );
 };
-export default FormikCheckbox;

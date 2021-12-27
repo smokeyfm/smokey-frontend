@@ -7,7 +7,11 @@ export const QuestionWrapper = styled.div`
   margin: 15px 0 15px 0;
 `;
 
-export const InputGroupWrapper = styled.div`
+interface GenericThemeType {
+  theme?: any;
+}
+
+export const InputGroupWrapper = styled.div<GenericThemeType>`
   ${
     "" /* background: ${props => props.theme.colors.white.primary};
   color: ${props => props.theme.colors.brand.primary};
@@ -24,7 +28,7 @@ export const InputGroupWrapper = styled.div`
     padding: 30px 0px 0px 0px;
   }
   & [data-qa="title"] {
-    color: ${(props) => props.theme.colors.brand.dark};
+    color: ${(props) => props.theme.colors.brand.primary};
     font-size: 1.6rem;
   }
   & .carousel .thumbs-wrapper {
@@ -40,7 +44,7 @@ export const InputGroupWrapper = styled.div`
   & .carousel .control-dots .dot {
     width: 5px;
     height: 5px;
-    background: ${(props) => props.theme.colors.gray.dark};
+    background: ${(props) => props.theme.colors.gray.primary};
     box-shadow: none;
     &:focus {
       outline: none;
@@ -52,7 +56,7 @@ export const InputGroupWrapper = styled.div`
   }
 `;
 
-export const InputWrapper = styled.div`
+export const InputWrapper = styled.div<GenericThemeType>`
   text-align: left;
   margin: 10px 25px;
 
@@ -61,14 +65,14 @@ export const InputWrapper = styled.div`
   }
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h1<GenericThemeType>`
   margin: 5px 15px;
-  color: ${(props) => props.theme.colors.brand.dark};
+  color: ${(props) => props.theme.colors.brand.primary};
 `;
 
-export const Subtitle = styled.h3`
+export const Subtitle = styled.h3<GenericThemeType>`
   margin: 5px 15px;
-  color: ${(props) => props.theme.colors.brand.dark};
+  color: ${(props) => props.theme.colors.brand.primary};
 `;
 
 export const Description = styled.p`
@@ -97,12 +101,17 @@ export const Term = styled.div`
   align-items: flex-start;
 `;
 
-export const TermsStatement = styled.p`
+interface TermsStatementType {
+  accepted: boolean;
+  theme?: any;
+}
+
+export const TermsStatement = styled.p<TermsStatementType>`
   font-size: 0.7rem;
   text-align: left;
   flex-basis: 100%;
   color: ${(props) =>
-    props.accepted ? props.theme.colors.brand.dark : props.theme.colors.red.primary};
+    props.accepted ? props.theme.colors.brand.primary : props.theme.colors.red.primary};
   height: auto;
   overflow-y: scroll;
   margin: 0;
@@ -114,7 +123,7 @@ export const TermsStatement = styled.p`
     font-weight: 700;
     text-decoration: underline;
     color: ${(props) =>
-      props.accepted ? props.theme.colors.brand.dark : props.theme.colors.red.primary};
+      props.accepted ? props.theme.colors.brand.primary : props.theme.colors.red.primary};
   }
 
   @media (max-width: ${(props) => props.theme.breakpoints.values.sm}px) {

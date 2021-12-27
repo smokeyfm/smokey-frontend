@@ -87,28 +87,28 @@ export const theme = {
   typography: {
     titleXXL: {
       fontFamily: "Bebas Neue",
-      fontWeight: "normal",
+      fontWeight: "bold",
       fontSize: "72px",
       lineHeight: "86px",
       color: "#000"
     },
     titleXL: {
       fontFamily: "Bebas Neue",
-      fontWeight: "normal",
+      fontWeight: "bold",
       fontSize: "33.8681px",
       lineHeight: "41px",
       color: "#000"
     },
     titleLG: {
       fontFamily: "Bebas Neue",
-      fontWeight: "normal",
+      fontWeight: "bold",
       fontSize: "24px",
       lineHeight: "30px",
       color: "#000"
     },
     titleMD: {
       fontFamily: "Bebas Neue",
-      fontWeight: "normal",
+      fontWeight: "bold",
       fontSize: "20px",
       lineHeight: "24px",
       color: "#000"

@@ -41,20 +41,23 @@ export const EmailInput = styled.input`
   padding: 8px 15px;
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='4' stroke-dasharray='11%2c 33%2c 66%2c 10' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
   &::placeholder {
-    color: ${(props) => props.theme.colors.blue.primary};
+    color: ${(props) => props.theme.colors.black.primary};
   }
   &:focus::placeholder {
-    color: ${(props) => props.theme.colors.brand.bright};
+    color: ${(props) => props.theme.colors.blue.primary};
   }
 `;
 
 export const Button = styled.button`
+  padding: 0;
+  margin: 0;
   transition: 0.33s all ease-in-out;
   color: #000;
   text-align: center;
   width: 201px;
   height: 36.15px;
   margin-left: -100px;
+  opacity: 0.66;
   background: rgb(154, 154, 154);
   background: linear-gradient(90deg, rgba(154, 154, 154, 0) 0%, rgba(154, 154, 154, 1) 100%);
   border: none;
@@ -65,9 +68,10 @@ export const Button = styled.button`
   width: 75px;
   cursor: pointer;
   float: right;
+  font-size: 15px;
   &:hover {
     transition: 0.33s all ease-in-out;
-    background: linear-gradient(90deg, rgba(2, 0, 36, 0) 0%, rgba(0, 0, 0, 1) 100%);
+    opacity: 1;
   }
 `;
 
@@ -77,8 +81,7 @@ export const MailTo = styled.a`
   line-height: 19px;
   font-style: normal;
   font-weight: 200;
-  font-size: 15px;
-  color: #ffffff;
+  color: #000;
   padding-top: 25px;
   bottom: 0;
 `;

@@ -20,7 +20,7 @@ export const PersonalInfo = () => {
 
   const speechMarkup = useCallback(() => {
     return { __html: "Let’s start with your name." };
-  });
+  }, []);
 
   return (
     <QuestionWrapper>

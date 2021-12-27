@@ -1,93 +1,75 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { IDesktopMenuProps } from "./types/DesktopMenu";
 import { menuDataItem } from "./types";
-import styled from "@emotion/styled";
-const Container = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  position: relative;
-  padding-bottom: 13px;
-`;
-export interface MyMenuItemProps {
-  isActive: boolean;
-}
-const MyMenuItem = styled.div<MyMenuItemProps>`
-  margin-right: 82px;
-  font-family: "Bebas Neue";
-  font-size: 14px;
-  line-height: 150%;
-  color: #000;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  cursor: pointer;
-  &:after {
-    transition: transform 1s linear;
-    width: 57px;
-    height: 1px;
-    background-color: #000;
-    content: "";
-    position: absolute;
-    bottom: 0;
-    display: ${(props) => (props.isActive ? "block" : "none")};
-    transfrom: ${(props) => (props.isActive ? "translateX(0)" : "translateX(-100%)")};
-  }
-  &:first-of-type {
-    margin-left: 197px;
-  }
-`;
-export interface DropDownProps {
-  isActive: boolean;
-}
-let timer: any;
-const DropDown = styled.div<DropDownProps>`
-  position: absolute;
-  background-color: #fff;
-  left: 0;
-  top: 100%;
-  width: 100%;
-  z-index: 10000;
-  transition: transform 1s linear;
-  display: ${(props) => (props.isActive ? "block" : "none")};
-  transform: ${(props) => (props.isActive ? "translateY(0)" : "translateY(-100%)")};
-`;
+
+import {
+  Container,
+  MyMenuItem,
+  DropDown,
+  DropDownLink,
+  DropDownColumn,
+  DropDownHeader,
+  DropDownAdvert,
+  Vr
+} from "./DesktopMenu.styles";
 
 const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
+  let timer: any;
   const { pcWrapClassName, menusData, pcMenuItemClassName, onMenuItemClick } = props;
+  const desktopMenu = menusData?.menu_location_listing[0].menu_item_listing;
   const [currentKey, setCurrentKey] = useState();
   const handleMouseEnter = useCallback((item) => {
     if (timer) {
       clearTimeout(timer);
     }
-    setCurrentKey(item.key);
+    setCurrentKey(item.id);
   }, []);
   const handleMouseLeave = useCallback(() => {
     timer = setTimeout(() => setCurrentKey(undefined), 300);
   }, []);
+  // useEffect(() => {
+  //   console.log(menusData);
+  // }, []);
   return (
     <Container className={pcWrapClassName}>
-      {menusData.map((item, index) => (
+      {/* {menusData.map((item, index) => ( */}
+      {desktopMenu.map((item: any, index: any) => (
         <MyMenuItem
+          onMouseEnter={handleMouseEnter.bind(null, item)}
           onMouseLeave={handleMouseLeave}
-          isActive={currentKey == item.key}
+          isActive={currentKey == item.id}
           key={index}
-          onMouseEnter={handleMouseEnter.bind(null, item)}>
+        >
           {item.name}
         </MyMenuItem>
       ))}
-      {menusData.map((item, index) => (
-        <DropDown
-          onMouseLeave={handleMouseLeave}
-          onMouseEnter={handleMouseEnter.bind(null, item)}
-          isActive={currentKey == item.key}
-          key={index}>
-          {item.pcMenuItem}
-        </DropDown>
-      ))}
+      {/* {menusData.map((item, index) => ( */}
+      {desktopMenu.map((item: any, index: any) => {
+        if (item.childrens.length) {
+          return (
+            <DropDown
+              onMouseEnter={handleMouseEnter.bind(null, item)}
+              onMouseLeave={handleMouseLeave}
+              isActive={currentKey == item.id}
+              key={index}
+            >
+              {/* {item.pcMenuItem} */}
+              {item.childrens?.map((item: any, index: any) => (
+                <DropDownColumn>
+                  <DropDownHeader>{item.name}</DropDownHeader>
+                  {item.childrens?.map((item: any, index: any) => (
+                    <DropDownLink href={item.url}>{item.name}</DropDownLink>
+                  ))}
+                </DropDownColumn>
+              ))}
+              <Vr />
+              <DropDownAdvert>
+                <h1>On Sale!</h1>
+              </DropDownAdvert>
+            </DropDown>
+          );
+        }
+      })}
     </Container>
   );
 };

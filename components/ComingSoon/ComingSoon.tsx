@@ -1,5 +1,5 @@
 import React from "react";
-import { NotifyForm, SocialLinks } from "../../components";
+import { NotifyForm, SocialLinks } from "../components";
 import { Container, Logo, Text } from "./ComingSoon.styles";
 
 export const ComingSoon = () => {
@@ -7,9 +7,9 @@ export const ComingSoon = () => {
     <>
       <Container>
         <Logo src="logo-tagline.svg" />
-        <Text>A NEW MOBILE MUSIC EXPERIENCE COMING TO A “WHERE EVER YOU ARE” NEAR YOU.</Text>
+        <Text>{process.env.COMING_SOON_COPY}</Text>
         <NotifyForm />
-        <SocialLinks />
+        {/* <SocialLinks /> */}
       </Container>
     </>
   );
