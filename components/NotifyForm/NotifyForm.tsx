@@ -32,7 +32,7 @@ export const NotifyForm = () => {
         </clipPath>
       </defs>
       <Container>
-        <NotifyText>GET NOTIFIED</NotifyText>
+        <NotifyText>Wanna know when the product becomes available?</NotifyText>
         <FormWrapper>
           <form onSubmit={handleSubmit}>
             <EmailInput
