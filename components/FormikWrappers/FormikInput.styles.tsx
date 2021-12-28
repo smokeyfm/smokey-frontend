@@ -1,5 +1,8 @@
 import styled from "@emotion/styled";
-import { Checkbox } from "@material-ui/core";
+import { TextField, Checkbox } from "@material-ui/core";
+
+export const BasicField = styled(TextField)`
+`;
 
 export const Error = styled.div`
   color: ${(props: any) => props.theme.colors.red.primary};
