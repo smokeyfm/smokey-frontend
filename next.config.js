@@ -34,7 +34,7 @@ const DEPLOY_ENV_MAPPING = {
   staging: "staging",
   prod: "production"
 };
-const envFile = path.join(__dirname, `.env.DNA.${DEPLOY_ENV_MAPPING[DEPLOY_ENV]}`);
+const envFile = path.join(__dirname, `.env.${DEPLOY_ENV_MAPPING[DEPLOY_ENV]}`);
 loadEnvVariables();
 const isLocalDevEnvironment = !process.env.DEPLOY_ENV;
 module.exports = {
