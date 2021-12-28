@@ -4,23 +4,16 @@ import { useRouter } from "next/router";
 import { Formik, Field, ErrorMessage } from "formik";
 import styled from "@emotion/styled";
 
-import {
-  loginForm,
-} from "../AuthForm/constants";
+import { loginForm } from "../AuthForm/constants";
 import { useAuth } from "../../config/auth";
 
 import { FormikInput } from "../FormikWrappers";
 
-import {
-  LoginWrapper,
-  FormWrapper,
-  InputWrapper,
-  Subtext
-} from './Login.styles';
+import { LoginWrapper, FormWrapper, InputWrapper, Subtext } from "./Login.styles";
 
 export const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const { login } = useAuth();
   const router = useRouter();
   return (

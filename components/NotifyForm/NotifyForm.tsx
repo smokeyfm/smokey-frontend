@@ -52,33 +52,33 @@ export const NotifyForm = () => {
 
   const switchQuestionSetter = (id: string, val: string) => {
     switch (id) {
-      case 'email':
+      case "email":
         return setEmail(val);
-      case 'firstName':
+      case "firstName":
         return setFirstName(val);
-      case 'lastName':
+      case "lastName":
         return setLastName(val);
-      case 'phone':
+      case "phone":
         return setPhone(val);
       default:
         return setValue(val);
     }
-  }
-  
+  };
+
   const switchQuestionValue = (id: string) => {
     switch (id) {
-      case 'email':
+      case "email":
         return email;
-      case 'firstName':
+      case "firstName":
         return firstName;
-      case 'lastName':
+      case "lastName":
         return lastName;
-      case 'phone':
+      case "phone":
         return phone;
       default:
         return value;
     }
-  }
+  };
 
   const renderQuestions = (questionIndex: number) => {
     const isCurrent = questionIndex === currentQuestion;
@@ -98,32 +98,34 @@ export const NotifyForm = () => {
                 name="text"
                 onChange={(e: any) => switchQuestionSetter(question.id, e.target.value)}
               />
-              <Button id="signup-button" type="submit">{question.buttonText}</Button>
+              <Button id="signup-button" type="submit">
+                {question.buttonText}
+              </Button>
             </>
           )}
         </QuestionWrapper>
-      )
-    })
-  }
+      );
+    });
+  };
 
   const handleSubmit = async (e: any, newContact: boolean) => {
     e.preventDefault();
     console.log("Submitting!");
-    
-    const res = await fetch('/api/subscribe', {
+
+    const res = await fetch("/api/subscribe", {
       body: JSON.stringify({
         email: email,
         firstName: firstName,
         lastName: lastName,
         phone: phone,
-        newContact: newContact,
+        newContact: newContact
       }),
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
       },
-      method: 'POST'
+      method: "POST"
     });
-    
+
     const resBody = await res.json();
     console.log("Response: ", resBody);
     setStatus("sending");
@@ -133,7 +135,8 @@ export const NotifyForm = () => {
       setMessage(resBody.error);
       return;
     } else {
-      const nextQuestionIndex = currentQuestion < notifyQuestions.length ? currentQuestion + 1 : currentQuestion;
+      const nextQuestionIndex =
+        currentQuestion < notifyQuestions.length ? currentQuestion + 1 : currentQuestion;
       setStatus("success");
       setMessage("Thanks so much! We'll keep you posted.");
       setCurrentQuestion(nextQuestionIndex);
@@ -141,11 +144,11 @@ export const NotifyForm = () => {
   };
 
   const clearFields = () => {
-    setEmail('');
+    setEmail("");
     // setFirstName('');
     // setLastName('');
   };
-  
+
   useEffect(() => {
     // if (status === "success") clearFields();
     // if(modalOpen && status === "success") clearFields();
@@ -153,29 +156,36 @@ export const NotifyForm = () => {
 
   return (
     <>
-      <Container>        
+      <Container>
         <FormWrapper index={currentQuestion}>
-          <form onSubmit={(e: any) => currentQuestion < 1 ? handleSubmit(e, true) : handleSubmit(e, false)}>
+          <form
+            onSubmit={(e: any) =>
+              currentQuestion < 1 ? handleSubmit(e, true) : handleSubmit(e, false)
+            }
+          >
             {currentQuestion < notifyQuestions.length ? renderQuestions(currentQuestion) : null}
             {/* MailChimp anti-spam fields, real people should not fill this in and expect good things - do not remove this or risk form bot signups */}
 
-            <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true">
-              <input type="text" name="b_eb05e4f830c2a04be30171b01_8281a64779" tabIndex={-1} value="" />
+            <div style={{ position: "absolute", left: "-5000px" }} aria-hidden="true">
+              <input
+                type="text"
+                name="b_eb05e4f830c2a04be30171b01_8281a64779"
+                tabIndex={-1}
+                value=""
+              />
             </div>
           </form>
           {/* MailChimp Status */}
           {status === "sending" && (
-            <NotifyText className="mc__alert mc__alert--sending">
-              sending...
-            </NotifyText>
+            <NotifyText className="mc__alert mc__alert--sending">sending...</NotifyText>
           )}
           {status === "error" && (
-            <NotifyText>{message === "Bad Request" ? `${message} or Email already exists` : message}</NotifyText>
+            <NotifyText>
+              {message === "Bad Request" ? `${message} or Email already exists` : message}
+            </NotifyText>
           )}
           {status === "success" && currentQuestion >= notifyQuestions.length && (
-            <NotifyText>
-              {message}
-            </NotifyText>
+            <NotifyText>{message}</NotifyText>
           )}
         </FormWrapper>
         <MailTo id="mailto" href={`mailto:${process.env.CONTACT_EMAIL}`}>
