@@ -12,7 +12,7 @@ import {
   PlayIcon,
   CircleIcon,
   Logo
-} from './Layout.styles';
+} from "./Layout.styles";
 
 type LogoTypeFC = {
   imageFile: string;

@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 import { Form } from "formik";
 
 interface GenericThemeType {
@@ -17,7 +17,7 @@ export const LoginWrapper = styled.div`
 `;
 
 export const FormWrapper = styled(Form)`
-  width: 100%;  
+  width: 100%;
 `;
 
 export const InputWrapper = styled.div<GenericThemeType>`

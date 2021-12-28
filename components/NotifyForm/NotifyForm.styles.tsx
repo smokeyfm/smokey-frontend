@@ -36,7 +36,7 @@ export const FormWrapper = styled.div<FormWrapperType>`
     flex-wrap: nowrap;
     overflow: hidden;
     justify-content: flex-start;
-    margin-left: ${p => `-${300 * p.index}px`}
+    margin-left: ${(p) => `-${300 * p.index}px`};
   }
 `;
 
@@ -45,7 +45,7 @@ interface QuestionWrapperType {
 }
 
 export const QuestionWrapper = styled.div<QuestionWrapperType>`
-  display: ${p => p.isVisible ? 'block' : 'none'};
+  display: ${(p) => (p.isVisible ? "block" : "none")};
   width: 300px;
 `;
 

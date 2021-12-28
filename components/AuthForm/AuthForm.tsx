@@ -7,9 +7,7 @@ import { SignupForm } from "../SignupForm";
 import { Login } from "../Login";
 import { ResetPassword } from "../ResetPassword";
 
-import {
-  AuthFormType,
-} from "./constants";
+import { AuthFormType } from "./constants";
 import { useAuth } from "../../config/auth";
 
 const FieldContainer = styled.div`

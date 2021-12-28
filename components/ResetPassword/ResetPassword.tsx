@@ -5,9 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import styled from "@emotion/styled";
 import { FormikInput } from "../FormikWrappers";
 
-import {
-  resetPasswordForm,
-} from "../AuthForm/constants";
+import { resetPasswordForm } from "../AuthForm/constants";
 import { ResetPasswordWrapper, FormWrapper, InputWrapper } from "./ResetPassword.styles";
 
 const FieldContainer = styled.div`
