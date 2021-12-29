@@ -14,7 +14,7 @@ import {
   StyledListItem,
   StyledListItemText,
   StyledListItemIcon
-} from './MobileMenu.styles';
+} from "./MobileMenu.styles";
 
 export interface MenuItemProps {
   paddingLeft: string;
