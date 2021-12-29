@@ -36,7 +36,7 @@ export const StreamList: React.FC<StreamListProps> = (props) => {
   const router = useRouter();
 
   const handleClick = (i: any) => {
-    console.log(i);
+    // console.log(i);
     router.push(`/tv/${i}`);
   };
 
@@ -55,7 +55,7 @@ export const StreamList: React.FC<StreamListProps> = (props) => {
             const startDate = moment(item.start_date);
             const today = moment();
             const isPast = today.isAfter(startDate);
-            console.log(item.playback_ids[0]);
+            // console.log(item.playback_ids[0]);
             return (
               <SwiperSlide key={index}>
                 <MySlideWrap onClick={() => (isPast ? handleClick(item.playback_ids[0]) : null)}>

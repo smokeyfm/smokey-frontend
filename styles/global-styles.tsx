@@ -168,6 +168,9 @@ export const GlobalStyles = () => (
         .pc-menu-wrap {
           padding-bottom: 30px !important;
         }
+        .bm-overlay {
+          top: 0;
+        }
         #__next {
           display: flex;
           flex-direction: column;
