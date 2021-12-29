@@ -3,7 +3,7 @@ import { slide as BurgerMenu } from "react-burger-menu";
 import { useCart } from "../../hooks/useCart";
 import { cartStyles } from "./cartStyles";
 
-import { CartWrapper, CartButton } from "./CartSidebar.styles";
+import { CartWrapper, CartTitle, CartButton } from "./CartSidebar.styles";
 
 interface Props {
   isVisible: boolean;
@@ -31,11 +31,11 @@ export const CartSidebar = ({ isVisible, toggle }: Props) => {
   return (
     <CartWrapper>
       <CartButton onClick={toggle}>
-        <i className="btb bt-shopping-cart" />
+        <i className="btb bt-lg bt-shopping-cart" />
       </CartButton>
       {/* {isVisible && (
         <div className="cart-modal">
-          <h2>Cart</h2>
+          <CartTitle>Cart</CartTitle>
           <div>{item_count} items in your cart</div>
           <div>Subtotal: {display_item_total}</div>
           <div>Tax: {included_tax_total}</div>
@@ -43,7 +43,7 @@ export const CartSidebar = ({ isVisible, toggle }: Props) => {
         </div>
       )} */}
       <BurgerMenu right isOpen={isVisible} onOpen={toggle} styles={cartStyles} onClose={toggle}>
-        <h2>Cart</h2>
+        <CartTitle>Cart</CartTitle>
         <div>{item_count} items in your cart</div>
         <div>Subtotal: {display_item_total}</div>
         <div>Tax: {included_tax_total}</div>

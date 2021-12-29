@@ -6,10 +6,7 @@ import { fetchMenuLocation, fetchMenuItems, useMenuLocation, useMenuItems } from
 import { MainMenuProps, menuDataItem } from "./types";
 import DesktopMenu from "./DesktopMenu";
 
-import {
-  HiddenOnDesktop,
-  HiddenOnMobile
-} from './MainMenu.styles';
+import { HiddenOnDesktop, HiddenOnMobile } from "./MainMenu.styles";
 import { MobileMenu } from "./MobileMenu";
 
 // const SidebarMenu = styled(List)`
@@ -48,7 +45,9 @@ export const MainMenu = (props: MainMenuProps) => {
     data: menuItemsData,
     isLoading: menuItemsIsLoading,
     isSuccess: menuItemsIsSuccess
-  }: { error: any; status: any; data: any; isLoading: boolean; isSuccess: boolean } = useMenuItems(1);
+  }: { error: any; status: any; data: any; isLoading: boolean; isSuccess: boolean } = useMenuItems(
+    1
+  );
 
   useEffect(() => {
     if (menuItemsIsSuccess && menuLocationIsSuccess) {

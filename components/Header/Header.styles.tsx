@@ -90,6 +90,10 @@ export const HeaderOptions = styled.div`
   }
 `;
 
+export const CartToggle = styled.div`
+  margin: 10px 10px 0 0;
+`;
+
 export const HeaderAccount = styled.div`
   display: flex;
   flex-direction: row;
