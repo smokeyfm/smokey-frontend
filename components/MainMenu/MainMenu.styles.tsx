@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const HiddenOnDesktop = styled.div`
   @media screen and (min-width: 768px) {

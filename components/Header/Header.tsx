@@ -22,6 +22,7 @@ import {
   Category,
   UserIconMo,
   CartMo,
+  CartToggle,
   HeaderAccount,
   HeaderOptions,
   ArrowDown,
@@ -117,9 +118,11 @@ export const Header: React.FC<HeaderProps> = (props) => {
               </Link>
             </HeaderOptions>
           )}
-          <Badge badgeContent={4} color="primary">
-            <CartSidebar isVisible={cartVisible} toggle={toggleCart} />
-          </Badge>
+          <CartToggle>
+            <Badge badgeContent={4} color="primary">
+              <CartSidebar isVisible={cartVisible} toggle={toggleCart} />
+            </Badge>
+          </CartToggle>
         </RightSide>
       </TopHeader>
     </HeaderDiv>

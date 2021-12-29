@@ -1,10 +1,10 @@
 export const menuStyles: any = {
   bmBurgerButton: {
     position: "fixed",
-    width: "36px",
-    height: "30px",
-    left: "1.06vw",
-    top: "3.73vw"
+    width: "33px",
+    height: "18px",
+    left: "15px",
+    top: "16px"
   },
   bmBurgerBars: {
     background: "#000"
