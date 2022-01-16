@@ -8,7 +8,8 @@ import { withWizard } from "react-albus";
 import { AuthFormType, signupForm } from "../AuthForm/constants";
 import { useAuth } from "../../config/auth";
 import { SlideInLeft, SlideOutLeft } from "../Animations";
-import { Questions } from "./Questions";
+// import { Questions } from "./Questions";
+import { Questions } from "./POLQuestions";
 import { Alert } from "../Alerts";
 
 import FormikWizardStepType from "formik-wizard";
@@ -79,9 +80,9 @@ const FormWrapper: React.FC<any> = ({
   // const { step } = this.props;
   const termsAccepted = !!(
     values.acceptSignatureTerms &&
-    values.acceptPrivacyTerms &&
-    values.acceptReportingTerms &&
-    values.acceptAuthorizeTerms
+    values.acceptPrivacyTerms
+    // values.acceptReportingTerms &&
+    // values.acceptAuthorizeTerms
   );
 
   // We assume this method cannot be called on the first step
@@ -136,7 +137,7 @@ const FormWrapper: React.FC<any> = ({
                 }}
                 disabled={isLastStep && !termsAccepted}
               >
-                {actionLabel || (isLastStep ? "Submit" : "Next step")}
+                {actionLabel || (isLastStep ? "Submit" : "Next")}
               </NextButton>
             ) : (
               <NextButton
@@ -150,14 +151,14 @@ const FormWrapper: React.FC<any> = ({
                 }}
                 disabled={isLastStep && !termsAccepted}
               >
-                {actionLabel || (isLastStep ? "Submit" : "Next step")}
+                {actionLabel || (isLastStep ? "Submit" : "Next")}
               </NextButton>
             )}
           </WizardActions>
           {!canGoBack && (
-            <SkipAction>
-              <Link href="/login">Not interested in financing? Skip this..</Link>
-            </SkipAction>
+            <Disclaimer>
+              <Link href="/login">Already have an account?</Link>
+            </Disclaimer>
           )}
           {/* {<div><pre>VALUE: {JSON.stringify(values, null, 2)}</pre></div>} */}
           {canGoBack && (
@@ -199,6 +200,8 @@ export const SignupForm = () => {
     query: `(min-device-width: 768px)`
   });
 
+  const { register } = useAuth();
+
   const handleSubmit = useCallback((values) => {
     new Promise((resolve, reject) => {
       // const { firstName, lastName, middleName, suffix } = values[
@@ -221,6 +224,18 @@ export const SignupForm = () => {
       // )
       // .then(res => resolve('createUser caller res:', res))
       // .catch(err => reject(err));
+
+      register({ user: values })
+        .then((res) => {
+          console.log('yup: ', res);
+          // setSubmitting(false);
+          // router.push("/");
+        })
+        .catch((err) => {
+          console.log('nope: ', err);
+          // setSubmitting(false);
+        });
+
       console.log("new Promise");
       return Promise.resolve({
         code: 200,
@@ -229,19 +244,19 @@ export const SignupForm = () => {
         subtitle: `Your new User ID is: ###`
       });
     })
-      .then((res) => {
-        console.log("handleSubmit res: ", res);
-      })
-      .catch((err) => {
-        console.log("handleSubmit error: ", err);
-        // toggleErrorModal();
-        // setErrorMessage(err);
-        Alert.fire({ icon: "error", title: "Uh oh!", text: err });
-        // return Promise.resolve({
-        //   message: 'Uh oh.',
-        //   subtitle: err
-        // })
-      });
+    .then((res) => {
+      console.log("handleSubmit res: ", res);
+    })
+    .catch((err) => {
+      console.log("handleSubmit error: ", err);
+      // toggleErrorModal();
+      // setErrorMessage(err);
+      Alert.fire({ icon: "error", title: "Uh oh!", text: err });
+      // return Promise.resolve({
+      //   message: 'Uh oh.',
+      //   subtitle: err
+      // })
+    });
   }, []);
 
   // We assume this method cannot be called on the last step
@@ -280,7 +295,18 @@ export const SignupForm = () => {
           <SlideInLeft>
             <FormikWizard
               steps={Questions}
-              onSubmit={handleSubmit}
+              // onSubmit={(values: any, { formikProps: { isSubmitting } }: any) => handleSubmit(values, isSubmitting)}
+              onSubmit={(values) => handleSubmit(values)}
+              // onSubmit={(values) => {
+              //   register({ user: values })
+              //     .then(() => {
+              //       // setSubmitting(false);
+              //       // router.push("/");
+              //     })
+              //     .catch(() => {
+              //       // setSubmitting(false);
+              //     });
+              // }}
               // step={0}
               // validator={() => ({})}
               // albusProps={{step: 0, onNext: (context) => handleSubmit.bind(this, context)}}

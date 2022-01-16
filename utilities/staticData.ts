@@ -8,10 +8,10 @@ const Static = {
   },
   questions: {
     account: {
-      sebastian: "Where should we send your<br />pre-qualification info?",
+      sebastian: "Thanks so much!",
       title: "Almost done!",
-      subtitle: `Just send and save...`,
-      description: `We'll send you a unique code to login and access your terms.`
+      subtitle: `One more step.`,
+      description: `We'll send you a unique code to login.`
     }
   },
   labels: {

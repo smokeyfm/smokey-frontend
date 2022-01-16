@@ -4,7 +4,7 @@ import { Field, useFormikContext } from "formik";
 import { InputAdornment } from "@material-ui/core";
 
 // Local
-import Sebastian from "../../Sebastian";
+import TipBot from "../../TipBot";
 import { FormikIncome } from "../../FormikWrappers";
 import { QuestionWrapper, InputGroupWrapper, InputWrapper } from "./Questions.styles";
 
@@ -15,7 +15,7 @@ export const YearlyIncome = () => {
 
   return (
     <QuestionWrapper>
-      <Sebastian speech={speechMarkup()} />
+      <TipBot speech={speechMarkup()} />
       <InputGroupWrapper>
         <InputWrapper>
           <Field

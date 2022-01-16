@@ -21,8 +21,8 @@ import {
   Term,
   StyledModalContent
 } from "./Questions.styles";
-import { ElectronicSignaturesModal } from "../../Terms/ElectronicSignaturesModal";
-import { FinancialPrivacyModal } from "../../Terms/FinancialPrivacyModal";
+import { PolElectronicSignaturesModal } from "../../POLTerms/ElectronicSignaturesModal";
+import { PolFinancialPrivacyModal } from "../../POLTerms/FinancialPrivacyModal";
 
 export const Account = () => {
   // const { values, form, submitForm } = useFormikContext();
@@ -36,8 +36,8 @@ export const Account = () => {
 
   const [signatureTerms, setSignatureCheckbox] = useState(false);
   const [privacyTerms, setPrivacyCheckbox] = useState(false);
-  const [reportingTerms, setReportingCheckbox] = useState(false);
-  const [authorizeTerms, setAuthorizeCheckbox] = useState(false);
+  // const [reportingTerms, setReportingCheckbox] = useState(false);
+  // const [authorizeTerms, setAuthorizeCheckbox] = useState(false);
 
   const toggleSignatureModal = () => {
     setOpenSignatureModal(!openSignatureModal);
@@ -67,16 +67,6 @@ export const Account = () => {
     // form.setFieldValue(field.name, privacyTerms, false);
   };
 
-  const handleReportingCheckbox = (field: any) => {
-    setReportingCheckbox(!reportingTerms);
-    // form.setFieldValue(field.name, reportingTerms, false);
-  };
-
-  const handleAuthorizeCheckbox = (field: any) => {
-    setAuthorizeCheckbox(!authorizeTerms);
-    // form.setFieldValue(field.name, authorizeTerms, false);
-  };
-
   const speechMarkup = useCallback(() => {
     return { __html: Static.questions.account.sebastian };
   }, []);
@@ -87,17 +77,13 @@ export const Account = () => {
 
   return (
     <QuestionWrapper>
-      <TipBot speech={speechMarkup()} />
+      {/* <TipBot speech={speechMarkup()} /> */}
       <InputGroupWrapper>
         <Title>{parse(title)}</Title>
-        <Subtitle>{parse(subtitle)}</Subtitle>
+        {/* <Subtitle>{parse(subtitle)}</Subtitle> */}
         <Description>{parse(description)}</Description>
         <InputWrapper>
           <Field name="phoneNumber" id="phoneNumber" component={FormikPhone} label="Phone" />
-        </InputWrapper>
-
-        <InputWrapper>
-          <Field name="email" id="email" component={FormikInput} label="Email" />
         </InputWrapper>
 
         <InputWrapper>
@@ -173,17 +159,17 @@ export const Account = () => {
               </TermsStatement>
             </Term>
             <Term>
-              <Field type="checkbox" name="acceptReportingTerms">
+              <Field type="checkbox" name="acceptSignatureTerms">
                 {(formikProps: any) => (
                   <FormikCheckbox
                     {...formikProps}
                     nextTerm={nextSlide}
-                    accepted={reportingTerms}
-                    handleTermCheckbox={handleReportingCheckbox}
+                    accepted={signatureTerms}
+                    handleTermCheckbox={handleSignatureCheckbox}
                   />
                 )}
               </Field>
-              <TermsStatement accepted={reportingTerms}>
+              <TermsStatement accepted={signatureTerms}>
                 By clicking &quot;Signup&quot; I agree to the&nbsp;
                 <button type="button" onClick={toggleSignatureModal}>
                   Terms &amp; Conditions
@@ -225,36 +211,37 @@ export const Account = () => {
           </Carousel>
 
           <Modal
-            aria-labelledby="modal-title"
-            aria-describedby="modal-description"
+            // aria-labelledby="modal-title"
+            // aria-describedby="modal-description"
             onClose={toggleSignatureModal}
             open={openSignatureModal}
           >
             <StyledModalContent>
-              <ElectronicSignaturesModal />
-              <button
+              {/* <PolElectronicSignaturesModal handleClose={() => setOpenSignatureModal(!openSignatureModal)} /> */}
+              <PolElectronicSignaturesModal />
+              {/* <button
                 onClick={togglePrivacyModal}
                 role="button"
                 onKeyDown={togglePrivacyModal}
                 tabIndex={0}
-              ></button>
+              >Signature</button> */}
             </StyledModalContent>
           </Modal>
 
           <Modal
-            aria-labelledby="modal-title"
-            aria-describedby="modal-description"
+            // aria-labelledby="modal-title"
+            // aria-describedby="modal-description"
             onClose={togglePrivacyModal}
             open={openPrivacyModal}
           >
             <StyledModalContent>
-              <FinancialPrivacyModal />
-              <button
+              <PolFinancialPrivacyModal />
+              {/* <button
                 onClick={togglePrivacyModal}
                 role="button"
                 onKeyDown={togglePrivacyModal}
                 tabIndex={0}
-              ></button>
+              >Close</button> */}
             </StyledModalContent>
           </Modal>
         </TermsWrapper>

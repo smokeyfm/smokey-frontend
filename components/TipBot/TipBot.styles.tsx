@@ -15,18 +15,19 @@ const FadeInOut = styled.div`
 const width = 100;
 const height = width * 0.5;
 
-export const SebastianWrapper = styled.div`
+export const TipBotWrapper = styled.div`
   position: relative;
   top: -150px;
   left: 0px;
   ${"" /* width: 105%; */}
 `;
 
-export const SebastianImage = styled.div`
+export const TipBotImage = styled.div`
   position: relative;
-  left: 25px;
-  bottom: -25px;
-  background: url("${process.env.CVNA_APP_CDN_URL}/images/sebastian2.png") no-repeat;
+  left: 50%;
+  margin-left: -24px;
+  bottom: -20px;
+  background: url("/tip-bot.png") no-repeat;
   background-size: 48px 48px;
   width: 48px;
   height: 48px;
@@ -82,7 +83,7 @@ export const BubbleWrapper = styled.div`
     left: 80px;
     bottom: -30px;
     content: " ";
-    background: url("${process.env.CVNA_APP_CDN_URL}/images/bubble-arrow.svg") no-repeat;
+    background: url("images/bubble-arrow.svg") no-repeat;
     background-size: 29px 16px;
     width: 29px;
     height: 16px;

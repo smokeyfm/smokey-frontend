@@ -27,6 +27,7 @@ export const FormikAutocomplete = ({
   fields: { ...fields },
   form: { setFieldValue, touched, errors },
   form,
+  addressType,
   ...props
 }: any) => {
   const [homeAddress, setHomeAddress] = useState("");
@@ -51,6 +52,8 @@ export const FormikAutocomplete = ({
     setFieldValue(address.name, address.address, false);
   };
 
+  const addressTitle = addressType ? addressType + ' ' : null;
+
   return (
     <>
       <PlacesAutocomplete
@@ -62,7 +65,7 @@ export const FormikAutocomplete = ({
           <>
             <TextField
               {...getInputProps({
-                label: "Home Address",
+                label: addressTitle ? addressTitle + 'Address' : 'Address',
                 className: "location-search-input"
               })}
               type="text"
