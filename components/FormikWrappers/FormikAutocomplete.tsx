@@ -52,7 +52,7 @@ export const FormikAutocomplete = ({
     setFieldValue(address.name, address.address, false);
   };
 
-  const addressTitle = addressType ? addressType + ' ' : null;
+  const addressTitle = addressType ? addressType + " " : null;
 
   return (
     <>
@@ -65,7 +65,7 @@ export const FormikAutocomplete = ({
           <>
             <TextField
               {...getInputProps({
-                label: addressTitle ? addressTitle + 'Address' : 'Address',
+                label: addressTitle ? addressTitle + "Address" : "Address",
                 className: "location-search-input"
               })}
               type="text"

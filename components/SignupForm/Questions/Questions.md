@@ -2,32 +2,32 @@
 
 ## Personal Details
 
-- First name*
-- Last name*
+- First name\*
+- Last name\*
 - DoB
-- Email*
+- Email\*
 
 ## Company Details
 
-- Company Name*
-- Reseller's Permit Number*
+- Company Name\*
+- Reseller's Permit Number\*
 
 ## Your Address
 
-- Street Address*
-- Zip / Postal Code*
-- City*
-- Country*
-- State / Province*
+- Street Address\*
+- Zip / Postal Code\*
+- City\*
+- Country\*
+- State / Province\*
 
 ## Your Contact Information
 
-- Phone*
+- Phone\*
 
 ## Your Password
 
-- Password*
-- Password Confirmation*
+- Password\*
+- Password Confirmation\*
 
 ## I'm not a robot
 

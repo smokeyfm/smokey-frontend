@@ -82,7 +82,7 @@ const Products: React.FC<ProductsProps> = (props) => {
                 </ProductDescBox>
               </MySlideWrap>
             </SwiperSlide>
-          )
+          );
         })}
       </Swiper>
     </MySwiperWrap>

@@ -18,11 +18,7 @@ export const DateOfBirth = () => {
   return (
     <QuestionWrapper>
       <TipBot speech={speechMarkup()} />
-      <InputGroupWrapper>
-        
-        
-
-      </InputGroupWrapper>
+      <InputGroupWrapper></InputGroupWrapper>
     </QuestionWrapper>
   );
 };

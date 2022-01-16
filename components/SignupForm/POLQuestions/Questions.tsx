@@ -107,7 +107,7 @@ export const Questions: QuestionsType[] = [
         .max(
           new Date(today.getFullYear() - 18, today.getMonth(), today.getDate()),
           Static.errors.maxDateOfBirth
-      ),
+        ),
       email: string().defined(Static.errors.isRequired)
     }),
     actionLabel: "Next"

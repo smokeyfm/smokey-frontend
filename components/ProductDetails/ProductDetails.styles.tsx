@@ -32,8 +32,7 @@ export const Detail = styled.h3`
   }
 `;
 
-export const Price = styled.h1`
-`;
+export const Price = styled.h1``;
 
 export const SizesTitle = styled.p`
   text-align: left;
@@ -48,21 +47,21 @@ export const Size = styled.div`
   display: grid;
   grid-template-columns: 50% 50%;
   align-items: center;
-  border: 1px solid ${p => p.theme.colors.black.light};
+  border: 1px solid ${(p) => p.theme.colors.black.light};
   margin: 0 10px 0 0;
   &:last-child {
     margin: 0;
   }
 `;
-  
+
 export const SizeQty = styled.div`
-  border-right: 1px solid ${p => p.theme.colors.black.light};
+  border-right: 1px solid ${(p) => p.theme.colors.black.light};
   // padding: 4px 6px;
 `;
 
 export const SizeTitle = styled.div`
   // padding: 4px 6px;
-  background: ${p => p.theme.colors.gray.background};
+  background: ${(p) => p.theme.colors.gray.background};
   text-transform: uppercase;
 `;
 
@@ -82,20 +81,19 @@ export const ColorsTable = styled.div`
   margin: 40px 0 40px 0;
 `;
 
-export const ColorsHead = styled.div`
-`;
+export const ColorsHead = styled.div``;
 
 export const ColorsTH = styled.div`
   display: grid;
   grid-template-columns: 40% 20% 20% 20%;
-  background: ${p => p.theme.colors.brand.primary};
-  color: ${p => p.theme.colors.white.primary};
+  background: ${(p) => p.theme.colors.brand.primary};
+  color: ${(p) => p.theme.colors.white.primary};
 `;
 
 export const ColorsBody = styled.div`
-  border-left: 1px solid ${p => p.theme.colors.black.light};
-  border-right: 1px solid ${p => p.theme.colors.black.light};
-  border-bottom: 1px solid ${p => p.theme.colors.black.light};
+  border-left: 1px solid ${(p) => p.theme.colors.black.light};
+  border-right: 1px solid ${(p) => p.theme.colors.black.light};
+  border-bottom: 1px solid ${(p) => p.theme.colors.black.light};
 `;
 
 export const ColorsRow = styled.div`
@@ -118,7 +116,7 @@ export const ColorsCell = styled.div`
       margin: 0;
     }
   }
-  & input[type=number] {
+  & input[type="number"] {
     -moz-appearance: textfield;
   }
 `;

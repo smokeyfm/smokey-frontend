@@ -6,11 +6,7 @@ import { Button } from "@material-ui/core";
 // Local
 import TipBot from "../../TipBot";
 import { FormikInput } from "../../FormikWrappers";
-import {
-  QuestionWrapper,
-  InputGroupWrapper,
-  InputWrapper
-} from "./Questions.styles";
+import { QuestionWrapper, InputGroupWrapper, InputWrapper } from "./Questions.styles";
 
 export const CompanyDetails = () => {
   // const { errors, touched } = useFormikContext()
@@ -24,10 +20,22 @@ export const CompanyDetails = () => {
       <TipBot speech={speechMarkup()} />
       <InputGroupWrapper>
         <InputWrapper>
-          <Field name="companyName" id="companyName" component={FormikInput} label="Company Name" required />
+          <Field
+            name="companyName"
+            id="companyName"
+            component={FormikInput}
+            label="Company Name"
+            required
+          />
         </InputWrapper>
         <InputWrapper>
-          <Field name="permitNumber" id="permitNumber" component={FormikInput} label="Reseller's Permit Number" required />
+          <Field
+            name="permitNumber"
+            id="permitNumber"
+            component={FormikInput}
+            label="Reseller's Permit Number"
+            required
+          />
         </InputWrapper>
       </InputGroupWrapper>
     </QuestionWrapper>
