@@ -79,7 +79,12 @@ const FormWrapper: React.FC<any> = ({
 
   // const { step } = this.props;
   const termsAccepted = !!(
+<<<<<<< HEAD
     (values.acceptSignatureTerms && values.acceptPrivacyTerms)
+=======
+    values.acceptSignatureTerms &&
+    values.acceptPrivacyTerms
+>>>>>>> 9a38330 (tons of Product details upgrades, tons of stuff, terms & conditions, footer, hooks)
     // values.acceptReportingTerms &&
     // values.acceptAuthorizeTerms
   );
@@ -226,12 +231,20 @@ export const SignupForm = () => {
 
       register({ user: values })
         .then((res) => {
+<<<<<<< HEAD
           console.log("yup: ", res);
+=======
+          console.log('yup: ', res);
+>>>>>>> 9a38330 (tons of Product details upgrades, tons of stuff, terms & conditions, footer, hooks)
           // setSubmitting(false);
           // router.push("/");
         })
         .catch((err) => {
+<<<<<<< HEAD
           console.log("nope: ", err);
+=======
+          console.log('nope: ', err);
+>>>>>>> 9a38330 (tons of Product details upgrades, tons of stuff, terms & conditions, footer, hooks)
           // setSubmitting(false);
         });
 
@@ -243,19 +256,19 @@ export const SignupForm = () => {
         subtitle: `Your new User ID is: ###`
       });
     })
-      .then((res) => {
-        console.log("handleSubmit res: ", res);
-      })
-      .catch((err) => {
-        console.log("handleSubmit error: ", err);
-        // toggleErrorModal();
-        // setErrorMessage(err);
-        Alert.fire({ icon: "error", title: "Uh oh!", text: err });
-        // return Promise.resolve({
-        //   message: 'Uh oh.',
-        //   subtitle: err
-        // })
-      });
+    .then((res) => {
+      console.log("handleSubmit res: ", res);
+    })
+    .catch((err) => {
+      console.log("handleSubmit error: ", err);
+      // toggleErrorModal();
+      // setErrorMessage(err);
+      Alert.fire({ icon: "error", title: "Uh oh!", text: err });
+      // return Promise.resolve({
+      //   message: 'Uh oh.',
+      //   subtitle: err
+      // })
+    });
   }, []);
 
   // We assume this method cannot be called on the last step
