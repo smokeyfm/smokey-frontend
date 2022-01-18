@@ -117,14 +117,14 @@ export const theme = {
       fontFamily: "Bebas Neue",
       fontWeight: "normal",
       fontSize: "14px",
-      lineHeight: "150%",
+      lineHeight: "1.5rem",
       color: "#000"
     },
     bodyMD: {
       fontFamily: "Roboto",
       fontWeight: "normal",
       fontSize: "18px",
-      lineHeight: "18px",
+      lineHeight: "20px",
       color: "#000"
     },
     bodySM: {
@@ -137,8 +137,8 @@ export const theme = {
     bodyXXS: {
       fontFamily: "Roboto",
       fontWeight: "normal",
-      fontSize: "6.2699px",
-      lineHeight: "7px",
+      fontSize: "6px",
+      lineHeight: "8px",
       color: "#000"
     }
   },

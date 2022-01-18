@@ -13,50 +13,59 @@ import { StreamList } from "../StreamList";
 import PolProductList from "../PolProductList";
 import { useMediaQuery } from "react-responsive";
 import MobileLatest from "./MobileLatest";
+import { Loading } from "../Loading";
 import homeData from "./home.json";
 export const Home = (props: any) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const {
-    error: productError,
-    status: productStatus,
-    data: productData,
+    error: productsError,
+    status: productsStatus,
+    data: productsData,
     isLoading: productsAreLoading,
-    isSuccess: productIsSuccess
+    isSuccess: productsIsSuccess
   }: { error: any; status: any; data: any; isLoading: boolean; isSuccess: boolean } = useProducts(
     1
   );
 
   const {
-    error: streamError,
-    status: streamStatus,
-    data: streamData,
+    error: streamsError,
+    status: streamsStatus,
+    data: streamsData,
     isLoading: streamsAreLoading,
-    isSuccess: streamIsSuccess
+    isSuccess: streamsAreSuccess
   }: { error: any; status: any; data: any; isLoading: boolean; isSuccess: boolean } = useStreams(1);
 
   const memberList = isMobile ? null : <MemberList data={homeData.memberList} />;
   const mobileMemberList = !isMobile ? null : <MemberList data={homeData.memberList} />;
   const advertList = isMobile ? null : <LatestProducts data={homeData.latestProducts} title="" />;
   const advertListMobile = isMobile ? (
-    <MobileLatest data={homeData.hotDigs} title={""}></MobileLatest>
+    <MobileLatest data={productsData} title={""}></MobileLatest>
   ) : null;
   const polProductList = isMobile ? null : (
     // <PolProductList data={homeData.hotDigs} title={"New Drops This Week"} />
-    <PolProductList data={productData} title={"New Drops This Week"} />
+    <PolProductList data={productsData} title={"New Drops This Week"} />
   );
   const banner = isMobile ? null : <Banner data={homeData.bigHotDig} />;
 
   useEffect(() => {
-    console.log(streamData?.response_data, productData);
+    // console.log(streamsData?.response_data, productsData);
   }, []);
+
+  if (productsAreLoading || streamsAreLoading) {
+    return <Loading />;
+  }
+
+  if (productsError || streamsError) {
+    return <Loading />;
+  }
 
   return (
     <Layout>
       <Hero />
       <Content>
         {/* {memberList} */}
-        <StreamList data={streamData?.response_data} title={"Live-Shopping"} />
+        <StreamList data={streamsData?.response_data} title={"Live-Shopping"} />
         {/* {mobileMemberList} */}
         {advertList}
         {advertListMobile}

@@ -1,6 +1,7 @@
 import React from "react";
 import Rating from "@material-ui/lab/Rating";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { ProductCard } from "../..";
 import {
   InfluencerAvatar,
   InfluencerBox,
@@ -54,33 +55,7 @@ const Products: React.FC<ProductsProps> = (props) => {
           console.log(item);
           return (
             <SwiperSlide key={index}>
-              <MySlideWrap>
-                <ProductImgOutterBox>
-                  {item.status == 1 || item.status == 3 ? <ProductMask /> : null}
-                  {item.status == 1 ? (
-                    <MaskTitleChecked>
-                      StreamING LIVE &nbsp;&nbsp;&nbsp; 12 pm PST &nbsp;&nbsp;&nbsp; Check Back SOon
-                    </MaskTitleChecked>
-                  ) : null}
-                  {item.status == 3 ? <MaskTitle>Stream Ended Watch Replay</MaskTitle> : null}
-                  <ProductImg src={item.img} alt={""} />
-                  <InfluencerBox>
-                    <InfluencerAvatar src={item.avatar} />
-                    <InfluencerName as={"span"}>{item.influencer}</InfluencerName>
-                  </InfluencerBox>
-                </ProductImgOutterBox>
-                <MyProductTitle>{item.title}</MyProductTitle>
-                <ProductDescBox>
-                  {/* <Rating
-                    size={isMobile ? "small" : "large"}
-                    name="simple-controlled"
-                    value={item.rate}
-                  />*/}
-                  <MyProductSubTitle>{item.subTitle}</MyProductSubTitle>
-                  <MyProductSubText>{item.subText}</MyProductSubText>
-                  <ProductPrice as={"span"}>{item.viewer + "  Viewers"}</ProductPrice>
-                </ProductDescBox>
-              </MySlideWrap>
+              <ProductCard item={item} />
             </SwiperSlide>
           );
         })}

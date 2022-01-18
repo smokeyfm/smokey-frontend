@@ -1,69 +1,48 @@
 import React from "react";
-import styled from "@emotion/styled";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
-const ProductRecommendation = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  @media screen and (max-width: 800px) {
-    justify-content: space-between;
-  }
-`;
+import {
+  ProductCardWrapper,
+  ProductImgWrapper,
+  ProductImg,
+  ProductTitle,
+  ProductDesc,
+  ProductFooter,
+  ProductFooterLeft,
+  ProductFooterRight,
+  // ProductRate,
+  Price,
+  ThreeDot,
+  Dot1,
+  Dot2,
+  Dot3
+} from "./ProductCard.styles";
 
-const Card = styled.div`
-  transition: 0.3s;
-  max-width: 250px;
-  max-height: 600px;
-  display: block;
-  margin-right: 20px;
-  cursor: pointer;
-  @media screen and (max-width: 800px) {
-    max-width: 48%;
-    max-height: auto;
-    margin: 0px;
-  }
-`;
-
-const CardImg = styled.img`
-  @media screen and (max-width: 800px) {
-    width: 100%;
-    height: auto;
-  }
-`;
-
-const CardTitle = styled.h4`
-  margin: 3px;
-`;
-
-const CardDetails = styled.p`
-  margin: 3px;
-  font-size: 15px;
-`;
-
-const StarChecked = styled.span`
-  color: orange;
-`;
-
-export const ProductCard = () => {
+export const ProductCard = ({ imgSrc, item }: any) => {
+  const router = useRouter();
+  // console.log(item);
   return (
-    <ProductRecommendation>
-      <Link href="/">
-        <Card>
-          <CardImg src="https://via.placeholder.com/250x400" />
-          <div className="card-container">
-            <CardTitle>"stuff"</CardTitle>
-            <CardDetails>{"Online Exclusive".toUpperCase()}</CardDetails>
-            <div>
-              <StarChecked className="fa fa-star"></StarChecked>
-              <StarChecked className="fa fa-star"></StarChecked>
-              <StarChecked className="fa fa-star"></StarChecked>
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
-            </div>
-            <h4>$34.55</h4>
-          </div>
-        </Card>
-      </Link>
-    </ProductRecommendation>
+    <ProductCardWrapper onClick={(e) => router.push(`${item.attributes.slug}`)}>
+      <>
+        <ProductImgWrapper>
+          <ProductImg src={imgSrc} />
+        </ProductImgWrapper>
+        <ProductFooter>
+          <ProductFooterLeft>
+            <ProductTitle>{item.attributes.name}</ProductTitle>
+            {/* <ProductDesc>{item.attributes.description}</ProductDesc> */}
+            <ThreeDot>
+              <Dot1 as={"span"}></Dot1>
+              <Dot2 as={"span"}></Dot2>
+              <Dot3 as={"span"}></Dot3>
+            </ThreeDot>
+          </ProductFooterLeft>
+          <ProductFooterRight>
+            {/* <ProductRate name="simple-controlled" value={item.attributes.rate} /> */}
+            <Price>${item.attributes.price}</Price>
+          </ProductFooterRight>
+        </ProductFooter>
+      </>
+    </ProductCardWrapper>
   );
 };

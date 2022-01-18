@@ -5,6 +5,7 @@ import { slide as BurgerMenu } from "react-burger-menu";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
+import { SocialLinks } from "../";
 import { menuStyles } from "./menuStyles";
 
 import { MenuToggle, MenuFooter } from "./MainMenu.styles";
@@ -23,10 +24,15 @@ export interface MenuItemProps {
 const MenuItem = styled(StyledListItem, {
   shouldForwardProp: (prop) => isPropValid(prop) && prop !== "paddingLeft"
 })<MenuItemProps>`
-  padding-left: ${(props) => props.paddingLeft}!important;
+  padding: 0 0 0 ${(props) => props.paddingLeft} !important;
+  margin: 5px 0;
+  & div span {
+    font-family: "Bebas Neue";
+  }
 `;
 
 export const MobileMenu = ({ showMenuHeader, onMenuItemClick, menusData }: any) => {
+  const currYear = new Date().getFullYear();
   const [open, setOpen] = useState(false);
   const toggleMenu = () => setOpen((value: any) => !value);
 
@@ -120,11 +126,16 @@ export const MobileMenu = ({ showMenuHeader, onMenuItemClick, menusData }: any) 
       {/* {getSubMenuItem(menuItemsData && menuItemsData?.response_data.menu_location_listing[0], "", 0)} */}
       {getSubMenuItem(menusData, "", 0)}
       <MenuItem paddingLeft={"10px"} onClick={() => console.log("login")} button>
+        <hr />
         Login
       </MenuItem>
+      <SocialLinks />
       <MenuFooter>
-        <div>Privacy Policy - Terms &amp; Conditions - RETURN POLICY</div>
-        <div>All Materials Copyright © 2021 POL Clothing</div>
+        <div>
+          <a href="/privacy">Privacy Policy</a> - <a href="/terms">Terms &amp; Conditions</a> -
+          RETURN POLICY
+        </div>
+        <div>All Materials Copyright © {currYear} POL Clothing</div>
       </MenuFooter>
     </BurgerMenu>
   );

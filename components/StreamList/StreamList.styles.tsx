@@ -10,7 +10,7 @@ export const Title = styled(XlargeTitle)`
     margin-bottom: ${pxIphone(19)};
   }
 `;
-export const MySwiperWrap = styled.div`
+export const StreamListWrapper = styled.div`
   margin-top: ${pxPC(30)};
   overflow: hidden;
   @media (max-width: 375px) {

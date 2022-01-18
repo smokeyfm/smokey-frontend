@@ -1,55 +1,41 @@
 import styled from "@emotion/styled";
+import Link from "next/link";
 import Rating from "@material-ui/lab/Rating";
 import { pxPC } from "../../utils";
-import { XlargeTitle, ProductTitle, DescText, PriceText } from "../../styles/BaseStyles";
-export const Container = styled.div`
-  margin-top: ${pxPC(30)};
+import { XlargeTitle, DescText, PriceText } from "../../styles/BaseStyles";
 
-  & div div:first-of-type {
-    margin: 0 0 0 10px;
-  }
-`;
-export const Title = styled(XlargeTitle)`
-  margin-bottom: ${pxPC(26)};
-`;
-export const ProductBox = styled.div`
+export const ProductCardWrapper = styled.div`
   margin-top: ${pxPC(30)};
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  cursor: pointer;
 `;
-export const ProductItem = styled.div`
-  margin-right: ${pxPC(26)};
-  width: ${pxPC(319)};
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-`;
-export const ProductImgOutterBox = styled.div`
-  height: ${pxPC(478)};
+
+export const ProductImgWrapper = styled.div`
   width: 100%;
+  height: ${pxPC(478)};
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+
+  @media (max-width: ${(p) => p.theme.breakpoints.values.sm}) {
+    flex-direction: column;
+  }
 `;
 export const ProductImg = styled.img`
   object-fit: cover;
   width: 100%;
+  height: 100%;
 `;
-export const MyProductTitle = styled(ProductTitle)`
-  margin-top: ${pxPC(3)};
+export const ProductTitle = styled.h4`
+  font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
 `;
-export const ProductDesc = styled(DescText)`
-  margin-top: ${pxPC(3)};
+export const ProductDesc = styled.p`
+  font-weight: 100;
 `;
 export const ProductFooter = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   align-self: stretch;
 `;
 export const ProductFooterLeft = styled.div``;
@@ -57,8 +43,8 @@ export const ProductFooterRight = styled.div``;
 export const ProductRate = styled(Rating)`
   margin-top: ${pxPC(18)};
 `;
-export const Price = styled(PriceText)`
-  margin-top: ${pxPC(11)};
+export const Price = styled.h3`
+  font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
   text-align: right;
 `;
 export const ThreeDot = styled.div`

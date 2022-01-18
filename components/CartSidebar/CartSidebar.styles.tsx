@@ -11,7 +11,6 @@ export const CartTitle = styled.h2`
 export const CartButton = styled.div`
   cursor: pointer;
   background: none;
-
   @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
     margin: 0 -5px 0 0;
   }

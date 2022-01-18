@@ -11,9 +11,11 @@ import SearchBar from "../SearchBar";
 import { MainMenu } from "../MainMenu";
 import { menusData } from "../MainMenu/data/menusData";
 import { CartSidebar } from "../CartSidebar/CartSidebar";
+import { SocialLinks } from "..";
 
 import {
   TopHeader,
+  LeftSide,
   RightSide,
   LogoDiv,
   HeaderDiv,
@@ -68,6 +70,11 @@ export const Header: React.FC<HeaderProps> = (props) => {
   return (
     <HeaderDiv>
       <TopHeader>
+        {!isMobile && (
+          <LeftSide>
+            <SocialLinks />
+          </LeftSide>
+        )}
         <LogoDiv>
           <Link href="/">
             <LinkDiv isActive>

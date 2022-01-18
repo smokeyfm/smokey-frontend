@@ -56,6 +56,22 @@ export const Category = styled.a`
   padding: 15px;
 `;
 
+export const LeftSide = styled.div`
+  width: auto;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+
+  @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+    justify-content: flex-end;
+  }
+`;
+
 export const RightSide = styled.div`
   width: auto;
   display: flex;
@@ -109,7 +125,7 @@ export const HeaderAccount = styled.div`
 
 export const AccountEmail = styled.div`
   display: flex;
-  justify-contents: center;
+  justify-content: center;
   align-items: center;
   margin: 0 10px;
 `;
@@ -165,4 +181,43 @@ export const CartMo = styled.img`
 export const CustomIcon = styled.img`
   width: ${pxIphone(37)};
   height: auto;
+`;
+
+export const CameraIcon = styled.img`
+  width: 11px;
+  height: auto;
+  margin-right: 3.88px;
+  @media (max-width: 375px) {
+    width: 20.71px;
+    height: auto;
+    margin-right: 7.76px;
+  }
+`;
+export const FacebookIcon = styled.img`
+  width: 6.81px;
+  height: auto;
+  margin-right: 3.88px;
+  @media (max-width: 375px) {
+    width: 13.63px;
+    height: auto;
+    margin-right: 7.76px;
+  }
+`;
+export const PlayIcon = styled.img`
+  width: 12.29px;
+  height: auto;
+  margin-right: 3.88px;
+  @media (max-width: 375px) {
+    width: 24.59px;
+    height: auto;
+    margin-right: 7.76px;
+  }
+`;
+export const CircleIcon = styled.img`
+  width: 10.35px;
+  height: auto;
+  @media (max-width: 375px) {
+    width: 20.71px;
+    height: auto;
+  }
 `;

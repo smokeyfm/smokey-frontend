@@ -105,7 +105,12 @@ export const ProductDetails = ({ wholesale }: any) => {
     isSuccess: variantsAreSuccess
   } = useVariants(1, thisProductId);
 
-  const polProductList = isMobile ? null : <PolProductList data={productsData} title={"HOTDIGS"} />;
+  const similarProducts = isMobile ? null : (
+    <PolProductList data={productsData} title={"Similar Products"} />
+  );
+  const recommendedProducts = isMobile ? null : (
+    <PolProductList data={productsData} title={"Recommended for You"} />
+  );
   const latestProducts = isMobile ? null : (
     <LatestProducts data={homeData.latestProducts} title="" />
   );
@@ -324,7 +329,7 @@ export const ProductDetails = ({ wholesale }: any) => {
                       <ColorsCell>Pack Price</ColorsCell>
                     </ColorsTH>
                   </ColorsHead>
-                  <ColorsBody>{renderColorOptions(colorOptions)}</ColorsBody>
+                  {/* <ColorsBody>{renderColorOptions(colorOptions)}</ColorsBody> */}
                 </ColorsTable>
                 // <table>
                 //   <thead>
@@ -397,47 +402,8 @@ export const ProductDetails = ({ wholesale }: any) => {
           </ProductInfoBox>
         </ProductContainer>
 
-        <h3>you may also like:</h3>
-        {polProductList ? polProductList : <></>}
-
-        <style jsx>
-          {`
-            .slider-wrapper {
-              width: 760px;
-              margin: auto;
-            }
-            .slick-slide {
-              text-align: center;
-              position: relative;
-            }
-            .slick-slide:focus {
-              outline: none;
-            }
-            .slick-slide-title {
-              text-transform: capitalize;
-            }
-            .slick-slide-image {
-              max-width: 100%;
-              height: auto;
-              border-radius: 8px;
-              box-shadow: 0 13px 27px -5px hsla(240, 30.1%, 28%, 0.25),
-                0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03);
-            }
-            .slick-slide-label {
-              color: #fff;
-              padding: 10px;
-              position: absolute;
-              left: 0px;
-              font-size: 1.5em;
-              bottom: 0px;
-              width: 100%;
-            }
-            .slick-prev:before,
-            .slick-next:before {
-              color: #777777;
-            }
-          `}
-        </style>
+        {similarProducts ? similarProducts : <></>}
+        {recommendedProducts ? recommendedProducts : <></>}
       </Layout>
     );
   }

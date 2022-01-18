@@ -10,7 +10,6 @@ const Banner: React.FC<BannerProps> = (props) => {
   const { data } = props;
   return (
     <BannerContainer>
-      <BannerTitle>HOT DIGS</BannerTitle>
       <BannerImg src={data.img} />
       <BannerBtn>BUTTON</BannerBtn>
     </BannerContainer>
