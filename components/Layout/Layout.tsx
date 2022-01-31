@@ -7,6 +7,7 @@ import columns from "../Footer/footer.json";
 
 import { Container, Content, Logo } from "./Layout.styles";
 
+
 type LogoTypeFC = {
   imageFile: string;
   darkMode?: boolean;
@@ -14,13 +15,14 @@ type LogoTypeFC = {
 
 export const MyLogo = ({ imageFile, darkMode }: LogoTypeFC) => (
   <Logo src={imageFile} darkMode={darkMode || false} />
-);
-
-export const Layout: React.FC<LayoutProps> = ({
-  children
-}: {
-  children: JSX.Element[] | JSX.Element;
-}) => {
+  );
+  
+  export const Layout: React.FC<LayoutProps> = ({
+    children
+  }: {
+    children: JSX.Element[] | JSX.Element;
+  }) => {
+  const darkMode = (process.env.IS_DARK_MODE === "true");
   return (
     <Container>
       <Content>
@@ -29,7 +31,7 @@ export const Layout: React.FC<LayoutProps> = ({
           {({ css, cx }) => (
             <Footer
               footerData={{
-                logo: <MyLogo imageFile="/logo.png" darkMode={false} />,
+                logo: <MyLogo imageFile="/logo.png" darkMode={darkMode} />,
                 columns
               }}
             />
