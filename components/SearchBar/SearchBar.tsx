@@ -29,6 +29,7 @@ import * as tracking from "../../config/tracking";
 import { Search } from "@material-ui/icons";
 
 const SearchBar = ({
+  darkMode,
   placeholder = "Search...",
   autoComplete = true,
   value = "",
@@ -149,13 +150,14 @@ const SearchBar = ({
       <SearchBarWrapper className="is-search-route">
         <SearchInputWrapper>
           <StyledInputContainer isExpanded={isExpanded} isWidthSet={isWidthSet}>
-            <StyledInputPrefix>
+            <StyledInputPrefix darkMode={darkMode}>
               <i
                 onClick={toggleSearch}
                 className={isSearchLoading ? "bts bt-spinner bt-pulse" : "btr bt-search"}
               ></i>
             </StyledInputPrefix>
             <StyledInput
+              darkMode={!darkMode}
               ref={searchRef}
               onKeyDown={(e: KeyboardEvent) => keyboardEvents(e)}
               tabIndex={0}
@@ -169,7 +171,7 @@ const SearchBar = ({
               autoComplete="off"
             />
             {query && (
-              <StyledInputPostfix onClick={handleSearchClear}>
+              <StyledInputPostfix onClick={handleSearchClear} darkMode={darkMode}>
                 <i className="btr bt-times"></i>
               </StyledInputPostfix>
             )}

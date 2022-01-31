@@ -50,6 +50,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
   const toggleAccount = () => setAccountVisible((isVisible) => !isVisible);
 
   const isMaint = process.env.IS_MAINT_MODE;
+  const darkMode = (process.env.IS_DARK_MODE === "true");
 
   const handleAccount = (event: any) => {
     setAccountElem(event.currentTarget);
@@ -78,12 +79,12 @@ export const Header: React.FC<HeaderProps> = (props) => {
         <LogoDiv>
           <Link href="/">
             <LinkDiv isActive>
-              <MyLogo imageFile="/logo.png" isDark />
+              <MyLogo imageFile="/logo.png" darkMode />
             </LinkDiv>
           </Link>
         </LogoDiv>
         <RightSide>
-          {isMobile ? null : <SearchBar />}
+          {isMobile ? null : <SearchBar darkMode={darkMode} />}
           {user ? (
             <HeaderAccount>
               <AccountEmail aria-describedby={accountId} onClick={handleAccount}>

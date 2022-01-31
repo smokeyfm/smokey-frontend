@@ -9,11 +9,11 @@ import { Container, Content, Logo } from "./Layout.styles";
 
 type LogoTypeFC = {
   imageFile: string;
-  isDark?: boolean;
+  darkMode?: boolean;
 };
 
-export const MyLogo = ({ imageFile, isDark }: LogoTypeFC) => (
-  <Logo src={imageFile} isDark={isDark || false} />
+export const MyLogo = ({ imageFile, darkMode }: LogoTypeFC) => (
+  <Logo src={imageFile} darkMode={darkMode || false} />
 );
 
 export const Layout: React.FC<LayoutProps> = ({
@@ -29,7 +29,7 @@ export const Layout: React.FC<LayoutProps> = ({
           {({ css, cx }) => (
             <Footer
               footerData={{
-                logo: <MyLogo imageFile="/logo.png" isDark={false} />,
+                logo: <MyLogo imageFile="/logo.png" darkMode={false} />,
                 columns
               }}
             />

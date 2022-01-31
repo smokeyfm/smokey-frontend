@@ -27,6 +27,20 @@ interface StyledInputContainerType {
   isWidthSet: boolean;
 }
 
+export interface WithThemeType {
+  darkMode?: boolean;
+  theme?: {
+    colors: {
+      blue: {
+        primary: string;
+      };
+      gray: {
+        medium: string;
+      };
+    };
+  };
+}
+
 // Get Search input expanded, fitting nice with suggestion dropdown
 export const StyledInputContainer = styled.div<StyledInputContainerType>`
   position: relative;
@@ -39,14 +53,15 @@ export const StyledInputContainer = styled.div<StyledInputContainerType>`
     background: transparent;
     padding-left: ${(p) => (p.isExpanded ? "34px" : 0)};
     margin-right: 10px;
-    border-bottom: ${(p) => (p.isExpanded ? "1px solid black" : 0)};
+    border-bottom: ${(p) => (p.isExpanded ? `1px solid ${p.theme.colors.black.primary}` : 0)};
     width: ${(p) => (p.isWidthSet ? "140px" : "100%")};
     ${(p) => (p.isExpanded ? "padding: 0px 26px 0 30px;" : null)}
   }
 `;
 
-export const StyledInput = styled.input`
+export const StyledInput = styled.input<WithThemeType>`
   font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
+  background: ${(p) => p.darkMode ? p.theme.colors.black.primary : p.theme.colors.white.primary};
   border: 0;
   outline: none;
 `;
@@ -62,39 +77,28 @@ const defaultPrefixStyles = css`
   cursor: pointer;
 `;
 
-export const StyledInputPrefix = styled.div`
+export const StyledInputPrefix = styled.div<WithThemeType>`
   ${defaultPrefixStyles};
   left: 0px;
   justify-content: flex-start;
 
   & > i {
-    color: ${(props) => props.theme.colors.black.primary};
+    color: ${(p) => p.darkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   }
 `;
-export interface StyledInputPostfixProps {
-  theme?: {
-    colors: {
-      blue: {
-        primary: string;
-      };
-      gray: {
-        medium: string;
-      };
-    };
-  };
-}
-export const StyledInputPostfix = styled.div<StyledInputPostfixProps>`
+
+export const StyledInputPostfix = styled.div<WithThemeType>`
   ${defaultPrefixStyles};
   right: 5px;
   justify-content: flex-end;
-  color: ${(props) => props.theme.colors.blue.primary};
+  color: ${(p) => p.darkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
 
   & > i {
-    color: ${(props) => props.theme.colors.black.primary};
+    color: ${(p) => p.darkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   }
 
   &:hover {
-    color: ${(props) => props.theme.colors.gray.medium};
+    color: ${(props) => props.theme.colors.brand.primary};
     cursor: pointer;
   }
 `;
@@ -116,6 +120,7 @@ export const ButtonWrapper = styled.div`
 `;
 
 export interface SearchButtonProps {
+  darkMode?: boolean;
   theme?: {
     colors: {
       white: { primary: string };
