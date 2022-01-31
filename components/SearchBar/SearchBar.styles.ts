@@ -61,7 +61,7 @@ export const StyledInputContainer = styled.div<StyledInputContainerType>`
 
 export const StyledInput = styled.input<WithThemeType>`
   font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
-  background: ${(p) => p.darkMode ? p.theme.colors.black.primary : p.theme.colors.white.primary};
+  background: ${(p) => (p.darkMode ? p.theme.colors.black.primary : p.theme.colors.white.primary)};
   border: 0;
   outline: none;
 `;
@@ -83,7 +83,7 @@ export const StyledInputPrefix = styled.div<WithThemeType>`
   justify-content: flex-start;
 
   & > i {
-    color: ${(p) => p.darkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
+    color: ${(p) => (p.darkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary)};
   }
 `;
 
@@ -91,10 +91,10 @@ export const StyledInputPostfix = styled.div<WithThemeType>`
   ${defaultPrefixStyles};
   right: 5px;
   justify-content: flex-end;
-  color: ${(p) => p.darkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
+  color: ${(p) => (p.darkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary)};
 
   & > i {
-    color: ${(p) => p.darkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
+    color: ${(p) => (p.darkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary)};
   }
 
   &:hover {
