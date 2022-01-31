@@ -3,6 +3,7 @@ import { string } from "prop-types";
 
 declare module "@emotion/react" {
   export interface Theme {
+    isDarkMode: boolean;
     colors: {
       pink: {
         primary: string;

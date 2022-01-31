@@ -1,5 +1,6 @@
 import { lighten } from "polished";
 export const theme = {
+  isDarkMode: false,
   colors: {
     pink: {
       primary: "hotpink"

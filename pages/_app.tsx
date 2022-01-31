@@ -52,14 +52,17 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     };
   }, [router.events]);
 
-  const renderContent = () => {
+  const renderContent = (theme: any) => {
+    // const darkMode = (process.env.IS_DARK_MODE === "true");
+    const darkMode = theme.isDarkMode ? theme.isDarkMode : false;
+
     if (isMaint && isMaint === "true") {
       return <ComingSoon />;
     }
 
     return (
       <AppWrapper>
-        <Header />
+        <Header darkMode={darkMode} />
         <MainMenu
           showMenuHeader
           customBurgerIcon={<i className="btb bt-bars" />}
@@ -89,7 +92,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                 content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0, minimal-ui"
               />
             </Head>
-            {renderContent()}
+            {renderContent(theme)}
           </ThemeProvider>
         </Hydrate>
 
