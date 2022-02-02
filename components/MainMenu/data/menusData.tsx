@@ -35,7 +35,8 @@ export const ColumnItem = styled.div`
 export const Divider = styled.div`
   width: 1px;
   height: 262px;
-  background-color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
+  background-color: ${(p) =>
+    p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
 `;
 export const ImgWrapper = styled.div`
   margin-left: 116px;

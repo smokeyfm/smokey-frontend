@@ -1,7 +1,8 @@
 import React from "react";
 import { Global, css } from "@emotion/react";
+import { saturate } from "polished";
 
-export const GlobalStyles = () => (
+export const GlobalStyles = ({ theme, children }: any) => (
   <Global
     styles={css`
       @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
@@ -29,9 +30,19 @@ export const GlobalStyles = () => (
         padding: 0;
       }
 
+      ::-moz-selection { /* Code for Firefox */
+        color: ${theme.colors.white.primary};
+        background: ${theme.colors.brand.primary};
+      }
+      
+      ::selection {
+        color: ${theme.colors.white.primary};
+        background: ${theme.colors.brand.primary};
+      }
+
       a {
         cursor: pointer;
-        color: #22bad9;
+        color: ${theme.colors.brand.primary};
       }
 
       p {
@@ -50,7 +61,7 @@ export const GlobalStyles = () => (
       select {
         font-size: 28.95px;
         line-height: 34.74px;
-        border: 2px solid #000000;
+        border: 2px solid ${theme.colors.black.primary};
         box-sizing: border-box;
         transition: background-color 0.3s;
         width: 100%;
@@ -71,9 +82,9 @@ export const GlobalStyles = () => (
       }
 
       button {
-        background-color: #eb8b8b;
+        background-color: ${theme.colors.brand.primary};
         border: 0;
-        color: white;
+        color: ${theme.colors.white.primary};
         width: 100%;
         max-width: 400px;
         font-size: 29.24px;
@@ -83,8 +94,12 @@ export const GlobalStyles = () => (
         cursor: pointer;
       }
 
+      button:hover {
+        background-color: ${saturate(0.5, theme.colors.brand.primary)};
+      }
+      
       button:active {
-        background-color: #f75b5b;
+        background-color: ${saturate(0.5, theme.colors.brand.primary)};
       }
 
       button:focus,
@@ -92,10 +107,10 @@ export const GlobalStyles = () => (
         outline: none;
       }
       i {
-        color: #000;
+        color: ${theme.isDarkMode ? theme.colors.white.primary : theme.colors.black.primary};
       }
       .pc-menu-item {
-        color: #000;
+        color: ${theme.isDarkMode ? theme.colors.white.primary : theme.colors.black.primary};
         font-family: "Bebas Neue";
         font-size: 14px;
         margin-right: 82px !important;

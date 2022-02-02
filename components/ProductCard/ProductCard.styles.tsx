@@ -28,7 +28,8 @@ export const ProductImg = styled.img`
 `;
 export const ProductTitle = styled.h4`
   font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
-  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
+  color: ${(p) =>
+    p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
 `;
 export const ProductDesc = styled.p`
   font-weight: 100;
@@ -46,7 +47,8 @@ export const ProductRate = styled(Rating)`
 `;
 export const Price = styled.h3`
   font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
-  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
+  color: ${(p) =>
+    p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   text-align: right;
 `;
 export const ThreeDot = styled.div`
@@ -59,7 +61,8 @@ const Dot = styled.div`
   width: ${pxPC(12)};
   height: ${pxPC(12)};
   border-radius: 50%;
-  border: 1px solid ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
+  border: 1px solid
+    ${(p) => (p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary)};
   margin-right: ${pxPC(8)};
 `;
 export const Dot1 = styled(Dot)`

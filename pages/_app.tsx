@@ -87,7 +87,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <AuthProvider>
         <Hydrate state={pageProps.dehydratedState}>
           <ThemeProvider theme={theme}>
-            <GlobalStyles />
+            <GlobalStyles theme={theme} />
             <Head>
               <title>{process.env.PAGE_TITLE}</title>
               <meta

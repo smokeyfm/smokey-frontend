@@ -15,7 +15,14 @@ export const CartButton = styled.div`
     margin: 0 -5px 0 0;
   }
 
-  & > i {
-    color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
+  > i {
+    color: ${(p) =>
+      p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
+  }
+
+  &:hover {
+    > i {
+      color: ${(p) => p.theme.colors.brand.primary};
+    }
   }
 `;
