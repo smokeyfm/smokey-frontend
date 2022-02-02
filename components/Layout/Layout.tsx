@@ -30,7 +30,7 @@ export const Layout: React.FC<LayoutProps> = ({
           {({ css, cx }) => (
             <Footer
               footerData={{
-                logo: <MyLogo imageFile="/logo.png" darkMode={darkMode} />,
+                logo: <MyLogo imageFile="/logo.png" darkMode={true} />,
                 columns
               }}
             />
