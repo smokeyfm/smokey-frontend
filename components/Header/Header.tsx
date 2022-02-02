@@ -69,7 +69,7 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
         <LogoDiv>
           <Link href="/">
             <LinkDiv isActive>
-              <MyLogo imageFile="/logo.png" darkMode={darkMode} />
+              <MyLogo imageFile="/pol-logo.png" darkMode={darkMode} />
             </LinkDiv>
           </Link>
         </LogoDiv>

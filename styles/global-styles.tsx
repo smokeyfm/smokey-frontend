@@ -30,11 +30,12 @@ export const GlobalStyles = ({ theme, children }: any) => (
         padding: 0;
       }
 
-      ::-moz-selection { /* Code for Firefox */
+      ::-moz-selection {
+        /* Code for Firefox */
         color: ${theme.colors.white.primary};
         background: ${theme.colors.brand.primary};
       }
-      
+
       ::selection {
         color: ${theme.colors.white.primary};
         background: ${theme.colors.brand.primary};
@@ -97,7 +98,7 @@ export const GlobalStyles = ({ theme, children }: any) => (
       button:hover {
         background-color: ${saturate(0.5, theme.colors.brand.primary)};
       }
-      
+
       button:active {
         background-color: ${saturate(0.5, theme.colors.brand.primary)};
       }
