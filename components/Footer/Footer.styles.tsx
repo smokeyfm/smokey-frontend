@@ -2,7 +2,8 @@ import styled from "@emotion/styled";
 export const Container = styled.div`
   background: ${(p) => p.theme.colors.black.primary};
   padding-top: 41px;
-  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
+  color: ${(p) =>
+    p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   padding-bottom: 68px;
   @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
     padding-top: 14px;
@@ -49,7 +50,8 @@ export const ColumnTitle = styled.div`
   font-family: "Bebas Neue";
   font-size: 14px;
   line-height: 17px;
-  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
+  color: ${(p) =>
+    p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   font-weight: 400;
   margin-bottom: 22px;
   white-space: nowrap;

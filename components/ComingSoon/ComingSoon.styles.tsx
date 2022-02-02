@@ -28,5 +28,6 @@ export const Text = styled.div`
   font-weight: normal;
   font-size: 21.4598px;
   line-height: 28px;
-  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
+  color: ${(p) =>
+    p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
 `;

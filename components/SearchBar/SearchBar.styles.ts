@@ -53,7 +53,12 @@ export const StyledInputContainer = styled.div<StyledInputContainerType>`
     background: transparent;
     padding-left: ${(p) => (p.isExpanded ? "34px" : 0)};
     margin-right: 10px;
-    border-bottom: ${(p) => (p.isExpanded ? `1px solid ${p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary}` : 0)};
+    border-bottom: ${(p) =>
+      p.isExpanded
+        ? `1px solid ${
+            p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary
+          }`
+        : 0};
     width: ${(p) => (p.isWidthSet ? "140px" : "100%")};
     ${(p) => (p.isExpanded ? "padding: 0px 26px 0 30px;" : null)}
   }
@@ -62,8 +67,10 @@ export const StyledInputContainer = styled.div<StyledInputContainerType>`
 export const StyledInput = styled.input<WithThemeType>`
   font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
   background: ${(p) => (p.darkMode ? p.theme.colors.black.primary : p.theme.colors.white.primary)};
-  caret-color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
-  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
+  caret-color: ${(p) =>
+    p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
+  color: ${(p) =>
+    p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   border: 0;
   outline: none;
 `;

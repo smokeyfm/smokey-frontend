@@ -15,7 +15,8 @@ const PageTitle = styled.div`
   top: ${pxPC(491)};
   font-size: 33px;
   line-height: 41px;
-  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
+  color: ${(p) =>
+    p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   text-transform: uppercase;
   transform: rotate(-90deg);
   font-family: "Bebas Neue";
@@ -25,7 +26,8 @@ const PageTitle = styled.div`
     left: 100%;
     width: ${pxPC(86)};
     height: 3px;
-    background-color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
+    background-color: ${(p) =>
+      p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
     top: 40%;
   }
 `;
@@ -38,14 +40,16 @@ const InputWrapper = styled.div`
 const MyInput = styled(InputBase)`
   width: ${pxPC(312)};
   height: 24px;
-  border-bottom: 2px solid ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
+  border-bottom: 2px solid
+    ${(p) => (p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary)};
 `;
 const MyInputLabel = styled.div`
   margin-left: ${pxPC(19)};
   font-size: 20px;
   line-height: 24px;
   height: 24px;
-  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
+  color: ${(p) =>
+    p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   font-family: "Bebas Neue";
   text-transform: uppercase;
 `;
@@ -63,7 +67,8 @@ const Sider = styled.div`
 `;
 const MenuItem = styled.a`
   font-family: Roboto Condensed;
-  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
+  color: ${(p) =>
+    p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   line-height: 125%;
   font-size: 14px;
   cursor: pointer;
