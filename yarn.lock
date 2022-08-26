@@ -712,10 +712,22 @@
   resolved "https://registry.yarnpkg.com/@types/sizzle/-/sizzle-2.3.3.tgz#ff5e2f1902969d305225a047c8a0fd5c915cebef"
   integrity sha512-JYM8x9EGF163bEyhdJBpR2QX1R5naCJHC8ucJylJ3w9/CVBaskdQ8WqBf8MmQrd1kRvp/a4TS8HJ+bxzR7ZJYQ==
 
+"@types/three@0.143.1":
+  version "0.143.1"
+  resolved "https://registry.yarnpkg.com/@types/three/-/three-0.143.1.tgz#198288a3be02c8e630fc67c6f6ecf093e6c79424"
+  integrity sha512-OzXb9Zx7gh0CrKiYnL/u+YeGJW0oDEmvL19vHq+sDmQ5V2Ibglf0I8Yoy/z4XPEv2YTFnYJs4imlEaupuBYRMA==
+  dependencies:
+    "@types/webxr" "*"
+
 "@types/ua-parser-js@^0.7.36":
   version "0.7.36"
   resolved "https://registry.yarnpkg.com/@types/ua-parser-js/-/ua-parser-js-0.7.36.tgz#9bd0b47f26b5a3151be21ba4ce9f5fa457c5f190"
   integrity sha512-N1rW+njavs70y2cApeIw1vLMYXRwfBy+7trgavGuuTfOd7j1Yh7QTRc/yqsPl6ncokt72ZXuxEU0PiCp9bSwNQ==
+
+"@types/webxr@*":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@types/webxr/-/webxr-0.5.0.tgz#aae1cef3210d88fd4204f8c33385a0bbc4da07c9"
+  integrity sha512-IUMDPSXnYIbEO2IereEFcgcqfDREOgmbGqtrMpVPpACTU6pltYLwHgVkrnYv0XhWEcjio9sYEfIEzgn3c7nDqA==
 
 "@typescript-eslint/eslint-plugin@^4.25.0":
   version "4.33.0"
