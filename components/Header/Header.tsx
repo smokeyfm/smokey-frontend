@@ -40,51 +40,19 @@ export const Header: React.FC<HeaderProps> = (props) => {
   const [cartVisible, setCartVisible] = React.useState(false);
   const toggleCart = () => setCartVisible((isVisible) => !isVisible);
 
-  if (process.env.IS_MAINT_MODE !== "true") {
-    return (
-      <HeaderDiv>
-        <TopHeader>
-          <LogoDiv>
-            <Link href="/">
-              <LinkDiv isActive>POL</LinkDiv>
-            </Link>
-          </LogoDiv>
-          <RightSide>
-            <SearchBar />
-            {user ? (
-              <>
-                <div>{user.data.attributes.email}</div>
-                <button onClick={logout}>LOGOUT</button>
-              </>
-            ) : (
-              <>
-                <Link href="/authenticate/login">
-                  <LinkDiv isActive={pathname === "/authenticate/login"}>LOG IN</LinkDiv>
-                </Link>
-                <Link href="/authenticate/signup">
-                  <LinkDiv isActive={pathname === "/authenticate/signup"}>SIGN UP</LinkDiv>
-                </Link>
-              </>
-            )}
-            <Cart isVisible={cartVisible} toggle={toggleCart} />
-          </RightSide>
-        </TopHeader>
-        <BottomHeader>
-          <Sticky>
-            <MainMenu
-              pcMenuItemClassName={"pc-menu-item"}
-              outterContainerId={"outer-container"}
-              pageWrapId={"page-wrap"}
-              animationType={"slide"}
-              menusData={menusData}
-              showMenuHeader={true}
-              menuFooter={false}
-              right={false}
-            />
-          </Sticky>
-        </BottomHeader>
-      </HeaderDiv>
-    );
+  const isMaint = process.env.IS_MAINT_MODE;
+  const darkMode = (process.env.IS_DARK_MODE === "true");
+
+  const handleAccount = (event: any) => {
+    setAccountElem(event.currentTarget);
+  };
+
+  const handleCloseAccount = () => {
+    setAccountElem(null);
+  };
+
+  if (isMaint && isMaint === "true") {
+    return null;
   }
 
   useEffect(() => {
@@ -102,12 +70,12 @@ export const Header: React.FC<HeaderProps> = (props) => {
         <LogoDiv>
           <Link href="/">
             <LinkDiv isActive>
-              <MyLogo imageFile="/logo.png" isDark />
+              <MyLogo imageFile="/logo.png" darkMode />
             </LinkDiv>
           </Link>
         </LogoDiv>
         <RightSide>
-          {isMobile ? null : <SearchBar />}
+          {isMobile ? null : <SearchBar darkMode={darkMode} />}
           {user ? (
             <HeaderAccount>
               <div>{user.data.attributes.email}</div>

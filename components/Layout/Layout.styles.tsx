@@ -19,14 +19,14 @@ import { pxIphone } from "../../utils";
 
 type LogoType = {
   src: string;
-  isDark: boolean;
+  darkMode: boolean;
 };
 
 export const Logo = styled.img<LogoType>`
   width: 181px;
   height: auto;
   margin-bottom: 20px;
-  ${(p) => (p.isDark ? "filter: invert(1);" : null)};
+  ${(p) => (p.darkMode ? "filter: invert(1);" : null)};
   box-shadow: 0 10px 22px rgba(255, 255, 255, 0.1);
   @media (max-width: 375px) {
     width: ${pxIphone(80)};
