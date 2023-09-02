@@ -19,13 +19,34 @@ export const NotifyText = styled.div`
   color: ${(props) => props.theme.colors.black.primary};
 `;
 
-export const FormWrapper = styled.div`
-  display: flex;
-  justify-content: center;
+interface FormWrapperType {
+  index: number;
+}
+
+export const FormWrapper = styled.div<FormWrapperType>`
   margin: 10px auto;
+  width: 300px;
+  display: block;
+  overflow: hidden;
   & form {
-    width: 300px;
+    transition: 0.33s all ease-in-out;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    justify-content: flex-start;
+    margin-left: ${p => `-${300 * p.index}px`}
   }
+`;
+
+interface QuestionWrapperType {
+  isVisible?: boolean;
+}
+
+export const QuestionWrapper = styled.div<QuestionWrapperType>`
+  display: ${p => p.isVisible ? 'block' : 'none'};
+  width: 300px;
 `;
 
 export const EmailInput = styled.input`
@@ -34,9 +55,9 @@ export const EmailInput = styled.input`
   height: 36.15px;
   border: none;
   box-sizing: border-box;
-  position: absolute;
-  left: 50%;
-  margin-left: -150px;
+  // position: absolute;
+  // left: 50%;
+  // margin-left: -150px;
   outline: none;
   padding: 8px 15px;
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='4' stroke-dasharray='11%2c 33%2c 66%2c 10' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
