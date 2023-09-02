@@ -10,6 +10,7 @@ import {
   fetchProducts,
   fetchVariants,
   useProducts,
+  useProduct,
   useStreams,
   useVariants
 } from "../../hooks";
@@ -495,6 +496,22 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
     // {
     //   variant_id: Array.isArray(variants) ? variants[0].id : "",
     //   quantity: 1
+    // }
+
+    // const productImgs = thisProduct.relationships?.images?.data[0]?.id;
+    // const foundImg = thisProduct?.included.filter((e: any) => e["id"] == productImg);
+    // const imgUrl = foundImg[0]?.attributes?.styles[4].url;
+    // const imgSrc = productImg ? `${process.env.SPREE_API_URL}${imgUrl}` : defaultImg;
+
+    // const renderProductImgs = () => {
+    //   return productImgs.map((item, index) => {
+        
+    //     return (
+    //       <Slide index={0} style={{ height: "500px" }}>
+    //         <ImageWithZoom src={source} />
+    //       </Slide>
+    //     )
+    //   });
     // }
 
     return (
