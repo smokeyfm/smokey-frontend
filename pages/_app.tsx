@@ -32,6 +32,11 @@ const CustomIcon = styled.img`
   height: auto;
 `;
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const [queryClient] = useState(() => new QueryClient());
+  const [wholesale, setWholesale] = useState(true);
+  const router = useRouter();
+  const isMaint = process.env.IS_MAINT_MODE;
+
   useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles) {
@@ -53,9 +58,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     };
   }, [router.events]);
 
-  const isMaint = process.env.IS_MAINT_MODE;
-
-  const renderHomeContent = () => {
+  const renderContent = () => {
     if (isMaint && isMaint === "true") {
       return <ComingSoon />;
     }
@@ -74,7 +77,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           menusData={menusData}
           right={false}
         />
-        <Component {...pageProps} />
+        <Component {...pageProps} wholesale={wholesale} />
       </>
     );
   };
@@ -92,7 +95,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                 content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0, minimal-ui"
               />
             </Head>
-            {renderHomeContent()}
+            {renderContent()}
           </ThemeProvider>
         </Hydrate>
       </AuthProvider>

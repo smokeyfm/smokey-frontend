@@ -13,7 +13,7 @@ import {
   IconLinkWrapper,
   IconLinksMo,
   MobileIconLink
-} from "./Foot.styles";
+} from "./Footer.styles";
 import { Icon } from "@material-ui/core";
 export type CLASSESTYPE = {
   root?: string;
@@ -49,7 +49,7 @@ export interface FootProps {
   classes?: CLASSESTYPE;
   footerData: FooterDataType;
 }
-export const Foot: React.FC<FootProps> = ({ classes, footerData }) => {
+export const Footer: React.FC<FootProps> = ({ classes, footerData }) => {
   const Logo = footerData.logo as React.ComponentType;
   const gridClass = classes?.grid || "";
   const columnClass = classes?.columnClassWrapper || "";

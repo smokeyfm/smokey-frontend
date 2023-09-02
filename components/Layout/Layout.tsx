@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { ClassNames } from "@emotion/react";
 import { LayoutProps } from "./types";
-import { Column, Foot } from "../Foot/Foot";
+import { Column, Footer } from "../Footer/Footer";
 
 import {
   Container,
@@ -70,9 +70,9 @@ const columns: Column[] = [
         text: "Rewards",
         url: ""
       },
-      { text: "Returns / exchanges / damages", url: "" },
-      { text: "Terms of Use & Privacy Policy", url: "" },
-      { text: "contact us", url: "" }
+      { text: "Returns / exchanges / damages", url: "/privacy" },
+      { text: "Terms of Use & Privacy Policy", url: "/terms" },
+      { text: "contact us", url: "/contact" }
     ]
   },
   {
@@ -118,7 +118,7 @@ export const Layout: React.FC<LayoutProps> = ({
         {children}
         <ClassNames>
           {({ css, cx }) => (
-            <Foot
+            <Footer
               classes={{
                 root: css`
                   background-color: #000;

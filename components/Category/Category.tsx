@@ -107,7 +107,7 @@ export const Category = () => {
 
           fetchProduct(`${productId}`)
             .then((product) => {
-              router.push(`/${product?.data?.attributes?.slug}?id=${product?.data?.id}`);
+              router.push(`/${product?.data?.attributes?.slug}`);
             })
             .catch(() => {
               /* product not found */

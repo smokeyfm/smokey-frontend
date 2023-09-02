@@ -58,13 +58,14 @@ export const ColorizedCart = styled.i<GenericThemeType>`
 `;
 
 const partnerName = process.env.SITE_TITLE;
+const shortName = process.env.SHORT_TITLE;
 
-export const GetPreQualified = () => {
+export const Welcome = () => {
   // const { errors, touched } = useFormikContext();
 
   const speechMarkup = useCallback(() => {
     return {
-      __html: `Welcome from <strong>${partnerName}</strong>!<br /> Create your account, and you'll be surfing the latest trends in no-time.`
+      __html: `Welcome to <strong>${partnerName}</strong>!<br /> Create your account so you can start browsing, saving, and getting deals!`
     };
   }, []);
 
@@ -87,13 +88,13 @@ export const GetPreQualified = () => {
           </div>
           <div>
             <ColorizedLoan className="bts bt-folder" />
-            <Title>Keep Items Organized</Title>
-            <Description>Save favorites!</Description>
+            <Title>{shortName} Rewards</Title>
+            <Description>Cash back on purchases!</Description>
           </div>
           <div>
             <ColorizedCart className="bts bt-shopping-cart" />
-            <Title>Easy Checkout</Title>
-            <Description>We accept all payment methods.</Description>
+            <Title>LiveStream Shopping</Title>
+            <Description>Chat it up with our models while they show off our new &amp; trending products.</Description>
           </div>
         </Carousel>
       </InputGroupWrapper>

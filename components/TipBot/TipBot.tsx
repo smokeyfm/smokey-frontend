@@ -13,15 +13,15 @@ import parse from "html-react-parser";
 // Local
 // import { FadeIn } from '../Animations';
 import {
-  SebastianWrapper,
-  SebastianImage,
+  TipBotWrapper,
+  TipBotImage,
   BubbleWrapper,
   BubbleWrapperMobile,
   BubbleSpeech,
   BubbleDot
-} from "./Sebastian.styles";
+} from "./TipBot.styles";
 
-const Sebastian = ({ speech }: any) => {
+const TipBot = ({ speech }: any) => {
   const [speechReady, setSpeechStatus] = useState(false);
   // const [show, set] = useState(false);
 
@@ -50,7 +50,7 @@ const Sebastian = ({ speech }: any) => {
   });
 
   return (
-    <SebastianWrapper>
+    <TipBotWrapper>
       {isMobile ? (
         <BubbleWrapperMobile speechReady={speechReady}>
           {speechReady ? (
@@ -80,17 +80,17 @@ const Sebastian = ({ speech }: any) => {
           </BubbleSpeech>
         </BubbleWrapper>
       )}
-      <SebastianImage />
-    </SebastianWrapper>
+      <TipBotImage />
+    </TipBotWrapper>
   );
 };
 
-Sebastian.propTypes = {
+TipBot.propTypes = {
   speech: PropTypes.shape({ __html: PropTypes.string.isRequired })
 };
 
-Sebastian.defaultProps = {
+TipBot.defaultProps = {
   speech: ""
 };
 
-export default Sebastian;
+export default TipBot;

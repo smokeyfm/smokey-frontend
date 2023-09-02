@@ -38,11 +38,11 @@ export const MobileMenu = ({ showMenuHeader, onMenuItemClick, menusData }: any) 
       }
       setKeyPath((pre) => {
         if (kp == pre) {
-          console.log("closing");
+          // console.log("closing");
           let str = kp.replace("/" + key, "");
           return str;
         } else {
-          console.log("opening");
+          // console.log("opening");
           return kp;
         }
       });
@@ -53,7 +53,7 @@ export const MobileMenu = ({ showMenuHeader, onMenuItemClick, menusData }: any) 
   const getSubMenuItem = (localMenuData: any[], parentKeyPath: string, level: number) => {
     const paddingLeft = level * 20 + "px";
     const isArray = Array.isArray(localMenuData);
-    console.log(isArray, localMenuData);
+    // console.log(isArray, localMenuData);
     const menuItems = isArray
       ? localMenuData
       : menusData?.menu_location_listing[0].menu_item_listing;
@@ -70,6 +70,7 @@ export const MobileMenu = ({ showMenuHeader, onMenuItemClick, menusData }: any) 
             <Fragment key={pathSlug}>
               {
                 <MenuItem
+                  key={`${pathSlug}-1`}
                   paddingLeft={paddingLeft}
                   onClick={handleClick.bind(null, pathSlug, slug)}
                   button
@@ -88,7 +89,7 @@ export const MobileMenu = ({ showMenuHeader, onMenuItemClick, menusData }: any) 
                   {level < 2 ? getSubMenuItem(subItems, pathSlug, level + 1) : null}
                   {/* <h1>hey</h1> */}
                   {subItems.map(({ item, i }: any) => {
-                    return <>{item}</>;
+                    return <Fragment key={`${pathSlug}-2`}>{item}</Fragment>;
                   })}
                 </Collapse>
               )}

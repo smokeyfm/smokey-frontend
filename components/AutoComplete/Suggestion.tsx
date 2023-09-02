@@ -38,7 +38,7 @@ const Suggestion = ({ suggestion, query, onChange, toggleVisibility }: OwnProps)
     onChange("");
     e.preventDefault();
     toggleVisibility(false);
-    router.push(`/${suggestion.attributes.slug}?id=${suggestion.id}`);
+    router.push(`/${suggestion.attributes.slug}`);
   };
 
   if (suggestion) {

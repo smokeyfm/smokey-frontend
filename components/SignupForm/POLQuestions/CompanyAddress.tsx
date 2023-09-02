@@ -14,13 +14,13 @@ import { QuestionWrapper, InputGroupWrapper, InputWrapper } from "./Questions.st
 //   '100 Freeman Road Birmingham KY 19278'
 // ];
 
-export const HomeAddress = () => {
-  // const [homeAddress, setHomeAddress] = useState('');
+export const CompanyAddress = () => {
+  // const [address, setAddress] = useState('');
 
   // const { errors, touched } = useFormikContext();
 
   const speechMarkup = useCallback(() => {
-    return { __html: "Where do you currently live?" };
+    return { __html: "What is your address?" };
   }, []);
 
   return (
@@ -29,14 +29,15 @@ export const HomeAddress = () => {
       <InputGroupWrapper>
         <InputWrapper>
           <Field
-            name="homeAddress"
-            id="homeAddress"
+            name="companyAddress"
+            id="companyAddress"
             component={FormikAutocomplete}
-            label="Home Address"
+            label="Company Address"
+            addressType="Company"
           />
         </InputWrapper>
         <InputWrapper>
-          <Field name="unitNumber" id="unitNumber" component={FormikInput} label="Apt / Unit" />
+          <Field name="unitNumber" id="unitNumber" component={FormikInput} label="Suite / Floor / Unit" />
         </InputWrapper>
       </InputGroupWrapper>
     </QuestionWrapper>

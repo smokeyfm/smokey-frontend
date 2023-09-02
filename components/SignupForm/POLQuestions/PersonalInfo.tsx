@@ -5,7 +5,7 @@ import { Button } from "@material-ui/core";
 
 // Local
 import TipBot from "../../TipBot";
-import { FormikInput } from "../../FormikWrappers";
+import { FormikInput, FormikDateOfBirth } from "../../FormikWrappers";
 import {
   QuestionWrapper,
   InputGroupWrapper,
@@ -48,6 +48,14 @@ export const PersonalInfo = () => {
             label="Suffix (if on license.. Sr, Jr)"
           />
         </InputWrapper> */}
+        <InputWrapper>
+          <Field
+            name="dateOfBirth"
+            id="dateOfBirth"
+            component={FormikDateOfBirth}
+            label="Date of Birth"
+          />
+        </InputWrapper>
       </InputGroupWrapper>
     </QuestionWrapper>
   );

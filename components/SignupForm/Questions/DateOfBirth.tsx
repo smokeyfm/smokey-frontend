@@ -4,7 +4,7 @@ import React, { useCallback } from "react";
 import { Field, useFormikContext } from "formik";
 
 // Local
-import Sebastian from "../../Sebastian";
+import TipBot from "../../TipBot";
 import { FormikDateOfBirth } from "../../FormikWrappers";
 import { QuestionWrapper, InputGroupWrapper, InputWrapper } from "./Questions.styles";
 
@@ -17,16 +17,11 @@ export const DateOfBirth = () => {
 
   return (
     <QuestionWrapper>
-      <Sebastian speech={speechMarkup()} />
+      <TipBot speech={speechMarkup()} />
       <InputGroupWrapper>
-        <InputWrapper>
-          <Field
-            name="dateOfBirth"
-            id="dateOfBirth"
-            component={FormikDateOfBirth}
-            label="Date of Birth"
-          />
-        </InputWrapper>
+        
+        
+
       </InputGroupWrapper>
     </QuestionWrapper>
   );
