@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { ButtonBack, ButtonNext } from "pure-react-carousel";
 
 export const ProductContainer = styled.div`
   display: flex;
@@ -7,6 +8,7 @@ export const ProductContainer = styled.div`
   margin: 0 auto;
   padding-top: 30px;
   width: 100%;
+  font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
 `;
 
 export const ProductImageCarousel = styled.div`
@@ -14,6 +16,37 @@ export const ProductImageCarousel = styled.div`
   height: auto;
   @media screen and (max-width: 800px) {
     width: 100%;
+  }
+`;
+
+export const CarouselNav = styled.div`
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const CarouselBackButton = styled(ButtonBack)`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-left: 10px;
+  opacity: 0.11;
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+export const CarouselNextButton = styled(ButtonNext)`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  opacity: 0.11;
+  &:hover {
+    opacity: 1;
   }
 `;
 
@@ -27,6 +60,7 @@ export const ProductDescription = styled.div`
 `;
 
 export const Detail = styled.h3`
+  font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
   @media screen and (max-width: 800px) {
     font-size: 16px;
     text-align: center;
@@ -56,12 +90,12 @@ export const Size = styled.div`
 `;
 
 export const SizeQty = styled.div`
+  padding: 3px 0 0 0;
   border-right: 1px solid ${(p) => p.theme.colors.black.light};
-  // padding: 4px 6px;
 `;
 
 export const SizeTitle = styled.div`
-  // padding: 4px 6px;
+  padding: 3px 0 0 0;
   background: ${(p) => p.theme.colors.gray.background};
   text-transform: uppercase;
 `;
@@ -120,4 +154,8 @@ export const ColorsCell = styled.div`
   & input[type="number"] {
     -moz-appearance: textfield;
   }
+`;
+
+export const BuyButton = styled.button`
+  font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
 `;

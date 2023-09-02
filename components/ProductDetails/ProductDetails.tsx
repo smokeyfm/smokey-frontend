@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/router";
 import { QueryClient } from "react-query";
 import { dehydrate } from "react-query/hydration";
+import { ArrowBack, ArrowForward } from "@material-ui/icons";
 import {
   fetchStreams,
   fetchProducts,
@@ -16,15 +17,11 @@ import { useMutation, useQueryClient } from "react-query";
 import { addItemToCart } from "../../hooks/useCart";
 import { QueryKeys } from "../../hooks/queryKeys";
 import * as tracking from "../../config/tracking";
-import {
-  CarouselProvider,
-  Slider,
-  Slide,
-  ButtonBack,
-  ButtonNext,
-  Image,
-  ImageWithZoom
-} from "pure-react-carousel";
+import LatestProducts from "../Home/LatestProducts";
+import PolProductList from "../PolProductList";
+import { useMediaQuery } from "react-responsive";
+import homeData from "../Home/home.json";
+import { CarouselProvider, Slider, Slide, ImageWithZoom } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 // import ProductCard from "../components";
 
@@ -33,6 +30,9 @@ import {
   ProductImageCarousel,
   ProductInfoBox,
   ProductDescription,
+  CarouselNav,
+  CarouselBackButton,
+  CarouselNextButton,
   Detail,
   Price,
   SizesTitle,
@@ -45,7 +45,8 @@ import {
   ColorsTH,
   ColorsBody,
   ColorsRow,
-  ColorsCell
+  ColorsCell,
+  BuyButton
 } from "./ProductDetails.styles";
 
 const settings = {
@@ -76,7 +77,7 @@ export const ProductDetails = ({ wholesale }: any) => {
   const { asPath: productSlug } = router;
   // console.log(productSlug);
   const { data: thisProduct, isLoading, isSuccess } = useProduct(`${productSlug.replace("/", "")}`);
-  const thisProductId = thisProduct?.data.id || "";
+  const thisProductId = thisProduct?.data?.id || "";
   const queryClient = useQueryClient();
   const [colorOptions, setColorOptions] = useState<any>(productColors);
 
@@ -115,6 +116,12 @@ export const ProductDetails = ({ wholesale }: any) => {
       queryClient.invalidateQueries(QueryKeys.CART);
     }
   });
+
+  const setColorQtys = (arr: any) => {
+    return arr.map(({ item, index }: any) => {
+      return setColorOptions([...colorOptions]);
+    });
+  };
 
   const handleKeyPress = (event: KeyboardEvent) => {
     const thisProductId = thisProduct?.data.id;
@@ -158,28 +165,38 @@ export const ProductDetails = ({ wholesale }: any) => {
 
   const renderColorOptions = useCallback(() => {
     let variants: any = [];
-    const foundVariants = thisProduct?.included?.some((elem) => {
-      if (elem.type == "option_values") {
-        variants.push(elem);
-      }
-    });
-    console.log("PRODUCT: ", thisProduct, "VARIANTS: ", variantsData);
-
-    // return thisProduct?.data.relationships.variants.data.map((item: ColorOptionType, index: number) => {
-    //   console.log("row: ", item);
-    //   return (
-    //     <ColorsRow key={`${index}-row`}>
-    //       <ColorsCell>{item.name}</ColorsCell>
-    //       <ColorsCell>-</ColorsCell>
-    //       <ColorsCell>
-    //         <input value={item.quantity} type="number" min="1" max="99" onChange={(e: any) => setColorOptions([...colorOptions, ])} />
-    //       </ColorsCell>
-    //       <ColorsCell>+</ColorsCell>
-    //       <ColorsCell>24</ColorsCell>
-    //       <ColorsCell>$720</ColorsCell>
-    //     </ColorsRow>
-    //   );
+    // const foundVariants = thisProduct?.included?.some((elem) => {
+    //   if (elem.type == "option_values") {
+    //     variants.push(elem);
+    //   }
     // });
+    const foundVariants = thisProduct?.included?.filter((elem) => elem.type === "variant");
+    console.log("PRODUCT: ", thisProduct, "VARIANTS: ", foundVariants);
+
+    if (foundVariants && foundVariants.length) {
+      return foundVariants?.map((item, index) => {
+        const optionText = item.attributes.options_text;
+        console.log("row: ", item);
+        return (
+          <ColorsRow key={`${index}-row`}>
+            <ColorsCell>{item.attributes.options_text}</ColorsCell>
+            <ColorsCell>-</ColorsCell>
+            <ColorsCell>
+              <input
+                value={colorOptions[index]}
+                type="number"
+                min="1"
+                max="99"
+                onChange={(e: any) => setColorOptions([...colorOptions])}
+              />
+            </ColorsCell>
+            <ColorsCell>+</ColorsCell>
+            <ColorsCell>24</ColorsCell>
+            <ColorsCell>${item.attributes.price}</ColorsCell>
+          </ColorsRow>
+        );
+      });
+    }
   }, [colorOptions, thisProduct]);
 
   useEffect(() => {
@@ -273,8 +290,14 @@ export const ProductDetails = ({ wholesale }: any) => {
                 </Slide>
               </Slider>
 
-              <ButtonBack>Back</ButtonBack>
-              <ButtonNext>Next</ButtonNext>
+              <CarouselNav>
+                <CarouselBackButton>
+                  <ArrowBack />
+                </CarouselBackButton>
+                <CarouselNextButton>
+                  <ArrowForward />
+                </CarouselNextButton>
+              </CarouselNav>
             </CarouselProvider>
           </ProductImageCarousel>
 
@@ -324,32 +347,8 @@ export const ProductDetails = ({ wholesale }: any) => {
                       <ColorsCell>Pack Price</ColorsCell>
                     </ColorsTH>
                   </ColorsHead>
-                  {/* <ColorsBody>{renderColorOptions(colorOptions)}</ColorsBody> */}
+                  <ColorsBody>{renderColorOptions()}</ColorsBody>
                 </ColorsTable>
-                // <table>
-                //   <thead>
-                //     <tr>
-                //       <th>Colors</th>
-                //       <th>Pack Qty</th>
-                //       <th>Pieces Qty</th>
-                //       <th>Pack Price</th>
-                //     </tr>
-                //   </thead>
-                //   <tbody>
-                //     <tr>
-                //       <td>Yellow Rod</td>
-                //       <td>- 4 +</td>
-                //       <td>24</td>
-                //       <td>$720</td>
-                //     </tr>
-                //     <tr>
-                //       <td>Carnelian</td>
-                //       <td>- 4 +</td>
-                //       <td>24</td>
-                //       <td>$720</td>
-                //     </tr>
-                //   </tbody>
-                // </table>
               )}
 
               {/* RETAIL COLOR */}
@@ -373,7 +372,7 @@ export const ProductDetails = ({ wholesale }: any) => {
                 </div>
               )}
 
-              <button className="">add to cart</button>
+              <BuyButton className="">add to cart</BuyButton>
             </ProductDescription>
 
             <div>

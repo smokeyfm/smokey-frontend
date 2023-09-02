@@ -80,6 +80,7 @@ export const GlobalStyles = () => (
         line-height: 35.09px;
         font-weight: bold;
         padding: 10px 10px;
+        cursor: pointer;
       }
 
       button:active {
