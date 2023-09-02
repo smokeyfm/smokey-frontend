@@ -1,30 +1,28 @@
 import React, { useState, useEffect } from "react";
-import type { AppProps /*, AppContext */ } from "next/app";
+import type { AppProps } from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { AuthProvider } from "../config/auth";
 import { MainMenu, Header, ComingSoon } from "../components";
-import styled from "@emotion/styled";
-import "swiper/swiper-bundle.min.css";
+
 import { menusData } from "../components/MainMenu/data/menusData";
-import "./app.css";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import * as tracking from "../config/tracking";
 
-// Styles
 import { ThemeProvider } from "@emotion/react";
 import { theme } from "../styles/theme";
 import { GlobalStyles } from "../styles/global-styles";
-import { pxIphone } from "../utils";
+
+import "./app.css";
 import "../styles/fonts.css";
 import "../public/fonts/black-tie/black-tie.css";
+import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "../components/Terms/ElectronicSignaturesModal.css";
 import "../components/Terms/FinancialPrivacyModal.css";
-import "./app.css";
 
 import { AppWrapper } from "./_app.styles";
 
