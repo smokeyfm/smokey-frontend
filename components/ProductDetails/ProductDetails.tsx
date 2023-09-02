@@ -457,38 +457,6 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
     addToCart.mutate(i);
   };
 
-  const renderProductImgs = useCallback(() => {
-    const productImgs =
-      thisProduct &&
-      thisProduct?.included?.filter((e: any) => e["type"] === "image");
-    const primaryImg = productImgs && productImgs[0].attributes.styles[9].url;
-    // console.log("rendered imgs: ", productImgs);
-    if (productImgs && productImgs.length < 1) {
-      return <Loading />;
-    }
-    if (foundImgs && foundImgs.length == 1) {
-      return (
-        <StyledSlide index={0}>
-          <StyledImageWithZoom src={primaryImg} />
-        </StyledSlide>
-      );
-    }
-    return (
-      productImgs &&
-      productImgs.map((image, index) => {
-        // const img600 = image.attributes.styles.filter((e: any) => e['width'] == '600').url;
-        const imgUrl = image.attributes.styles[9].url;
-        const imgSrc = `${process.env.SPREE_API_URL}${imgUrl}`;
-        // console.log(imgSrc);
-        return (
-          <StyledSlide key={`image-${index}`} index={index}>
-            <StyledImageWithZoom src={imgSrc} />
-          </StyledSlide>
-        );
-      })
-    );
-  }, [thisProduct]);
-
   const renderVariants = useCallback(() => {
     const foundOptions =
       thisProduct &&
@@ -498,14 +466,14 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
       foundOptions?.filter((e: any) => e.attributes.presentation.includes("#"));
     return (
       <VariantSwatchList>
-        {productVariantColors?.map((option: any, index: any) => {
+        {foundColors?.map((option: any, index: any) => {
           const optionColor = option.attributes.presentation;
           // console.log("Option: ", optionColor);
           return <VariantSwatch key={`variant-${index}`} color={optionColor} />;
         })}
       </VariantSwatchList>
     );
-  }, [productVariantColors]);
+  }, [thisProduct]);
 
   useEffect(() => {
     if (isSuccess) {
