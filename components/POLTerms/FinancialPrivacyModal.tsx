@@ -17,7 +17,7 @@ export const PolFinancialPrivacyModal = () => {
       </div>
       <div className="fp-modal-content-container">
         <p>
-          {entityName} respects the privacy of its website’s users. The following company privacy
+          {entityName} respects the privacy of its website's users. The following company privacy
           policy is designed to inform you, as a user of the website, about the types of information
           that the company may gather from you in connection with your use of the website.
         </p>
@@ -26,11 +26,11 @@ export const PolFinancialPrivacyModal = () => {
           PRIVACY POLICY.
         </p>
         <p>
-          The company may collect a range of personal information from and about the website’s
+          The company may collect a range of personal information from and about the website's
           users.
         </p>
         <p>
-          That information may include each user’s name, address, email addresses, telephone number
+          That information may include each user's name, address, email addresses, telephone number
           financial information such as your payment method (valid credit card number, type,
           expiration date).
         </p>
@@ -47,7 +47,7 @@ export const PolFinancialPrivacyModal = () => {
         </p>
         <p>
           The company may in its sole discretion, change this Privacy Policy from time to time. Any
-          and all changes to the company’s Privacy Policy will be reflected on this page.
+          and all changes to the company's Privacy Policy will be reflected on this page.
         </p>
         <p>
           Unless stated otherwise, our current Privacy Policy applies to all information that we
