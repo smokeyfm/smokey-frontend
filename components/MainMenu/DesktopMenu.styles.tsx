@@ -23,7 +23,7 @@ export const Container = styled.div`
 export const MyMenuItem = styled.div<any>`
   font-size: 14px;
   line-height: 150%;
-  color: ${(p) => p.theme.colors.black.primary};
+  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   text-align: center;
   display: flex;
   justify-content: center;
@@ -35,7 +35,7 @@ export const MyMenuItem = styled.div<any>`
     transition: transform 1s linear;
     width: 120%;
     height: 1px;
-    background-color: ${(p) => p.theme.colors.black.primary};
+    background-color: ${(p) => p.theme.isDarkMode ? p.theme.colors.black.primary : p.theme.colors.white.primary};
     content: "";
     position: absolute;
     bottom: 0;
@@ -46,7 +46,7 @@ export const MyMenuItem = styled.div<any>`
 
 export const DropDown = styled.div<DropDownProps>`
   position: absolute;
-  background-color: #fff;
+  background-color: ${(p) => p.theme.isDarkMode ? p.theme.colors.black.primary : p.theme.colors.white.primary};
   left: 0;
   top: 100%;
   width: 100%;
@@ -66,13 +66,16 @@ export const DropDownColumn = styled.div`
   margin: 0 20px 40px 20px;
 `;
 
-export const DropDownHeader = styled.h4``;
+export const DropDownHeader = styled.h4`
+  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
+`;
 
-export const DropDownLink = styled(Link)`
-  color: ${(p) => p.theme.colors.black.primary} !important;
+export const DropDownLink = styled.a`
+  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary} !important;
 `;
 
 export const DropDownAdvert = styled.div`
+color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   margin: 0 20px;
   padding: 10px;
 `;

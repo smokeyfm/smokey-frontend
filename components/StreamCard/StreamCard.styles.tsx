@@ -77,10 +77,12 @@ export const StreamChecked = styled.div`
 export const StreamCardTitle = styled.h2`
   font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
   line-height: ${(p) => p.theme.typography.titleSM.lineHeight};
+  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   margin: 20px 0 0 0;
 `;
 
 export const StreamCardDesc = styled.p`
+  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   text-align: center;
   font-weight: 100;
 `;

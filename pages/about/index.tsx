@@ -18,7 +18,7 @@ const PageTitle = styled.div`
   top: ${pxPC(491)};
   font-size: 33px;
   line-height: 41px;
-  color: #000;
+  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   text-transform: uppercase;
   transform: rotate(-90deg);
   font-family: "Bebas Neue";
@@ -28,14 +28,14 @@ const PageTitle = styled.div`
     left: 100%;
     width: ${pxPC(86)};
     height: 3px;
-    background-color: #000;
+    background-color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
     top: 40%;
   }
 `;
 const SectionOneTitle = styled.div`
   font-size: 33px;
   line-height: 41px;
-  color: #000;
+  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   font-family: "Bebas Neue";
   text-align: center;
   text-transform: uppercase;
@@ -43,7 +43,7 @@ const SectionOneTitle = styled.div`
 const SectionOneText = styled.div`
   width: ${pxPC(344)};
   margin-top: ${pxPC(20)};
-  color: #151313;
+  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   font-family: Roboto;
   font-size: 18px;
   line-height: 18px;
@@ -57,15 +57,15 @@ const Arrow = styled.img`
 const SectionTwoTitle = styled.div`
   font-size: 33px;
   line-height: 41px;
-  color: #000;
+  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   font-family: "Bebas Neue";
   text-align: center;
   text-transform: uppercase;
 `;
-const SectionWwoText = styled.div`
+const SectionTwoText = styled.div`
   width: ${pxPC(344)};
   margin-top: ${pxPC(20)};
-  color: #151313;
+  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   font-family: Roboto;
   font-size: 18px;
   line-height: 18px;
@@ -73,7 +73,7 @@ const SectionWwoText = styled.div`
 const SectionThreeTitle = styled.div`
   font-size: 33px;
   line-height: 41px;
-  color: #000;
+  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   font-family: "Bebas Neue";
   text-align: center;
   text-transform: uppercase;
@@ -90,7 +90,7 @@ const SectionThree = styled.div`
 const SectionFourTitle = styled.div`
   font-size: 33px;
   line-height: 41px;
-  color: #000;
+  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   font-family: "Bebas Neue";
   text-align: center;
   text-transform: uppercase;
@@ -121,11 +121,11 @@ const About = () => {
         </SectionOneText>
         <Arrow src={"/Arrow.png"} />
         <SectionTwoTitle>Our Mission</SectionTwoTitle>
-        <SectionWwoText>
+        <SectionTwoText>
           POL Clothing is a wholesale supplier to boutiques all over the world. POL focuses on
           coming together at the crossroads of fashion and business and creating styles inspired by
           the world around us.
-        </SectionWwoText>
+        </SectionTwoText>
         <Arrow src={"/Arrow.png"} />
         <SectionThreeTitle>Our Values</SectionThreeTitle>
         <SectionThree>

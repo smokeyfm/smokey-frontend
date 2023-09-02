@@ -7,7 +7,7 @@ export const AppWrapper = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: white;
+  background: ${(p) => p.theme.isDarkMode ? p.theme.colors.black.primary : p.theme.colors.white.primary};
   background-blend-mode: overlay;
   background-size: cover;
   background-position: center;

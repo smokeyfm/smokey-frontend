@@ -14,4 +14,8 @@ export const CartButton = styled.div`
   @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
     margin: 0 -5px 0 0;
   }
+
+  & > i {
+    color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
+  }
 `;

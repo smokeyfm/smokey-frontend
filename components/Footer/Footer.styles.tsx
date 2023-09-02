@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 export const Container = styled.div`
   background: ${(p) => p.theme.colors.black.primary};
   padding-top: 41px;
-  color: #fff;
+  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   padding-bottom: 68px;
   @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
     padding-top: 14px;
@@ -49,7 +49,7 @@ export const ColumnTitle = styled.div`
   font-family: "Bebas Neue";
   font-size: 14px;
   line-height: 17px;
-  color: #fff;
+  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   font-weight: 400;
   margin-bottom: 22px;
   white-space: nowrap;
@@ -57,7 +57,7 @@ export const ColumnTitle = styled.div`
     margin-bottom: 9px;
     font-size: 20px;
     line-height: 24px;
-    color: #eb8b8b;
+    color: ${(p) => p.theme.colors.gray.medium};
   }
 `;
 export const ColumnSubTitle = styled.div`
@@ -66,12 +66,12 @@ export const ColumnSubTitle = styled.div`
 export const LinkItem = styled.a`
   font-size: 14px;
   line-height: 150%;
-  color: #969696;
+  color: ${(p) => p.theme.colors.gray.medium};
   font-weight: 400;
   font-family: "Bebas Neue";
 `;
 export const Description = styled.div`
-  color: #969696;
+  color: ${(p) => p.theme.colors.gray.medium};
   font-size: 14px;
   line-height: 150%;
   font-weight: 400;

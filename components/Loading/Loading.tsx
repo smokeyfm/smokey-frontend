@@ -8,6 +8,10 @@ export const LoadingWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  div svg g g g path {
+    stroke: white;
+  }
 `;
 
 export const Loading = () => {

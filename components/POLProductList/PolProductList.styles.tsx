@@ -11,6 +11,7 @@ export const Container = styled.div`
 `;
 export const Title = styled(XlargeTitle)`
   margin-bottom: ${pxPC(26)};
+  color: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
 `;
 export const ProductBox = styled.div`
   margin-top: ${pxPC(30)};
@@ -71,7 +72,7 @@ const Dot = styled.div`
   width: ${pxPC(12)};
   height: ${pxPC(12)};
   border-radius: 50%;
-  border: 1px solid #969696;
+  border: 1px solid ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
   margin-right: ${pxPC(8)};
 `;
 export const Dot1 = styled(Dot)`
