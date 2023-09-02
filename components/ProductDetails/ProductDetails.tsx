@@ -463,23 +463,49 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
   };
 
   const renderProductImgs = useCallback(() => {
-    const foundImgs = thisProduct && thisProduct?.included?.filter((e: any) => e["type"] === "image");
+    const foundImgs =
+      thisProduct && thisProduct?.included?.filter((e: any) => e["type"] === "image");
+    const primaryImg = foundImgs && foundImgs[0].attributes.styles[9].url;
     // console.log("rendered imgs: ", foundImgs);
     if (foundImgs && foundImgs.length < 1) {
-      return <Loading />
+      return <Loading />;
     }
-    return foundImgs && foundImgs.map((image, index) => {
-      // const img600 = image.attributes.styles.filter((e: any) => e['width'] == '600').url;
-      const imgUrl = image.attributes.styles[9].url
-      const imgSrc = `${process.env.SPREE_API_URL}${imgUrl}`;
-      // console.log(imgSrc);
+    if (foundImgs && foundImgs.length == 1) { 
       return (
-        <StyledSlide key={`image-${index}`} index={index} style={{ height: "500px" }}>
-          <StyledImageWithZoom src={imgSrc} />
+        <StyledSlide index={0}>
+          <StyledImageWithZoom src={primaryImg} />
         </StyledSlide>
       )
-    });
+    }
+    return (
+      foundImgs &&
+      foundImgs.map((image, index) => {
+        // const img600 = image.attributes.styles.filter((e: any) => e['width'] == '600').url;
+        const imgUrl = image.attributes.styles[9].url;
+        const imgSrc = `${process.env.SPREE_API_URL}${imgUrl}`;
+        // console.log(imgSrc);
+        return (
+          <StyledSlide key={`image-${index}`} index={index}>
+            <StyledImageWithZoom src={imgSrc} />
+          </StyledSlide>
+        );
+      })
+    );
   }, [thisProduct]);
+
+  const renderVariants = useCallback(() => {
+    const foundOptions = thisProduct && thisProduct?.included?.filter((e: any) => e["type"] === "option_value");
+    const foundColors = foundOptions && foundOptions?.filter((e: any) => e.attributes.presentation.includes("#"));
+    return (
+      <VariantList>
+        {foundColors?.map((option, index) => {
+          const optionColor = option.attributes.presentation;
+          console.log("Option: ", optionColor);
+          return <Variant color={optionColor} />;
+        })}
+      </VariantList>
+    );
+  }, []);
 
   useEffect(() => {
     if (isSuccess) {
@@ -526,7 +552,7 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
     // const foundImgs = thisProduct && thisProduct?.included.filter((e: any) => e["type"] === "image");
     // const imgUrl = foundImg[0]?.attributes?.styles[4].url;
     // const imgSrc = productImg ? `${process.env.SPREE_API_URL}${imgUrl}` : defaultImg;
-    
+
     // console.log("foundImgs: ", foundImgs);
 
     return (
@@ -572,6 +598,8 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
               {wholesale && <p>Price Per Pack</p>}
               <Price>${thisProduct?.data?.attributes?.price}</Price>
 
+              {renderVariants()}
+              
               {wholesale && (
                 <>
                   <SizesTitle>Sizes Per Pack</SizesTitle>
