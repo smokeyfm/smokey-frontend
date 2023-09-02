@@ -102,7 +102,7 @@ const FormWrapper: React.FC<any> = ({
 
           {/* <p>Need to fix something?</p>
           <PreviousButton onClick={goToPreviousStep} disabled={!canGoBack}>← Go Back</PreviousButton> */}
-        </>
+        </CongratsWrapper>
       );
     default:
       return (
