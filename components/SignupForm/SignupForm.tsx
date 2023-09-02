@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import Link from "next/link";
 import { useMediaQuery } from "react-responsive";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, FormikProps } from "formik";
 import FormikWizard from "formik-wizard";
 import { useFormikContext } from "formik";
 import { withWizard } from "react-albus";

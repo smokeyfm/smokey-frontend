@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import { setFieldValue } from 'formik';
+import { useField } from 'formik';
 
 import { TextField } from "@material-ui/core";
 
@@ -12,6 +13,13 @@ import {
   SuggestionLoader,
   SuggestionItem
 } from "./FormikInput.styles";
+
+// interface FormikAutocompleteType {
+//   name: string;
+//   type: string;
+//   placeholder: string;
+//   props: any;
+// }
 
 // Reference: https://github.com/mui-org/material-ui/issues/18331#issuecomment-569981389
 export const FormikAutocomplete = ({
@@ -40,7 +48,7 @@ export const FormikAutocomplete = ({
     //   .catch(error => console.error('Error', error));
     setAddressSelected(true);
     setHomeAddress(address.address);
-    form.setFieldValue(address.name, address.address, false);
+    setFieldValue(address.name, address.address, false);
   };
 
   return (
@@ -57,6 +65,7 @@ export const FormikAutocomplete = ({
                 label: "Home Address",
                 className: "location-search-input"
               })}
+              type="text"
               variant="outlined"
               // selectedTheme="dark"
               // invalid={Boolean(touched[fields.name] && errors[fields.name])}
@@ -95,7 +104,7 @@ export const FormikAutocomplete = ({
             // onChange={ () => console.log('TYPE TYPE')}
             onBlur={ () => setTouched({ [name]: true }) }
           /> */}
-      {touched[fields.name] && errors[fields.name] ? <Error>{errors[fields.name]}</Error> : ""}
+      {/* {touched[field.name] && errors[field.name] ? <Error>{errors[field.name]}</Error> : ""} */}
     </>
   );
 };
