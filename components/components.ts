@@ -9,6 +9,7 @@ export * from "./MainMenu";
 export * from "./MediaPlayer";
 export * from "./NotifyForm";
 export * from "./PostList";
+export * from "./ProductDetails";
 export * from "./ProductList";
 export * from "./SignupForm";
 export * from "./SocialLinks";
