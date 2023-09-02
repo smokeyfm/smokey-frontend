@@ -56,7 +56,7 @@ class MyDocument extends Document {
     const OpenGraphObject = `
       "@context": "http://schema.org",
       "@type": "Organization",
-      "url": "https://${process.env.APP_URL},
+      "url": "https://${process.env.NEXT_PUBLIC_APP_URL},
       "contactPoint": [{
         "@type": "ContactPoint",
         "telephone": "+1-917-300-8103",
@@ -68,15 +68,15 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <meta charSet="utf-8" />
-          <meta name="description" content={process.env.PAGE_DESC} />
+          <meta name="description" content={process.env.NEXT_PUBLIC_PAGE_DESC} />
           <meta name="keywords" content="" />
           <meta name="robots" content="noodp" />
           <meta property="og:locale" content="en_US" />
           <meta property="og:type" content="website" />
-          <meta property="og:title" content={process.env.PAGE_TITLE} />
-          <meta property="og:site_name" content={process.env.SITE_TITLE} />
-          <meta property="og:description" content={process.env.PAGE_DESC} />
-          <meta property="og:url" content={process.env.APP_URL} />
+          <meta property="og:title" content={process.env.NEXT_PUBLIC_PAGE_TITLE} />
+          <meta property="og:site_name" content={process.env.NEXT_PUBLIC_SITE_TITLE} />
+          <meta property="og:description" content={process.env.NEXT_PUBLIC_PAGE_DESC} />
+          <meta property="og:url" content={process.env.NEXT_PUBLIC_APP_URL} />
           {/* CHANGEME */}
           <meta property="article:publisher" content="https://www.facebook.com/materialinstinct/" />
           <meta property="article:section" content="General" />
@@ -86,20 +86,20 @@ class MyDocument extends Document {
           <meta property="og:image:width" content="406" />
           <meta property="og:image:height" content="406" />
           <meta name="twitter:card" content="summary" />
-          <meta name="twitter:description" content={process.env.PAGE_DESC} />
-          <meta name="twitter:title" content={process.env.SITE_TITLE} />
-          <meta name="twitter:site" content={process.env.APP_URL} />
+          <meta name="twitter:description" content={process.env.NEXT_PUBLIC_PAGE_DESC} />
+          <meta name="twitter:title" content={process.env.NEXT_PUBLIC_SITE_TITLE} />
+          <meta name="twitter:site" content={process.env.NEXT_PUBLIC_APP_URL} />
           {/* CHANGEME */}
           <meta
             name="twitter:image"
-            content={`${process.env.APP_URL}/img/open-graph-instinct-dna.jpg`}
+            content={`${process.env.NEXT_PUBLIC_APP_URL}/img/open-graph-instinct-dna.jpg`}
           />
           {/* CHANGEME */}
           <meta name="twitter:creator" content="@aaronsmulktis" />
 
           <link rel="icon" href="/img/favicon.ico" />
-          <link rel="canonical" href={process.env.APP_URL} />
-          <link rel="pingback" href={process.env.APP_URL} />
+          <link rel="canonical" href={process.env.NEXT_PUBLIC_APP_URL} />
+          <link rel="pingback" href={process.env.NEXT_PUBLIC_APP_URL} />
           <link
             href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css"
             rel="stylesheet"
