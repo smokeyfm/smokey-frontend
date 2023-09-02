@@ -33,7 +33,7 @@ import {
 
 const dummyCategories = ["Best Sellers", "Latest", "Seasonal", "Luxury", "On Sale", "Coming Soon"];
 
-export const Header: React.FC<HeaderProps> = (props) => {
+export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
   const { pathname } = useRouter();
   const { user, logout } = useAuth();
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -41,7 +41,6 @@ export const Header: React.FC<HeaderProps> = (props) => {
   const toggleCart = () => setCartVisible((isVisible) => !isVisible);
 
   const isMaint = process.env.IS_MAINT_MODE;
-  const darkMode = process.env.IS_DARK_MODE === "true";
 
   const handleAccount = (event: any) => {
     setAccountElem(event.currentTarget);
@@ -64,13 +63,13 @@ export const Header: React.FC<HeaderProps> = (props) => {
       <TopHeader>
         {!isMobile && (
           <LeftSide>
-            <SocialLinks />
+            <SocialLinks darkMode={darkMode} />
           </LeftSide>
         )}
         <LogoDiv>
           <Link href="/">
             <LinkDiv isActive>
-              <MyLogo imageFile="/logo.png" darkMode />
+              <MyLogo imageFile="/logo.png" darkMode={darkMode} />
             </LinkDiv>
           </Link>
         </LogoDiv>

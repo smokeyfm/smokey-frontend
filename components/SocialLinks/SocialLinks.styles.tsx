@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 interface FooterStateType {
-  isDark?: boolean;
+  darkMode?: boolean;
 }
 
 export const SocialContainer = styled.div<FooterStateType>`
@@ -18,7 +18,7 @@ export const SocialListItem = styled.li<FooterStateType>`
   display: inline-block;
   margin: 0 10px;
   & a {
-    color: ${(p) => (p.isDark ? p.theme.colors.black.primary : p.theme.colors.white.primary)};
+    color: ${(p) => (p.darkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary)};
   }
   & a:hover {
     color: ${(p) => p.theme.colors.brand.primary};
