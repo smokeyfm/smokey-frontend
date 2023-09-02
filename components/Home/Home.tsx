@@ -4,7 +4,6 @@ import { dehydrate } from "react-query/hydration";
 import { Layout, InfoBox, ProductList } from "../../components";
 import { fetchPosts, fetchProducts } from "../../hooks";
 import Banner from "./Banner";
-import BigHotDig from "./BigHotDig";
 import { Content } from "./Home.styles";
 import LatestProducts from "./LatestProducts";
 import MemberList from "./MemberList";
@@ -25,15 +24,15 @@ export const Home = () => {
   const bigHotDig = isMobile ? null : <BigHotDig data={data.bigHotDig} />;
   return (
     <Layout>
-      <Banner />
+      <Hero />
       <Content>
         {/* {memberList} */}
         <Products data={data.productList} title={"Live-Shopping"} />
         {/* {mobileMemberList} */}
-        {latestProducts}
-        {mobileLatest}
-        {polProductList}
-        {bigHotDig}
+        {advertList}
+        {advertListMobile}
+        {!productsAreLoading && polProductList}
+        {banner}
       </Content>
     </Layout>
   );

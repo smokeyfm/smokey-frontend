@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback, useState } from "react";
+import React, { Fragment, useEffect, useCallback, useState } from "react";
 // import BurgerMenu from "./BurgerMenu";
 import { slide as BurgerMenu } from "react-burger-menu";
 import List from "@material-ui/core/List";
@@ -9,6 +9,9 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
+import { QueryClient } from "react-query";
+import { dehydrate } from "react-query/hydration";
+import { fetchMenuLocation, fetchMenuItems, useMenuLocation, useMenuItems } from "../../hooks";
 import { MainMenuProps, menuDataItem } from "./types";
 import DesktopMenu from "./DesktopMenu";
 import styled from "@emotion/styled";
@@ -33,6 +36,8 @@ const HiddenOnDesktop = styled.div`
 `;
 
 const HiddenOnMobile = styled.div`
+  position: relative;
+  z-index: 3;
   box-shadow: 0 6px 12px rgb(0 0 0 / 5%);
   @media screen and (max-width: 767px) {
     display: none;
@@ -66,6 +71,43 @@ export const MainMenu = (props: MainMenuProps) => {
     menusData,
     ...others
   } = props;
+
+  const {
+    error: menuLocationError,
+    status: menuLocationStatus,
+    data: menuLocationData,
+    isLoading: menuLocationIsLoading,
+    isSuccess: menuLocationIsSuccess
+  }: {
+    error: any;
+    status: any;
+    data: any;
+    isLoading: boolean;
+    isSuccess: boolean;
+  } = useMenuLocation(1);
+
+  const {
+    error: menuItemsError,
+    status: menuItemsStatus,
+    data: menuItemsData,
+    isLoading: menuItemsIsLoading,
+    isSuccess: menuItemsIsSuccess
+  }: { error: any; status: any; data: any; isLoading: boolean; isSuccess: boolean } = useMenuItems(
+    1
+  );
+
+  useEffect(() => {
+    if (menuItemsIsSuccess && menuLocationIsSuccess) {
+      console.log(
+        menusData,
+        "MENU LOCATION",
+        menuLocationData?.response_data,
+        "MENU ITEMS",
+        menuItemsData?.response_data
+      );
+    }
+  }, []);
+
   // const MobileMenu = BurgerMenu[animationType as keyof typeof BurgerMenu];
   const [keyPath, setKeyPath] = useState("");
   const [open, setOpen] = useState(showMenuHeader);
@@ -83,11 +125,11 @@ export const MainMenu = (props: MainMenuProps) => {
       }
     });
   }, []);
-  const getSubMenuItem = (menusData: menuDataItem[], parentKeyPath: string, level: number) => {
+  const getSubMenuItem = (menusData: any[], parentKeyPath: string, level: number) => {
     const paddingLeft = level * 40 + "px";
     return (
       <List disablePadding>
-        {menusData.map((item, index) => {
+        {menusData.map((item: any, index: any) => {
           return (
             <Fragment key={parentKeyPath + "/" + item.key}>
               {
@@ -124,6 +166,8 @@ export const MainMenu = (props: MainMenuProps) => {
     );
   };
 
+  if (menuItemsIsLoading) return <>Loading...</>;
+
   return (
     <>
       <HiddenOnDesktop>
@@ -143,6 +187,7 @@ export const MainMenu = (props: MainMenuProps) => {
               </div>
             </>
           ) : null}
+          {/* {getSubMenuItem(menuItemsData && menuItemsData?.response_data.menu_location_listing[0], "", 0)} */}
           {getSubMenuItem(menusData, "", 0)}
           <MenuFooter>
             <div>Privacy Policy - Terms & Conditions - RETURN POLICY</div>
@@ -151,13 +196,30 @@ export const MainMenu = (props: MainMenuProps) => {
         </BurgerMenu>
       </HiddenOnDesktop>
       <HiddenOnMobile>
-        <DesktopMenu
-          onMenuItemClick={onMenuItemClick}
-          pcWrapClassName={classnames(pcWrapClassName)}
-          pcMenuItemClassName={pcMenuItemClassName}
-          menusData={menusData}
-        />
+        {menuItemsIsSuccess ? (
+          <DesktopMenu
+            onMenuItemClick={onMenuItemClick}
+            pcWrapClassName={classnames(pcWrapClassName)}
+            pcMenuItemClassName={pcMenuItemClassName}
+            menusData={menuItemsData?.response_data}
+            // menusData={menusData}
+          />
+        ) : null}
       </HiddenOnMobile>
     </>
   );
 };
+
+export async function getServerSideProps() {
+  const queryClient = new QueryClient();
+
+  // await queryClient.prefetchQuery(["posts", 1], () => fetchPosts(1));
+  await queryClient.prefetchQuery(["menu_location", 1], () => fetchMenuLocation(1));
+  await queryClient.prefetchQuery(["menu_items", 1], () => fetchMenuItems(1));
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient)
+    }
+  };
+}
