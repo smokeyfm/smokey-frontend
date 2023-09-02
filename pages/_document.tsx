@@ -97,10 +97,6 @@ class MyDocument extends Document {
           <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUqxah2mT_0iaosOBBSIKRy0lw7f6wdLA&libraries=places" />
           <meta charSet="utf-8" />
           <link rel="icon" href="/img/favicon.ico" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0, minimal-ui"
-          />
           <meta name="description" content="The Building Blocks of Material Instincts" />
           <meta name="keywords" content="" />
           <meta name="robots" content="noodp" />
@@ -137,7 +133,7 @@ class MyDocument extends Document {
             type="text/css"
           />
           <script type="application/ld+json">{OpenGraphObject}</script>
-          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUqxah2mT_0iaosOBBSIKRy0lw7f6wdLA&libraries=places" />
+          {/* <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUqxah2mT_0iaosOBBSIKRy0lw7f6wdLA&libraries=places" /> */}
           {/* <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

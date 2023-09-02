@@ -42,6 +42,7 @@ export const StyledInputContainer = styled.div<StyledInputContainerType>`
 `;
 
 export const StyledInput = styled.input`
+  font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
   padding-left: 34px;
   border: 0;
   outline: none;

@@ -1,5 +1,9 @@
 import * as React from "react";
+import { slide as BurgerMenu } from "react-burger-menu";
 import { useCart } from "../../hooks/useCart";
+import { cartStyles } from "./cartStyles";
+
+import { CartWrapper, CartButton } from "./Cart.styles";
 
 interface Props {
   isVisible: boolean;
@@ -25,11 +29,11 @@ export const Cart = ({ isVisible, toggle }: Props) => {
   } = data?.data?.attributes || {};
 
   return (
-    <>
-      <button onClick={toggle}>
+    <CartWrapper>
+      <CartButton onClick={toggle}>
         <i className="btb bt-shopping-cart" />
-      </button>
-      {isVisible && (
+      </CartButton>
+      {/* {isVisible && (
         <div className="cart-modal">
           <h2>Cart</h2>
           <div>{item_count} items in your cart</div>
@@ -37,7 +41,14 @@ export const Cart = ({ isVisible, toggle }: Props) => {
           <div>Tax: {included_tax_total}</div>
           <div>Total: {display_total}</div>
         </div>
-      )}
+      )} */}
+      <BurgerMenu right isOpen={isVisible} onOpen={toggle} styles={cartStyles} onClose={toggle}>
+        <h2>Cart</h2>
+        <div>{item_count} items in your cart</div>
+        <div>Subtotal: {display_item_total}</div>
+        <div>Tax: {included_tax_total}</div>
+        <div>Total: {display_total}</div>
+      </BurgerMenu>
       <style jsx>{`
         .cart-modal {
           background-color: white;
@@ -48,6 +59,6 @@ export const Cart = ({ isVisible, toggle }: Props) => {
           right: 50px;
         }
       `}</style>
-    </>
+    </CartWrapper>
   );
 };

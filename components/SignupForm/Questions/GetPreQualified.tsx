@@ -57,7 +57,7 @@ export const ColorizedCart = styled.i<GenericThemeType>`
   }
 `;
 
-const partnerName = "Smokey Records LLC";
+const partnerName = process.env.SITE_TITLE;
 
 export const GetPreQualified = () => {
   // const { errors, touched } = useFormikContext();
