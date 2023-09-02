@@ -4,8 +4,6 @@ import Head from "next/head";
 import { QueryClient } from "react-query";
 import { dehydrate } from "react-query/hydration";
 import { ArrowBack, ArrowForward } from "@material-ui/icons";
-import Lottie from "react-lottie";
-import girlAnimation from "../../data/girl.json";
 import {
   fetchStreams,
   fetchProduct,
@@ -32,9 +30,6 @@ import "pure-react-carousel/dist/react-carousel.es.css";
 // import ProductCard from "../components";
 
 import {
-  NotFoundContainer,
-  NotFoundTitle,
-  NotFoundSubtitle,
   ProductContainer,
   ProductImageCarousel,
   ProductInfoBox,
@@ -463,11 +458,11 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
   };
 
   const renderProductImgs = useCallback(() => {
-    const foundImgs =
+    const productImgs =
       thisProduct && thisProduct?.included?.filter((e: any) => e["type"] === "image");
-    const primaryImg = foundImgs && foundImgs[0].attributes.styles[9].url;
-    // console.log("rendered imgs: ", foundImgs);
-    if (foundImgs && foundImgs.length < 1) {
+    const primaryImg = productImgs && productImgs[0].attributes.styles[9].url;
+    // console.log("rendered imgs: ", productImgs);
+    if (productImgs && productImgs.length < 1) {
       return <Loading />;
     }
     if (foundImgs && foundImgs.length == 1) { 
@@ -478,8 +473,8 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
       )
     }
     return (
-      foundImgs &&
-      foundImgs.map((image, index) => {
+      productImgs &&
+      productImgs.map((image, index) => {
         // const img600 = image.attributes.styles.filter((e: any) => e['width'] == '600').url;
         const imgUrl = image.attributes.styles[9].url;
         const imgSrc = `${process.env.SPREE_API_URL}${imgUrl}`;
@@ -498,14 +493,14 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
     const foundColors = foundOptions && foundOptions?.filter((e: any) => e.attributes.presentation.includes("#"));
     return (
       <VariantList>
-        {foundColors?.map((option, index) => {
+        {productVariantColors?.map((option: any, index: any) => {
           const optionColor = option.attributes.presentation;
-          console.log("Option: ", optionColor);
-          return <Variant color={optionColor} />;
+          // console.log("Option: ", optionColor);
+          return <Variant key={`variant-${index}`} color={optionColor} />;
         })}
       </VariantList>
     );
-  }, []);
+  }, [productVariantColors]);
 
   useEffect(() => {
     if (isSuccess) {
