@@ -1,1 +1,1 @@
-export { VideoJS } from './VideoJS'
+export { VideoJS } from "./VideoJS";
