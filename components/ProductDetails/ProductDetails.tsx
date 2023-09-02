@@ -492,13 +492,13 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
     const foundOptions = thisProduct && thisProduct?.included?.filter((e: any) => e["type"] === "option_value");
     const foundColors = foundOptions && foundOptions?.filter((e: any) => e.attributes.presentation.includes("#"));
     return (
-      <VariantList>
+      <VariantSwatchList>
         {productVariantColors?.map((option: any, index: any) => {
           const optionColor = option.attributes.presentation;
           // console.log("Option: ", optionColor);
-          return <Variant key={`variant-${index}`} color={optionColor} />;
+          return <VariantSwatch key={`variant-${index}`} color={optionColor} />;
         })}
-      </VariantList>
+      </VariantSwatchList>
     );
   }, [productVariantColors]);
 
