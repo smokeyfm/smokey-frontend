@@ -2,7 +2,7 @@ import React from "react";
 import { TextField } from "@material-ui/core";
 // import { Field, useFormikContext } from 'formik';
 
-import { Error } from "./FormikInput.styles";
+import { BasicField, Error } from "./FormikInput.styles";
 
 export const FormikInput = ({
   field: { ...fields },
@@ -11,7 +11,7 @@ export const FormikInput = ({
   ...props
 }: any) => (
   <>
-    <TextField
+    <BasicField
       selectedTheme="dark"
       {...props}
       {...fields}

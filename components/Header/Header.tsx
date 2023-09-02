@@ -110,8 +110,8 @@ export const Header: React.FC<HeaderProps> = (props) => {
             </HeaderAccount>
           ) : (
             <HeaderOptions>
-              <Link href="/authenticate/login">
-                <LinkDiv isActive={pathname === "/authenticate/login"}>LOG IN</LinkDiv>
+              <Link href="/login">
+                <LinkDiv isActive={pathname === "/login"}>LOG IN</LinkDiv>
               </Link>
               <Link href="/authenticate/signup">
                 <LinkDiv isActive={pathname === "/authenticate/signup"}>SIGN UP</LinkDiv>

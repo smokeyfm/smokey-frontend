@@ -156,7 +156,7 @@ const FormWrapper: React.FC<any> = ({
           </WizardActions>
           {!canGoBack && (
             <SkipAction>
-              <Link href="/authenticate/login">Not interested in financing? Skip this..</Link>
+              <Link href="/login">Not interested in financing? Skip this..</Link>
             </SkipAction>
           )}
           {/* {<div><pre>VALUE: {JSON.stringify(values, null, 2)}</pre></div>} */}
@@ -169,8 +169,10 @@ const FormWrapper: React.FC<any> = ({
               and we never share your information without your consent.
               {/* <Subtitle>– or –</Subtitle> */}
               <LoginAction>
-                {/* <Link href="/authenticate/login" target="_blank" rel="noopener noreferrer"> */}
-                <Link href="/authenticate/login">Already have an account?</Link>
+                {/* <Link href="/login" target="_blank" rel="noopener noreferrer">
+                  Already have an account?
+                </Link> */}
+                <Link href="/login">Already have an account?</Link>
               </LoginAction>
             </Disclaimer>
           )}
