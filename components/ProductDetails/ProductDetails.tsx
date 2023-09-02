@@ -459,18 +459,19 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
 
   const renderProductImgs = useCallback(() => {
     const productImgs =
-      thisProduct && thisProduct?.included?.filter((e: any) => e["type"] === "image");
+      thisProduct &&
+      thisProduct?.included?.filter((e: any) => e["type"] === "image");
     const primaryImg = productImgs && productImgs[0].attributes.styles[9].url;
     // console.log("rendered imgs: ", productImgs);
     if (productImgs && productImgs.length < 1) {
       return <Loading />;
     }
-    if (foundImgs && foundImgs.length == 1) { 
+    if (foundImgs && foundImgs.length == 1) {
       return (
         <StyledSlide index={0}>
           <StyledImageWithZoom src={primaryImg} />
         </StyledSlide>
-      )
+      );
     }
     return (
       productImgs &&
@@ -489,8 +490,12 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
   }, [thisProduct]);
 
   const renderVariants = useCallback(() => {
-    const foundOptions = thisProduct && thisProduct?.included?.filter((e: any) => e["type"] === "option_value");
-    const foundColors = foundOptions && foundOptions?.filter((e: any) => e.attributes.presentation.includes("#"));
+    const foundOptions =
+      thisProduct &&
+      thisProduct?.included?.filter((e: any) => e["type"] === "option_value");
+    const foundColors =
+      foundOptions &&
+      foundOptions?.filter((e: any) => e.attributes.presentation.includes("#"));
     return (
       <VariantSwatchList>
         {productVariantColors?.map((option: any, index: any) => {
@@ -594,7 +599,7 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
               <Price>${thisProduct?.data?.attributes?.price}</Price>
 
               {renderVariants()}
-              
+
               {wholesale && (
                 <>
                   <SizesTitle>Sizes Per Pack</SizesTitle>
