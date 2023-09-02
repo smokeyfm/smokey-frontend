@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 export const Container = styled.div`
+  background: ${(p) => p.theme.colors.black.primary};
   padding-top: 41px;
   color: #fff;
   padding-bottom: 68px;
@@ -84,5 +85,44 @@ export const IconLinkWrapper = styled.div`
   }
   @media (max-width: 750px) {
     display: none;
+  }
+`;
+
+export const CameraIcon = styled.img`
+  width: 11px;
+  height: auto;
+  margin-right: 3.88px;
+  @media (max-width: 375px) {
+    width: 20.71px;
+    height: auto;
+    margin-right: 7.76px;
+  }
+`;
+export const FacebookIcon = styled.img`
+  width: 6.81px;
+  height: auto;
+  margin-right: 3.88px;
+  @media (max-width: 375px) {
+    width: 13.63px;
+    height: auto;
+    margin-right: 7.76px;
+  }
+`;
+export const PlayIcon = styled.img`
+  width: 12.29px;
+  height: auto;
+  margin-right: 3.88px;
+  @media (max-width: 375px) {
+    width: 24.59px;
+    height: auto;
+    margin-right: 7.76px;
+  }
+`;
+export const CircleIcon = styled.img`
+  width: 10.35px;
+  height: auto;
+  @media (max-width: 375px) {
+    width: 20.71px;
+    height: auto;
   }
 `;

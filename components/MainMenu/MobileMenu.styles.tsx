@@ -6,9 +6,12 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 
 export const StyledList = styled(List)`
   outline: none;
+  font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
 `;
 
-export const StyledListItem = styled(ListItem)``;
+export const StyledListItem = styled(ListItem)`
+  font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
+`;
 
 export const StyledListItemText = styled(ListItemText)``;
 

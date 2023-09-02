@@ -5,6 +5,7 @@ export const ProductContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 auto;
+  padding-top: 30px;
   width: 100%;
 `;
 

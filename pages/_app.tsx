@@ -26,11 +26,8 @@ import "../components/Terms/ElectronicSignaturesModal.css";
 import "../components/Terms/FinancialPrivacyModal.css";
 import "./app.css";
 
-const queryClient = new QueryClient();
-const CustomIcon = styled.img`
-  width: ${pxIphone(37)};
-  height: auto;
-`;
+import { AppWrapper } from "./_app.styles";
+
 export default function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
   const [wholesale, setWholesale] = useState(true);
@@ -64,7 +61,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     }
 
     return (
-      <>
+      <AppWrapper>
         <Header />
         <MainMenu
           showMenuHeader
@@ -78,7 +75,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           right={false}
         />
         <Component {...pageProps} wholesale={wholesale} />
-      </>
+      </AppWrapper>
     );
   };
 
@@ -98,6 +95,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             {renderContent()}
           </ThemeProvider>
         </Hydrate>
+
+        <ReactQueryDevtools initialIsOpen={false} />
       </AuthProvider>
       <ReactQueryDevtools />
     </QueryClientProvider>

@@ -7,7 +7,7 @@ export const StreamViewerWrapper = styled.div`
   top: 0;
   left: 0;
   display: flex;
-  justify-contents: center;
+  justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;

@@ -17,10 +17,10 @@ export const Container = styled.div`
   padding-bottom: 13px;
   justify-content: center;
   gap: 40px;
+  font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
 `;
 
 export const MyMenuItem = styled.div<any>`
-  font-family: "Bebas Neue";
   font-size: 14px;
   line-height: 150%;
   color: ${(p) => p.theme.colors.black.primary};

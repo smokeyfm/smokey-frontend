@@ -4,7 +4,7 @@ import ButtonBase from "@material-ui/core/ButtonBase";
 import { XlargeTitle } from "../../../styles/BaseStyles";
 export const BannerContainer = styled.div`
   position: relative;
-  margin-top: ${pxPC(36)};
+  margin: ${pxPC(36)} 0 -5px 0;
 `;
 export const BannerTitle = styled(XlargeTitle)``;
 export const BannerImg = styled.img`

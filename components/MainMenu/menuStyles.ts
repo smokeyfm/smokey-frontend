@@ -37,6 +37,7 @@ export const menuStyles: any = {
   bmItemList: {
     color: "#b8b7ad",
     padding: "0 0em",
+    fontFamily: "Bebas Neue",
     height: "100%"
   },
   bmItem: {
@@ -44,6 +45,7 @@ export const menuStyles: any = {
     padding: "0.8em",
     color: "#000"
   },
+  bmItemText: {},
   bmOverlay: {
     // top: 0,
     // left: 0,

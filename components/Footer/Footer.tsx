@@ -1,5 +1,7 @@
 import React, { ReactNode } from "react";
 import classnames from "classnames";
+import { SocialLinks } from "..";
+
 import {
   Container,
   Grid,
@@ -14,7 +16,7 @@ import {
   IconLinksMo,
   MobileIconLink
 } from "./Footer.styles";
-import { Icon } from "@material-ui/core";
+
 export type CLASSESTYPE = {
   root?: string;
   grid?: string;
@@ -94,15 +96,7 @@ export const Footer: React.FC<FootProps> = ({ classes, footerData }) => {
           </Column>
         ))}
       </Grid>
-      {mobileIconLinks && (
-        <IconLinksMo>
-          {mobileIconLinks.map((link, linkId) => (
-            <MobileIconLink href={link.url} key={linkId}>
-              {link.icon}
-            </MobileIconLink>
-          ))}
-        </IconLinksMo>
-      )}
+      <SocialLinks isDark />
     </Container>
   );
 };

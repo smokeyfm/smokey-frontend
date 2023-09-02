@@ -13,17 +13,15 @@ export * from "./MediaPlayer";
 export * from "./NotifyForm";
 export * from "./PostList";
 export * from "./POLTerms";
-export * from "./PolProductList";
+export * from "./ProductCard";
 export * from "./ProductDetails";
 export * from "./ProductList";
 export * from "./ResetPassword";
 export * from "./SignupForm";
 export * from "./SocialLinks";
-<<<<<<< HEAD
-=======
+export * from "./StreamCard";
 export * from "./StreamList";
 export * from "./StreamViewer";
 export * from "./Terms";
 export * from "./TipBot";
 export * from "./VideoJS";
->>>>>>> 9a38330 (tons of Product details upgrades, tons of stuff, terms & conditions, footer, hooks)

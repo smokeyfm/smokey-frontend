@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 export const HiddenOnDesktop = styled.div`
+  font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
   @media screen and (min-width: 768px) {
     display: none;
   }
@@ -27,6 +28,11 @@ export const MenuToggle = styled.div`
 `;
 
 export const MenuFooter = styled.div`
-  /* position: fixed; */
+  font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
+  color: ${(p) => p.theme.colors.gray.light} !important;
   bottom: 0;
+
+  & a {
+    color: ${(p) => p.theme.colors.gray.medium} !important;
+  }
 `;
