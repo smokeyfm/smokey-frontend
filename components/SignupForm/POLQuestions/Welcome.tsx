@@ -94,7 +94,9 @@ export const Welcome = () => {
           <div>
             <ColorizedCart className="bts bt-shopping-cart" />
             <Title>LiveStream Shopping</Title>
-            <Description>Chat it up with our models while they show off our new &amp; trending products.</Description>
+            <Description>
+              Chat it up with our models while they show off our new &amp; trending products.
+            </Description>
           </div>
         </Carousel>
       </InputGroupWrapper>

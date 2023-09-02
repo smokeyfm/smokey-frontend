@@ -37,7 +37,12 @@ export const CompanyAddress = () => {
           />
         </InputWrapper>
         <InputWrapper>
-          <Field name="unitNumber" id="unitNumber" component={FormikInput} label="Suite / Floor / Unit" />
+          <Field
+            name="unitNumber"
+            id="unitNumber"
+            component={FormikInput}
+            label="Suite / Floor / Unit"
+          />
         </InputWrapper>
       </InputGroupWrapper>
     </QuestionWrapper>

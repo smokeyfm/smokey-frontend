@@ -2,7 +2,14 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/router";
 import { QueryClient } from "react-query";
 import { dehydrate } from "react-query/hydration";
-import { fetchStreams, fetchProducts, fetchVariants, useProducts, useStreams, useVariants } from "../../hooks";
+import {
+  fetchStreams,
+  fetchProducts,
+  fetchVariants,
+  useProducts,
+  useStreams,
+  useVariants
+} from "../../hooks";
 import { Layout, LoadingWrapper, Loading } from "../components";
 import { useProduct, fetchProduct } from "../../hooks/useProduct";
 import { useMutation, useQueryClient } from "react-query";
@@ -63,22 +70,29 @@ const productColors: ColorOptionType[] = [
   }
 ];
 
-export const ProductDetails = ({wholesale}: any) => {
+export const ProductDetails = ({ wholesale }: any) => {
   const router = useRouter();
-  const { id } = router.query;
-  const { data, isLoading, isSuccess } = useProduct(`${id}`);
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const { asPath: productSlug } = router;
+  // console.log(productSlug);
+  const { data: thisProduct, isLoading, isSuccess } = useProduct(`${productSlug.replace("/", "")}`);
+  const thisProductId = thisProduct?.data.id || "";
   const queryClient = useQueryClient();
   const [colorOptions, setColorOptions] = useState<any>(productColors);
-  
+
   const {
     error: productsError,
     status: productsStatus,
     data: productsData,
     isLoading: productsAreLoading,
     isSuccess: productsAreSuccess
-  }: { error: any; status: any; data: any; isLoading: boolean; isSuccess: boolean } = useProducts(1);
-  const randomNextProductId = productsAreSuccess ? productsData.data[Math.floor(Math.random() * productsData.data?.length)].id : 1;
-  
+  }: { error: any; status: any; data: any; isLoading: boolean; isSuccess: boolean } = useProducts(
+    1
+  );
+  const randomNextProductId = productsAreSuccess
+    ? productsData.data[Math.floor(Math.random() * productsData.data?.length)].id
+    : 1;
+
   const {
     error: variantsError,
     status: variantsStatus,
@@ -113,10 +127,9 @@ export const ProductDetails = ({wholesale}: any) => {
           })
           .catch(() => {
             /* product not found */
-            fetchProduct(randomNextProductId)
-            .then((nextProduct) => {
+            fetchProduct(randomNextProductId).then((nextProduct) => {
               router.push(`/${nextProduct?.data?.attributes?.slug}`);
-            })
+            });
           });
         break;
       case "ArrowRight":
@@ -128,10 +141,9 @@ export const ProductDetails = ({wholesale}: any) => {
           })
           .catch(() => {
             /* product not found */
-            fetchProduct(randomNextProductId)
-            .then((nextProduct) => {
+            fetchProduct(randomNextProductId).then((nextProduct) => {
               router.push(`/${nextProduct?.data?.attributes?.slug}`);
-            })
+            });
           });
         break;
       default:
@@ -142,7 +154,7 @@ export const ProductDetails = ({wholesale}: any) => {
   const renderColorOptions = useCallback(() => {
     let variants: any = [];
     const foundVariants = thisProduct?.included?.some((elem) => {
-      if (elem.type == 'option_values') {
+      if (elem.type == "option_values") {
         variants.push(elem);
       }
     });
@@ -180,13 +192,11 @@ export const ProductDetails = ({wholesale}: any) => {
         category: tracking.Category.PRODUCT_DETAIL,
         label: thisProduct?.data?.attributes?.name
       });
-
     }
-    window.addEventListener('keydown', handleKeyPress);
+    window.addEventListener("keydown", handleKeyPress);
     return () => {
-      window.removeEventListener('keydown', handleKeyPress);
+      window.removeEventListener("keydown", handleKeyPress);
     };
-
   }, [isSuccess, handleKeyPress]);
 
   if (isLoading) {
@@ -230,7 +240,7 @@ export const ProductDetails = ({wholesale}: any) => {
 
     // const renderProductImgs = () => {
     //   return productImgs.map((item, index) => {
-        
+
     //     return (
     //       <Slide index={0} style={{ height: "500px" }}>
     //         <ImageWithZoom src={source} />
@@ -250,7 +260,6 @@ export const ProductDetails = ({wholesale}: any) => {
               isIntrinsicHeight
               touchEnabled>
               <Slider className="slider">
-                
                 <Slide index={1} style={{ height: "500px" }}>
                   <ImageWithZoom src={source} />
                 </Slide>
@@ -310,9 +319,7 @@ export const ProductDetails = ({wholesale}: any) => {
                       <ColorsCell>Pack Price</ColorsCell>
                     </ColorsTH>
                   </ColorsHead>
-                  <ColorsBody>
-                    {renderColorOptions(colorOptions)}
-                  </ColorsBody>
+                  <ColorsBody>{renderColorOptions(colorOptions)}</ColorsBody>
                 </ColorsTable>
                 // <table>
                 //   <thead>
@@ -339,7 +346,7 @@ export const ProductDetails = ({wholesale}: any) => {
                 //   </tbody>
                 // </table>
               )}
-              
+
               {/* RETAIL COLOR */}
               {!wholesale && (
                 <select>

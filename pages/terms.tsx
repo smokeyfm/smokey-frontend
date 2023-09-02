@@ -1,4 +1,4 @@
-import { PolFinancialPrivacyModal } from '../components';
+import { PolFinancialPrivacyModal } from "../components";
 import { Layout } from "../components";
 
 const TermsPage = () => {
@@ -7,6 +7,6 @@ const TermsPage = () => {
       <PolFinancialPrivacyModal />
     </Layout>
   );
-}
+};
 
 export default TermsPage;
