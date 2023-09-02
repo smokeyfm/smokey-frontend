@@ -18,7 +18,7 @@ const MyMenuItem = styled.div<MyMenuItemProps>`
   font-family: "Bebas Neue";
   font-size: 14px;
   line-height: 150%;
-  color: ${p => p.theme.colors.black.primary};
+  color: ${(p) => p.theme.colors.black.primary};
   text-align: center;
   display: flex;
   justify-content: center;
@@ -31,7 +31,7 @@ const MyMenuItem = styled.div<MyMenuItemProps>`
     transition: transform 1s linear;
     width: 120%;
     height: 1px;
-    background-color: ${p => p.theme.colors.black.primary};
+    background-color: ${(p) => p.theme.colors.black.primary};
     content: "";
     position: absolute;
     bottom: 0;
