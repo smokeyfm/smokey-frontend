@@ -6,6 +6,7 @@ import { dehydrate } from "react-query/hydration";
 import { ArrowBack, ArrowForward } from "@material-ui/icons";
 import {
   fetchStreams,
+  fetchProduct,
   fetchProducts,
   fetchVariants,
   useProducts,
@@ -13,13 +14,12 @@ import {
   useVariants
 } from "../../hooks";
 import { Layout, LoadingWrapper, Loading } from "../components";
-import { useProduct, fetchProduct } from "../../hooks/useProduct";
 import { useMutation, useQueryClient } from "react-query";
 import { addItemToCart } from "../../hooks/useCart";
 import { QueryKeys } from "../../hooks/queryKeys";
 import * as tracking from "../../config/tracking";
 import Featured from "../Home/Featured";
-import PolProductList from "../PolProductList";
+import { PolProductList } from "../PolProductList";
 import { ProductList } from "../ProductList";
 import { FourOhFour } from "../404/FourOhFour";
 import { useMediaQuery } from "react-responsive";
