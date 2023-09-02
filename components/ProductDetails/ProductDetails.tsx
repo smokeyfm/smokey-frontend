@@ -24,7 +24,7 @@ import {
   ProductInfoBox,
   ProductDescription,
   Detail
-} from './ProductDetails.styles';
+} from "./ProductDetails.styles";
 
 const settings = {
   speed: 500,
@@ -122,13 +122,13 @@ export const ProductDetails = () => {
               isIntrinsicHeight
               touchEnabled>
               <Slider className="slider">
-                <Slide index={0} style={{height: '500px'}}>
+                <Slide index={0} style={{ height: "500px" }}>
                   <ImageWithZoom src={source} />
                 </Slide>
-                <Slide index={1} style={{height: '500px'}}>
+                <Slide index={1} style={{ height: "500px" }}>
                   <ImageWithZoom src={source} />
                 </Slide>
-                <Slide index={2} style={{height: '500px'}}>
+                <Slide index={2} style={{ height: "500px" }}>
                   <ImageWithZoom src={source} />
                 </Slide>
               </Slider>
