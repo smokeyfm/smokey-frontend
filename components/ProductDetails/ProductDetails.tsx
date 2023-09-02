@@ -4,6 +4,8 @@ import Head from "next/head";
 import { QueryClient } from "react-query";
 import { dehydrate } from "react-query/hydration";
 import { ArrowBack, ArrowForward } from "@material-ui/icons";
+import Lottie from "react-lottie";
+import girlAnimation from "../../data/girl.json";
 import {
   fetchStreams,
   fetchProduct,
@@ -30,6 +32,9 @@ import "pure-react-carousel/dist/react-carousel.es.css";
 // import ProductCard from "../components";
 
 import {
+  NotFoundContainer,
+  NotFoundTitle,
+  NotFoundSubtitle,
   ProductContainer,
   ProductImageCarousel,
   ProductInfoBox,
