@@ -41,8 +41,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
-  const router = useRouter();
-
   useEffect(() => {
     const handleRouteChange = (url: string) => {
       tracking.trackPageview(url);
