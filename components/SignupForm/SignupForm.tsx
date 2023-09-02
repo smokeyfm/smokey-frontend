@@ -31,7 +31,7 @@ import {
   CongratsWrapper
 } from "./SignupForm.styles";
 
-const FormWrapper = ({
+const FormWrapper: React.FC<any> = ({
   steps,
   children,
   // onEachStepSubmit,
@@ -101,8 +101,8 @@ const FormWrapper = ({
           <Subtitle>{status.subtitle}</Subtitle>
 
           {/* <p>Need to fix something?</p>
-          <PreviousButton onClick={goToPreviousStep} disabled={!canGoBack} ghost>← Go Back</PreviousButton> */}
-        </CongratsWrapper>
+          <PreviousButton onClick={goToPreviousStep} disabled={!canGoBack}>← Go Back</PreviousButton> */}
+        </>
       );
     default:
       return (
@@ -169,9 +169,8 @@ const FormWrapper = ({
               and we never share your information without your consent.
               {/* <Subtitle>– or –</Subtitle> */}
               <LoginAction>
-                <Link href="/authenticate/login" target="_blank" rel="noopener noreferrer">
-                  Already have an account?
-                </Link>
+                {/* <Link href="/authenticate/login" target="_blank" rel="noopener noreferrer"> */}
+                <Link href="/authenticate/login">Already have an account?</Link>
               </LoginAction>
             </Disclaimer>
           )}

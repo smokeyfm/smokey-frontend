@@ -21,9 +21,9 @@ import { toShortDateZeroFill } from "../../../utilities/DateHelpers";
 //   firstName: Yup.string()
 //     .min(2, "Too Short!")
 //     .max(50, "Too Long!")
-//     .required("Required"),
+//     .defined("Required"),
 //   address: Yup.object().shape({
-//     line1: Yup.string().required("Required")
+//     line1: Yup.string().defined("Required")
 //   }),
 //   dob: Yup.object().shape({
 //     day: Yup.number()
@@ -89,9 +89,9 @@ export const Questions: QuestionsType[] = [
       suffix: ""
     },
     validationSchema: object().shape({
-      firstName: string().required(Static.errors.isRequired),
+      firstName: string().defined(Static.errors.isRequired),
       middleName: string(),
-      lastName: string().required(Static.errors.isRequired),
+      lastName: string().defined(Static.errors.isRequired),
       suffix: string()
     }),
     actionLabel: "Next"
@@ -114,7 +114,7 @@ export const Questions: QuestionsType[] = [
             ? currentValue
             : new Date("")
         )
-        .required(Static.errors.isRequired)
+        .defined(Static.errors.isRequired)
         .typeError("Invalid date")
         .min(new Date("1/1/1900"), Static.errors.minDateOfBirth)
         .max(
@@ -131,7 +131,7 @@ export const Questions: QuestionsType[] = [
       //         ? currentValue
       //         : new Date('')
       //     )
-      //     .required(Static.errors.isRequired)
+      //     .defined(Static.errors.isRequired)
       //     .typeError('Invalid date')
       //     .min(new Date('1/1/1900'), Static.errors.minDateOfBirth)
       //     .max(
@@ -160,7 +160,7 @@ export const Questions: QuestionsType[] = [
       unitNumber: ""
     },
     validationSchema: object().shape({
-      homeAddress: string().required(Static.errors.isRequired),
+      homeAddress: string().defined(Static.errors.isRequired),
       unitNumber: string()
     }),
     actionLabel: "Next"
@@ -179,12 +179,12 @@ export const Questions: QuestionsType[] = [
       yearlyIncome: ""
     },
     validationSchema: object().shape({
-      yearlyIncome: string().required(Static.errors.isRequired)
+      yearlyIncome: string().defined(Static.errors.isRequired)
     }),
     // validationSchema: object().shape({
     //   // eslint-disable-next-line no-restricted-globals
     //   yearlyIncome: number().transform(value => (isNaN(value) ? parseInt(value, 10) : value))
-    //     .required(Static.errors.isRequired)
+    //     .defined(Static.errors.isRequired)
     //     .min(constants.MIN_ANNUAL_INCOME, Static.errors.annualIncomeMin
     //     )
     //     .max(constants.MAX_ANNUAL_INCOME, Static.errors.annualIncomeMax),
@@ -228,13 +228,13 @@ export const Questions: QuestionsType[] = [
     },
     validationSchema: object().shape({
       phoneNumber: string()
-        .required(Static.errors.isRequired)
+        .defined(Static.errors.isRequired)
         .min(constants.PHONE_LENGTH, Static.errors.phoneNumberValid)
         .max(constants.PHONE_LENGTH, Static.errors.phoneNumberValid)
         .matches(constants.PHONE_REGEX, Static.errors.phoneNumberValid),
-      email: string().required(Static.errors.isRequired),
+      email: string().defined(Static.errors.isRequired),
       password: string()
-        .required(Static.errors.isRequired)
+        .defined(Static.errors.isRequired)
         .matches(constants.PASSWORD_REGEX, Static.errors.passwordValid),
       passwordConfirm: string()
         .required(Static.errors.isRequired)

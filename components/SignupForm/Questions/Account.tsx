@@ -136,7 +136,7 @@ export const Account = () => {
           >
             {/* <Term>
               <Field type="checkbox" name="acceptSignatureTerms">
-                {(formikProps) => (
+                {(formikProps: any) => (
                   <FormikCheckbox
                     {...formikProps}
                     nextTerm={nextSlide}
@@ -192,7 +192,7 @@ export const Account = () => {
             </Term>
             {/* <Term>
               <Field type="checkbox" name="acceptAuthorizeTerms">
-                {(formikProps) => (
+                {(formikProps: any) => (
                   <FormikCheckbox
                     {...formikProps}
                     nextTerm={nextSlide}

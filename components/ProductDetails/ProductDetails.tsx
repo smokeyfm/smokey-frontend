@@ -95,10 +95,10 @@ export const ProductDetails = () => {
 
     const imageSource =
       Array.isArray(data?.included) && data?.included[0]?.attributes?.styles?.[2].url;
-    // const source = imageSource
-    //   ? `http://localhost:8080${imageSource}`
-    //   : "https://via.placeholder.com/400x600";
-    const source = "https://via.placeholder.com/400x600";
+    const source = imageSource
+      ? `http://localhost:8080${imageSource}`
+      : "https://via.placeholder.com/400x600";
+    // const source = "https://via.placeholder.com/400x600";
 
     return (
       <Layout>

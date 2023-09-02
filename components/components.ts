@@ -1,3 +1,4 @@
+export * from "./Alerts";
 export * from "./AuthForm";
 export * from "./ComingSoon";
 export * from "./Foot";

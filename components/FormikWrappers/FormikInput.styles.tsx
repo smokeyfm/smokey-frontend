@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { Checkbox } from "@material-ui/core";
 
 export const Error = styled.div`
-  color: ${(props) => props.theme.colors.red.primary};
+  color: ${(props: any) => props.theme.colors.red.primary};
   text-align: left;
 `;
 
@@ -11,7 +11,7 @@ export const HiddenInput = styled.div`
 `;
 
 export const SuggestionWrapper = styled.div`
-  background: ${(props) => props.theme.colors.white.primary};
+  background: ${(props: any) => props.theme.colors.white.primary};
   position: relative;
   margin-top: 15px;
   align-items: flex-start;
@@ -26,10 +26,10 @@ export const SuggestionWrapper = styled.div`
   box-shadow: 1px 3px 30px rgba(0, 0, 0, 0.23);
   margin-top: 15px;
   border-radius: 3px;
-  border: 1px solid ${(props) => props.theme.colors.gray.light};
+  border: 1px solid ${(props: any) => props.theme.colors.gray.light};
   transition: all 0.3s ease-in-out;
 
-  @media (max-width: ${(props) => props.theme.breakpoints.values.sm}px) {
+  @media (max-width: ${(props: any) => props.theme.breakpoints.values.sm}px) {
     padding: 20px 0 60px 0;
     justify-content: top;
   }
@@ -44,11 +44,11 @@ export const SuggestionItem = styled.div`
   padding: 5px 10px;
   width: 100%;
   text-align: left;
-  color: ${(props) => props.theme.colors.gray.medium};
+  color: ${(props: any) => props.theme.colors.gray.medium};
   &.active {
     cursor: pointer;
-    color: ${(props) => props.theme.colors.brand.primary};
-    background: ${(props) => props.theme.colors.gray.background};
+    color: ${(props: any) => props.theme.colors.brand.primary};
+    background: ${(props: any) => props.theme.colors.gray.background};
   }
 `;
 
@@ -61,14 +61,14 @@ export const TermsCheckbox = styled(Checkbox)<TermsCheckboxType>`
   flex-basis: 5%;
 
   > .checkbox-label {
-    color: ${(props) =>
+    color: ${(props: any) =>
       props.accepted ? props.theme.colors.brand.dark : props.theme.colors.red.primary};
   }
 
   .checkbox-style {
-    border-color: ${(props) =>
+    border-color: ${(props: any) =>
       props.accepted ? props.theme.colors.brand.dark : props.theme.colors.red.primary};
-    stroke: ${(props) =>
+    stroke: ${(props: any) =>
       props.accepted ? props.theme.colors.brand.dark : props.theme.colors.red.primary};
   }
 `;
