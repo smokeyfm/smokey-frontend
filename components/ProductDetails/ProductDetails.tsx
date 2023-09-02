@@ -12,14 +12,13 @@ import {
   useStreams,
   useVariants
 } from "../../hooks";
-import { Layout, LoadingWrapper, Loading } from "../components";
+import { Layout, LoadingWrapper, ProductList, Loading } from "../components";
 import { useProduct, fetchProduct } from "../../hooks/useProduct";
 import { useMutation, useQueryClient } from "react-query";
 import { addItemToCart } from "../../hooks/useCart";
 import { QueryKeys } from "../../hooks/queryKeys";
 import * as tracking from "../../config/tracking";
 import Featured from "../Home/Featured";
-import PolProductList from "../PolProductList";
 import { FourOhFour } from "../404/FourOhFour";
 import { useMediaQuery } from "react-responsive";
 import homeData from "../Home/home.json";
@@ -175,11 +174,11 @@ export const ProductDetails = ({ wholesale }: ProductDetailsProps) => {
 
   const similarProducts =
     productsData && !isMobile ? (
-      <PolProductList products={productsData} title={"Similar Products"} />
+      <ProductList products={productsData} title={"Similar Products"} />
     ) : null;
   const recommendedProducts =
     productsData && !isMobile ? (
-      <PolProductList products={productsData} title={"Recommended for You"} />
+      <ProductList products={productsData} title={"Recommended for You"} />
     ) : null;
   // const latestProducts = isMobile ? null : (
   //   <Featured data={homeData.latestProducts} title="" />

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import type { AppProps /*, AppContext */ } from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -42,7 +42,12 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
   const { pathname } = useRouter();
   const { user, logout } = useAuth();
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  const [cartVisible, setCartVisible] = React.useState(false);
+  const [cartVisible, setCartVisible] = useState(false);
+  const [accountVisible, setAccountVisible] = useState(false);
+  const [accountElem, setAccountElem] = useState(null);
+  const accountRef = useRef(null);
+  const accountOpen = Boolean(accountElem);
+  const accountId = accountVisible ? "simple-popover" : undefined;
   const toggleCart = () => setCartVisible((isVisible) => !isVisible);
   const toggleAccount = () => setAccountVisible((isVisible) => !isVisible);
   const isMaint = process.env.IS_MAINT_MODE;
@@ -62,7 +67,7 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
   }
 
   useEffect(() => {
-    console.log(user && user.data.attributes);
+    // console.log(user && user.data.attributes);
   }, []);
 
   return (
@@ -109,7 +114,7 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
                 </AccountOption>
                 <hr />
                 <AccountOption>
-                  <div onClick={logout}>Logout</div>
+                  <button onClick={() => logout()}>Logout</button>
                 </AccountOption>
               </AccountMenu>
               {/* <UserIconMo src={"/user.png"} /> */}

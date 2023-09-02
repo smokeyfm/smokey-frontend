@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import { Popover } from "@material-ui/core";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import styled from "@emotion/styled";
 import { pxIphone } from "../../utils";
 
 export const TopHeader = styled.div`

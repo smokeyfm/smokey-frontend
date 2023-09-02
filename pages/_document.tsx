@@ -77,8 +77,7 @@ class MyDocument extends Document {
           <meta property="og:site_name" content={process.env.NEXT_PUBLIC_SITE_TITLE} />
           <meta property="og:description" content={process.env.NEXT_PUBLIC_PAGE_DESC} />
           <meta property="og:url" content={process.env.NEXT_PUBLIC_APP_URL} />
-          {/* CHANGEME */}
-          <meta property="article:publisher" content="https://www.facebook.com/materialinstinct/" />
+          <meta property="article:publisher" content={process.env.NEXT_PUBLIC_FACEBOOK_URL} />
           <meta property="article:section" content="General" />
           <meta property="article:published_time" content="2017-04-15T15:00:03-04:00" />
           {/* CHANGEME */}
@@ -114,7 +113,6 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
           <script type="application/ld+json">{OpenGraphObject}</script>
-          {/* <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUqxah2mT_0iaosOBBSIKRy0lw7f6wdLA&libraries=places" /> */}
           {/* <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -151,7 +149,6 @@ class MyDocument extends Document {
               `
             }}
           />
-          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUqxah2mT_0iaosOBBSIKRy0lw7f6wdLA&libraries=places" />
         </Head>
         <body>
           <Main />

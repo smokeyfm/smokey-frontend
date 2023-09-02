@@ -21,7 +21,7 @@ const authConfig = {
   loadUser: async () => {
     const storage = (await import("./storage")).default;
     const token = await storage.getToken();
-    console.warn("TOKEN: ", token);
+    // console.warn("TOKEN: ", token);
     if (token?.access_token && token?.token_type === "Bearer") {
       const response = await spreeClient.account.accountInfo({ bearerToken: token.access_token });
       if (response.isSuccess()) {
