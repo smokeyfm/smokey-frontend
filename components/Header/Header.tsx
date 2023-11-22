@@ -88,7 +88,7 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
       <TopHeader>
         {!isMobile && (
           <LeftSide>
-            <SocialLinks darkMode={darkMode} />
+            <SocialLinks networks={["instagram", "facebook", "twitter", "youtube"]} />
           </LeftSide>
         )}
         <LogoDiv>
