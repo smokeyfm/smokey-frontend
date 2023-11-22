@@ -148,7 +148,9 @@ export const ComingSoon = () => {
         )}
         {comingSoonText !== "" && <Text>{comingSoonText}</Text>}
         <NotifyForm />
-        <SocialLinks networks={['instagram', 'facebook', 'twitter', 'youtube']}/>
+        <SocialLinks
+          networks={["instagram", "facebook", "twitter", "youtube"]}
+        />
         {isSlideshow && (
           <ProductImageCarousel>
             <CarouselBackground onClick={() => setIsSlideshow(false)} />

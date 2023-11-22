@@ -9,7 +9,7 @@ import {
   FeaturedSnippetImageLink,
   FeaturedSnippetText,
   FeaturedSnippetButton,
-  FeaturedSnippetLink,
+  FeaturedSnippetLink
 } from "./FeaturedSnippet.styles";
 import { SocialLinks } from "..";
 
@@ -19,7 +19,10 @@ export const FeaturedSnippet = () => {
       <FeaturedSnippetBadge>New Release</FeaturedSnippetBadge>
       <FeaturedSnippetTitle>"Watermark"</FeaturedSnippetTitle>
       <FeaturedSnippetSubtitle>by Sky Chase</FeaturedSnippetSubtitle>
-      <FeaturedSnippetImageLink href="https://open.spotify.com/album/3FfuBJ7SkThWE5ZsxM8DZx?si=KmWYhLPTTXWQ2kYerZcjtQ" target="_blank">
+      <FeaturedSnippetImageLink
+        href="https://open.spotify.com/album/3FfuBJ7SkThWE5ZsxM8DZx?si=KmWYhLPTTXWQ2kYerZcjtQ"
+        target="_blank"
+      >
         <FeaturedSnippetImage src="images/SkyChase-Watermark.jpg" />
       </FeaturedSnippetImageLink>
       <FeaturedSnippetText>Now Streaming Everywhere</FeaturedSnippetText>
