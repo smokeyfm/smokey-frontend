@@ -395,7 +395,7 @@ export const MediaPlayer = (props: any) => {
   // 	seekbarvalue.max = audioInput.duration;
   // 	seekbarvalue.value = audioInput.currentTime;
   // }
-  
+
   // SetSeekBar = () => {
   // 	seekbarvalue.min = 0;
   // 	seekbarvalue.max = audioInput.duration;

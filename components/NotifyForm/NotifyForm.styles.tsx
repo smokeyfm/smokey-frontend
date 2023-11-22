@@ -67,7 +67,11 @@ export const EmailInput = styled.input`
   font-size: ${(p: any) => p.theme.typography.bodySM.fontSize};
   line-height: ${(p: any) => p.theme.typography.bodySM.lineHeight};
   outline: none;
-  border: 2px dotted ${(p: any) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
+  border: 2px dotted
+    ${(p: any) =>
+      p.theme.isDarkMode
+        ? p.theme.colors.white.primary
+        : p.theme.colors.black.primary};
   border-spacing: 12px;
   padding: 8px 15px;
   background: ${(p: any) =>

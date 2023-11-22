@@ -24,7 +24,7 @@ const fetchTracks = async (user: string = "") => {
   // //   });
   // return response;
 
-  return null
+  return null;
 };
 
 const useTracks = (user: string) => {

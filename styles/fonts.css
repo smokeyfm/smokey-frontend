@@ -1,6 +1,6 @@
-@import '../node_modules/@fortawesome/fontawesome-svg-core/styles.css';
+@import "../node_modules/@fortawesome/fontawesome-svg-core/styles.css";
 
-@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Rubik+Bubbles&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Rubik+Bubbles&display=swap");
 
 @font-face {
   font-family: "body_mono_bold";
@@ -11,7 +11,8 @@
 }
 @font-face {
   font-family: "body_mono_bold_italic";
-  src: url("../public/fonts/ibmplexmono-bolditalic-webfont.woff2") format("woff2"),
+  src: url("../public/fonts/ibmplexmono-bolditalic-webfont.woff2")
+      format("woff2"),
     url("../public/fonts/ibmplexmono-bolditalic-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
@@ -25,22 +26,26 @@
 }
 @font-face {
   font-family: "body_mono_bold_italic";
-  src: url("../public/fonts/ibmplexmono-bolditalic-webfont.woff2") format("woff2"),
+  src: url("../public/fonts/ibmplexmono-bolditalic-webfont.woff2")
+      format("woff2"),
     url("../public/fonts/ibmplexmono-bolditalic-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "body_mono_extralight";
-  src: url("../public/fonts/ibmplexmono-extralight-webfont.woff2") format("woff2"),
+  src: url("../public/fonts/ibmplexmono-extralight-webfont.woff2")
+      format("woff2"),
     url("../public/fonts/ibmplexmono-extralight-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "body_mono_extralightitalic";
-  src: url("../public/fonts/ibmplexmono-extralightitalic-webfont.woff2") format("woff2"),
-    url("../public/fonts/ibmplexmono-extralightitalic-webfont.woff") format("woff");
+  src: url("../public/fonts/ibmplexmono-extralightitalic-webfont.woff2")
+      format("woff2"),
+    url("../public/fonts/ibmplexmono-extralightitalic-webfont.woff")
+      format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -60,7 +65,8 @@
 }
 @font-face {
   font-family: "body_condensed_med";
-  src: url("../public/fonts/ibmplexsanscond-medium-webfont.woff2") format("woff2"),
+  src: url("../public/fonts/ibmplexsanscond-medium-webfont.woff2")
+      format("woff2"),
     url("../public/fonts/ibmplexsanscond-medium-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;

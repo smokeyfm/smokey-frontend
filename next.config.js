@@ -44,7 +44,7 @@ module.exports = {
     config.plugins = [
       ...config.plugins,
       new webpack.DefinePlugin({
-        'process.env.FLUENTFFMPEG_COV': false
+        "process.env.FLUENTFFMPEG_COV": false
       }),
       new Dotenv({
         path: envFile,

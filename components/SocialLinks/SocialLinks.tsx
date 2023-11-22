@@ -1,7 +1,11 @@
 import React from "react";
 import { Facebook, Twitter, Instagram, YouTube } from "@material-ui/icons";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpotify, faSoundcloud, faLastfm } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSpotify,
+  faSoundcloud,
+  faLastfm
+} from "@fortawesome/free-brands-svg-icons";
 
 import {
   SocialContainer,
@@ -19,7 +23,10 @@ export const SocialLinks = ({ networks = [] }: { networks: string[] }) => {
       <SocialList>
         {isNetworkPresent("instagram") && (
           <SocialListItem>
-            <a href={`http://www.instagram.com/${process.env.NEXT_PUBLIC_INSTAGRAM_SLUG}`} target="_blank">
+            <a
+              href={`http://www.instagram.com/${process.env.NEXT_PUBLIC_INSTAGRAM_SLUG}`}
+              target="_blank"
+            >
               <Instagram />
             </a>
           </SocialListItem>
@@ -27,7 +34,10 @@ export const SocialLinks = ({ networks = [] }: { networks: string[] }) => {
 
         {isNetworkPresent("facebook") && (
           <SocialListItem>
-            <a href={`http://www.facebook.com/${process.env.NEXT_PUBLIC_FACEBOOK_SLUG}`} target="_blank">
+            <a
+              href={`http://www.facebook.com/${process.env.NEXT_PUBLIC_FACEBOOK_SLUG}`}
+              target="_blank"
+            >
               <Facebook />
             </a>
           </SocialListItem>
@@ -35,7 +45,10 @@ export const SocialLinks = ({ networks = [] }: { networks: string[] }) => {
 
         {isNetworkPresent("twitter") && (
           <SocialListItem>
-            <a href={`http://www.twitter.com/${process.env.NEXT_PUBLIC_TWITTER_SLUG}`} target="_blank">
+            <a
+              href={`http://www.twitter.com/${process.env.NEXT_PUBLIC_TWITTER_SLUG}`}
+              target="_blank"
+            >
               <Twitter />
             </a>
           </SocialListItem>
@@ -43,7 +56,10 @@ export const SocialLinks = ({ networks = [] }: { networks: string[] }) => {
 
         {isNetworkPresent("youtube") && (
           <SocialListItem>
-            <a href={`http://www.youtube.com/${process.env.NEXT_PUBLIC_YOUTUBE_SLUG}`} target="_blank">
+            <a
+              href={`http://www.youtube.com/${process.env.NEXT_PUBLIC_YOUTUBE_SLUG}`}
+              target="_blank"
+            >
               <YouTube />
             </a>
           </SocialListItem>
@@ -51,7 +67,10 @@ export const SocialLinks = ({ networks = [] }: { networks: string[] }) => {
 
         {isNetworkPresent("spotify") && (
           <SocialListItem>
-            <a href="https://open.spotify.com/album/3FfuBJ7SkThWE5ZsxM8DZx?si=KmWYhLPTTXWQ2kYerZcjtQ" target="_blank">
+            <a
+              href="https://open.spotify.com/album/3FfuBJ7SkThWE5ZsxM8DZx?si=KmWYhLPTTXWQ2kYerZcjtQ"
+              target="_blank"
+            >
               <FontAwesomeIcon icon={faSpotify} />
             </a>
           </SocialListItem>

@@ -211,7 +211,10 @@ export const NotifyForm = () => {
               <NotifyText>{message}</NotifyText>
             )}
         </FormWrapper>
-        <MailTo id="mailto" href={`mailto:${process.env.NEXT_PUBLIC_COMPANY_EMAIL}`}>
+        <MailTo
+          id="mailto"
+          href={`mailto:${process.env.NEXT_PUBLIC_COMPANY_EMAIL}`}
+        >
           {process.env.NEXT_PUBLIC_COMPANY_EMAIL}
         </MailTo>
       </NotifyFormContainer>
