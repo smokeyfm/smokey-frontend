@@ -1,6 +1,0 @@
-#!/usr/bin/env sh
-husky install
-
-set -e
-npm config set "@fortawesome:registry" 'https://npm.fontawesome.com/'
-npm config set "//npm.fontawesome.com/:_authToken" "$NEXT_PUBLIC_FONTAWESOME_TOKEN"
