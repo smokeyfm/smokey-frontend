@@ -38,21 +38,24 @@ const SearchSuggestions = ({
     // console.log("suggestions: ", suggestions, "data: ", data);
   }, []);
 
-  if (isLoading) {
-    setIsSearchLoading();
-    return (
-      <StyledSearchSuggestions role="listbox" aria-labelledby={labelId} id={id}>
-        <LoadingIcon className="bts bt-spinner bt-pulse" />
-      </StyledSearchSuggestions>
-    );
-  }
+  // if (isLoading) {
+  //   setIsSearchLoading();
+  //   return (
+  //     <StyledSearchSuggestions role="listbox" aria-labelledby={labelId} id={id}>
+  //       <LoadingIcon className="bts bt-spinner bt-pulse" />
+  //     </StyledSearchSuggestions>
+  //   );
+  // }
+
+  if (error || isLoading) return <></>;
 
   if (error && isVisible) {
-    return (
-      <StyledSearchSuggestions role="listbox" aria-labelledby={labelId} id={id}>
-        <p>Error {status}</p>
-      </StyledSearchSuggestions>
-    );
+    return <></>;
+    // return (
+    //   <StyledSearchSuggestions role="listbox" aria-labelledby={labelId} id={id}>
+    //     <p>Error {status}</p>
+    //   </StyledSearchSuggestions>
+    // );
   }
 
   setIsSearchLoading();
