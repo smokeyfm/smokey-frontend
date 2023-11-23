@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "@emotion/styled";
 import Lottie from "react-lottie";
 import loadingAnimation from "./loading.json";
@@ -10,7 +11,8 @@ export const LoadingWrapper = styled.div`
   align-items: center;
 
   div svg g g g path {
-    stroke: white;
+    /* stroke: ${(p) => p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary}; */
+    stroke: "white";
   }
 `;
 
@@ -28,8 +30,8 @@ export const Loading = () => {
     }
   };
   return (
-    <LoadingWrapper>
+    <>
       <Lottie options={animationOptions} width={100} height={30} />
-    </LoadingWrapper>
+    </>
   );
 };

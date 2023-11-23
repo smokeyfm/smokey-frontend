@@ -41,9 +41,7 @@ export const CartSidebar = ({ isVisible, toggle }: Props) => {
           styles={cartStyles}
           onClose={toggle}
         >
-          <LoadingWrapper>
-            <Loading />
-          </LoadingWrapper>
+          <Loading />
         </BurgerMenu>
         <style jsx>{`
           .cart-modal {
@@ -129,5 +127,5 @@ export const CartSidebar = ({ isVisible, toggle }: Props) => {
       </CartWrapper>
     );
   }
-  return null;
+  return <></>;
 };
