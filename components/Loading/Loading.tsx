@@ -28,7 +28,7 @@ export const Loading = () => {
       preserveAspectRatio: "xMidYMid slice"
     }
   };
-  
+
   return (
     <LoadingWrapper>
       <Lottie options={animationOptions} width={100} height={30} />
