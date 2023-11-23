@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import { QueryClient } from "react-query";
 import { dehydrate } from "react-query/hydration";
@@ -77,7 +77,7 @@ export const Category = () => {
     <Featured data={homeData.latestProducts} title="" />
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isSuccess) {
       // On page load, set focus on the product contaniner, because otherwise the arrow keys (left/right) won't work
       const productContainer = Array.from(

@@ -14,7 +14,7 @@ import {
   useStreams,
   useVariants
 } from "../../hooks";
-import { Layout, LoadingWrapper, Loading } from "../components";
+import { Layout, Loading } from "../components";
 import { useMutation, useQueryClient } from "react-query";
 import { addItemToCart } from "../../hooks/useCart";
 import { QueryKeys } from "../../hooks/queryKeys";
@@ -345,7 +345,7 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
     };
 
     if (variantsAreLoading) {
-      return <p>Loading...</p>;
+      return <Loading />;
     }
 
     return productColors?.map((item, index) => {
