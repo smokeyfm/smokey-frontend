@@ -15,7 +15,6 @@ import { addItemToCart } from "../../hooks/useCart";
 import { QueryKeys } from "../../hooks/queryKeys";
 import * as tracking from "../../config/tracking";
 import Featured from "../Home/Featured";
-import { PolProductList } from "../PolProductList";
 import { useMediaQuery } from "react-responsive";
 import homeData from "../Home/home.json";
 import {
@@ -70,9 +69,6 @@ export const Category = () => {
     isSuccess: boolean;
   } = useProducts(1);
 
-  const polProductList = isMobile ? null : (
-    <PolProductList products={productData} title={"HOTDIGS"} />
-  );
   const latestProducts = isMobile ? null : (
     <Featured data={homeData.latestProducts} title="" />
   );
@@ -222,9 +218,6 @@ export const Category = () => {
             </div>
           </ProductInfoBox>
         </ProductContainer>
-
-        <h3>you may also like:</h3>
-        {polProductList ? polProductList : <></>}
 
         <style jsx>
           {`
