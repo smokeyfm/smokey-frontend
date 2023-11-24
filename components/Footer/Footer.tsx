@@ -101,7 +101,7 @@ export const Footer: React.FC<FootProps> = ({ classes, footerData }) => {
           </Column>
         ))}
       </Grid>
-      <SocialLinks isDark />
+      <SocialLinks networks={["facebook", "instagram", "youtube", "twitter"]} />
     </Container>
   );
 };
