@@ -16,7 +16,6 @@ export * from "./MediaPlayer";
 export * from "./NotifyForm";
 export * from "./PostList";
 export * from "./POLTerms";
-export * from "./PolProductList";
 export * from "./ProductCard";
 export * from "./ProductDetails";
 export * from "./ProductList";

@@ -16,7 +16,6 @@ import { Content } from "./Home.styles";
 import Featured from "./Featured";
 import MemberList from "./MemberList";
 import { StreamList } from "../StreamList";
-import { PolProductList } from "../PolProductList";
 import { useMediaQuery } from "react-responsive";
 import MobileLatest from "./MobileLatest";
 import { Loading } from "../Loading";
@@ -94,10 +93,7 @@ export const Home = (props: any) => {
   const advertListMobile = isMobile ? (
     <MobileLatest products={productsData} title={""}></MobileLatest>
   ) : null;
-  const polProductList = isMobile ? null : (
-    // <PolProductList data={homeData.hotDigs} title={"New Drops This Week"} />
-    <PolProductList products={productsData} title={"New Drops This Week"} />
-  );
+
   const banner = isMobile ? null : <Banner data={homeData.bigHotDig} />;
 
   useEffect(() => {
@@ -118,12 +114,10 @@ export const Home = (props: any) => {
       <Content>
         {/* {memberList} */}
         <StreamList data={streamsData?.response_data} title={"Live-Shopping"} />
-        {!productsAreLoading && polProductList}
         {/* {mobileMemberList} */}
         <Featured data={homeData.latestProducts} title="" />;
         <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
         {advertListMobile}
-        {!productsAreLoading && polProductList}
         {banner}
       </Content>
     </Layout>
