@@ -166,7 +166,7 @@ export const MobileMenu = ({
         <hr />
         Login
       </MenuItem>
-      <SocialLinks />
+      <SocialLinks networks={["facebook", "instagram", "youtube", "twitter"]}/>
       <MenuFooter>
         <div>
           <a href="/privacy">Privacy Policy</a> -{" "}
