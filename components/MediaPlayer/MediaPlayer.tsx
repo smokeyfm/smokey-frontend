@@ -242,7 +242,7 @@ export const MediaPlayer = (props: any) => {
     setSongIndex((prevIndex) => (prevIndex + 1) % sampleSoundCloudURLs.length);
   };
 
-  const handleVolumeChange = (newVolume) => {
+  const handleVolumeChange = (newVolume: any) => {
     setVolume(newVolume);
   };
 
