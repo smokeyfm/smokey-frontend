@@ -345,5 +345,3 @@ export const SignupForm = () => {
     </MainWrapper>
   );
 };
-
-SignupForm.propTypes = {};

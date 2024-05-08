@@ -4,6 +4,7 @@ import { Context as ResponsiveContext, MediaQueryAllQueryable } from "react-resp
 import * as React from "react";
 import { ServerStyleSheets } from "@material-ui/core/styles";
 import * as tracking from "../config/tracking";
+import * as constants from "../utilities/constants";
 
 const withResponsiveContext = (App: any, req: any) => {
   const contextValue = (() => {
@@ -188,7 +189,7 @@ class MyDocument extends Document {
               `
             }}
           />
-          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUqxah2mT_0iaosOBBSIKRy0lw7f6wdLA&libraries=places" />
+          <script src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_PLACES_API_KEY}&libraries=places`} />
           <script dangerouslySetInnerHTML={{ __html: FacebookPixelObject }} />
           <noscript>
             <img
