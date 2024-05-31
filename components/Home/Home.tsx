@@ -23,6 +23,10 @@ import MemberList from "./MemberList";
 import Products from "./Products";
 import PolProductList from "../POLProductList";
 import { StreamList } from "../StreamList";
+<<<<<<< HEAD
+=======
+import { PolProductList } from "../PolProductList";
+>>>>>>> c1ea6ba (lots of style changes, footer & menu changes, product & stream card components, move footer data, add D.R.Y. social links)
 import { useMediaQuery } from "react-responsive";
 import MobileLatest from "./MobileLatest";
 import { Loading } from "../Loading";
