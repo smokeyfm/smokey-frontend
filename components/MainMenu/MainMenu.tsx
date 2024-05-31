@@ -63,6 +63,8 @@ export const MainMenu = (props: MainMenuProps) => {
 
   if (menuItemsIsLoading || menuLocationIsLoading) return null;
 
+  if (menuItemsIsLoading) return <>Loading...</>;
+
   return (
     <>
       <HiddenOnDesktop>
