@@ -39,6 +39,7 @@ loadEnvVariables();
 const isLocalDevEnvironment = !process.env.DEPLOY_ENV;
 // console.log("process.env.TEST", process.env.TEST);
 module.exports = {
+  swcMinify: true,
   webpack: (config, { webpack }) => {
     config.plugins = config.plugins || [];
     config.plugins = [
