@@ -276,7 +276,7 @@ export const ProductDetails = ({ wholesale }: ProductDetailsProps) => {
     //   }
     // });
     const foundVariants = thisProduct?.included?.filter((elem) => elem.type === "variant");
-    console.log("PRODUCT: ", thisProduct, "VARIANTS: ", foundVariants);
+    // console.log("PRODUCT: ", thisProduct, "VARIANTS: ", foundVariants);
 
     if (productVariantColors && productVariantColors.length) {
       return productVariantColors?.map((item, index) => {
@@ -381,6 +381,25 @@ export const ProductDetails = ({ wholesale }: ProductDetailsProps) => {
     addToCart.mutate(i);
   };
 
+  const renderProductImgs = useCallback(() => {
+    const foundImgs = thisProduct && thisProduct?.included?.filter((e: any) => e["type"] === "image");
+    // console.log("rendered imgs: ", foundImgs);
+    if (foundImgs && foundImgs.length < 1) {
+      return <Loading />
+    }
+    return foundImgs && foundImgs.map((image, index) => {
+      // const img600 = image.attributes.styles.filter((e: any) => e['width'] == '600').url;
+      const imgUrl = image.attributes.styles[9].url
+      const imgSrc = `${process.env.SPREE_API_URL}${imgUrl}`;
+      // console.log(imgSrc);
+      return (
+        <StyledSlide key={`image-${index}`} index={index} style={{ height: "500px" }}>
+          <StyledImageWithZoom src={imgSrc} />
+        </StyledSlide>
+      )
+    });
+  }, [thisProduct]);
+
   useEffect(() => {
     if (isSuccess) {
       // // On page load, set focus on the product contaniner, because otherwise the arrow keys (left/right) won't work
@@ -423,20 +442,11 @@ export const ProductDetails = ({ wholesale }: ProductDetailsProps) => {
     // }
 
     // const productImgs = thisProduct.relationships?.images?.data[0]?.id;
-    // const foundImg = thisProduct?.included.filter((e: any) => e["id"] == productImg);
+    // const foundImgs = thisProduct && thisProduct?.included.filter((e: any) => e["type"] === "image");
     // const imgUrl = foundImg[0]?.attributes?.styles[4].url;
     // const imgSrc = productImg ? `${process.env.SPREE_API_URL}${imgUrl}` : defaultImg;
-
-    // const renderProductImgs = () => {
-    //   return productImgs.map((item, index) => {
-
-    //     return (
-    //       <Slide index={0} style={{ height: "500px" }}>
-    //         <ImageWithZoom src={source} />
-    //       </Slide>
-    //     )
-    //   });
-    // }
+    
+    // console.log("foundImgs: ", foundImgs);
 
     return (
       <Layout>
