@@ -526,6 +526,9 @@ export const ProductDetails = ({ wholesale }: ProductDetailsProps) => {
           {similarProducts ? similarProducts : <></>}
           {recommendedProducts ? recommendedProducts : <></>}
         </ProductContainer>
+
+        {similarProducts ? similarProducts : <></>}
+        {recommendedProducts ? recommendedProducts : <></>}
       </Layout>
     );
   }
