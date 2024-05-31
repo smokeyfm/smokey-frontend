@@ -22,6 +22,7 @@ const fetchProduct = async (slug: string): Promise<IProduct> => {
     headers: myHeaders
   })
     .then((res) => {
+<<<<<<< HEAD
       // console.log(res.status);
       if (res.status >= 200 && res.status <= 299) {
         return res.json();
@@ -38,6 +39,15 @@ const fetchProduct = async (slug: string): Promise<IProduct> => {
     });
 
   return response;
+=======
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+      throw new Error("Product request failed");
+    });
+  return response.json();
+>>>>>>> 50eb7ac (tons of Product details upgrades, tons of stuff, terms & conditions, footer, hooks)
 
   // const response = await spreeClient.products.show(
   //   {

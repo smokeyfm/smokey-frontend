@@ -108,10 +108,14 @@ export const Questions: QuestionsType[] = [
           new Date(today.getFullYear() - 18, today.getMonth(), today.getDate()),
           Static.errors.maxDateOfBirth
 <<<<<<< HEAD
+<<<<<<< HEAD
         ),
 =======
       ),
 >>>>>>> 9a38330 (tons of Product details upgrades, tons of stuff, terms & conditions, footer, hooks)
+=======
+        ),
+>>>>>>> 50eb7ac (tons of Product details upgrades, tons of stuff, terms & conditions, footer, hooks)
       email: string().defined(Static.errors.isRequired)
     }),
     actionLabel: "Next"

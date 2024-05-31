@@ -7,6 +7,7 @@ import { Button } from "@material-ui/core";
 import TipBot from "../../TipBot";
 import { FormikInput } from "../../FormikWrappers";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { QuestionWrapper, InputGroupWrapper, InputWrapper } from "./Questions.styles";
 =======
 import {
@@ -15,6 +16,9 @@ import {
   InputWrapper
 } from "./Questions.styles";
 >>>>>>> 9a38330 (tons of Product details upgrades, tons of stuff, terms & conditions, footer, hooks)
+=======
+import { QuestionWrapper, InputGroupWrapper, InputWrapper } from "./Questions.styles";
+>>>>>>> 50eb7ac (tons of Product details upgrades, tons of stuff, terms & conditions, footer, hooks)
 
 export const CompanyDetails = () => {
   // const { errors, touched } = useFormikContext()
@@ -29,6 +33,9 @@ export const CompanyDetails = () => {
       <InputGroupWrapper>
         <InputWrapper>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 50eb7ac (tons of Product details upgrades, tons of stuff, terms & conditions, footer, hooks)
           <Field
             name="companyName"
             id="companyName"
@@ -36,6 +43,7 @@ export const CompanyDetails = () => {
             label="Company Name"
             required
           />
+<<<<<<< HEAD
         </InputWrapper>
         <InputWrapper>
           <Field
@@ -51,6 +59,17 @@ export const CompanyDetails = () => {
         <InputWrapper>
           <Field name="permitNumber" id="permitNumber" component={FormikInput} label="Reseller's Permit Number" required />
 >>>>>>> 9a38330 (tons of Product details upgrades, tons of stuff, terms & conditions, footer, hooks)
+=======
+        </InputWrapper>
+        <InputWrapper>
+          <Field
+            name="permitNumber"
+            id="permitNumber"
+            component={FormikInput}
+            label="Reseller's Permit Number"
+            required
+          />
+>>>>>>> 50eb7ac (tons of Product details upgrades, tons of stuff, terms & conditions, footer, hooks)
         </InputWrapper>
       </InputGroupWrapper>
     </QuestionWrapper>

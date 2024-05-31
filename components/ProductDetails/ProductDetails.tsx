@@ -415,7 +415,7 @@ export const ProductDetails = ({ wholesale }: ProductDetailsProps) => {
 
     // const renderProductImgs = () => {
     //   return productImgs.map((item, index) => {
-        
+
     //     return (
     //       <Slide index={0} style={{ height: "500px" }}>
     //         <ImageWithZoom src={source} />
