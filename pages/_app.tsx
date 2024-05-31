@@ -30,7 +30,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
   const [wholesale, setWholesale] = useState(true);
   const router = useRouter();
-  const isMaint = process.env.IS_MAINT_MODE || "true";
+  const isMaint = process.env.NEXT_PUBLIC_IS_MAINT_MODE || "true";
 
   useEffect(() => {
     console.log("MAINT? ", isMaint);
