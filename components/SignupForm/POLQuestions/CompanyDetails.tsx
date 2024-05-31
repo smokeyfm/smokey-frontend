@@ -8,17 +8,23 @@ import TipBot from "../../TipBot";
 import { FormikInput } from "../../FormikWrappers";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { QuestionWrapper, InputGroupWrapper, InputWrapper } from "./Questions.styles";
 =======
+=======
+>>>>>>> 8392170 (update prettierrc, fix up colors everywhere to use theme vars, fix up ComingSoon)
 import {
   QuestionWrapper,
   InputGroupWrapper,
   InputWrapper
 } from "./Questions.styles";
+<<<<<<< HEAD
 >>>>>>> 9a38330 (tons of Product details upgrades, tons of stuff, terms & conditions, footer, hooks)
 =======
 import { QuestionWrapper, InputGroupWrapper, InputWrapper } from "./Questions.styles";
 >>>>>>> 50eb7ac (tons of Product details upgrades, tons of stuff, terms & conditions, footer, hooks)
+=======
+>>>>>>> 8392170 (update prettierrc, fix up colors everywhere to use theme vars, fix up ComingSoon)
 
 export const CompanyDetails = () => {
   // const { errors, touched } = useFormikContext()
