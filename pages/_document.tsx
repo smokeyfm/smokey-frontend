@@ -88,7 +88,10 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <meta charSet="utf-8" />
-          <meta name="description" content={process.env.NEXT_PUBLIC_PAGE_DESC} />
+          <meta
+            name="description"
+            content={process.env.NEXT_PUBLIC_PAGE_DESC}
+          />
           <meta name="keywords" content="" />
           <meta name="robots" content="noodp" />
           <meta property="og:locale" content="en_US" />
