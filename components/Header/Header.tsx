@@ -51,6 +51,7 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
   const toggleCart = () => setCartVisible((isVisible) => !isVisible);
   const toggleAccount = () => setAccountVisible((isVisible) => !isVisible);
   const isMaint = process.env.IS_MAINT_MODE;
+  const darkMode = (process.env.IS_DARK_MODE === "true");
 
   const { data: cartData, isLoading: cartIsLoading, isError: cartHasError } = useCart();
 
