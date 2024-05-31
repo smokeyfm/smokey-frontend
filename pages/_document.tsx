@@ -53,13 +53,23 @@ class MyDocument extends Document {
     }
   }
   render() {
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://instinct.is";
+    const siteTitle = process.env.NEXT_PUBLIC_PAGE_TITLE || process.env.NEXT_PUBLIC_SITE_TITLE || "Instinct";
+    const siteDesc = process.env.NEXT_PUBLIC_PAGE_DESC || process.env.NEXT_PUBLIC_SITE_DESC || "Instinct is a digital agency that helps brands and businesses create meaningful relationships with their customers.";
+    const sitePhone = process.env.NEXT_PUBLIC_PHONE || "+1-917-300-8103";
+    const ogImgPath = process.env.NEXT_PUBLIC_OG_IMG_PATH || "/images/open-graph-instinct-dna.png";
+    const ogImgWidth = process.env.NEXT_PUBLIC_OG_IMG_WIDTH || "600";
+    const ogImgHeight = process.env.NEXT_PUBLIC_OG_IMG_HEIGHT || "529";
+    const twitterSlug = process.env.NEXT_PUBLIC_TWITTER_SLUG || "aaronsmulktis";
+    const facebookSlug = process.env.NEXT_PUBLIC_FACEBOOK_SLUG || "materialinstinct";
+
     const OpenGraphObject = `
       "@context": "http://schema.org",
       "@type": "Organization",
       "url": "https://${process.env.NEXT_PUBLIC_APP_URL},
       "contactPoint": [{
         "@type": "ContactPoint",
-        "telephone": "+1-917-300-8103",
+        "telephone": "${sitePhone}",
         "contactType": "General Inquiry"
       }]
     `;
@@ -90,7 +100,7 @@ class MyDocument extends Document {
           <meta charSet="utf-8" />
           <meta
             name="description"
-            content={process.env.NEXT_PUBLIC_PAGE_DESC}
+            content={siteDesc}
           />
           <meta name="keywords" content="" />
           <meta name="robots" content="noodp" />
@@ -116,8 +126,8 @@ class MyDocument extends Document {
             name="twitter:image"
             content={`${process.env.NEXT_PUBLIC_APP_URL}/img/open-graph-instinct-dna.jpg`}
           />
-          {/* CHANGEME */}
-          <meta name="twitter:creator" content="@aaronsmulktis" />
+
+          <meta name="twitter:creator" content={`@${twitterSlug}`} />
 
           <link rel="icon" href="/img/favicon.ico" />
           <link rel="canonical" href={process.env.NEXT_PUBLIC_APP_URL} />
