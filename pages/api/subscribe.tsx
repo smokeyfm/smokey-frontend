@@ -2,7 +2,6 @@
 // https://leerob.io/blog/mailchimp-next-js
 
 import mailchimp from "@mailchimp/mailchimp_marketing";
-import { AddListMemberBody } from "mailchimp__mailchimp_marketing";
 
 mailchimp.setConfig({
   apiKey: process.env.MAILCHIMP_API_KEY,
@@ -24,7 +23,7 @@ export default async (req: any, res: any) => {
       await mailchimp.lists.addListMember(mailchimpId, {
         email_address: email,
         status: "subscribed"
-      } as AddListMemberBody);
+      } as any);
 
       return res.status(201).json({ error: "" });
     } catch (error: any) {
@@ -32,7 +31,6 @@ export default async (req: any, res: any) => {
       return res.status(500).json({ error: error.message || error.toString() });
     }
   }
-
   console.log("Existing Contact: ", newContact);
   try {
     await mailchimp.lists.updateListMember(mailchimpId, email, {
@@ -50,7 +48,7 @@ export default async (req: any, res: any) => {
         // }
         // MMERGE2: ...,
       }
-    } as AddListMemberBody);
+    } as any);
 
     return res.status(201).json({ error: "" });
   } catch (error: any) {
