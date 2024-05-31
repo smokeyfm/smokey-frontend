@@ -4,7 +4,6 @@
 
 ### Running Locally
 
-<<<<<<< HEAD
 1. `cp .env.example .env.development`
 1. Replace `.env.development` with variables from Aaron
 1. `yarn dev`
@@ -14,14 +13,6 @@ _Gotchas:_
 
 - Does the backend (`dna-admin`) have menus, products, live streams
 - Do you have the backend url & api key in `.env`?
-=======
-- `cp .env.example .env.development`
-- Replace `.env.development` with variables from Aaron
-- `yarn dev`
-- Open [http://localhost:3000](http://localhost:3000) in your browser.
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
 ## NextJS
 
