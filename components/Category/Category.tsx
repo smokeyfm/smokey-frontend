@@ -16,10 +16,14 @@ import { QueryKeys } from "../../hooks/queryKeys";
 import * as tracking from "../../config/tracking";
 import Featured from "../Home/Featured";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import PolProductList from "../POLProductList";
 =======
 import PolProductList from "../PolProductList";
 >>>>>>> 25362b0 (tons of stuff... fix cart queries, add-to-cart works, show real color options, style account menu)
+=======
+import { PolProductList } from "../PolProductList";
+>>>>>>> d2c8037 (get Spree product images linked up)
 import { useMediaQuery } from "react-responsive";
 import homeData from "../Home/home.json";
 import {
