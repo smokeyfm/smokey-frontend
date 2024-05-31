@@ -70,6 +70,11 @@ export const EmailInput = styled.input`
     color: ${(props) => props.theme.colors.blue.primary};
     background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='4' stroke-dasharray='0' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
   }
+  &:focus {
+    transition: 0.33s all ease-in-out;
+    color: ${(props) => props.theme.colors.blue.primary};
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='4' stroke-dasharray='0' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+  }
   &:focus::placeholder {
     color: ${(props) => props.theme.colors.brand.bright};
   }
@@ -95,6 +100,10 @@ export const Button = styled.button`
   &:hover {
     transition: 0.33s all ease-in-out;
     background: linear-gradient(90deg, rgba(2, 0, 36, 0) 0%, rgba(0, 0, 0, 1) 100%);
+  }
+  &:active {
+    background: ${(props) => props.theme.colors.black.primary};
+    color: ${(props) => props.theme.colors.white.primary};
   }
   &:active {
     background: ${(props) => props.theme.colors.black.primary};
