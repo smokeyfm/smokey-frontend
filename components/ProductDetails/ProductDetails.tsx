@@ -4,6 +4,8 @@ import Head from "next/head";
 import { QueryClient } from "react-query";
 import { dehydrate } from "react-query/hydration";
 import { ArrowBack, ArrowForward } from "@material-ui/icons";
+import Lottie from "react-lottie";
+import girlAnimation from "../../data/girl.json";
 import {
   fetchStreams,
   fetchProducts,
@@ -27,6 +29,9 @@ import "pure-react-carousel/dist/react-carousel.es.css";
 // import ProductCard from "../components";
 
 import {
+  NotFoundContainer,
+  NotFoundTitle,
+  NotFoundSubtitle,
   ProductContainer,
   ProductImageCarousel,
   ProductInfoBox,
@@ -152,6 +157,15 @@ export const ProductDetails = ({ wholesale }: ProductDetailsProps) => {
     // };
   });
   // console.log("colors: ", productVariantColors);
+
+  const animationOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: girlAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
 
   const {
     error: productsError,
@@ -526,9 +540,6 @@ export const ProductDetails = ({ wholesale }: ProductDetailsProps) => {
           {similarProducts ? similarProducts : <></>}
           {recommendedProducts ? recommendedProducts : <></>}
         </ProductContainer>
-
-        {similarProducts ? similarProducts : <></>}
-        {recommendedProducts ? recommendedProducts : <></>}
       </Layout>
     );
   }

@@ -23,6 +23,7 @@ const fetchProduct = async (slug: string): Promise<IProduct> => {
   })
     .then((res) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
       // console.log(res.status);
       if (res.status >= 200 && res.status <= 299) {
         return res.json();
@@ -41,13 +42,28 @@ const fetchProduct = async (slug: string): Promise<IProduct> => {
   return response;
 =======
       return res;
+=======
+      if (res.status >= 200 && res.status <= 299) {
+        return res.json();
+      } else {
+        // Promise.reject("Product request failed");
+        console.log("Uh oh RES: ", res.statusText);
+        Promise.reject();
+        throw new Error(res.statusText);
+      }
+>>>>>>> 8ae9432 (handle product errors better, add product 404 animation, add video to homepage, add another product feed on homepage, update hero)
     })
     .catch((err) => {
-      console.log(err);
-      throw new Error("Product request failed");
+      console.log("Uh oh ERR: ", err);
+      throw new Error(`Product request failed: ${err.statusText}`);
     });
+<<<<<<< HEAD
   return response.json();
 >>>>>>> 50eb7ac (tons of Product details upgrades, tons of stuff, terms & conditions, footer, hooks)
+=======
+
+  return response;
+>>>>>>> 8ae9432 (handle product errors better, add product 404 animation, add video to homepage, add another product feed on homepage, update hero)
 
   // const response = await spreeClient.products.show(
   //   {
