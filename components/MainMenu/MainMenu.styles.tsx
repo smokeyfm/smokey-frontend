@@ -28,11 +28,16 @@ export const MenuToggle = styled.div`
 `;
 
 export const MenuFooter = styled.div`
+  margin: 0;
+  padding: 0 !important;
   font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
   color: ${(p) => p.theme.colors.gray.light} !important;
   bottom: 0;
 
   & a {
+    font-size: 12px;
+    display: list-item;
+    list-style-type: none;
     color: ${(p) => p.theme.colors.gray.medium} !important;
   }
 `;

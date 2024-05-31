@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useCallback } from "react";
 import styled from "@emotion/styled";
+import Link from "next/link";
 import isPropValid from "@emotion/is-prop-valid";
 import { slide as BurgerMenu } from "react-burger-menu";
 import ExpandLess from "@material-ui/icons/ExpandLess";
@@ -30,6 +31,11 @@ const MenuItem = styled(StyledListItem, {
   margin: 5px 0;
   & div span {
     font-family: "Bebas Neue";
+  }
+
+  & a {
+    color: inherit;
+    text-decoration: none;
   }
 `;
 
@@ -133,12 +139,44 @@ export const MobileMenu = ({
         </StyledList>
       );
     }
-    return null;
+    return (
+      <>
+        <MenuItem
+          onClick={() => {
+            toggleMenu();
+          }}
+        >
+          <Link href="https://open.spotify.com/playlist/3T8xxIMFx8OsL8osiY02Wj?si=78c4db2339b14c57" target="_blank">
+            PLAYLIST
+          </Link>
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            toggleMenu();
+          }}
+        >
+          <Link href="https://smokey.threadless.com" target="_blank">
+            SHOP
+          </Link>
+        </MenuItem>
+        <hr />
+        <MenuItem
+          onClick={() => {
+            toggleMenu();
+            router.push("/login");
+          }}
+          button
+        >
+          Login
+        </MenuItem>
+      </>
+    )
   };
 
   return (
     <BurgerMenu
-      width={"66%"}
+      // width={"66%"}
+      width={220}
       isOpen={open}
       onOpen={toggleMenu}
       onClose={toggleMenu}
@@ -155,24 +193,13 @@ export const MobileMenu = ({
       ) : null}
       {/* {renderMenuItems(menuItemsData && menuItemsData?.response_data.menu_location_listing[0], "", 0)} */}
       {renderMenuItems(menusData, "", 0)}
-      <MenuItem
-        paddingLeft={"10px"}
-        onClick={() => {
-          toggleMenu();
-          router.push("/login");
-        }}
-        button
-      >
-        <hr />
-        Login
-      </MenuItem>
       <SocialLinks networks={["facebook", "instagram", "youtube", "twitter"]}/>
       <MenuFooter>
         <div>
-          <a href="/privacy">Privacy Policy</a> -{" "}
-          <a href="/terms">Terms &amp; Conditions</a> - RETURN POLICY
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms Of Use</a>
         </div>
-        <div>All Materials Copyright © {currYear} POL Clothing</div>
+        <div>All Materials Copyright © {currYear} {process.env.NEXT_PUBLIC_SITE_NAME || "Acme, Inc."}</div>
       </MenuFooter>
     </BurgerMenu>
   );

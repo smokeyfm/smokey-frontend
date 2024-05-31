@@ -70,9 +70,18 @@ export const MainMenu = (props: MainMenuProps) => {
     // }
   }, []);
 
-  if (menuItemsIsLoading || menuLocationIsLoading) return null;
+  if (menuItemsIsLoading || menuLocationIsLoading) {
+    return (
+      <MobileMenu
+        showMenuHeader={showMenuHeader}
+        onMenuItemClick={onMenuItemClick}
+        menusLoading={menuItemsIsLoading}
+        menusData={[]}
+      />
+    )
+  };
 
-  if (menuItemsIsLoading) return <>Loading...</>;
+  // if (menuItemsIsLoading) return <>Loading...</>;
 
   return (
     <>
