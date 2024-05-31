@@ -24,6 +24,7 @@ const fetchProduct = async (slug: string): Promise<IProduct> => {
     .then((res) => {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       // console.log(res.status);
       if (res.status >= 200 && res.status <= 299) {
         return res.json();
@@ -43,18 +44,24 @@ const fetchProduct = async (slug: string): Promise<IProduct> => {
 =======
       return res;
 =======
+=======
+      // console.log(res.status);
+>>>>>>> 25362b0 (tons of stuff... fix cart queries, add-to-cart works, show real color options, style account menu)
       if (res.status >= 200 && res.status <= 299) {
         return res.json();
-      } else {
-        // Promise.reject("Product request failed");
-        console.log("Uh oh RES: ", res.statusText);
-        Promise.reject();
-        throw new Error(res.statusText);
       }
+<<<<<<< HEAD
 >>>>>>> 8ae9432 (handle product errors better, add product 404 animation, add video to homepage, add another product feed on homepage, update hero)
+=======
+      // else {
+      //   // Promise.reject("Product request failed");
+      //   // console.log("Uh oh RES: ", res.statusText);
+      //   throw new Error(res.statusText);
+      // }
+>>>>>>> 25362b0 (tons of stuff... fix cart queries, add-to-cart works, show real color options, style account menu)
     })
     .catch((err) => {
-      console.log("Uh oh ERR: ", err);
+      // console.log("Uh oh ERR: ", err);
       throw new Error(`Product request failed: ${err.statusText}`);
     });
 <<<<<<< HEAD
