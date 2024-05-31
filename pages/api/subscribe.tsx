@@ -7,15 +7,15 @@ mailchimp.setConfig({
 
 export default async (req: any, res: any) => {
   const { email, firstName, lastName, phone, newContact } = req.body;
-  const ghlLocation = process.env.NEXT_PUBLIC_GOHIGHLEVEL_LOCATION_ID || '';
-  const ghlForm = process.env.NEXT_PUBLIC_GOHIGHLEVEL_FORM_ID || '';
+  const ghlLocation = process.env.NEXT_PUBLIC_GOHIGHLEVEL_LOCATION_ID || "";
+  const ghlForm = process.env.NEXT_PUBLIC_GOHIGHLEVEL_FORM_ID || "";
   const mailerService = process.env.NEXT_PUBLIC_MAILER;
 
   if (!email) {
     return res.status(400).json({ error: "Email is required" });
   }
 
-  if (mailerService === 'mailchimp') {
+  if (mailerService === "mailchimp") {
     const mailchimpId = `${process.env.NEXT_PUBLIC_MAILCHIMP_AUDIENCE_ID}`;
 
     if (newContact) {
@@ -27,7 +27,9 @@ export default async (req: any, res: any) => {
 
         return res.status(201).json({ error: "" });
       } catch (error: any) {
-        return res.status(500).json({ error: error.message || error.toString() });
+        return res
+          .status(500)
+          .json({ error: error.message || error.toString() });
       }
     }
 
@@ -42,24 +44,27 @@ export default async (req: any, res: any) => {
       return res.status(500).json({ error: error.message || error.toString() });
     }
   }
-  console.log("Existing Contact: ", newContact);
-  try {
-    await mailchimp.lists.updateListMember(mailchimpId, email, {
-      email_address: email,
-      merge_fields: {
-        FNAME: firstName,
-        LNAME: lastName,
-        PHONE: phone
-        // ADDRESS: {
-        //   addr1: data.streetaddress,
-        //   city: 'New York',
-        //   state: 'NY',
-        //   zip: data.zip,
-        //   country: 'US',
-        // }
-        // MMERGE2: ...,
-      }
-    } as any);
+
+  if (mailerService === "gohighlevel") {
+    try {
+      const response = await fetch(
+        "https://services.leadconnectorhq.com/forms/submit",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "multipart/form-data"
+          },
+          body: JSON.stringify({
+            first_name: firstName,
+            last_name: lastName,
+            phone: phone,
+            email: email,
+            formId: ghlForm,
+            location_id: ghlLocation,
+            eventData: { source: "direct" }
+          })
+        }
+      );
 
       const responseData = await response.json();
       return res.status(201).json(responseData);
