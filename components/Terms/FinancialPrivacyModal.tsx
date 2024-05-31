@@ -257,16 +257,11 @@ export const FinancialPrivacyModal = () => {
                 Federal law gives you the right to limit only
                 <ul>
                   <li>
-<<<<<<< HEAD
-                    sharing for affiliates' everyday business purposes – information about your
-                    creditworthiness
-=======
                     sharing for affiliates’ everyday business purposes –
                     information about your creditworthiness
                   </li>
                   <li>
                     affiliates from using your information to market to you
->>>>>>> 8392170 (update prettierrc, fix up colors everywhere to use theme vars, fix up ComingSoon)
                   </li>
                   <li>sharing for nonaffiliates to market to you</li>
                 </ul>
