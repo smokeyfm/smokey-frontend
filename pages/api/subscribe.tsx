@@ -1,6 +1,3 @@
-// Reference:
-// https://leerob.io/blog/mailchimp-next-js
-
 import mailchimp from "@mailchimp/mailchimp_marketing";
 
 mailchimp.setConfig({
@@ -9,25 +6,39 @@ mailchimp.setConfig({
 });
 
 export default async (req: any, res: any) => {
-  console.log("REQ: ", req.body);
   const { email, firstName, lastName, phone, newContact } = req.body;
-  const mailchimpId = `${process.env.NEXT_PUBLIC_MAILCHIMP_AUDIENCE_ID}`;
+  const ghlLocation = process.env.NEXT_PUBLIC_GOHIGHLEVEL_LOCATION_ID || '';
+  const ghlForm = process.env.NEXT_PUBLIC_GOHIGHLEVEL_FORM_ID || '';
+  const mailerService = process.env.NEXT_PUBLIC_MAILER;
 
   if (!email) {
     return res.status(400).json({ error: "Email is required" });
   }
 
-  if (newContact) {
-    console.log("New Contact: ", newContact);
+  if (mailerService === 'mailchimp') {
+    const mailchimpId = `${process.env.NEXT_PUBLIC_MAILCHIMP_AUDIENCE_ID}`;
+
+    if (newContact) {
+      try {
+        await mailchimp.lists.addListMember(mailchimpId, {
+          email_address: email,
+          status: "subscribed"
+        } as any);
+
+        return res.status(201).json({ error: "" });
+      } catch (error: any) {
+        return res.status(500).json({ error: error.message || error.toString() });
+      }
+    }
+
     try {
-      await mailchimp.lists.addListMember(mailchimpId, {
+      await mailchimp.lists.updateListMember(mailchimpId, email, {
         email_address: email,
         status: "subscribed"
       } as any);
 
       return res.status(201).json({ error: "" });
     } catch (error: any) {
-      console.log(error.message);
       return res.status(500).json({ error: error.message || error.toString() });
     }
   }
@@ -50,9 +61,10 @@ export default async (req: any, res: any) => {
       }
     } as any);
 
-    return res.status(201).json({ error: "" });
-  } catch (error: any) {
-    console.log(error.message);
-    return res.status(500).json({ error: error.message || error.toString() });
+      const responseData = await response.json();
+      return res.status(201).json(responseData);
+    } catch (error: any) {
+      return res.status(500).json({ error: error.message || error.toString() });
+    }
   }
 };
