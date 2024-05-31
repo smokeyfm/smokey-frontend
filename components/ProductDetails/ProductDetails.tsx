@@ -101,11 +101,12 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
   const productOptions =
     thisProduct && thisProduct?.included?.filter((e: any) => e["type"] === "option_value");
   const productColors =
-    productOptions &&
-    productOptions?.filter((e: any) => e.attributes.presentation.includes("#"));
+    productOptions && productOptions?.filter((e: any) => e.attributes.presentation.includes("#"));
   const productSizes =
     productOptions &&
-    productOptions?.filter((e: any) => e.attributes.presentation.includes("XS" || "S" || "M" || "L" || "XL"));
+    productOptions?.filter((e: any) =>
+      e.attributes.presentation.includes("XS" || "S" || "M" || "L" || "XL")
+    );
   const productProperties =
     thisProduct && thisProduct?.included?.filter((e: any) => e["type"] === "product_property");
   const thisProductId = thisProduct?.data?.id || "";
@@ -161,7 +162,7 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
   };
 
   // const [colorOptions, setColorOptions] = useState<any>(productColors);
-  const [chosenVariants, setChosenVariants] = useState<Any[]>([]);
+  const [chosenVariants, setChosenVariants] = useState<any[]>([]);
   const [addItem, setAddItem] = useState<any>({
     variant_id: thisProduct?.data.id,
     quantity: wholesale ? variantsPerPack(packSizeQtys) : 1
@@ -230,22 +231,24 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
     if (foundVariant) {
       return foundVariant;
     }
-    return null
-  }
+    return null;
+  };
 
   const incrementVariantQty = (optionId: number) => {
-    const chosenOption = productOptions?.find((i) => i.id === optionId);
+    const chosenOption = productOptions?.find((i) => i.id === optionId.toString());
     const foundVariants = findVariantsWithOptionId(optionId);
     // const chosenVariant = variantsData && variantsData?.find((i) => i.relationships?.option_values?.data['id'] === optionId);
     if (chosenVariants.length > 0) {
       debugger;
-      const chosenVariant = chosenVariants.find((i) => i.relationships?.option_values?.data['id'] === optionId);
+      const chosenVariant = chosenVariants.find(
+        (i) => i.relationships?.option_values?.data["id"] === optionId
+      );
       console.log("VARIANT: ", chosenVariant);
     }
     debugger;
     // chosenVariants.push({ variant_id: optionId, quantity: 1 * productSizes?.length });
     console.log("CHOSEN: ", chosenVariants);
-    
+
     // debugger;
     // const newVariantQty = [...chosenVariants];
     // if (newVariantQty[index])
@@ -255,7 +258,7 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
     //   ...addItem,
     //   quantity: wholesale ? variantsPerPack(newVariantQty) : 1
     // });
-  }
+  };
 
   const addAllToCart = () => {
     if (chosenVariants.length) {
@@ -318,7 +321,8 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
     debugger;
     const newValue = e.target ? e.target.value : e;
     console.log("newValue: ", newValue);
-    const chosenPacks = chosenVariants.length && chosenVariants[variantId]?.quantity + newValue || null;
+    const chosenPacks =
+      (chosenVariants.length && chosenVariants[variantId]?.quantity + newValue) || null;
     console.log("chosenPacks: ", chosenPacks);
     setChosenVariants((prevState: any) => {
       return {
@@ -328,25 +332,29 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
     });
   };
 
-  const renderWholesaleOptions = useCallback(() => {
-    let variants: any = [];
-    
-    
+  const renderWholesaleOptions = () => {
+    const [chosenVariantQty, setChosenVariantQty] = useState(0);
+
+    useEffect(() => {
+      const foundVariants = thisProduct?.included?.filter((elem) => elem.type === "variant");
+      console.log("VARIANTS: ", foundVariants);
+    }, [thisProduct]);
+
+    const handleUpdatePackSelections = (e: any, variantId: any) => {
+      // logic to update the chosenVariantQty state
+    };
+
+    const handleIncrementVariantQty = (variantId: any) => {
+      // logic to increment the chosenVariantQty state
+    };
+
     if (variantsAreLoading) {
       return <p>Loading...</p>;
     }
-    
-    const foundVariants = thisProduct?.included?.filter((elem) => elem.type === "variant");
 
-    console.log("PRODUCT: ", thisProduct, "VARIANTS: ", foundVariants, "COLORS: ", productColors, "SIZES: ", productSizes, "OPTIONS: ", productOptions);
-    
     return productColors?.map((item, index) => {
-      const chosenVariantQty = chosenVariants.length && chosenVariants[index === item.id]?.quantity || 0;
-      const optionText = item.attributes.options_text;
-      console.log("CHOSEN QTY: ", chosenVariantQty);
       return (
         <ColorsRow key={`${index}-row`}>
-          {/* <ColorsCell>{item.attributes.options_text}</ColorsCell> */}
           <ColorsCell>
             <VariantSwatch color={item.attributes.presentation} />
           </ColorsCell>
@@ -359,18 +367,18 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
               type="number"
               min="0"
               max="999"
-              onChange={(e: any) => updatePackSelections(e, item.id)}
+              onChange={(e) => handleUpdatePackSelections(e, parseInt(item.id))}
             />
           </ColorsCell>
           <ColorsCell>
-            <button onClick={() => incrementVariantQty(item.id)}>+</button>
+            <button onClick={() => handleIncrementVariantQty(parseInt(item.id))}>+</button>
           </ColorsCell>
           <ColorsCell>{chosenVariantQty}</ColorsCell>
           <ColorsCell>${item.attributes.price}</ColorsCell>
         </ColorsRow>
       );
     });
-  }, [productColors]);
+  };
 
   const renderProductImgs = useCallback(() => {
     const productImgs =
@@ -421,7 +429,8 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
         {productProperties?.map((property: any, index: any) => {
           return (
             <div key={`property-${index}`}>
-              <PropertyName>{property.attributes.name}</PropertyName>: &nbsp;{property.attributes.value}
+              <PropertyName>{property.attributes.name}</PropertyName>: &nbsp;
+              {property.attributes.value}
             </div>
           );
         })}
@@ -430,8 +439,8 @@ export const ProductDetails = ({ wholesale, props }: ProductDetailsProps) => {
   }, [productProperties]);
 
   const renderSizeQtys = useCallback(() => {
-    if (productSizes?.length > 0) {
-      return productSizes.map((i, index) => {
+    if (productSizes && productSizes.length > 0) {
+      return productSizes?.map((i, index) => {
         return (
           <Size>
             <SizeQty>2</SizeQty>
