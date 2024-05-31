@@ -65,11 +65,7 @@ module.exports = {
 };
 function loadEnvVariables() {
   // eslint-disable-next-line global-require
-<<<<<<< HEAD
   require("dotenv").config({
-=======
-  require('dotenv').config({
->>>>>>> 423caff (update)
     path: envFile
   });
 }
