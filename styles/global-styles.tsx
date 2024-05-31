@@ -98,7 +98,6 @@ export const GlobalStyles = ({ theme, children }: any) => (
       button:hover {
         background-color: ${saturate(0.5, theme.colors.brand.primary)};
       }
-
       button:active {
         background-color: ${saturate(0.5, theme.colors.brand.primary)};
       }
