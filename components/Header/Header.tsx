@@ -69,12 +69,6 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
     isError: cartHasError
   } = useCart();
 
-  const {
-    data: cartData,
-    isLoading: cartIsLoading,
-    isError: cartHasError
-  } = useCart();
-
   const handleAccount = (event: any) => {
     setAccountElem(event.currentTarget);
   };

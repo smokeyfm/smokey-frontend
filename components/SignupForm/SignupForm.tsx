@@ -79,16 +79,7 @@ const FormWrapper: React.FC<any> = ({
 
   // const { step } = this.props;
   const termsAccepted = !!(
-<<<<<<< HEAD
-<<<<<<< HEAD
     (values.acceptSignatureTerms && values.acceptPrivacyTerms)
-=======
-    values.acceptSignatureTerms &&
-    values.acceptPrivacyTerms
->>>>>>> 9a38330 (tons of Product details upgrades, tons of stuff, terms & conditions, footer, hooks)
-=======
-    (values.acceptSignatureTerms && values.acceptPrivacyTerms)
->>>>>>> 50eb7ac (tons of Product details upgrades, tons of stuff, terms & conditions, footer, hooks)
     // values.acceptReportingTerms &&
     // values.acceptAuthorizeTerms
   );
@@ -237,28 +228,12 @@ export const SignupForm = () => {
 
       register({ user: values })
         .then((res) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
           console.log("yup: ", res);
-=======
-          console.log('yup: ', res);
->>>>>>> 9a38330 (tons of Product details upgrades, tons of stuff, terms & conditions, footer, hooks)
-=======
-          console.log("yup: ", res);
->>>>>>> 50eb7ac (tons of Product details upgrades, tons of stuff, terms & conditions, footer, hooks)
           // setSubmitting(false);
           // router.push("/");
         })
         .catch((err) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
           console.log("nope: ", err);
-=======
-          console.log('nope: ', err);
->>>>>>> 9a38330 (tons of Product details upgrades, tons of stuff, terms & conditions, footer, hooks)
-=======
-          console.log("nope: ", err);
->>>>>>> 50eb7ac (tons of Product details upgrades, tons of stuff, terms & conditions, footer, hooks)
           // setSubmitting(false);
         });
 

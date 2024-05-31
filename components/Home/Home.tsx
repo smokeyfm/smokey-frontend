@@ -3,10 +3,6 @@ import { useRef, useEffect } from "react";
 import { useQuery } from "react-query";
 import { QueryClient } from "react-query";
 import { dehydrate } from "react-query/hydration";
-<<<<<<< HEAD
-import { Layout, InfoBox, ProductList } from "../../components";
-import { fetchPosts, fetchProducts } from "../../hooks";
-=======
 import { Layout, InfoBox, ProductList } from "../components";
 import {
   fetchStreams,
@@ -15,18 +11,13 @@ import {
   useStreams
 } from "../../hooks";
 import Hero from "./Hero";
->>>>>>> 8392170 (update prettierrc, fix up colors everywhere to use theme vars, fix up ComingSoon)
 import Banner from "./Banner";
 import { Content } from "./Home.styles";
 import Featured from "./Featured";
 import MemberList from "./MemberList";
 import Products from "./Products";
-import PolProductList from "../POLProductList";
+import { PolProductList } from "../POLProductList";
 import { StreamList } from "../StreamList";
-<<<<<<< HEAD
-=======
-import { PolProductList } from "../PolProductList";
->>>>>>> c1ea6ba (lots of style changes, footer & menu changes, product & stream card components, move footer data, add D.R.Y. social links)
 import { useMediaQuery } from "react-responsive";
 import MobileLatest from "./MobileLatest";
 import { Loading } from "../Loading";

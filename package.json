@@ -123,17 +123,7 @@
     "@types/react-typist": "^2.0.3",
     "@types/three": "0.152.1",
     "@types/ua-parser-js": "^0.7.36",
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
     "@types/video.js": "^7.3.28",
-=======
->>>>>>> 5666297 (add a bunch of temp typings)
->>>>>>> 1d23d27 (add a bunch of temp typings)
-=======
-    "@types/video.js": "^7.3.28",
->>>>>>> c0ca95e (LOTS: add env example, add some envs, update meta tags with envs, rename some components (Hero, Banner, PolProductList, CartSidebar), make menus dynamic, change to /tv/ route, add /category & /tag, get real product feed on homepage, add some title attr to home sections, remove some unnecessary logs, update product query)
     "@types/yup": "0.29.13",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",
