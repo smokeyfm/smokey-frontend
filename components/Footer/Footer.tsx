@@ -73,8 +73,7 @@ export const Footer: React.FC<FootProps> = ({ classes, footerData }) => {
   }, [menuItemsIsSuccess, menuItemsData]);
 
   const columns = apiColumns || footerData.columns || hardcodedColumns;
-  const logoPath =
-    process.env.NEXT_PUBLIC_LOGO_PATH || "/logo.png";
+  const logoPath = process.env.NEXT_PUBLIC_LOGO_PATH || "/logo.png";
   const FooterLogo = footerData.logo as ReactNode;
   const siteTitle = process.env.NEXT_PUBLIC_SHORT_TITLE || "Smokey FM";
 
@@ -184,7 +183,8 @@ export const Footer: React.FC<FootProps> = ({ classes, footerData }) => {
 
       {/* Copyright */}
       <div className="mt-8 text-center text-sm text-muted-foreground">
-        &copy; {new Date().getFullYear()} Smokey Records LLC. All rights reserved.
+        &copy; {new Date().getFullYear()} Smokey Records LLC. All rights
+        reserved.
       </div>
     </footer>
   );

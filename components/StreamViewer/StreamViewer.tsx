@@ -94,7 +94,7 @@ export const StreamViewer = ({ props }: any) => {
   // Lock CityMorph to neon-night for the dark, electric stream atmosphere
   const { setConditionOverride } = useCityMorph();
   useEffect(() => {
-    setConditionOverride('neon-night');
+    setConditionOverride("neon-night");
     return () => setConditionOverride(null);
   }, [setConditionOverride]);
 

@@ -213,16 +213,32 @@ export const Cart = () => {
         {/* Actions */}
         <div className="mt-8 flex flex-wrap gap-3">
           {user ? (
-            <Button className="btn-skeuo-primary" onClick={() => router.push("/checkout")}>Checkout</Button>
+            <Button
+              className="btn-skeuo-primary"
+              onClick={() => router.push("/checkout")}
+            >
+              Checkout
+            </Button>
           ) : (
             <>
-              <Button className="btn-skeuo-primary" onClick={() => router.push("/checkout")}>
+              <Button
+                className="btn-skeuo-primary"
+                onClick={() => router.push("/checkout")}
+              >
                 Checkout as Guest
               </Button>
-              <Button className="btn-skeuo" variant="outline" onClick={() => router.push("/login")}>
+              <Button
+                className="btn-skeuo"
+                variant="outline"
+                onClick={() => router.push("/login")}
+              >
                 Login
               </Button>
-              <Button className="btn-skeuo" variant="outline" onClick={() => router.push("/signup")}>
+              <Button
+                className="btn-skeuo"
+                variant="outline"
+                onClick={() => router.push("/signup")}
+              >
                 Sign Up
               </Button>
             </>

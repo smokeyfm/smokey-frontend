@@ -9,7 +9,11 @@ import type { YouTubeVideo } from "./types";
 
 /** Default YouTube video playlist for SmokeyBox. */
 const DEFAULT_VIDEOS: YouTubeVideo[] = [
-  { id: '1', title: 'Smokey FM Visual 1', url: 'https://www.youtube.com/watch?v=hGq0l_m0U20' },
+  {
+    id: "1",
+    title: "Smokey FM Visual 1",
+    url: "https://www.youtube.com/watch?v=hGq0l_m0U20"
+  }
 ];
 
 /**

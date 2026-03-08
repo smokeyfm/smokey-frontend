@@ -12,6 +12,7 @@
 Copy dna-frontend codebase wholesale into new `smokey-v2` branch on smokey-frontend origin.
 
 **Rebrand:**
+
 - Site title → "SmokeyFM"
 - Site URL → https://smokey.fm
 - Logos, favicons, OG images → Smokey FM assets
@@ -19,10 +20,12 @@ Copy dna-frontend codebase wholesale into new `smokey-v2` branch on smokey-front
 - Spree API → https://admin-staging.smokey.fm
 
 **Remove:**
+
 - Kontent AI CMS integration
 - Wholesale/B2B product views
 
 **Keep:**
+
 - Full eCommerce: cart, multi-step checkout, Stripe payments, accounts, favorites, order history, address management, coupon system
 - Live streaming: Mux-powered HLS, StreamViewer with chat + in-stream checkout
 - Auth: login, signup, password reset, session management
@@ -36,12 +39,14 @@ Copy dna-frontend codebase wholesale into new `smokey-v2` branch on smokey-front
 ### Modes
 
 **Simultaneous (default):**
+
 - Muted YouTube video plays visuals (music videos, live footage, visuals) in a loop
 - SoundCloud playlist provides audio independently in a loop
 - Both cycle independently, creating an ever-evolving audiovisual mashup
 - Minimal overlay: current track name, artist, play/pause, volume knob, next/prev
 
 **Single-source:**
+
 - Full YouTube with audio (unmutes video, pauses SoundCloud)
 - Or SoundCloud-only with album art / waveform visualization
 - Toggle back to simultaneous anytime
@@ -79,16 +84,16 @@ The site background is a photorealistic layered cityscape that slowly, continuou
 
 ### Conditions
 
-| Condition | Palette | Mood |
-|-----------|---------|------|
-| Dawn | soft pinks/oranges, cool shadows | Quiet, fresh |
-| Midday | bright, high contrast, clear sky | Energetic |
-| Golden Hour | warm amber, long shadows, lens flare | Warm, nostalgic |
-| Overcast | muted grays, flat light | Moody, introspective |
-| Rain | wet reflections, dark clouds, rain streaks | Atmospheric |
-| Neon Night | deep blues/blacks, neon glow, puddle reflections | Electric, urban |
-| Misty Twilight | purple haze, diffused lights, silhouettes | Dreamy |
-| Stormy | dramatic clouds, subtle lightning | Intense |
+| Condition      | Palette                                          | Mood                 |
+| -------------- | ------------------------------------------------ | -------------------- |
+| Dawn           | soft pinks/oranges, cool shadows                 | Quiet, fresh         |
+| Midday         | bright, high contrast, clear sky                 | Energetic            |
+| Golden Hour    | warm amber, long shadows, lens flare             | Warm, nostalgic      |
+| Overcast       | muted grays, flat light                          | Moody, introspective |
+| Rain           | wet reflections, dark clouds, rain streaks       | Atmospheric          |
+| Neon Night     | deep blues/blacks, neon glow, puddle reflections | Electric, urban      |
+| Misty Twilight | purple haze, diffused lights, silhouettes        | Dreamy               |
+| Stormy         | dramatic clouds, subtle lightning                | Intense              |
 
 ### Layers
 
@@ -125,26 +130,26 @@ Slim semi-transparent bar over CityMorph backdrop. Adapts opacity/blur to curren
 
 ### Routes
 
-| Page | Route | Description |
-|------|-------|-------------|
-| Homepage | `/` | CityMorph backdrop, floating logo, featured releases + merch, live stream banner, SmokeyBox always present |
-| Music | `/music` | Dedicated music experience — browse releases, albums, singles. Listen (queue in SmokeyBox) or Buy (vinyl/CD/digital). SoundCloud playlist integration, featured artists, new releases carousel. Filter by format, genre, new releases, featured |
-| Shop | `/browse` | Merch & swag — tees, hoodies, hats, accessories. Frosted glass product cards, category filters |
-| Product Detail | `/[productSlug]` | Full variant/image/favorites from dna-frontend. Music products get embedded player preview + "Listen" button |
-| Live | `/tv/[streamId]` | Full StreamViewer with chat + in-stream checkout. CityMorph holds at "neon night" condition during streams |
-| Cart | `/cart` | From dna-frontend, restyled with frosted glass + skeuomorphic buttons |
-| Checkout | `/checkout` | Multi-step wizard with Stripe, restyled |
-| Thank You | `/thank-you` | Order confirmation |
-| Account | `/account` | Dashboard with quick links |
-| Orders | `/account/orders` | Order history with pagination |
-| Order Detail | `/account/orders/[orderNumber]` | Individual order |
-| Favorites | `/account/favorites` | Saved items / wishlist |
-| Login | `/login` | Auth |
-| Signup | `/signup` | Registration |
-| Reset Password | `/reset-password` | Password recovery |
-| About | `/about` | Company info |
-| Terms | `/terms` | Terms of service |
-| Privacy | `/privacy` | Privacy policy |
+| Page           | Route                           | Description                                                                                                                                                                                                                                     |
+| -------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Homepage       | `/`                             | CityMorph backdrop, floating logo, featured releases + merch, live stream banner, SmokeyBox always present                                                                                                                                      |
+| Music          | `/music`                        | Dedicated music experience — browse releases, albums, singles. Listen (queue in SmokeyBox) or Buy (vinyl/CD/digital). SoundCloud playlist integration, featured artists, new releases carousel. Filter by format, genre, new releases, featured |
+| Shop           | `/browse`                       | Merch & swag — tees, hoodies, hats, accessories. Frosted glass product cards, category filters                                                                                                                                                  |
+| Product Detail | `/[productSlug]`                | Full variant/image/favorites from dna-frontend. Music products get embedded player preview + "Listen" button                                                                                                                                    |
+| Live           | `/tv/[streamId]`                | Full StreamViewer with chat + in-stream checkout. CityMorph holds at "neon night" condition during streams                                                                                                                                      |
+| Cart           | `/cart`                         | From dna-frontend, restyled with frosted glass + skeuomorphic buttons                                                                                                                                                                           |
+| Checkout       | `/checkout`                     | Multi-step wizard with Stripe, restyled                                                                                                                                                                                                         |
+| Thank You      | `/thank-you`                    | Order confirmation                                                                                                                                                                                                                              |
+| Account        | `/account`                      | Dashboard with quick links                                                                                                                                                                                                                      |
+| Orders         | `/account/orders`               | Order history with pagination                                                                                                                                                                                                                   |
+| Order Detail   | `/account/orders/[orderNumber]` | Individual order                                                                                                                                                                                                                                |
+| Favorites      | `/account/favorites`            | Saved items / wishlist                                                                                                                                                                                                                          |
+| Login          | `/login`                        | Auth                                                                                                                                                                                                                                            |
+| Signup         | `/signup`                       | Registration                                                                                                                                                                                                                                    |
+| Reset Password | `/reset-password`               | Password recovery                                                                                                                                                                                                                               |
+| About          | `/about`                        | Company info                                                                                                                                                                                                                                    |
+| Terms          | `/terms`                        | Terms of service                                                                                                                                                                                                                                |
+| Privacy        | `/privacy`                      | Privacy policy                                                                                                                                                                                                                                  |
 
 ### Music Page Specifics
 
@@ -167,20 +172,20 @@ Slim semi-transparent bar over CityMorph backdrop. Adapts opacity/blur to curren
 
 ## Tech Stack (Final)
 
-| Layer | Technology |
-|-------|-----------|
-| Framework | Next.js 13.1.1 |
-| UI | React 18.2.0, TypeScript |
-| Styling | Tailwind CSS 3.4 + Emotion (where needed) |
-| Components | shadcn/ui, Radix UI, Lucide icons |
-| State | React Query 3.6, Recoil, React Context |
-| eCommerce | Spree Storefront API v2 SDK (custom local build) |
-| Payments | Stripe (@stripe/stripe-js + @stripe/react-stripe-js) |
-| Video | react-player, Video.js, Mux HLS |
-| Audio | react-audio-player, soundcloud.ts, Web Audio API |
-| Animations | Framer Motion, React Spring |
-| Forms | Formik + Yup |
-| Search | Fuse.js |
-| Email | Mailchimp Marketing API |
-| Analytics | Google Analytics 4 |
-| Deployment | Heroku |
+| Layer      | Technology                                           |
+| ---------- | ---------------------------------------------------- |
+| Framework  | Next.js 13.1.1                                       |
+| UI         | React 18.2.0, TypeScript                             |
+| Styling    | Tailwind CSS 3.4 + Emotion (where needed)            |
+| Components | shadcn/ui, Radix UI, Lucide icons                    |
+| State      | React Query 3.6, Recoil, React Context               |
+| eCommerce  | Spree Storefront API v2 SDK (custom local build)     |
+| Payments   | Stripe (@stripe/stripe-js + @stripe/react-stripe-js) |
+| Video      | react-player, Video.js, Mux HLS                      |
+| Audio      | react-audio-player, soundcloud.ts, Web Audio API     |
+| Animations | Framer Motion, React Spring                          |
+| Forms      | Formik + Yup                                         |
+| Search     | Fuse.js                                              |
+| Email      | Mailchimp Marketing API                              |
+| Analytics  | Google Analytics 4                                   |
+| Deployment | Heroku                                               |

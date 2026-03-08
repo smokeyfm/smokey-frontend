@@ -13,6 +13,7 @@
 ## Task 1: Git Setup — Create smokey-v2 Branch from dna-frontend
 
 **Files:**
+
 - Source: `/Users/smokey/Internal/DNA/code/dna-frontend/` (entire codebase)
 - Target: smokey-frontend repo, new orphan branch `smokey-v2`
 
@@ -55,6 +56,7 @@ git push origin smokey-v2
 ## Task 2: Preserve Smokey Assets — Copy Branding from Original
 
 **Files:**
+
 - Source: `/Users/smokey/Internal/SmokeyFM/code/smokey-frontend/` (main branch assets)
 - Copy to: `public/` in smokey-v2
 
@@ -112,6 +114,7 @@ git commit -m "feat: preserve smokey branding assets, fonts, and atmospheric ima
 ## Task 3: Environment Configuration — Rebrand for Smokey FM
 
 **Files:**
+
 - Modify: `.env.example`
 - Create: `.env.development` (from .env.example, populated with Smokey values)
 
@@ -186,15 +189,17 @@ Note: `.env.development` should be in `.gitignore` — do NOT commit it.
 ## Task 4: Cleanup — Remove Kontent CMS Integration
 
 **Files:**
-- Modify: `package.json` — remove @kontent-ai/* dependencies
+
+- Modify: `package.json` — remove @kontent-ai/\* dependencies
 - Modify: `pages/_app.tsx` — remove Kontent imports/usage if any
 - Modify: `pages/home.tsx` — remove DynamicHome/Kontent-driven content
 - Delete: any `/models/` directory (Kontent generated models)
-- Modify: `.env.example` — remove KONTENT_* variables
+- Modify: `.env.example` — remove KONTENT\_\* variables
 
 **Step 1: Remove Kontent packages from package.json**
 
 Remove these dependencies:
+
 - `@kontent-ai/delivery-sdk`
 - `@kontent-ai/model-generator`
 - `@kontent-ai/react-components`
@@ -227,6 +232,7 @@ git commit -m "chore: remove Kontent CMS integration (not used by Smokey)"
 ## Task 5: Cleanup — Remove Wholesale Features
 
 **Files:**
+
 - Delete: `components/ProductDetails/WholesaleProductDetails.tsx`
 - Modify: `components/ProductDetails/ProductDetails.tsx` — remove wholesale dispatch, use RetailProductDetails directly
 - Modify: `pages/_app.tsx` — remove wholesale state management
@@ -236,7 +242,7 @@ git commit -m "chore: remove Kontent CMS integration (not used by Smokey)"
 
 Make it render `RetailProductDetails` directly without wholesale branching.
 
-**Step 2: Remove wholesale state from _app.tsx**
+**Step 2: Remove wholesale state from \_app.tsx**
 
 Remove `isWholesale` useState and any wholesale-related props passed to components.
 
@@ -259,6 +265,7 @@ git commit -m "chore: remove wholesale/B2B features (not needed for Smokey)"
 ## Task 6: Tailwind Theme — Smokey FM Brand Colors & Typography
 
 **Files:**
+
 - Modify: `tailwind.config.ts`
 - Modify: `styles/globals.css`
 - Modify: `styles/fonts.css` — add JamesFajardo font
@@ -293,12 +300,11 @@ fontFamily: {
 
 ```css
 @font-face {
-  font-family: 'JamesFajardo';
-  src: url('/fonts/JamesFajardo.eot');
-  src: url('/fonts/JamesFajardo.eot?#iefix') format('embedded-opentype'),
-       url('/fonts/JamesFajardo.woff') format('woff'),
-       url('/fonts/JamesFajardo.ttf') format('truetype'),
-       url('/fonts/JamesFajardo.svg#JamesFajardo') format('svg');
+  font-family: "JamesFajardo";
+  src: url("/fonts/JamesFajardo.eot");
+  src: url("/fonts/JamesFajardo.eot?#iefix") format("embedded-opentype"), url("/fonts/JamesFajardo.woff")
+      format("woff"), url("/fonts/JamesFajardo.ttf") format("truetype"), url("/fonts/JamesFajardo.svg#JamesFajardo")
+      format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -320,6 +326,7 @@ git commit -m "feat: apply Smokey FM brand colors, typography, and fonts"
 ## Task 7: CityMorph — Theme Layer System
 
 **Files:**
+
 - Create: `components/CityMorph/CityMorph.tsx`
 - Create: `components/CityMorph/conditions.ts`
 - Create: `components/CityMorph/useThemeCycle.ts`
@@ -345,93 +352,104 @@ export interface CityCondition {
 
 export const conditions: CityCondition[] = [
   {
-    name: 'dawn',
-    skyGradient: 'linear-gradient(180deg, #1a0a2e 0%, #e8918d 40%, #f4c27f 70%, #fef0d5 100%)',
-    skylineFilter: 'brightness(0.3) contrast(1.2) sepia(0.3)',
-    streetFilter: 'brightness(0.4) saturate(0.8)',
-    overlayColor: 'rgba(235, 139, 139, 0.08)',
+    name: "dawn",
+    skyGradient:
+      "linear-gradient(180deg, #1a0a2e 0%, #e8918d 40%, #f4c27f 70%, #fef0d5 100%)",
+    skylineFilter: "brightness(0.3) contrast(1.2) sepia(0.3)",
+    streetFilter: "brightness(0.4) saturate(0.8)",
+    overlayColor: "rgba(235, 139, 139, 0.08)",
     overlayOpacity: 0.15,
-    textGlow: '0 0 20px rgba(244, 194, 127, 0.3)',
+    textGlow: "0 0 20px rgba(244, 194, 127, 0.3)",
     hasRain: false,
-    hasFog: true,
+    hasFog: true
   },
   {
-    name: 'midday',
-    skyGradient: 'linear-gradient(180deg, #1e90ff 0%, #87ceeb 50%, #e0f0ff 100%)',
-    skylineFilter: 'brightness(0.9) contrast(1.3)',
-    streetFilter: 'brightness(0.8) saturate(1.1)',
-    overlayColor: 'rgba(255, 255, 255, 0.05)',
+    name: "midday",
+    skyGradient:
+      "linear-gradient(180deg, #1e90ff 0%, #87ceeb 50%, #e0f0ff 100%)",
+    skylineFilter: "brightness(0.9) contrast(1.3)",
+    streetFilter: "brightness(0.8) saturate(1.1)",
+    overlayColor: "rgba(255, 255, 255, 0.05)",
     overlayOpacity: 0.05,
-    textGlow: 'none',
+    textGlow: "none",
     hasRain: false,
-    hasFog: false,
+    hasFog: false
   },
   {
-    name: 'golden-hour',
-    skyGradient: 'linear-gradient(180deg, #1a0a3e 0%, #d4594e 30%, #e8a84c 60%, #f5d89a 100%)',
-    skylineFilter: 'brightness(0.5) contrast(1.1) sepia(0.5) hue-rotate(-10deg)',
-    streetFilter: 'brightness(0.5) saturate(1.3) sepia(0.3)',
-    overlayColor: 'rgba(232, 168, 76, 0.1)',
+    name: "golden-hour",
+    skyGradient:
+      "linear-gradient(180deg, #1a0a3e 0%, #d4594e 30%, #e8a84c 60%, #f5d89a 100%)",
+    skylineFilter:
+      "brightness(0.5) contrast(1.1) sepia(0.5) hue-rotate(-10deg)",
+    streetFilter: "brightness(0.5) saturate(1.3) sepia(0.3)",
+    overlayColor: "rgba(232, 168, 76, 0.1)",
     overlayOpacity: 0.12,
-    textGlow: '0 0 15px rgba(232, 168, 76, 0.4)',
+    textGlow: "0 0 15px rgba(232, 168, 76, 0.4)",
     hasRain: false,
-    hasFog: false,
+    hasFog: false
   },
   {
-    name: 'overcast',
-    skyGradient: 'linear-gradient(180deg, #4a4a5a 0%, #6b6b7b 40%, #8a8a9a 100%)',
-    skylineFilter: 'brightness(0.4) contrast(0.9) saturate(0.5)',
-    streetFilter: 'brightness(0.35) saturate(0.4)',
-    overlayColor: 'rgba(100, 100, 120, 0.12)',
+    name: "overcast",
+    skyGradient:
+      "linear-gradient(180deg, #4a4a5a 0%, #6b6b7b 40%, #8a8a9a 100%)",
+    skylineFilter: "brightness(0.4) contrast(0.9) saturate(0.5)",
+    streetFilter: "brightness(0.35) saturate(0.4)",
+    overlayColor: "rgba(100, 100, 120, 0.12)",
     overlayOpacity: 0.2,
-    textGlow: 'none',
+    textGlow: "none",
     hasRain: false,
-    hasFog: true,
+    hasFog: true
   },
   {
-    name: 'rain',
-    skyGradient: 'linear-gradient(180deg, #1a1a2e 0%, #2d2d44 40%, #3a3a55 100%)',
-    skylineFilter: 'brightness(0.3) contrast(1.1) saturate(0.6)',
-    streetFilter: 'brightness(0.35) saturate(0.7) contrast(1.2)',
-    overlayColor: 'rgba(30, 30, 60, 0.15)',
+    name: "rain",
+    skyGradient:
+      "linear-gradient(180deg, #1a1a2e 0%, #2d2d44 40%, #3a3a55 100%)",
+    skylineFilter: "brightness(0.3) contrast(1.1) saturate(0.6)",
+    streetFilter: "brightness(0.35) saturate(0.7) contrast(1.2)",
+    overlayColor: "rgba(30, 30, 60, 0.15)",
     overlayOpacity: 0.25,
-    textGlow: '0 0 10px rgba(100, 149, 237, 0.3)',
+    textGlow: "0 0 10px rgba(100, 149, 237, 0.3)",
     hasRain: true,
-    hasFog: false,
+    hasFog: false
   },
   {
-    name: 'neon-night',
-    skyGradient: 'linear-gradient(180deg, #000011 0%, #0a0a2e 40%, #1a1a3e 100%)',
-    skylineFilter: 'brightness(0.15) contrast(1.4) saturate(1.5)',
-    streetFilter: 'brightness(0.2) saturate(1.8) contrast(1.3)',
-    overlayColor: 'rgba(235, 139, 139, 0.06)',
+    name: "neon-night",
+    skyGradient:
+      "linear-gradient(180deg, #000011 0%, #0a0a2e 40%, #1a1a3e 100%)",
+    skylineFilter: "brightness(0.15) contrast(1.4) saturate(1.5)",
+    streetFilter: "brightness(0.2) saturate(1.8) contrast(1.3)",
+    overlayColor: "rgba(235, 139, 139, 0.06)",
     overlayOpacity: 0.1,
-    textGlow: '0 0 20px rgba(235, 139, 139, 0.5), 0 0 40px rgba(235, 139, 139, 0.2)',
+    textGlow:
+      "0 0 20px rgba(235, 139, 139, 0.5), 0 0 40px rgba(235, 139, 139, 0.2)",
     hasRain: false,
-    hasFog: false,
+    hasFog: false
   },
   {
-    name: 'misty-twilight',
-    skyGradient: 'linear-gradient(180deg, #1a0a3e 0%, #4a2a6e 40%, #7a5a9e 70%, #aa8ace 100%)',
-    skylineFilter: 'brightness(0.25) contrast(0.9) saturate(0.7) hue-rotate(20deg)',
-    streetFilter: 'brightness(0.3) saturate(0.5)',
-    overlayColor: 'rgba(122, 90, 158, 0.1)',
+    name: "misty-twilight",
+    skyGradient:
+      "linear-gradient(180deg, #1a0a3e 0%, #4a2a6e 40%, #7a5a9e 70%, #aa8ace 100%)",
+    skylineFilter:
+      "brightness(0.25) contrast(0.9) saturate(0.7) hue-rotate(20deg)",
+    streetFilter: "brightness(0.3) saturate(0.5)",
+    overlayColor: "rgba(122, 90, 158, 0.1)",
     overlayOpacity: 0.3,
-    textGlow: '0 0 15px rgba(170, 138, 206, 0.4)',
+    textGlow: "0 0 15px rgba(170, 138, 206, 0.4)",
     hasRain: false,
-    hasFog: true,
+    hasFog: true
   },
   {
-    name: 'stormy',
-    skyGradient: 'linear-gradient(180deg, #0a0a15 0%, #1a1a30 30%, #2a2a45 100%)',
-    skylineFilter: 'brightness(0.2) contrast(1.3) saturate(0.4)',
-    streetFilter: 'brightness(0.25) saturate(0.5) contrast(1.1)',
-    overlayColor: 'rgba(20, 20, 40, 0.2)',
+    name: "stormy",
+    skyGradient:
+      "linear-gradient(180deg, #0a0a15 0%, #1a1a30 30%, #2a2a45 100%)",
+    skylineFilter: "brightness(0.2) contrast(1.3) saturate(0.4)",
+    streetFilter: "brightness(0.25) saturate(0.5) contrast(1.1)",
+    overlayColor: "rgba(20, 20, 40, 0.2)",
     overlayOpacity: 0.3,
-    textGlow: '0 0 5px rgba(200, 200, 255, 0.3)',
+    textGlow: "0 0 5px rgba(200, 200, 255, 0.3)",
     hasRain: true,
-    hasFog: false,
-  },
+    hasFog: false
+  }
 ];
 ```
 
@@ -440,24 +458,30 @@ export const conditions: CityCondition[] = [
 Create `components/CityMorph/useThemeCycle.ts`:
 
 ```typescript
-import { useState, useEffect, useCallback, useRef } from 'react';
-import { conditions, CityCondition } from './conditions';
+import { useState, useEffect, useCallback, useRef } from "react";
+import { conditions, CityCondition } from "./conditions";
 
 const CYCLE_INTERVAL = 75000; // 75 seconds between shifts
 const TRANSITION_DURATION = 10000; // 10 second crossfade
 
 export function useThemeCycle() {
-  const [currentCondition, setCurrentCondition] = useState<CityCondition>(() => {
-    const randomIndex = Math.floor(Math.random() * conditions.length);
-    return conditions[randomIndex];
-  });
-  const [nextCondition, setNextCondition] = useState<CityCondition | null>(null);
+  const [currentCondition, setCurrentCondition] = useState<CityCondition>(
+    () => {
+      const randomIndex = Math.floor(Math.random() * conditions.length);
+      return conditions[randomIndex];
+    }
+  );
+  const [nextCondition, setNextCondition] = useState<CityCondition | null>(
+    null
+  );
   const [transitionProgress, setTransitionProgress] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout>();
   const animFrameRef = useRef<number>();
 
   const pickNextCondition = useCallback(() => {
-    const available = conditions.filter(c => c.name !== currentCondition.name);
+    const available = conditions.filter(
+      (c) => c.name !== currentCondition.name
+    );
     const next = available[Math.floor(Math.random() * available.length)];
     return next;
   }, [currentCondition]);
@@ -473,9 +497,10 @@ export function useThemeCycle() {
         const elapsed = Date.now() - startTime;
         const progress = Math.min(elapsed / TRANSITION_DURATION, 1);
         // Ease in-out
-        const eased = progress < 0.5
-          ? 2 * progress * progress
-          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+        const eased =
+          progress < 0.5
+            ? 2 * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 2) / 2;
         setTransitionProgress(eased);
 
         if (progress < 1) {
@@ -504,7 +529,7 @@ export function useThemeCycle() {
 Create `components/CityMorph/RainOverlay.tsx`:
 
 ```tsx
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 interface RainOverlayProps {
   active: boolean;
@@ -518,7 +543,7 @@ export function RainOverlay({ active, opacity }: RainOverlayProps) {
     if (!active || !canvasRef.current) return;
 
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     canvas.width = window.innerWidth;
@@ -530,7 +555,7 @@ export function RainOverlay({ active, opacity }: RainOverlayProps) {
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         speed: 8 + Math.random() * 12,
-        length: 10 + Math.random() * 20,
+        length: 10 + Math.random() * 20
       });
     }
 
@@ -562,11 +587,11 @@ export function RainOverlay({ active, opacity }: RainOverlayProps) {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
       cancelAnimationFrame(animId);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, [active, opacity]);
 
@@ -587,10 +612,10 @@ export function RainOverlay({ active, opacity }: RainOverlayProps) {
 Create `components/CityMorph/CityMorph.tsx`:
 
 ```tsx
-import { useMemo } from 'react';
-import { useThemeCycle } from './useThemeCycle';
-import { RainOverlay } from './RainOverlay';
-import { CityCondition } from './conditions';
+import { useMemo } from "react";
+import { useThemeCycle } from "./useThemeCycle";
+import { RainOverlay } from "./RainOverlay";
+import { CityCondition } from "./conditions";
 
 function interpolateStyle(
   current: CityCondition,
@@ -603,7 +628,8 @@ function interpolateStyle(
 }
 
 export function CityMorph({ children }: { children: React.ReactNode }) {
-  const { currentCondition, nextCondition, transitionProgress } = useThemeCycle();
+  const { currentCondition, nextCondition, transitionProgress } =
+    useThemeCycle();
 
   const activeCondition = interpolateStyle(
     currentCondition,
@@ -626,7 +652,7 @@ export function CityMorph({ children }: { children: React.ReactNode }) {
           className="fixed inset-0 z-0"
           style={{
             background: nextCondition.skyGradient,
-            opacity: transitionProgress,
+            opacity: transitionProgress
           }}
         />
       )}
@@ -636,7 +662,7 @@ export function CityMorph({ children }: { children: React.ReactNode }) {
         className="fixed inset-0 z-[1] bg-bottom bg-cover bg-no-repeat transition-all duration-[10s]"
         style={{
           backgroundImage: "url('/img/skyline.png')",
-          filter: activeCondition.skylineFilter,
+          filter: activeCondition.skylineFilter
         }}
       />
 
@@ -645,8 +671,9 @@ export function CityMorph({ children }: { children: React.ReactNode }) {
         <div
           className="fixed inset-0 z-[2] pointer-events-none transition-opacity duration-[10s]"
           style={{
-            background: 'radial-gradient(ellipse at 50% 80%, rgba(200,200,220,0.3) 0%, transparent 70%)',
-            opacity: activeCondition.overlayOpacity,
+            background:
+              "radial-gradient(ellipse at 50% 80%, rgba(200,200,220,0.3) 0%, transparent 70%)",
+            opacity: activeCondition.overlayOpacity
           }}
         />
       )}
@@ -659,20 +686,23 @@ export function CityMorph({ children }: { children: React.ReactNode }) {
         className="fixed inset-0 z-[3] pointer-events-none transition-all duration-[10s]"
         style={{
           backgroundColor: activeCondition.overlayColor,
-          opacity: activeCondition.overlayOpacity,
+          opacity: activeCondition.overlayOpacity
         }}
       />
 
       {/* Content */}
-      <div className="relative z-10" style={{ textShadow: activeCondition.textGlow }}>
+      <div
+        className="relative z-10"
+        style={{ textShadow: activeCondition.textGlow }}
+      >
         {children}
       </div>
     </div>
   );
 }
 
-export { useThemeCycle } from './useThemeCycle';
-export type { CityCondition } from './conditions';
+export { useThemeCycle } from "./useThemeCycle";
+export type { CityCondition } from "./conditions";
 ```
 
 **Step 5: Commit**
@@ -687,23 +717,22 @@ git commit -m "feat: add CityMorph living cityscape theme system with 8 atmosphe
 ## Task 8: Integrate CityMorph into App Layout
 
 **Files:**
+
 - Modify: `pages/_app.tsx` — wrap layout with CityMorph
 - Modify: `components/Layout/Layout.tsx` — make background transparent
 - Modify: `components/Header/Header.tsx` — make semi-transparent
 
-**Step 1: Import and wrap with CityMorph in _app.tsx**
+**Step 1: Import and wrap with CityMorph in \_app.tsx**
 
 Add CityMorph as the outermost wrapper around the Layout:
 
 ```tsx
-import { CityMorph } from '@components/CityMorph/CityMorph';
+import { CityMorph } from "@components/CityMorph/CityMorph";
 
 // In the render, wrap the main content:
 <CityMorph>
-  <Layout>
-    {/* existing content */}
-  </Layout>
-</CityMorph>
+  <Layout>{/* existing content */}</Layout>
+</CityMorph>;
 ```
 
 **Step 2: Make Layout background transparent**
@@ -715,7 +744,8 @@ In `components/Layout/Layout.tsx`, remove or override any `bg-white` or `bg-back
 In `components/Header/Header.tsx`, add backdrop blur and transparency:
 
 ```tsx
-className="fixed top-0 w-full z-50 bg-black/30 backdrop-blur-md border-b border-white/10"
+className =
+  "fixed top-0 w-full z-50 bg-black/30 backdrop-blur-md border-b border-white/10";
 ```
 
 **Step 4: Verify CityMorph renders behind all content**
@@ -735,6 +765,7 @@ git commit -m "feat: integrate CityMorph into app layout with transparent header
 ## Task 9: SmokeyBox Player — Core State & Provider
 
 **Files:**
+
 - Create: `components/SmokeyBox/PlayerProvider.tsx`
 - Create: `components/SmokeyBox/types.ts`
 - Modify: `pages/_app.tsx` — add PlayerProvider
@@ -744,7 +775,7 @@ git commit -m "feat: integrate CityMorph into app layout with transparent header
 Create `components/SmokeyBox/types.ts`:
 
 ```typescript
-export type PlayerMode = 'simultaneous' | 'youtube-only' | 'soundcloud-only';
+export type PlayerMode = "simultaneous" | "youtube-only" | "soundcloud-only";
 
 export interface Track {
   id: string;
@@ -782,27 +813,33 @@ export interface PlayerState {
 Create `components/SmokeyBox/PlayerProvider.tsx`:
 
 ```tsx
-import { createContext, useContext, useReducer, useCallback, ReactNode } from 'react';
-import { PlayerState, PlayerMode, Track, YouTubeVideo } from './types';
+import {
+  createContext,
+  useContext,
+  useReducer,
+  useCallback,
+  ReactNode
+} from "react";
+import { PlayerState, PlayerMode, Track, YouTubeVideo } from "./types";
 
 type PlayerAction =
-  | { type: 'SET_MODE'; mode: PlayerMode }
-  | { type: 'TOGGLE_PLAY' }
-  | { type: 'SET_PLAYING'; isPlaying: boolean }
-  | { type: 'TOGGLE_EXPANDED' }
-  | { type: 'SET_VOLUME'; volume: number }
-  | { type: 'SET_TRACK'; track: Track; index: number }
-  | { type: 'SET_VIDEO'; video: YouTubeVideo; index: number }
-  | { type: 'SET_PLAYLIST'; playlist: Track[] }
-  | { type: 'SET_VIDEO_PLAYLIST'; playlist: YouTubeVideo[] }
-  | { type: 'NEXT_TRACK' }
-  | { type: 'PREV_TRACK' }
-  | { type: 'NEXT_VIDEO' }
-  | { type: 'SET_PROGRESS'; progress: number; duration: number }
-  | { type: 'QUEUE_TRACK'; track: Track };
+  | { type: "SET_MODE"; mode: PlayerMode }
+  | { type: "TOGGLE_PLAY" }
+  | { type: "SET_PLAYING"; isPlaying: boolean }
+  | { type: "TOGGLE_EXPANDED" }
+  | { type: "SET_VOLUME"; volume: number }
+  | { type: "SET_TRACK"; track: Track; index: number }
+  | { type: "SET_VIDEO"; video: YouTubeVideo; index: number }
+  | { type: "SET_PLAYLIST"; playlist: Track[] }
+  | { type: "SET_VIDEO_PLAYLIST"; playlist: YouTubeVideo[] }
+  | { type: "NEXT_TRACK" }
+  | { type: "PREV_TRACK" }
+  | { type: "NEXT_VIDEO" }
+  | { type: "SET_PROGRESS"; progress: number; duration: number }
+  | { type: "QUEUE_TRACK"; track: Track };
 
 const initialState: PlayerState = {
-  mode: 'simultaneous',
+  mode: "simultaneous",
   isPlaying: false,
   isExpanded: false,
   volume: 0.7,
@@ -813,44 +850,69 @@ const initialState: PlayerState = {
   trackIndex: 0,
   videoIndex: 0,
   progress: 0,
-  duration: 0,
+  duration: 0
 };
 
 function playerReducer(state: PlayerState, action: PlayerAction): PlayerState {
   switch (action.type) {
-    case 'SET_MODE':
+    case "SET_MODE":
       return { ...state, mode: action.mode };
-    case 'TOGGLE_PLAY':
+    case "TOGGLE_PLAY":
       return { ...state, isPlaying: !state.isPlaying };
-    case 'SET_PLAYING':
+    case "SET_PLAYING":
       return { ...state, isPlaying: action.isPlaying };
-    case 'TOGGLE_EXPANDED':
+    case "TOGGLE_EXPANDED":
       return { ...state, isExpanded: !state.isExpanded };
-    case 'SET_VOLUME':
+    case "SET_VOLUME":
       return { ...state, volume: action.volume };
-    case 'SET_TRACK':
+    case "SET_TRACK":
       return { ...state, currentTrack: action.track, trackIndex: action.index };
-    case 'SET_VIDEO':
+    case "SET_VIDEO":
       return { ...state, currentVideo: action.video, videoIndex: action.index };
-    case 'SET_PLAYLIST':
-      return { ...state, playlist: action.playlist, currentTrack: action.playlist[0] || null, trackIndex: 0 };
-    case 'SET_VIDEO_PLAYLIST':
-      return { ...state, videoPlaylist: action.playlist, currentVideo: action.playlist[0] || null, videoIndex: 0 };
-    case 'NEXT_TRACK': {
+    case "SET_PLAYLIST":
+      return {
+        ...state,
+        playlist: action.playlist,
+        currentTrack: action.playlist[0] || null,
+        trackIndex: 0
+      };
+    case "SET_VIDEO_PLAYLIST":
+      return {
+        ...state,
+        videoPlaylist: action.playlist,
+        currentVideo: action.playlist[0] || null,
+        videoIndex: 0
+      };
+    case "NEXT_TRACK": {
       const nextIndex = (state.trackIndex + 1) % state.playlist.length;
-      return { ...state, trackIndex: nextIndex, currentTrack: state.playlist[nextIndex] };
+      return {
+        ...state,
+        trackIndex: nextIndex,
+        currentTrack: state.playlist[nextIndex]
+      };
     }
-    case 'PREV_TRACK': {
-      const prevIndex = state.trackIndex === 0 ? state.playlist.length - 1 : state.trackIndex - 1;
-      return { ...state, trackIndex: prevIndex, currentTrack: state.playlist[prevIndex] };
+    case "PREV_TRACK": {
+      const prevIndex =
+        state.trackIndex === 0
+          ? state.playlist.length - 1
+          : state.trackIndex - 1;
+      return {
+        ...state,
+        trackIndex: prevIndex,
+        currentTrack: state.playlist[prevIndex]
+      };
     }
-    case 'NEXT_VIDEO': {
+    case "NEXT_VIDEO": {
       const nextVidIndex = (state.videoIndex + 1) % state.videoPlaylist.length;
-      return { ...state, videoIndex: nextVidIndex, currentVideo: state.videoPlaylist[nextVidIndex] };
+      return {
+        ...state,
+        videoIndex: nextVidIndex,
+        currentVideo: state.videoPlaylist[nextVidIndex]
+      };
     }
-    case 'SET_PROGRESS':
+    case "SET_PROGRESS":
       return { ...state, progress: action.progress, duration: action.duration };
-    case 'QUEUE_TRACK':
+    case "QUEUE_TRACK":
       return { ...state, playlist: [...state.playlist, action.track] };
     default:
       return state;
@@ -873,12 +935,12 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
 
 export function usePlayer() {
   const context = useContext(PlayerContext);
-  if (!context) throw new Error('usePlayer must be used within PlayerProvider');
+  if (!context) throw new Error("usePlayer must be used within PlayerProvider");
   return context;
 }
 ```
 
-**Step 3: Add PlayerProvider to _app.tsx**
+**Step 3: Add PlayerProvider to \_app.tsx**
 
 Wrap the app content with `<PlayerProvider>` inside the existing providers.
 
@@ -894,6 +956,7 @@ git commit -m "feat: add SmokeyBox PlayerProvider with dual-mode state managemen
 ## Task 10: SmokeyBox Player — Skeuomorphic UI Components
 
 **Files:**
+
 - Create: `components/SmokeyBox/Knob.tsx`
 - Create: `components/SmokeyBox/VUMeter.tsx`
 - Create: `components/SmokeyBox/LEDIndicator.tsx`
@@ -936,6 +999,7 @@ git commit -m "feat: add skeuomorphic SmokeyBox UI components (knob, VU meter, L
 ## Task 11: SmokeyBox Player — Main Player Component
 
 **Files:**
+
 - Create: `components/SmokeyBox/SmokeyBox.tsx`
 - Create: `components/SmokeyBox/SmokeyBoxCollapsed.tsx`
 - Create: `components/SmokeyBox/SmokeyBoxExpanded.tsx`
@@ -979,6 +1043,7 @@ git commit -m "feat: add SmokeyBox dual-mode AV player with collapsed/expanded v
 ## Task 12: SmokeyBox — SoundCloud Playlist Integration
 
 **Files:**
+
 - Create: `hooks/useSoundCloudPlaylist/index.ts`
 - Create: `config/soundcloud.ts` (if not already present from dna-frontend)
 - Modify: `components/SmokeyBox/SmokeyBox.tsx` — load playlist on mount
@@ -995,9 +1060,9 @@ Create `config/soundcloud.ts`:
 
 ```typescript
 export const SC_CONFIG = {
-  clientId: process.env.NEXT_PUBLIC_SC_CLIENT_ID || '',
-  userId: '6319082',
-  apiBase: 'https://api.soundcloud.com',
+  clientId: process.env.NEXT_PUBLIC_SC_CLIENT_ID || "",
+  userId: "6319082",
+  apiBase: "https://api.soundcloud.com"
 };
 ```
 
@@ -1017,10 +1082,11 @@ git commit -m "feat: integrate SoundCloud playlist fetching into SmokeyBox"
 ## Task 13: SmokeyBox — Mount in App Layout
 
 **Files:**
+
 - Modify: `pages/_app.tsx` — render SmokeyBox
 - Modify: `components/Layout/Layout.tsx` — add bottom padding for player bar
 
-**Step 1: Add SmokeyBox to _app.tsx**
+**Step 1: Add SmokeyBox to \_app.tsx**
 
 Inside the PlayerProvider, after Layout, render `<SmokeyBox />` so it's always present:
 
@@ -1056,6 +1122,7 @@ git commit -m "feat: mount SmokeyBox in app layout with persistent playback"
 ## Task 14: Music Page
 
 **Files:**
+
 - Create: `pages/music.tsx`
 - Create: `components/Music/Music.tsx`
 - Create: `components/Music/ReleaseCard.tsx`
@@ -1080,6 +1147,7 @@ Grid layout of ReleaseCards. Filter bar: format (All, Vinyl, CD, Digital), sort 
 `components/Music/Music.tsx`:
 
 Page layout with:
+
 - Hero: "Music" heading with featured release spotlight
 - New Releases carousel (Embla Carousel)
 - Full ReleaseGrid below
@@ -1090,9 +1158,9 @@ Page layout with:
 `pages/music.tsx`:
 
 ```tsx
-import Music from '@components/Music/Music';
-import { GetServerSideProps } from 'next';
-import { spreeClient } from '@config/spree';
+import Music from "@components/Music/Music";
+import { GetServerSideProps } from "next";
+import { spreeClient } from "@config/spree";
 
 export default function MusicPage({ products }) {
   return <Music products={products} />;
@@ -1101,9 +1169,9 @@ export default function MusicPage({ products }) {
 export const getServerSideProps: GetServerSideProps = async () => {
   // Fetch music-tagged products from Spree
   const res = await spreeClient.products.list({
-    filter: { taxons: 'music' },
-    include: 'images,variants,default_variant',
-    per_page: 50,
+    filter: { taxons: "music" },
+    include: "images,variants,default_variant",
+    per_page: 50
   });
   return { props: { products: res.isSuccess() ? res.success().data : [] } };
 };
@@ -1125,6 +1193,7 @@ git commit -m "feat: add dedicated Music page with release cards and SoundCloud 
 ## Task 15: Frosted Glass & Skeuomorphic Styling Pass
 
 **Files:**
+
 - Modify: `tailwind.config.ts` — add utility classes
 - Modify: `styles/globals.css` — add reusable component styles
 - Modify: `components/ProductCard/ProductCard.tsx` — frosted glass treatment
@@ -1175,6 +1244,7 @@ git commit -m "feat: add frosted glass and skeuomorphic styling utilities"
 ## Task 16: Homepage Redesign for Smokey FM
 
 **Files:**
+
 - Modify: `components/Home/StaticHome.tsx` — redesign for Smokey FM
 - Modify: `components/Home/Hero/Hero.tsx` — minimal floating logo over cityscape
 - Modify: `components/Home/Products/Products.tsx` — featured releases + merch
@@ -1187,6 +1257,7 @@ Minimal: Smokey FM logo centered, floating over CityMorph backdrop. Tagline: "Al
 **Step 2: Redesign StaticHome**
 
 Sections:
+
 1. Hero (logo + tagline)
 2. "Now Playing" SmokeyBox teaser (if audio playing, show current track)
 3. Featured Music Releases (carousel, links to /music)
@@ -1206,6 +1277,7 @@ git commit -m "feat: redesign homepage for Smokey FM with cityscape hero and fea
 ## Task 17: Header & Navigation Update
 
 **Files:**
+
 - Modify: `components/Header/Header.tsx` — Smokey FM logo, transparent styling
 - Modify: `components/MainMenu/DesktopMenu.tsx` — nav items: Music, Shop, Live, About
 - Modify: `components/MainMenu/MobileMenu.tsx` — same nav items
@@ -1236,6 +1308,7 @@ git commit -m "feat: update header and footer for Smokey FM branding"
 ## Task 18: Live Stream — Neon Night Lock
 
 **Files:**
+
 - Modify: `pages/tv/[streamId].tsx` — override CityMorph to neon-night
 - Create: `components/CityMorph/CityMorphContext.tsx` — expose condition override
 
@@ -1259,6 +1332,7 @@ git commit -m "feat: lock CityMorph to neon-night during live streams"
 ## Task 19: Install Dependencies & Build Verification
 
 **Files:**
+
 - Modify: `package.json` — verify all needed deps are present
 
 **Step 1: Install dependencies**
@@ -1282,6 +1356,7 @@ yarn dev
 ```
 
 Verify:
+
 - CityMorph background renders and cycles
 - SmokeyBox player bar appears at bottom
 - Navigation works (Music, Shop, Live, About)
@@ -1300,6 +1375,7 @@ git commit -m "fix: resolve build errors and dependency issues"
 ## Task 20: Heroku Deployment
 
 **Files:**
+
 - Verify: `Procfile` exists with `web: npm start`
 - Verify: `package.json` has correct `start` and `build` scripts
 - Set Heroku config vars
@@ -1333,6 +1409,7 @@ git push heroku smokey-v2:main
 **Step 3: Verify deployment**
 
 Open `https://smokey-frontend-staging.herokuapp.com` and verify:
+
 - Coming soon mode is OFF
 - CityMorph background visible
 - SmokeyBox player functional
@@ -1349,25 +1426,25 @@ heroku config:set NEXT_PUBLIC_IS_MAINT_MODE=false -a smokey-frontend-staging
 
 ## Task Summary
 
-| # | Task | Description |
-|---|------|-------------|
-| 1 | Git Setup | Create smokey-v2 branch from dna-frontend |
-| 2 | Preserve Assets | Copy Smokey logos, fonts, atmospheric images |
-| 3 | Environment Config | Rebrand env vars for Smokey FM |
-| 4 | Remove Kontent CMS | Delete Kontent AI integration |
-| 5 | Remove Wholesale | Delete B2B/wholesale features |
-| 6 | Tailwind Theme | Apply Smokey brand colors and typography |
-| 7 | CityMorph System | Build living cityscape theme with 8 conditions |
-| 8 | CityMorph Integration | Mount in app layout, transparent header |
-| 9 | SmokeyBox State | PlayerProvider with dual-mode state management |
-| 10 | SmokeyBox UI | Skeuomorphic knob, VU meter, LED, transport buttons |
-| 11 | SmokeyBox Player | Main player with collapsed/expanded views |
-| 12 | SoundCloud Integration | Playlist fetching and track streaming |
-| 13 | SmokeyBox Mount | Persistent player in app layout |
-| 14 | Music Page | Dedicated music browsing with release cards |
-| 15 | Styling Pass | Frosted glass and skeuomorphic utilities |
-| 16 | Homepage Redesign | Smokey FM homepage with featured sections |
-| 17 | Header & Footer | Navigation and branding updates |
-| 18 | Stream Neon Lock | Lock CityMorph to neon-night during streams |
-| 19 | Build Verification | Install deps, fix errors, test dev server |
-| 20 | Heroku Deployment | Deploy and flip off coming soon mode |
+| #   | Task                   | Description                                         |
+| --- | ---------------------- | --------------------------------------------------- |
+| 1   | Git Setup              | Create smokey-v2 branch from dna-frontend           |
+| 2   | Preserve Assets        | Copy Smokey logos, fonts, atmospheric images        |
+| 3   | Environment Config     | Rebrand env vars for Smokey FM                      |
+| 4   | Remove Kontent CMS     | Delete Kontent AI integration                       |
+| 5   | Remove Wholesale       | Delete B2B/wholesale features                       |
+| 6   | Tailwind Theme         | Apply Smokey brand colors and typography            |
+| 7   | CityMorph System       | Build living cityscape theme with 8 conditions      |
+| 8   | CityMorph Integration  | Mount in app layout, transparent header             |
+| 9   | SmokeyBox State        | PlayerProvider with dual-mode state management      |
+| 10  | SmokeyBox UI           | Skeuomorphic knob, VU meter, LED, transport buttons |
+| 11  | SmokeyBox Player       | Main player with collapsed/expanded views           |
+| 12  | SoundCloud Integration | Playlist fetching and track streaming               |
+| 13  | SmokeyBox Mount        | Persistent player in app layout                     |
+| 14  | Music Page             | Dedicated music browsing with release cards         |
+| 15  | Styling Pass           | Frosted glass and skeuomorphic utilities            |
+| 16  | Homepage Redesign      | Smokey FM homepage with featured sections           |
+| 17  | Header & Footer        | Navigation and branding updates                     |
+| 18  | Stream Neon Lock       | Lock CityMorph to neon-night during streams         |
+| 19  | Build Verification     | Install deps, fix errors, test dev server           |
+| 20  | Heroku Deployment      | Deploy and flip off coming soon mode                |

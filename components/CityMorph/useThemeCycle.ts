@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback } from "react";
 
-import { conditions, CityCondition } from './conditions';
-import { useCityMorph } from './CityMorphContext';
+import { conditions, CityCondition } from "./conditions";
+import { useCityMorph } from "./CityMorphContext";
 
 const CYCLE_INTERVAL_MS = 75_000; // 75 seconds between condition changes
 const TRANSITION_DURATION_MS = 10_000; // 10-second crossfade
@@ -29,7 +29,7 @@ export function useThemeCycle(): ThemeCycleResult {
   const [initialIndex] = useState<number>(() => getRandomIndex());
   const [currentIndex, setCurrentIndex] = useState<number>(initialIndex);
   const [nextIndex, setNextIndex] = useState<number>(() =>
-    getRandomIndex(initialIndex),
+    getRandomIndex(initialIndex)
   );
   const [transitionProgress, setTransitionProgress] = useState(0);
 
@@ -134,6 +134,6 @@ export function useThemeCycle(): ThemeCycleResult {
   return {
     currentCondition: effectiveCurrent,
     nextCondition: effectiveNext,
-    transitionProgress: overrideIndex >= 0 ? 0 : transitionProgress,
+    transitionProgress: overrideIndex >= 0 ? 0 : transitionProgress
   };
 }

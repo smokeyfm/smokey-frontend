@@ -7,7 +7,7 @@
  */
 
 /** The three playback modes for the SmokeyBox player. */
-export type PlayerMode = 'simultaneous' | 'youtube-only' | 'soundcloud-only';
+export type PlayerMode = "simultaneous" | "youtube-only" | "soundcloud-only";
 
 /** A SoundCloud (or other audio source) track. */
 export interface Track {

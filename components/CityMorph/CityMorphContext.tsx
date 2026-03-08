@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode } from "react";
 
 interface CityMorphContextType {
   conditionOverride: string | null;
@@ -7,15 +7,17 @@ interface CityMorphContextType {
 
 const CityMorphContext = createContext<CityMorphContextType>({
   conditionOverride: null,
-  setConditionOverride: () => {},
+  setConditionOverride: () => {}
 });
 
 export function CityMorphProvider({ children }: { children: ReactNode }) {
   const [conditionOverride, setConditionOverride] = useState<string | null>(
-    null,
+    null
   );
   return (
-    <CityMorphContext.Provider value={{ conditionOverride, setConditionOverride }}>
+    <CityMorphContext.Provider
+      value={{ conditionOverride, setConditionOverride }}
+    >
       {children}
     </CityMorphContext.Provider>
   );

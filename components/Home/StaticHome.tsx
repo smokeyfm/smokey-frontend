@@ -171,10 +171,7 @@ export const StaticHome = (props: any) => {
               {/* Additional streams */}
               {streams.length > 1 && (
                 <div className="mt-4">
-                  <StreamList
-                    data={streams}
-                    title=""
-                  />
+                  <StreamList data={streams} title="" />
                 </div>
               )}
             </section>

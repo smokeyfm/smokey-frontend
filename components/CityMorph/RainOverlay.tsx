@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback } from 'react';
+import React, { useRef, useEffect, useCallback } from "react";
 
 interface RainOverlayProps {
   active: boolean;
@@ -21,13 +21,16 @@ function createDrops(width: number, height: number): RainDrop[] {
       x: Math.random() * width,
       y: Math.random() * height,
       speed: 4 + Math.random() * 8,
-      length: 10 + Math.random() * 20,
+      length: 10 + Math.random() * 20
     });
   }
   return drops;
 }
 
-export const RainOverlay: React.FC<RainOverlayProps> = ({ active, opacity }) => {
+export const RainOverlay: React.FC<RainOverlayProps> = ({
+  active,
+  opacity
+}) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const dropsRef = useRef<RainDrop[]>([]);
   const rafRef = useRef<number | null>(null);
@@ -44,13 +47,13 @@ export const RainOverlay: React.FC<RainOverlayProps> = ({ active, opacity }) => 
     if (!active) return;
 
     resize();
-    window.addEventListener('resize', resize);
+    window.addEventListener("resize", resize);
 
     const animate = () => {
       const canvas = canvasRef.current;
       if (!canvas) return;
 
-      const ctx = canvas.getContext('2d');
+      const ctx = canvas.getContext("2d");
       if (!ctx) return;
 
       const { width, height } = canvas;
@@ -81,7 +84,7 @@ export const RainOverlay: React.FC<RainOverlayProps> = ({ active, opacity }) => 
     rafRef.current = requestAnimationFrame(animate);
 
     return () => {
-      window.removeEventListener('resize', resize);
+      window.removeEventListener("resize", resize);
       if (rafRef.current !== null) {
         cancelAnimationFrame(rafRef.current);
         rafRef.current = null;
