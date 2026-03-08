@@ -27,10 +27,11 @@ const config: Config = {
         foreground: "hsl(var(--foreground))",
         brand: {
           DEFAULT: "#EB8B8B",
+          primary: "#EB8B8B",
           secondary: "#E6CDC0",
+          light: "#F9F2EA",
           bright: "#ff7777",
-          dark: "#af1e1e",
-          light: "#efa1a1"
+          dark: "#af1e1e"
         },
         gray: {
           dark: "#333333",
@@ -105,11 +106,13 @@ const config: Config = {
         }
       },
       fontFamily: {
+        display: ["JamesFajardo", "IBM Plex Mono", "monospace"],
         title: ["ibmplexmono_body_bold", "monospace"],
         "title-mono": ["ibmplexmono_body_mono_bold", "monospace"],
         "title-condensed": ["ibmplexmono_body_condensed_med", "sans-serif"],
-        body: ["Anybody ExtraLight", "sans-serif"],
+        body: ["Anybody", "IBM Plex Sans", "sans-serif"],
         "body-bold": ["Anybody Light", "sans-serif"],
+        mono: ["IBM Plex Mono", "monospace"],
         "mono-bold": ["ibmplexmono_body_mono_bold", "monospace"],
         "mono-semibold": ["ibmplexmono_body_mono_semibold", "monospace"],
         "mono-extralight": ["ibmplexmono_body_mono_extralight", "monospace"]

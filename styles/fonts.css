@@ -1,4 +1,14 @@
 @font-face {
+  font-family: 'JamesFajardo';
+  src: url('/fonts/JamesFajardo.eot');
+  src: url('/fonts/JamesFajardo.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/JamesFajardo.woff') format('woff'),
+       url('/fonts/JamesFajardo.ttf') format('truetype'),
+       url('/fonts/JamesFajardo.svg#JamesFajardo') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
   font-family: "ibmplexmono_body_mono_bold";
   src: url("../public/fonts/ibmplexmono-bold-webfont.woff2") format("woff2"),
     url("../public/fonts/ibmplexmono-bold-webfont.woff") format("woff");
