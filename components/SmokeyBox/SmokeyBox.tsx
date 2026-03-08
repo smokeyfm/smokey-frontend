@@ -1,9 +1,16 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 
 import { usePlayer } from "./PlayerProvider";
 import { SmokeyBoxCollapsed } from "./SmokeyBoxCollapsed";
 import { SmokeyBoxExpanded } from "./SmokeyBoxExpanded";
 import { SoundCloudLayer } from "./SoundCloudLayer";
+import { useSoundCloudPlaylist } from "../../hooks/useSoundCloudPlaylist";
+import type { YouTubeVideo } from "./types";
+
+/** Default YouTube video playlist for SmokeyBox. */
+const DEFAULT_VIDEOS: YouTubeVideo[] = [
+  { id: '1', title: 'Smokey FM Visual 1', url: 'https://www.youtube.com/watch?v=hGq0l_m0U20' },
+];
 
 /**
  * SmokeyBox — main dual-mode AV player.
@@ -13,10 +20,31 @@ import { SoundCloudLayer } from "./SoundCloudLayer";
  * the VU meters consume.
  */
 export function SmokeyBox() {
-  const { state } = usePlayer();
+  const { state, dispatch } = usePlayer();
   const { isExpanded, currentTrack, currentVideo } = state;
 
   const [analyserNode, setAnalyserNode] = useState<AnalyserNode | null>(null);
+
+  // --- SoundCloud playlist integration ---
+  const { tracks, isLoading } = useSoundCloudPlaylist();
+  const hasDispatchedTracks = useRef(false);
+
+  useEffect(() => {
+    if (!isLoading && tracks.length > 0 && !hasDispatchedTracks.current) {
+      dispatch({ type: "SET_PLAYLIST", payload: tracks });
+      hasDispatchedTracks.current = true;
+    }
+  }, [tracks, isLoading, dispatch]);
+
+  // --- Default video playlist ---
+  const hasDispatchedVideos = useRef(false);
+
+  useEffect(() => {
+    if (!hasDispatchedVideos.current) {
+      dispatch({ type: "SET_VIDEO_PLAYLIST", payload: DEFAULT_VIDEOS });
+      hasDispatchedVideos.current = true;
+    }
+  }, [dispatch]);
 
   const handleAnalyserReady = useCallback((analyser: AnalyserNode) => {
     setAnalyserNode(analyser);
