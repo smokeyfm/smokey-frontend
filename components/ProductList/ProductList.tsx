@@ -1,57 +1,41 @@
 import React from "react";
-// import Link from "next/link";
-import { useRouter } from "next/router";
-// import { useProducts } from "../../hooks/useProducts";
-import { ProductListProps } from "./types";
-import styled from "@emotion/styled";
+import { ProductCard } from "@components/ProductCard/ProductCard";
+import { Loading } from "@components/Loading";
 
-const ProductsRow = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-`;
-const ProductContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-const MyImg = styled.img`
-  height: 300px;
-  width: 240px;
-  object-fit: contain;
-`;
-const MyH1 = styled.h1`
-  font-size: 20px;
-`;
-const MySection = styled.section`
-  width: 100%;
-  padding-bottom: 20px;
-`;
-const MyLi = styled.li`
-  display: block;
-  margin-bottom: 10px;
-`;
-const MyDiv = styled.div`
-  align-items: center;
-  display: flex;
-`;
-export const ProductList: React.FC<ProductListProps> = (props: any) => {
-  const router = useRouter();
-  const { products, title } = props;
-  // const { data: products, isLoading, isSuccess } = useProducts(1);
-  // if (isLoading) return <MyDiv>Loading</MyDiv>;
+interface ProductListProps {
+  products: any;
+  title?: string;
+  layout?: "grid" | "scroll";
+  excludeProductId?: string;
+}
 
-  // if (!isSuccess) {
-  //   return <MyDiv>Could not load products</MyDiv>;
-  // }
+export const ProductList: React.FC<ProductListProps> = ({
+  products,
+  title,
+  layout = "grid",
+  excludeProductId
+}) => {
+  if (!products) return <Loading />;
 
-  if (!products) return <MyDiv>Loading</MyDiv>;
+  const filteredData = excludeProductId
+    ? products?.data?.filter((p: any) => p.id !== excludeProductId)
+    : products?.data;
+
+  if (!filteredData || filteredData.length === 0) return null;
+
+  const isScroll = layout === "scroll";
 
   return (
-    <MySection>
-      <MyH1>{title}</MyH1>
-      <ProductsRow>
-        {products?.data?.map((product: any) => {
+    <section className="w-full pb-5">
+      {title && <h2 className="font-title text-xl text-foreground">{title}</h2>}
+      <div
+        className={
+          isScroll
+            ? "mt-3 flex gap-4 overflow-x-auto pb-4 scrollbar-hide md:grid md:grid-cols-4 md:overflow-visible lg:grid-cols-5"
+            : "product-grid-dense"
+        }
+      >
+        {filteredData.map((product: any) => {
           const defaultImg =
             "https://static-assets.strikinglycdn.com/images/ecommerce/ecommerce-default-image.png";
           const productImg = product.relationships?.images?.data[0]?.id;
@@ -68,28 +52,45 @@ export const ProductList: React.FC<ProductListProps> = (props: any) => {
           const imgSrc = productImg
             ? `${process.env.NEXT_PUBLIC_SPREE_API_URL}${imgUrl}`
             : defaultImg;
+
+          // Get option values (colors) for this product's actual variants
+          const variantIds =
+            product.relationships?.variants?.data?.map((v: any) => v.id) || [];
+
+          const productVariants = products?.included?.filter(
+            (item: any) =>
+              item.type === "variant" && variantIds.includes(item.id)
+          );
+
+          const variantOptionValueIds =
+            productVariants?.flatMap(
+              (variant: any) =>
+                variant.relationships?.option_values?.data?.map(
+                  (ov: any) => ov.id
+                ) || []
+            ) || [];
+
+          const allOptions = products?.included?.filter(
+            (e: any) => e.type === "option_value"
+          );
+
+          const foundOptions =
+            allOptions?.filter(
+              (opt: any) =>
+                variantOptionValueIds.includes(opt.id) &&
+                opt.attributes.presentation.includes("#")
+            ) || [];
+
           return (
             <div
               key={product.id}
-              onClick={() => router.push(`/${product.attributes.slug}`)}
-              // href={{
-              //   pathname: `[slug]`,
-              //   query: {
-              //     slug: product.attributes.slug
-              //   }
-              // }}
+              className={isScroll ? "w-40 flex-shrink-0 md:w-auto" : undefined}
             >
-              <ProductContainer>
-                <MyImg src={imgSrc} />
-                <MyH1>{product.attributes.name}</MyH1>
-                <MyDiv>
-                  <h3>${product.attributes.price}</h3>
-                </MyDiv>
-              </ProductContainer>
+              <ProductCard item={product} imgSrc={imgSrc} opts={foundOptions} />
             </div>
           );
         })}
-      </ProductsRow>
-    </MySection>
+      </div>
+    </section>
   );
 };

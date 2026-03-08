@@ -1,49 +1,27 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import Link from "next/link";
-import { Badge } from "@material-ui/core";
-import Sticky from "react-sticky-el";
+import { ChevronDown, Heart } from "lucide-react";
+import { cn } from "@lib/utils";
+import {
+  Badge,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from "@components/ui";
 import { HeaderProps } from "./types";
 import { useAuth } from "../../config/auth";
 import { useCart } from "../../hooks/useCart";
-import { MyLogo } from "../Layout/Layout";
+import { useFavorites } from "../../hooks/useFavorites";
+import { useStore } from "../../hooks/useStore";
 import SearchBar from "../SearchBar";
-import { MainMenu } from "../MainMenu";
-import { menusData } from "../MainMenu/data/menusData";
 import { CartSidebar } from "../CartSidebar/CartSidebar";
-import { SocialLinks } from "..";
-
-import {
-  TopHeader,
-  LeftSide,
-  RightSide,
-  LogoDiv,
-  HeaderDiv,
-  LinkDiv,
-  BottomHeader,
-  Category,
-  UserIconMo,
-  CartMo,
-  CartToggle,
-  HeaderAccount,
-  HeaderOptions,
-  ArrowDown,
-  ShoppingCart,
-  FavoriteIcon,
-  AccountEmail,
-  AccountMenu,
-  AccountOption
-} from "./Header.styles";
-
-const dummyCategories = [
-  "Best Sellers",
-  "Latest",
-  "Seasonal",
-  "Luxury",
-  "On Sale",
-  "Coming Soon"
-];
+import { SocialLinks } from "../SocialLinks";
+import { Logo } from "@components/shared/Logo";
 
 export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
   const router = useRouter();
@@ -51,15 +29,17 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
   const { user, logout } = useAuth();
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const [cartVisible, setCartVisible] = useState(false);
-  const [accountVisible, setAccountVisible] = useState(false);
-  const [accountElem, setAccountElem] = useState(null);
-  const accountRef = useRef(null);
-  const accountOpen = Boolean(accountElem);
-  const accountId = accountVisible ? "simple-popover" : undefined;
   const toggleCart = () => setCartVisible((isVisible) => !isVisible);
-  const toggleAccount = () => setAccountVisible((isVisible) => !isVisible);
   const isMaint = process.env.NEXT_PUBLIC_IS_MAINT_MODE || "false";
-  const logoPath = process.env.NEXT_PUBLIC_LOGO_PATH || "/images/logo.png";
+  const siteTitle = process.env.NEXT_PUBLIC_SHORT_TITLE || "Smokey FM";
+
+  const logoPath = process.env.NEXT_PUBLIC_LOGO_PATH || "/logo.png";
+
+  // Get store logo from API if available
+  const { data: storeData } = useStore();
+  // Assume logo URL is in storeData.attributes.logo_url (customize if needed)
+  const storeLogoUrl = storeData?.attributes?.logo_url;
+  const displayLogo = storeLogoUrl || logoPath;
 
   const {
     data: cartData,
@@ -67,125 +47,198 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
     isError: cartHasError
   } = useCart();
 
-  const handleAccount = (event: any) => {
-    setAccountElem(event.currentTarget);
-  };
+  const { data: favoritesData } = useFavorites(1);
 
-  const handleCloseAccount = () => {
-    setAccountElem(null);
-  };
+  const cartItemCount = cartData ? cartData?.data?.attributes?.item_count : 0;
+  const favoritesCount = favoritesData?.meta?.total_count || 0;
 
   if (isMaint && isMaint === "true") {
     return null;
   }
 
   useEffect(() => {
-    // console.log(user && user.data.attributes);
+    console.log(user && user.data.attributes);
   }, []);
 
   return (
-    <HeaderDiv>
-      <TopHeader>
+    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-black/30 backdrop-blur-md">
+      {/* Top Header */}
+      <div className="relative flex flex-row items-center justify-center py-2.5 pb-3 sm:py-3">
+        {/* Left Side - Social Links */}
         {!isMobile && (
-          <LeftSide>
-            <SocialLinks
-              networks={["instagram", "facebook", "twitter", "youtube"]}
-            />
-          </LeftSide>
+          <div className="absolute left-2.5 z-[2] flex items-center justify-between sm:left-2.5">
+            <SocialLinks darkMode={darkMode} />
+          </div>
         )}
-        <LogoDiv>
-          <LinkDiv
-            isActive
-            onClick={() => {
-              router.push("/");
-            }}
+
+        {/* Center - Logo */}
+        <div className="flex w-[355px] cursor-pointer items-center justify-center px-7 py-4">
+          <Link
+            href="/"
+            className="text-sm no-underline text-foreground hover:text-brand transition-colors"
           >
-            <MyLogo imageFile={logoPath} darkMode={darkMode} />
-          </LinkDiv>
-        </LogoDiv>
+            {displayLogo ? (
+              <Image
+                src={
+                  displayLogo.startsWith("/") || displayLogo.startsWith("http")
+                    ? displayLogo
+                    : `/${displayLogo}`
+                }
+                alt={siteTitle}
+                width={0}
+                height={0}
+                sizes="(max-width: 768px) 100px, 141px"
+                style={{ width: "auto", height: "65px" }}
+                priority
+              />
+            ) : (
+              <Logo />
+            )}
+          </Link>
+        </div>
 
-        <RightSide>
-          <HeaderOptions>
-            <LinkDiv
-              href="https://open.spotify.com/playlist/3T8xxIMFx8OsL8osiY02Wj?si=78c4db2339b14c57"
-              isActive={pathname !== "/login"}
-              target="_blank"
-            >
-              PLAYLIST
-            </LinkDiv>
-            <LinkDiv
-              href="https://smokey.threadless.com"
-              isActive={pathname !== "/login"}
-              target="_blank"
-            >
-              SHOP
-            </LinkDiv>
-          </HeaderOptions>
-        </RightSide>
-
-        <RightSide style={{ display: "none" }}>
+        {/* Right Side */}
+        <div className="absolute right-2.5 z-[2] flex w-auto flex-row items-center justify-between sm:justify-end">
           {isMobile ? null : <SearchBar darkMode={darkMode} />}
+
           {user ? (
-            <HeaderAccount>
-              <AccountEmail
-                aria-describedby={accountId}
-                onClick={handleAccount}
+            <div className="mx-5 hidden flex-row items-center justify-around sm:flex">
+              {/* Account Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button className="mx-2.5 flex cursor-pointer items-center justify-center font-title text-title-sm text-foreground hover:text-brand transition-colors border-none bg-transparent outline-none">
+                    {user.data.attributes.email}
+                    <ChevronDown className="ml-1 h-5 w-5 text-foreground hidden sm:block" />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  align="end"
+                  className="w-[160px] p-5 font-title text-right"
+                >
+                  <DropdownMenuItem asChild>
+                    <Link
+                      href="/account"
+                      className={cn(
+                        "cursor-pointer no-underline",
+                        pathname === "/account"
+                          ? "pointer-events-none text-muted-foreground"
+                          : "text-foreground hover:text-brand"
+                      )}
+                    >
+                      My Account
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link
+                      href="/account/favorites"
+                      className={cn(
+                        "cursor-pointer no-underline",
+                        pathname === "/account/favorites"
+                          ? "pointer-events-none text-muted-foreground"
+                          : "text-foreground hover:text-brand"
+                      )}
+                    >
+                      My Favorites
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link
+                      href="/account/orders"
+                      className={cn(
+                        "cursor-pointer no-underline",
+                        pathname === "/account/orders"
+                          ? "pointer-events-none text-muted-foreground"
+                          : "text-foreground hover:text-brand"
+                      )}
+                    >
+                      My Orders
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link
+                      href="/account/settings"
+                      className={cn(
+                        "cursor-pointer no-underline",
+                        pathname === "/account/settings"
+                          ? "pointer-events-none text-muted-foreground"
+                          : "text-foreground hover:text-brand"
+                      )}
+                    >
+                      Account Settings
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="cursor-pointer">
+                    Need Help?
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem
+                    className="cursor-pointer"
+                    onSelect={logout}
+                  >
+                    Logout
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              {/* Favorites */}
+              <Link
+                href="/account/favorites"
+                className={cn(
+                  "relative no-underline transition-colors",
+                  pathname === "/account/favorites"
+                    ? "pointer-events-none text-muted-foreground"
+                    : "text-foreground hover:text-brand"
+                )}
               >
-                {user.data.attributes.email}
-                <ArrowDown />
-              </AccountEmail>
-              <AccountMenu
-                open={accountOpen}
-                anchorEl={accountElem}
-                onClose={handleCloseAccount}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "center"
-                }}
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "center"
-                }}
-              >
-                <AccountOption>
-                  <div>Account Settings</div>
-                </AccountOption>
-                <AccountOption>
-                  <div>Need Help?</div>
-                </AccountOption>
-                <hr />
-                <AccountOption>
-                  <button onClick={() => logout()}>Logout</button>
-                </AccountOption>
-              </AccountMenu>
-              {/* <UserIconMo src={"/user.png"} /> */}
-              <Badge badgeContent={4} color="secondary">
-                <FavoriteIcon />
-              </Badge>
-            </HeaderAccount>
+                <Heart className="mr-3 hidden h-5 w-5 sm:block" />
+                {favoritesCount > 0 && (
+                  <Badge
+                    variant="secondary"
+                    className="absolute -right-1 -top-2 hidden h-5 min-w-[20px] items-center justify-center px-1 text-[10px] sm:flex"
+                  >
+                    {favoritesCount}
+                  </Badge>
+                )}
+              </Link>
+            </div>
           ) : (
-            <HeaderOptions>
-              <LinkDiv href="/login" isActive={pathname !== "/login"}>
+            <div className="mx-5 hidden flex-row justify-around sm:flex">
+              <Link
+                href="/login"
+                className={cn(
+                  "mx-2.5 font-title text-title-md no-underline transition-colors",
+                  pathname === "/login"
+                    ? "pointer-events-none cursor-default text-muted-foreground"
+                    : "text-foreground hover:text-brand"
+                )}
+              >
                 LOGIN
-              </LinkDiv>
-              <LinkDiv
-                href="/authenticate/signup"
-                isActive={pathname !== "/authenticate/signup"}
+              </Link>
+              <Link
+                href="/signup"
+                className={cn(
+                  "mx-2.5 font-title text-title-md no-underline transition-colors",
+                  pathname === "/signup"
+                    ? "pointer-events-none cursor-default text-muted-foreground"
+                    : "text-foreground hover:text-brand"
+                )}
               >
                 SIGN UP
-              </LinkDiv>
-            </HeaderOptions>
+              </Link>
+            </div>
           )}
-          <CartToggle>
-            <Badge
-              badgeContent={cartData ? cartData.data.attributes.item_count : 0}
-              color="primary"
-            >
-              <CartSidebar isVisible={cartVisible} toggle={toggleCart} />
-            </Badge>
-          </CartToggle>
-        </RightSide>
-      </TopHeader>
-    </HeaderDiv>
+
+          {/* Cart */}
+          <div className="-mt-2.5 mr-0.5 relative text-foreground sm:-mt-2.5">
+            <CartSidebar isVisible={cartVisible} toggle={toggleCart} />
+            {cartItemCount > 0 && (
+              <Badge className="absolute -right-2 -top-1 flex h-5 min-w-[20px] items-center justify-center px-1 text-[10px]">
+                {cartItemCount}
+              </Badge>
+            )}
+          </div>
+        </div>
+      </div>
+    </header>
   );
 };

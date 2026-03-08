@@ -1,3 +1,3 @@
-import { MediaPlayer } from "../components";
+import { Home } from "../components/Home";
 
-export default MediaPlayer;
+export default Home;

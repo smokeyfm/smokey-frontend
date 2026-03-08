@@ -1,103 +1,114 @@
-import styled from "@emotion/styled";
+import React from "react";
 import { Field } from "formik";
-import { TextField, Checkbox } from "@material-ui/core";
+import { cn } from "@lib/utils";
 
-export const BasicField = styled(Field)`
-  width: 100%;
-  border-width: 2px;
-  border-style: dashed;
-  border-color: ${(p: any) => p.theme.colors.gray.primary};
-  border-radius: 5px;
-  padding: 10px;
-  font-size: 1em;
-  color: ${(p: any) =>
-    p.isDarkMode ? p.theme.colors.black.primary : p.theme.colors.white.primary};
-  background: ${(p: any) =>
-    p.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
-  outline: none;
-  transition: all 0.3s ease-in-out;
-  font-family: "Anonymous";
-  &:focus {
-    transition: all 0.3s ease-in-out;
-    border: 2px solid ${(p: any) => p.theme.colors.brand.primary};
-  }
-`;
+const inputClass =
+  "w-full rounded-lg border-2 border-dashed border-border bg-background px-3 py-2.5 font-body text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-brand";
 
-export const Error = styled.div`
-  position: absolute;
-  bottom: -20px;
-  color: ${(p: any) => p.theme.colors.red.primary};
-  font-size: 0.8em;
-  text-align: left;
-`;
+export const BasicField = React.forwardRef<any, any>(
+  ({ className, invalid, ...props }, ref) => (
+    <Field
+      ref={ref}
+      className={cn(inputClass, invalid && "border-destructive", className)}
+      {...props}
+    />
+  )
+);
+BasicField.displayName = "BasicField";
 
-export const HiddenInput = styled.div`
-  display: none;
-`;
+export const Error = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div
+    className={cn(
+      "mt-1 text-left font-body text-xs font-bold text-destructive",
+      className
+    )}
+    {...props}
+  >
+    {children}
+  </div>
+);
 
-export const SuggestionWrapper = styled.div`
-  background: ${(p: any) => p.theme.colors.white.primary};
-  position: relative;
-  margin-top: 15px;
-  align-items: flex-start;
-  justify-content: center;
-  flex-flow: column nowrap;
-  min-width: 250px;
-  max-width: 500px;
-  max-height: 200px;
-  overflow: scroll;
-  z-index: 1;
-  display: flex;
-  box-shadow: 1px 3px 30px rgba(0, 0, 0, 0.23);
-  margin-top: 15px;
-  border-radius: 3px;
-  border: 1px solid ${(p: any) => p.theme.colors.gray.light};
-  transition: all 0.3s ease-in-out;
+export const HiddenInput = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn("hidden", className)} {...props}>
+    {children}
+  </div>
+);
 
-  @media (max-width: ${(p: any) => p.theme.breakpoints.values.sm}px) {
-    padding: 20px 0 60px 0;
-    justify-content: top;
-  }
-`;
+export const SuggestionWrapper = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div
+    className={cn(
+      "absolute z-[1] mt-[54px] flex min-w-[250px] max-w-[500px] flex-col items-start justify-center overflow-scroll rounded border-2 border-dashed border-border bg-background shadow-[1px_3px_30px_rgba(0,0,0,0.23)] transition-all sm:justify-start sm:pb-16 sm:pt-5",
+      className
+    )}
+    style={{ maxHeight: 200, width: "100%" }}
+    {...props}
+  >
+    {children}
+  </div>
+);
 
-export const SuggestionLoader = styled.div`
-  margin: 0 auto;
-`;
+export const SuggestionLoader = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn("mx-auto", className)} {...props}>
+    {children}
+  </div>
+);
 
-export const SuggestionItem = styled.div`
-  align-self: flex-start;
-  padding: 5px 10px;
-  width: 100%;
-  text-align: left;
-  color: ${(p: any) => p.theme.colors.gray.medium};
-  &.active {
-    cursor: pointer;
-    color: ${(p: any) => p.theme.colors.brand.primary};
-    background: ${(p: any) => p.theme.colors.gray.background};
-  }
-`;
+export const SuggestionItem = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div
+    className={cn(
+      "w-full self-start bg-background px-2.5 py-1 text-left text-foreground",
+      "[&.active]:cursor-pointer [&.active]:text-brand [&.active]:bg-muted",
+      className
+    )}
+    {...props}
+  >
+    {children}
+  </div>
+);
 
-interface TermsCheckboxType {
-  accepted: boolean;
-  theme: any;
-}
+export const TermsCheckbox = React.forwardRef<
+  HTMLInputElement,
+  React.InputHTMLAttributes<HTMLInputElement> & { accepted?: boolean }
+>(({ className, accepted, ...props }, ref) => (
+  <input
+    ref={ref}
+    type="checkbox"
+    className={cn(
+      "h-5 w-5 flex-shrink-0 cursor-pointer rounded border-2 accent-brand",
+      accepted ? "border-brand" : "border-destructive",
+      className
+    )}
+    {...props}
+  />
+));
+TermsCheckbox.displayName = "TermsCheckbox";
 
-export const TermsCheckbox = styled(Checkbox)<TermsCheckboxType>`
-  flex-basis: 5%;
-
-  > .checkbox-label {
-    color: ${(p: any) =>
-      p.accepted ? p.theme.colors.brand.dark : p.theme.colors.red.primary};
-  }
-
-  .checkbox-style {
-    border-color: ${(p: any) =>
-      p.accepted ? p.theme.colors.brand.dark : p.theme.colors.red.primary};
-    stroke: ${(p: any) =>
-      p.accepted ? p.theme.colors.brand.dark : p.theme.colors.red.primary};
-  }
-`;
-
-export const Wrapper = styled.div`
-  padding: 15px;
-`;
+export const Wrapper = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn("p-4", className)} {...props}>
+    {children}
+  </div>
+);

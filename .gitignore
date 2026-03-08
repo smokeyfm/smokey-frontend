@@ -1,4 +1,5 @@
 # IDE
+.anima
 .vscode
 .idea
 
@@ -27,11 +28,12 @@ yarn-error.log*
 
 # local env files
 .env
-.env.dev
-.env.local
+.env.*
+!.env.example
 .env.dev
 .env.development
 .env.development.local
+.env.local
 .env.staging
 .env.staging.local
 .env.test
@@ -46,4 +48,19 @@ envvars.txt
 .env.DNA.staging
 .env.DNA.test
 
+tsconfig.tsbuildinfo
+secret.yml
+secret.yaml
+secrets.yml
+secrets.yaml
+
+secrets-to-base64.sh
+tsconfig.tsbuildinfo
+tsconfig.tsbuildinfo
+
+.anima/
+secret.yml
+secret.yaml
+
+secrets-to-base64.sh
 tsconfig.tsbuildinfo

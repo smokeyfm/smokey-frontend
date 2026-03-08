@@ -11,8 +11,8 @@ import {
   MediaQueryAllQueryable
 } from "react-responsive";
 import * as React from "react";
-import { ServerStyleSheets } from "@material-ui/core/styles";
 import * as tracking from "../config/tracking";
+import * as constants from "../utilities/constants";
 
 const withResponsiveContext = (App: any, req: any) => {
   const contextValue = (() => {
@@ -28,44 +28,28 @@ const withResponsiveContext = (App: any, req: any) => {
     typeof window !== "undefined" ? (
       <App {...props} />
     ) : (
-      <ResponsiveContext.Provider
-        value={contextValue as MediaQueryAllQueryable}
-      >
-        <App {...props} />
-      </ResponsiveContext.Provider>
+      ((
+        <ResponsiveContext.Provider
+          value={contextValue as MediaQueryAllQueryable}
+        >
+          <App {...props} />
+        </ResponsiveContext.Provider>
+      ) as React.ReactElement)
     );
 };
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    const sheet = new ServerStyleSheets();
     const originalRenderPage = ctx.renderPage;
-    try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          // useful for wrapping the whole react tree
-          enhanceApp: (App) =>
-            withResponsiveContext(
-              (props: any) => sheet.collect(<App {...props} />),
-              ctx.req
-            )
-        });
 
-      // Run the parent `getInitialProps`, it now includes the custom `renderPage`
-      const initialProps = await Document.getInitialProps(ctx);
+    ctx.renderPage = () =>
+      originalRenderPage({
+        enhanceApp: (App) => withResponsiveContext(App, ctx.req)
+      });
 
-      return {
-        ...initialProps,
-        styles: (
-          <>
-            {initialProps.styles}
-            {sheet.getStyleElement()}
-          </>
-        )
-      };
-    } finally {
-      Object.seal(sheet);
-    }
+    const initialProps = await Document.getInitialProps(ctx);
+
+    return initialProps;
   }
   render() {
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://instinct.is";
@@ -88,35 +72,28 @@ class MyDocument extends Document {
       process.env.NEXT_PUBLIC_FACEBOOK_SLUG || "materialinstinct";
 
     const OpenGraphObject = `
-      "@context": "http://schema.org",
-      "@type": "Organization",
-      "url": "${siteUrl}",
-      "contactPoint": [{
-        "@type": "ContactPoint",
-        "telephone": "${sitePhone}",
-        "contactType": "General Inquiry"
-      }]
-    `;
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "url": "${siteUrl}",
+        "contactPoint": [{
+          "@type": "ContactPoint",
+          "telephone": "${sitePhone}",
+          "contactType": "General Inquiry"
+        }]
+      `;
 
     const FacebookPixelObject = `
-      <!-- Meta Pixel Code -->
-      <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '${tracking.FB_PIXEL_ID}');
-      fbq('track', 'PageView');
-      </script>
-      <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=${tracking.FB_PIXEL_ID}&ev=PageView&noscript=1"
-      /></noscript>
-      <!-- End Meta Pixel Code -->
-    `;
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '${tracking.FB_PIXEL_ID}');
+        fbq('track', 'PageView');
+      `;
 
     return (
       <Html>
@@ -171,23 +148,6 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
           <script type="application/ld+json">{OpenGraphObject}</script>
-          {/* <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-            ga('create', 'UA-75328739-1', 'auto');
-            ga('send', 'pageview');
-
-              var _giphy_tv_tag="smoke";
-            var g = document.createElement('script');
-            g.type = 'text/javascript';
-            g.async = true;
-            g.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'giphy.com/static/js/widgets/tv.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(g, s);
-          </script> */}
           <script
             src="https://js.stripe.com/v3/"
             type="text/javascript"
@@ -218,7 +178,9 @@ class MyDocument extends Document {
               `
             }}
           />
-          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUqxah2mT_0iaosOBBSIKRy0lw7f6wdLA&libraries=places" />
+          <script
+            src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY}&libraries=places`}
+          />
           <script dangerouslySetInnerHTML={{ __html: FacebookPixelObject }} />
           <noscript>
             <img
@@ -230,6 +192,18 @@ class MyDocument extends Document {
           </noscript>
         </Head>
         <body>
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
+              #__next {
+                min-height: 100vh;
+              }
+              #__next > div {
+                min-height: 100vh;
+              }
+            `
+            }}
+          />
           <Main />
           <NextScript />
         </body>

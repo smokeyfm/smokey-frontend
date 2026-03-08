@@ -1,37 +1,21 @@
 import React, { Fragment, useState, useCallback } from "react";
-import styled from "@emotion/styled";
-import isPropValid from "@emotion/is-prop-valid";
-import { slide as BurgerMenu } from "react-burger-menu";
-import ExpandLess from "@material-ui/icons/ExpandLess";
-import ExpandMore from "@material-ui/icons/ExpandMore";
-import Collapse from "@material-ui/core/Collapse";
-import { SocialLinks } from "../";
-import { menuStyles, darkMenuStyles } from "./menuStyles";
-import { useTheme } from "@emotion/react";
 import { useRouter } from "next/router";
-
-import { MenuToggle, MenuFooter } from "./MainMenu.styles";
-
+import { Menu, ChevronDown, ChevronUp } from "lucide-react";
+import { cn } from "@lib/utils";
 import {
-  StyledList,
-  StyledListItem,
-  StyledListItemText,
-  StyledListItemIcon
-} from "./MobileMenu.styles";
-
-export interface MenuItemProps {
-  paddingLeft: string;
-}
-
-const MenuItem = styled(StyledListItem, {
-  shouldForwardProp: (prop) => isPropValid(prop) && prop !== "paddingLeft"
-})<MenuItemProps>`
-  padding: 0 0 0 ${(props) => props.paddingLeft} !important;
-  margin: 5px 0;
-  & div span {
-    font-family: "Bebas Neue";
-  }
-`;
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetClose,
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+  ScrollArea
+} from "@components/ui";
+import { SocialLinks } from "../SocialLinks";
+import constants from "../../utilities/constants";
 
 export const MobileMenu = ({
   showMenuHeader,
@@ -41,139 +25,162 @@ export const MobileMenu = ({
   const router = useRouter();
   const currYear = new Date().getFullYear();
   const [open, setOpen] = useState(false);
-  const toggleMenu = () => setOpen((value: any) => !value);
+  const [expandedPaths, setExpandedPaths] = useState<Set<string>>(new Set());
+  const menuItems =
+    menusData?.menu_location_listing?.length > 0
+      ? menusData?.menu_location_listing[0].menu_item_listing
+      : [];
 
-  const theme = useTheme();
-
-  const [keyPath, setKeyPath] = useState("");
-  const handleClick = useCallback(
-    (kp: any, key: any) => {
-      if (onMenuItemClick) {
-        onMenuItemClick(kp, key);
+  const toggleExpanded = useCallback((path: string) => {
+    setExpandedPaths((prev) => {
+      const next = new Set(prev);
+      if (next.has(path)) {
+        next.delete(path);
+      } else {
+        next.add(path);
       }
-      setKeyPath((pre) => {
-        if (kp == pre) {
-          // console.log("closing");
-          let str = kp.replace("/" + key, "");
-          return str;
-        } else {
-          // console.log("opening");
-          return kp;
-        }
-      });
-    },
-    [onMenuItemClick]
-  );
+      return next;
+    });
+  }, []);
+
+  const handleItemClick = (
+    item: any,
+    hasChildren: boolean,
+    pathSlug: string
+  ) => {
+    if (hasChildren) {
+      toggleExpanded(pathSlug);
+    } else {
+      router.push(item.url);
+      setOpen(false);
+    }
+  };
 
   const renderMenuItems = (
-    localMenuData: any[],
+    menuData: any[],
     parentKeyPath: string,
     level: number
   ) => {
-    const paddingLeft = level * 20 + "px";
-    // const isArray = Array.isArray(localMenuData);
-    // console.log(isArray, localMenuData);
-    // const menuItems = isArray
-    //   ? localMenuData
-    //   : menusData?.menu_location_listing[0].menu_item_listing;
-    const menuItems =
-      menusData.length > 0
-        ? menusData?.menu_location_listing[0].menu_item_listing
-        : [];
-    // console.log('local menu: ', localMenuData);
-    if (menusData.length) {
-      return (
-        <StyledList disablePadding>
-          {menuItems.map((item: any, index: any) => {
-            const subItems = item.childrens;
-            const slug = item.name.toLowerCase();
-            const pathSlug = parentKeyPath + "/" + slug;
-            // console.log(subItems, pathSlug, keyPath.indexOf(pathSlug) != -1);
+    if (!menuData.length) return null;
 
-            return (
-              <Fragment key={pathSlug}>
-                {
-                  <MenuItem
-                    key={`${pathSlug}-1`}
-                    paddingLeft={paddingLeft}
-                    onClick={handleClick.bind(null, pathSlug, slug)}
-                    button
-                  >
-                    {/* <StyledListItemIcon>{item.icon ? item.icon() : null}</StyledListItemIcon> */}
-                    {/* <StyledListItemText primary={item.name.replace("/", "_")} /> */}
-                    <StyledListItemText primary={item.name} />
-                    {item &&
-                      subItems &&
-                      subItems.length != 0 &&
-                      (keyPath.indexOf(pathSlug) != -1 ? (
-                        <ExpandLess />
-                      ) : (
-                        <ExpandMore />
-                      ))}
-                  </MenuItem>
-                }
-                {item && subItems && subItems.length != 0 && (
-                  <Collapse
-                    timeout="auto"
-                    unmountOnExit
-                    in={keyPath.indexOf(pathSlug) != -1}
-                  >
-                    {level < 2
-                      ? renderMenuItems(subItems, pathSlug, level + 1)
-                      : null}
-                    {/* <h1>hey</h1> */}
-                    {subItems.map(({ item, i }: any) => {
-                      return <Fragment key={`${pathSlug}-2`}>{item}</Fragment>;
-                    })}
-                  </Collapse>
+    return (
+      <div className="flex flex-col">
+        {menuData.map((item: any, index: number) => {
+          const hasChildren = item.childrens.length > 0;
+          const subItems = hasChildren ? item.childrens : [];
+          const slug = item.name.toLowerCase();
+          const pathSlug = parentKeyPath + "/" + slug;
+          const isExpanded = expandedPaths.has(pathSlug);
+
+          return (
+            <Fragment key={`${pathSlug}-${index}`}>
+              <button
+                onClick={() => handleItemClick(item, hasChildren, pathSlug)}
+                className={cn(
+                  "flex w-full items-center justify-between border-none bg-transparent py-2.5 text-left font-title text-base text-foreground transition-colors hover:text-brand",
+                  "cursor-pointer outline-none"
                 )}
-              </Fragment>
-            );
-          })}
-        </StyledList>
-      );
-    }
-    return null;
+                style={{ paddingLeft: `${level * 20}px` }}
+              >
+                <span>{item.name}</span>
+                {hasChildren &&
+                  (isExpanded ? (
+                    <ChevronUp className="h-4 w-4 text-muted-foreground" />
+                  ) : (
+                    <ChevronDown className="h-4 w-4 text-muted-foreground" />
+                  ))}
+              </button>
+              {hasChildren && isExpanded && (
+                <div className="animate-fade-in">
+                  {renderMenuItems(subItems, pathSlug, level + 1)}
+                </div>
+              )}
+            </Fragment>
+          );
+        })}
+      </div>
+    );
   };
 
   return (
-    <BurgerMenu
-      width={"66%"}
-      isOpen={open}
-      onOpen={toggleMenu}
-      onClose={toggleMenu}
-      styles={theme.isDarkMode ? darkMenuStyles : menuStyles}
-      // {...others}
-    >
-      {/* <BurgerMenu width={220} isOpen={open} onOpen={toggleMenu} onClose={toggleMenu} {...others}> */}
-      {showMenuHeader ? (
-        <>
-          <div onClick={toggleMenu}>
-            <i className="btb bt-close" />
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger asChild>
+        <button
+          className="fixed left-4 top-4 z-[60] flex h-9 w-9 items-center justify-center rounded-md border-none bg-transparent text-foreground outline-none sm:hidden"
+          aria-label="Open menu"
+        >
+          <Menu className="h-6 w-6" />
+        </button>
+      </SheetTrigger>
+      <SheetContent side="left" className="w-[66vw] max-w-[320px] p-0">
+        <SheetHeader className="border-b border-border/30 px-6 py-4">
+          <SheetTitle className="font-title text-lg">Menu</SheetTitle>
+        </SheetHeader>
+        <ScrollArea className="h-[calc(100vh-60px)]">
+          <div className="flex flex-col px-6 py-4">
+            {/* Music Link */}
+            <button
+              onClick={() => {
+                setOpen(false);
+                router.push("/music");
+              }}
+              className="w-full cursor-pointer border-none bg-transparent py-2.5 text-left font-title text-base text-foreground transition-colors hover:text-brand outline-none"
+            >
+              Music
+            </button>
+
+            {menuItems && renderMenuItems(menuItems, "", 0)}
+
+            <hr className="my-4 border-border/30" />
+
+            <button
+              onClick={() => {
+                setOpen(false);
+                router.push("/login");
+              }}
+              className="w-full cursor-pointer border-none bg-transparent py-2.5 text-left font-title text-base text-foreground transition-colors hover:text-brand outline-none"
+            >
+              Login
+            </button>
+            <button
+              onClick={() => {
+                setOpen(false);
+                router.push("/signup");
+              }}
+              className="w-full cursor-pointer border-none bg-transparent py-2.5 text-left font-title text-base text-foreground transition-colors hover:text-brand outline-none"
+            >
+              Sign Up
+            </button>
+
+            <div className="mt-4">
+              <SocialLinks />
+            </div>
+
+            <div className="mt-8 font-title text-xs text-gray-light">
+              <div>
+                <a
+                  href="/privacy"
+                  className="text-gray-medium hover:text-brand transition-colors"
+                >
+                  Privacy Policy
+                </a>
+                {" - "}
+                <a
+                  href="/terms"
+                  className="text-gray-medium hover:text-brand transition-colors"
+                >
+                  Terms &amp; Conditions
+                </a>
+                {" - "}
+                <span>RETURN POLICY</span>
+              </div>
+              <div className="mt-1">
+                All Materials Copyright &copy; {currYear} POL Clothing
+              </div>
+            </div>
           </div>
-        </>
-      ) : null}
-      {/* {renderMenuItems(menuItemsData && menuItemsData?.response_data.menu_location_listing[0], "", 0)} */}
-      {renderMenuItems(menusData, "", 0)}
-      <MenuItem
-        paddingLeft={"10px"}
-        onClick={() => {
-          toggleMenu();
-          router.push("/login");
-        }}
-        button
-      >
-        <hr />
-        Login
-      </MenuItem>
-      <SocialLinks networks={["facebook", "instagram", "youtube", "twitter"]}/>
-      <MenuFooter>
-        <div>
-          <a href="/privacy">Privacy Policy</a> -{" "}
-          <a href="/terms">Terms &amp; Conditions</a> - RETURN POLICY
-        </div>
-        <div>All Materials Copyright © {currYear} POL Clothing</div>
-      </MenuFooter>
-    </BurgerMenu>
+        </ScrollArea>
+      </SheetContent>
+    </Sheet>
   );
 };

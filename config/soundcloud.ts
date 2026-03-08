@@ -1,6 +1,5 @@
-import Soundcloud from "soundcloud.ts";
-
-export const scClient = new Soundcloud(
-  process.env.SOUNDCLOUD_CLIENT_ID,
-  process.env.SOUNDCLOUD_OAUTH_TOKEN
-);
+export const SC_CONFIG = {
+  clientId: process.env.NEXT_PUBLIC_SC_CLIENT_ID || "",
+  userId: "6319082",
+  apiBase: "https://api.soundcloud.com"
+};
