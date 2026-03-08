@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import moment from "moment";
@@ -11,6 +11,7 @@ import { StreamChat } from "./StreamChat";
 import { StreamTranscript } from "./StreamTranscript";
 import { VideoJS } from "../VideoJS";
 import { cn } from "@lib/utils";
+import { useCityMorph } from "@components/CityMorph";
 
 type TabId = "products" | "chat" | "transcript";
 
@@ -89,6 +90,13 @@ export const StreamViewer = ({ props }: any) => {
     streamId as string
   );
   const { data: productsData } = useProducts(1);
+
+  // Lock CityMorph to neon-night for the dark, electric stream atmosphere
+  const { setConditionOverride } = useCityMorph();
+  useEffect(() => {
+    setConditionOverride('neon-night');
+    return () => setConditionOverride(null);
+  }, [setConditionOverride]);
 
   const isLive = streamData?.status === "live" || streamData?.is_active;
   const streamStartDate = streamData?.start_date
