@@ -1,21 +1,26 @@
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { ProductCard } from "../../ProductCard";
-import SwiperCore, { Navigation, Thumbs } from "swiper/core";
-import { useMediaQuery } from "react-responsive";
 import { IProducts } from "@spree/storefront-api-v2-sdk/types/interfaces/Product";
 import Link from "next/link";
 
 export interface ProductsProps {
   products: IProducts;
   title: string;
+  /** Number of products to display (default: 6) */
+  limit?: number;
+  /** Link target for "View All" button (default: /browse) */
+  href?: string;
+  /** Label for the CTA button (default: "View All") */
+  ctaLabel?: string;
 }
 
-SwiperCore.use([Navigation, Thumbs]);
-
-const Products: React.FC<ProductsProps> = ({ products, title }) => {
-  const isMobile = useMediaQuery({ maxWidth: 767 });
-
+const Products: React.FC<ProductsProps> = ({
+  products,
+  title,
+  limit = 6,
+  href = "/browse",
+  ctaLabel = "View All"
+}) => {
   const optionValuesLookup =
     products?.included
       ?.filter((item) => item.type === "option_value")
@@ -26,25 +31,24 @@ const Products: React.FC<ProductsProps> = ({ products, title }) => {
         return acc;
       }, {}) || {};
 
+  const items = products?.data?.slice(0, limit) || [];
+
   return (
-    <div className="my-8 overflow-hidden">
+    <div>
       <div className="mb-6 flex items-baseline justify-between">
-        <h2 className="heading-lg">{title}</h2>
+        <h2 className="font-display text-title-lg text-foreground sm:text-title-xl">
+          {title}
+        </h2>
         <Link
-          href="/browse"
-          className="text-sm text-brand hover:underline transition-colors"
+          href={href}
+          className="text-sm text-brand hover:underline transition-colors no-underline"
         >
-          View All
+          {ctaLabel}
         </Link>
       </div>
-      <Swiper
-        loop={true}
-        spaceBetween={20}
-        slidesPerView={isMobile ? 2 : 5}
-        watchSlidesVisibility={true}
-        watchSlidesProgress={true}
-      >
-        {products?.data?.map((item: any, index: any) => {
+
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 lg:gap-5">
+        {items.map((item: any, index: number) => {
           const defaultImg =
             "https://static-assets.strikinglycdn.com/images/ecommerce/ecommerce-default-image.png";
           const productImg = item.relationships?.images?.data[0]?.id;
@@ -62,12 +66,15 @@ const Products: React.FC<ProductsProps> = ({ products, title }) => {
             .filter(Boolean);
 
           return (
-            <SwiperSlide key={index}>
-              <ProductCard item={item} imgSrc={imgSrc} opts={productOptions} />
-            </SwiperSlide>
+            <ProductCard
+              key={item.id || index}
+              item={item}
+              imgSrc={imgSrc}
+              opts={productOptions}
+            />
           );
         })}
-      </Swiper>
+      </div>
     </div>
   );
 };
