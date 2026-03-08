@@ -6,15 +6,14 @@ const About = () => {
     <Layout>
       <div className="relative flex min-h-[calc(100vh-543px)] flex-col items-center pb-[17vw] pt-[11.875vw]">
         <div className="absolute left-[3.75vw] top-[34.1vw] -rotate-90 font-title text-[33px] uppercase leading-[41px] text-foreground after:absolute after:left-full after:top-[40%] after:h-[3px] after:w-[5.97vw] after:bg-foreground after:content-['']">
-          About POL
+          About Us
         </div>
         <div className="text-center font-title text-[33px] uppercase leading-[41px] text-foreground">
           Who we Are
         </div>
         <div className="mt-[1.39vw] w-[23.89vw] font-body text-lg leading-[18px] text-foreground">
-          POL Clothing is a wholesale supplier to boutiques all over the world.
-          POL focuses on coming together at the crossroads of fashion and
-          business and creating styles inspired by the world around us.
+          Smokey FM is a music and lifestyle brand creating styles inspired by
+          the world around us.
         </div>
         <img
           src="/Arrow.png"
@@ -25,9 +24,8 @@ const About = () => {
           Our Mission
         </div>
         <div className="mt-[1.39vw] w-[23.89vw] font-body text-lg leading-[18px] text-foreground">
-          POL Clothing is a wholesale supplier to boutiques all over the world.
-          POL focuses on coming together at the crossroads of fashion and
-          business and creating styles inspired by the world around us.
+          Smokey FM is a music and lifestyle brand creating styles inspired by
+          the world around us.
         </div>
         <img
           src="/Arrow.png"

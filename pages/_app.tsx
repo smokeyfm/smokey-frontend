@@ -24,7 +24,6 @@ const isDarkMode = (process.env.NEXT_PUBLIC_DARK_MODE || "false") === "true";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
-  const [wholesale, setWholesale] = useState(false);
   const router = useRouter();
   const isMaint = process.env.NEXT_PUBLIC_IS_MAINT_MODE || "true";
 
@@ -92,7 +91,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             <Component
               {...pageProps}
               key={router.asPath}
-              wholesale={wholesale}
             />
           </div>
         </Hydrate>

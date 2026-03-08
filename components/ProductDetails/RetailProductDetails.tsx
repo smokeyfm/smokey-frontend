@@ -40,12 +40,10 @@ import {
 import constants from "../../utilities/constants";
 
 interface RetailProductDetailsProps {
-  wholesale?: boolean;
   [key: string]: any;
 }
 
 export const RetailProductDetails = ({
-  wholesale,
   ...props
 }: RetailProductDetailsProps) => {
   const router = useRouter();
