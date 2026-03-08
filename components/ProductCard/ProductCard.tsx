@@ -51,7 +51,7 @@ export const ProductCard = ({ imgSrc, item, opts }: any) => {
   return (
     <Link
       href={`/${item.attributes.slug}`}
-      className="group mt-4 block cursor-pointer no-underline"
+      className="glass-card group mt-4 block cursor-pointer p-2 no-underline hover:scale-[1.02] transition-transform"
     >
       {/* Image Container */}
       <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-muted">
@@ -100,7 +100,7 @@ export const ProductCard = ({ imgSrc, item, opts }: any) => {
       {/* Footer */}
       <div className="mt-3 flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1">
-          <h4 className="truncate font-title text-sm text-foreground">
+          <h4 className="truncate font-title text-sm text-gray-100">
             {item.attributes.name}
           </h4>
           {/* Color Swatches */}
@@ -117,7 +117,7 @@ export const ProductCard = ({ imgSrc, item, opts }: any) => {
           )}
         </div>
         <div className="flex flex-col items-end">
-          <span className="font-title text-sm font-semibold text-foreground">
+          <span className="font-title text-sm font-semibold text-white">
             ${item.attributes.price}
           </span>
         </div>

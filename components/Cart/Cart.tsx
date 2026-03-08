@@ -175,7 +175,7 @@ export const Cart = () => {
 
   if (cartData !== undefined) {
     return (
-      <div className="section-container py-8 font-title">
+      <div className="section-container glass-card-dark py-8 font-title">
         <h2 className="mb-6 text-2xl font-semibold text-foreground">Cart</h2>
 
         <div className="mb-4 flex items-center justify-between">
@@ -213,16 +213,16 @@ export const Cart = () => {
         {/* Actions */}
         <div className="mt-8 flex flex-wrap gap-3">
           {user ? (
-            <Button onClick={() => router.push("/checkout")}>Checkout</Button>
+            <Button className="btn-skeuo-primary" onClick={() => router.push("/checkout")}>Checkout</Button>
           ) : (
             <>
-              <Button onClick={() => router.push("/checkout")}>
+              <Button className="btn-skeuo-primary" onClick={() => router.push("/checkout")}>
                 Checkout as Guest
               </Button>
-              <Button variant="outline" onClick={() => router.push("/login")}>
+              <Button className="btn-skeuo" variant="outline" onClick={() => router.push("/login")}>
                 Login
               </Button>
-              <Button variant="outline" onClick={() => router.push("/signup")}>
+              <Button className="btn-skeuo" variant="outline" onClick={() => router.push("/signup")}>
                 Sign Up
               </Button>
             </>

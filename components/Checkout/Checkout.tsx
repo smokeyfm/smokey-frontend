@@ -417,7 +417,7 @@ const CheckoutForm = () => {
           {/* Checkout Form */}
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Contact */}
-            <section className="rounded-xl border border-border/30 bg-card p-6">
+            <section className="glass-card p-6">
               <h2 className="mb-4 font-title text-base font-semibold text-foreground">
                 Contact Information
               </h2>
@@ -439,7 +439,7 @@ const CheckoutForm = () => {
             </section>
 
             {/* Payment Method */}
-            <section className="rounded-xl border border-border/30 bg-card p-6">
+            <section className="glass-card p-6">
               <h2 className="mb-4 font-title text-base font-semibold text-foreground">
                 Payment Method
               </h2>
@@ -472,7 +472,7 @@ const CheckoutForm = () => {
             </section>
 
             {/* Card Details */}
-            <section className="rounded-xl border border-border/30 bg-card p-6">
+            <section className="glass-card p-6">
               <h2 className="mb-4 font-title text-base font-semibold text-foreground">
                 Card Details
               </h2>
@@ -496,7 +496,7 @@ const CheckoutForm = () => {
             </section>
 
             {/* Shipping Address */}
-            <section className="space-y-4 rounded-xl border border-border/30 bg-card p-6">
+            <section className="space-y-4 glass-card p-6">
               <h2 className="font-title text-base font-semibold text-foreground">
                 Shipping Address
               </h2>
@@ -639,7 +639,7 @@ const CheckoutForm = () => {
 
             {/* Shipping Rates */}
             {estimatedShipping?.data && estimatedShipping.data.length > 0 && (
-              <section className="rounded-xl border border-border/30 bg-card p-6">
+              <section className="glass-card p-6">
                 <h2 className="mb-4 font-title text-base font-semibold text-foreground">
                   Shipping Method
                 </h2>
@@ -681,7 +681,7 @@ const CheckoutForm = () => {
             )}
 
             {/* Billing Address */}
-            <section className="space-y-4 rounded-xl border border-border/30 bg-card p-6">
+            <section className="space-y-4 glass-card p-6">
               <h2 className="font-title text-base font-semibold text-foreground">
                 Billing Address
               </h2>
@@ -844,7 +844,7 @@ const CheckoutForm = () => {
             <button
               type="submit"
               disabled={processing}
-              className="w-full rounded-xl bg-brand px-8 py-4 font-title text-base font-semibold uppercase tracking-wider text-white transition-all hover:bg-brand/90 hover:-translate-y-px hover:shadow-lg active:translate-y-0 disabled:pointer-events-none disabled:opacity-50"
+              className="btn-skeuo-primary w-full px-8 py-4 text-base disabled:pointer-events-none disabled:opacity-50"
             >
               {processing ? "Processing..." : "Complete Order"}
             </button>
@@ -852,7 +852,7 @@ const CheckoutForm = () => {
 
           {/* Order Summary */}
           <div className="lg:sticky lg:top-24">
-            <div className="rounded-xl border border-border/30 bg-card p-6">
+            <div className="glass-card p-6">
               <h2 className="mb-4 font-title text-base font-semibold text-foreground">
                 Order Summary ({item_count} items)
               </h2>
@@ -879,7 +879,7 @@ const CheckoutForm = () => {
                     disabled={
                       !couponCode.trim() || applyCouponMutation.isLoading
                     }
-                    className="rounded-lg bg-brand px-4 py-2 font-title text-xs font-semibold text-white transition-colors hover:bg-brand/90 disabled:opacity-50"
+                    className="btn-skeuo-primary btn-skeuo-sm disabled:opacity-50"
                   >
                     Apply
                   </button>
