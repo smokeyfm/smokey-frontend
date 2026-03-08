@@ -43,6 +43,20 @@ const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
         pcWrapClassName
       )}
     >
+      {/* Music Link */}
+      <button
+        onClick={() => router.push("/music")}
+        className={cn(
+          "cursor-pointer border-none bg-transparent px-3 py-2 font-title text-sm font-medium transition-colors",
+          "outline-none",
+          router.pathname === "/music"
+            ? "text-brand"
+            : "text-foreground hover:text-brand"
+        )}
+      >
+        Music
+      </button>
+
       {/* Menu Items */}
       {menuItems?.map((item: any, index: number) => (
         <button

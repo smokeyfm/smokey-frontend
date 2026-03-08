@@ -118,6 +118,17 @@ export const MobileMenu = ({
         </SheetHeader>
         <ScrollArea className="h-[calc(100vh-60px)]">
           <div className="flex flex-col px-6 py-4">
+            {/* Music Link */}
+            <button
+              onClick={() => {
+                setOpen(false);
+                router.push("/music");
+              }}
+              className="w-full cursor-pointer border-none bg-transparent py-2.5 text-left font-title text-base text-foreground transition-colors hover:text-brand outline-none"
+            >
+              Music
+            </button>
+
             {menuItems && renderMenuItems(menuItems, "", 0)}
 
             <hr className="my-4 border-border/30" />
