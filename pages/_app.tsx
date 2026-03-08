@@ -5,6 +5,7 @@ import { AuthProvider } from "../config/auth";
 import { MainMenu } from "../components/MainMenu";
 import { Header } from "../components/Header";
 import { ComingSoon } from "../components/ComingSoon";
+import { CityMorph, CityMorphProvider } from "@components/CityMorph";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import * as tracking from "../config/tracking";
@@ -75,24 +76,28 @@ export default function MyApp({ Component, pageProps }: AppProps) {
               content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0, minimal-ui"
             />
           </Head>
-          <div className="m-0 flex h-screen w-full flex-col overflow-visible bg-background p-0 font-body text-body-md text-foreground">
-            <Header darkMode={isDarkMode} />
-            <MainMenu
-              showMenuHeader
-              onMenuItemClick={(key: string) => router.push(key)}
-              customBurgerIcon={<i className="btb bt-bars" />}
-              pcMenuItemClassName={"pc-menu-item"}
-              pcWrapClassName={"pc-menu-wrap"}
-              outterContainerId={"outter-container"}
-              pageWrapId={"page-wrap"}
-              animationType={"slide"}
-              right={false}
-            />
-            <Component
-              {...pageProps}
-              key={router.asPath}
-            />
-          </div>
+          <CityMorphProvider>
+            <CityMorph>
+              <div className="m-0 flex h-screen w-full flex-col overflow-visible bg-transparent p-0 font-body text-body-md text-foreground">
+                <Header darkMode={isDarkMode} />
+                <MainMenu
+                  showMenuHeader
+                  onMenuItemClick={(key: string) => router.push(key)}
+                  customBurgerIcon={<i className="btb bt-bars" />}
+                  pcMenuItemClassName={"pc-menu-item"}
+                  pcWrapClassName={"pc-menu-wrap"}
+                  outterContainerId={"outter-container"}
+                  pageWrapId={"page-wrap"}
+                  animationType={"slide"}
+                  right={false}
+                />
+                <Component
+                  {...pageProps}
+                  key={router.asPath}
+                />
+              </div>
+            </CityMorph>
+          </CityMorphProvider>
         </Hydrate>
       </AuthProvider>
     </QueryClientProvider>

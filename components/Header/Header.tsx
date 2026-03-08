@@ -62,7 +62,7 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-black/30 backdrop-blur-md">
       {/* Top Header */}
       <div className="relative flex flex-row items-center justify-center py-2.5 pb-3 sm:py-3">
         {/* Left Side - Social Links */}
