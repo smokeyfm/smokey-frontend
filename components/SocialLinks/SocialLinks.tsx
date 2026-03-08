@@ -1,5 +1,5 @@
 import React from "react";
-import { Instagram, Facebook, Twitter } from "lucide-react";
+import { Instagram, Facebook, Twitter, Youtube } from "lucide-react";
 
 export const SocialLinks = ({ darkMode }: any) => {
   const socialLinks = [
@@ -23,6 +23,13 @@ export const SocialLinks = ({ darkMode }: any) => {
         process.env.NEXT_PUBLIC_TWITTER_SLUG || ""
       }`,
       label: "Twitter"
+    },
+    {
+      icon: Youtube,
+      href: `http://www.youtube.com/${
+        process.env.NEXT_PUBLIC_YOUTUBE_SLUG || ""
+      }`,
+      label: "YouTube"
     }
   ];
 

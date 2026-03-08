@@ -74,14 +74,14 @@ export const Footer: React.FC<FootProps> = ({ classes, footerData }) => {
 
   const columns = apiColumns || footerData.columns || hardcodedColumns;
   const logoPath =
-    process.env.NEXT_PUBLIC_LOGO_PATH || "images/open-graph-instinct-dna.jpg";
+    process.env.NEXT_PUBLIC_LOGO_PATH || "/logo.png";
   const FooterLogo = footerData.logo as ReactNode;
-  const siteTitle = process.env.NEXT_PUBLIC_SHORT_TITLE || "DNA";
+  const siteTitle = process.env.NEXT_PUBLIC_SHORT_TITLE || "Smokey FM";
 
   return (
     <footer
       className={cn(
-        "border-t border-border/30 bg-background pt-10 pb-16 text-foreground",
+        "border-t border-white/10 bg-black/30 backdrop-blur-md pt-10 pb-16 text-foreground",
         classes?.root
       )}
     >
@@ -181,6 +181,11 @@ export const Footer: React.FC<FootProps> = ({ classes, footerData }) => {
       </div>
 
       <SocialLinks isDark />
+
+      {/* Copyright */}
+      <div className="mt-8 text-center text-sm text-muted-foreground">
+        &copy; {new Date().getFullYear()} Smokey Records LLC. All rights reserved.
+      </div>
     </footer>
   );
 };

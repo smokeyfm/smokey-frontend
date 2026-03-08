@@ -31,10 +31,10 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
   const [cartVisible, setCartVisible] = useState(false);
   const toggleCart = () => setCartVisible((isVisible) => !isVisible);
   const isMaint = process.env.NEXT_PUBLIC_IS_MAINT_MODE || "false";
-  const siteTitle = process.env.NEXT_PUBLIC_SHORT_TITLE || "DNA";
+  const siteTitle = process.env.NEXT_PUBLIC_SHORT_TITLE || "Smokey FM";
 
   const logoPath =
-    process.env.NEXT_PUBLIC_LOGO_PATH || "images/open-graph-instinct-dna.jpg";
+    process.env.NEXT_PUBLIC_LOGO_PATH || "/logo.png";
 
   // Get store logo from API if available
   const { data: storeData } = useStore();
