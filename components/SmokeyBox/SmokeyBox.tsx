@@ -29,6 +29,12 @@ export function SmokeyBox() {
 
   const [analyserNode, setAnalyserNode] = useState<AnalyserNode | null>(null);
 
+  // Don't render the player bar until the user has interacted (play/expand).
+  const [activated, setActivated] = useState(false);
+  useEffect(() => {
+    if (state.isPlaying || state.isExpanded) setActivated(true);
+  }, [state.isPlaying, state.isExpanded]);
+
   // --- SoundCloud playlist integration ---
   const { tracks, isLoading } = useSoundCloudPlaylist();
   const hasDispatchedTracks = useRef(false);
@@ -54,8 +60,8 @@ export function SmokeyBox() {
     setAnalyserNode(analyser);
   }, []);
 
-  // If there is nothing to play at all, don't render the player bar.
-  if (!currentTrack && !currentVideo) return null;
+  // Don't render until user has interacted AND there is something to play.
+  if (!activated || (!currentTrack && !currentVideo)) return null;
 
   return (
     <div

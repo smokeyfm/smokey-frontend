@@ -45,7 +45,7 @@ export const CityMorph: React.FC<CityMorphProps> = ({ children }) => {
   return (
     <div className="relative min-h-screen">
       {/* ===== Stars Layer — slowly rotating starfield (z-0) ===== */}
-      <div className="fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
+      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <div
           className="absolute inset-[-50%] h-[200%] w-[200%]"
           style={{
@@ -59,7 +59,7 @@ export const CityMorph: React.FC<CityMorphProps> = ({ children }) => {
 
       {/* ===== City Photo Layer (current) — blurred NYC with per-condition filters (z-[1]) ===== */}
       <div
-        className="fixed inset-0 z-[1]"
+        className="fixed inset-0 z-[1] pointer-events-none"
         style={{
           backgroundImage: "url(/img/bg_image.jpg)",
           backgroundSize: "cover",
@@ -73,7 +73,7 @@ export const CityMorph: React.FC<CityMorphProps> = ({ children }) => {
       {/* ===== City Photo Layer (next — crossfade) (z-[1]) ===== */}
       {isTransitioning && (
         <div
-          className="fixed inset-0 z-[1]"
+          className="fixed inset-0 z-[1] pointer-events-none"
           style={{
             backgroundImage: "url(/img/bg_image.jpg)",
             backgroundSize: "cover",
@@ -87,7 +87,7 @@ export const CityMorph: React.FC<CityMorphProps> = ({ children }) => {
 
       {/* ===== Skyline Layer (current) (z-[2]) ===== */}
       <div
-        className="fixed inset-0 z-[2] bg-bottom bg-repeat-x"
+        className="fixed inset-0 z-[2] bg-bottom bg-repeat-x pointer-events-none"
         style={{
           backgroundImage: "url(/img/skyline.png)",
           backgroundSize: "auto 60%",
@@ -100,7 +100,7 @@ export const CityMorph: React.FC<CityMorphProps> = ({ children }) => {
       {/* ===== Skyline Layer (next — crossfade) (z-[2]) ===== */}
       {isTransitioning && (
         <div
-          className="fixed inset-0 z-[2] bg-bottom bg-repeat-x"
+          className="fixed inset-0 z-[2] bg-bottom bg-repeat-x pointer-events-none"
           style={{
             backgroundImage: "url(/img/skyline.png)",
             backgroundSize: "auto 60%",

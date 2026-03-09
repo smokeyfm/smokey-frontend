@@ -23,17 +23,6 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative flex min-h-[85vh] flex-col items-center justify-center px-4">
-      {/* Small logo */}
-      <div className="mb-6 animate-fade-in">
-        <Image
-          src="/logo.png"
-          alt="Smokey FM"
-          width={80}
-          height={80}
-          className="opacity-70"
-        />
-      </div>
-
       {/* Album art */}
       <div className="animate-fade-in">
         <Image
