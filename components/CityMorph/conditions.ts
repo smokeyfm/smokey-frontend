@@ -8,6 +8,8 @@ export interface CityCondition {
   textGlow: string;
   hasRain: boolean;
   hasFog: boolean;
+  cityPhotoFilter: string;
+  staticOpacity: number;
 }
 
 export const conditions: CityCondition[] = [
@@ -21,7 +23,9 @@ export const conditions: CityCondition[] = [
     overlayOpacity: 0.15,
     textGlow: "0 0 20px rgba(244, 194, 127, 0.3)",
     hasRain: false,
-    hasFog: true
+    hasFog: true,
+    cityPhotoFilter: "brightness(0.4) saturate(0.8) hue-rotate(-20deg) blur(10px)",
+    staticOpacity: 0.03
   },
   {
     name: "midday",
@@ -33,7 +37,9 @@ export const conditions: CityCondition[] = [
     overlayOpacity: 0.05,
     textGlow: "none",
     hasRain: false,
-    hasFog: false
+    hasFog: false,
+    cityPhotoFilter: "brightness(0.7) saturate(1.2) blur(10px)",
+    staticOpacity: 0.03
   },
   {
     name: "golden-hour",
@@ -46,7 +52,9 @@ export const conditions: CityCondition[] = [
     overlayOpacity: 0.12,
     textGlow: "0 0 15px rgba(232, 168, 76, 0.4)",
     hasRain: false,
-    hasFog: false
+    hasFog: false,
+    cityPhotoFilter: "brightness(0.5) saturate(1.3) hue-rotate(-30deg) sepia(0.3) blur(10px)",
+    staticOpacity: 0.04
   },
   {
     name: "overcast",
@@ -58,7 +66,9 @@ export const conditions: CityCondition[] = [
     overlayOpacity: 0.2,
     textGlow: "none",
     hasRain: false,
-    hasFog: true
+    hasFog: true,
+    cityPhotoFilter: "brightness(0.3) saturate(0.4) blur(10px)",
+    staticOpacity: 0.04
   },
   {
     name: "rain",
@@ -70,7 +80,9 @@ export const conditions: CityCondition[] = [
     overlayOpacity: 0.25,
     textGlow: "0 0 10px rgba(100, 149, 237, 0.3)",
     hasRain: true,
-    hasFog: false
+    hasFog: false,
+    cityPhotoFilter: "brightness(0.2) saturate(0.6) contrast(1.2) blur(10px)",
+    staticOpacity: 0.05
   },
   {
     name: "neon-night",
@@ -83,7 +95,9 @@ export const conditions: CityCondition[] = [
     textGlow:
       "0 0 20px rgba(235, 139, 139, 0.5), 0 0 40px rgba(235, 139, 139, 0.2)",
     hasRain: false,
-    hasFog: false
+    hasFog: false,
+    cityPhotoFilter: "brightness(0.3) saturate(1.6) contrast(1.4) blur(10px)",
+    staticOpacity: 0.04
   },
   {
     name: "misty-twilight",
@@ -96,7 +110,9 @@ export const conditions: CityCondition[] = [
     overlayOpacity: 0.3,
     textGlow: "0 0 15px rgba(170, 138, 206, 0.4)",
     hasRain: false,
-    hasFog: true
+    hasFog: true,
+    cityPhotoFilter: "brightness(0.25) saturate(0.7) hue-rotate(20deg) blur(10px)",
+    staticOpacity: 0.04
   },
   {
     name: "stormy",
@@ -108,6 +124,8 @@ export const conditions: CityCondition[] = [
     overlayOpacity: 0.3,
     textGlow: "0 0 5px rgba(200, 200, 255, 0.3)",
     hasRain: true,
-    hasFog: false
+    hasFog: false,
+    cityPhotoFilter: "brightness(0.15) saturate(0.3) contrast(1.3) blur(10px)",
+    staticOpacity: 0.06
   }
 ];
