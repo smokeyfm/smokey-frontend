@@ -52,7 +52,7 @@ export const CityMorph: React.FC<CityMorphProps> = ({ children }) => {
             backgroundImage: "url(/img/stars.png)",
             backgroundSize: "cover",
             backgroundPosition: "center",
-            animation: "spin 120s linear infinite",
+            animation: "spin 120s linear infinite"
           }}
         />
       </div>
@@ -65,7 +65,7 @@ export const CityMorph: React.FC<CityMorphProps> = ({ children }) => {
           backgroundSize: "cover",
           backgroundPosition: "center",
           filter: currentCondition.cityPhotoFilter,
-          opacity: isTransitioning ? 1 - transitionProgress : 1,
+          opacity: isTransitioning ? 1 - transitionProgress : 1
         }}
         aria-hidden="true"
       />
@@ -79,7 +79,7 @@ export const CityMorph: React.FC<CityMorphProps> = ({ children }) => {
             backgroundSize: "cover",
             backgroundPosition: "center",
             filter: nextCondition.cityPhotoFilter,
-            opacity: transitionProgress,
+            opacity: transitionProgress
           }}
           aria-hidden="true"
         />
@@ -92,7 +92,7 @@ export const CityMorph: React.FC<CityMorphProps> = ({ children }) => {
           backgroundImage: "url(/img/skyline.png)",
           backgroundSize: "auto 60%",
           filter: currentCondition.skylineFilter,
-          opacity: isTransitioning ? 1 - transitionProgress : 1,
+          opacity: isTransitioning ? 1 - transitionProgress : 1
         }}
         aria-hidden="true"
       />
@@ -105,7 +105,7 @@ export const CityMorph: React.FC<CityMorphProps> = ({ children }) => {
             backgroundImage: "url(/img/skyline.png)",
             backgroundSize: "auto 60%",
             filter: nextCondition.skylineFilter,
-            opacity: transitionProgress,
+            opacity: transitionProgress
           }}
           aria-hidden="true"
         />
@@ -118,7 +118,7 @@ export const CityMorph: React.FC<CityMorphProps> = ({ children }) => {
           backgroundColor: currentCondition.overlayColor,
           opacity: isTransitioning
             ? (1 - transitionProgress) * currentCondition.overlayOpacity
-            : currentCondition.overlayOpacity,
+            : currentCondition.overlayOpacity
         }}
         aria-hidden="true"
       />
@@ -129,7 +129,7 @@ export const CityMorph: React.FC<CityMorphProps> = ({ children }) => {
           className="fixed inset-0 z-[3] pointer-events-none"
           style={{
             backgroundColor: nextCondition.overlayColor,
-            opacity: transitionProgress * nextCondition.overlayOpacity,
+            opacity: transitionProgress * nextCondition.overlayOpacity
           }}
           aria-hidden="true"
         />
@@ -145,7 +145,7 @@ export const CityMorph: React.FC<CityMorphProps> = ({ children }) => {
           opacity: isTransitioning
             ? (1 - transitionProgress) * currentCondition.staticOpacity +
               transitionProgress * nextCondition.staticOpacity
-            : currentCondition.staticOpacity,
+            : currentCondition.staticOpacity
         }}
         aria-hidden="true"
       />
@@ -157,7 +157,7 @@ export const CityMorph: React.FC<CityMorphProps> = ({ children }) => {
           style={{
             background:
               "radial-gradient(ellipse at 50% 100%, rgba(200,200,220,0.3) 0%, transparent 70%)",
-            opacity: fogOpacity,
+            opacity: fogOpacity
           }}
           aria-hidden="true"
         />
@@ -170,7 +170,7 @@ export const CityMorph: React.FC<CityMorphProps> = ({ children }) => {
       <div
         className="relative z-10"
         style={{
-          textShadow: textGlow !== "none" ? textGlow : undefined,
+          textShadow: textGlow !== "none" ? textGlow : undefined
         }}
       >
         {children}
