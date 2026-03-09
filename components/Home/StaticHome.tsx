@@ -2,9 +2,10 @@ import React from "react";
 import { QueryClient } from "react-query";
 import { dehydrate } from "react-query/hydration";
 import Link from "next/link";
-import { Volume2, Radio, ArrowRight } from "lucide-react";
+import { Radio, ArrowRight } from "lucide-react";
 import { Layout } from "../Layout";
 import { NotifyForm } from "../NotifyForm";
+import { SocialLinks } from "../SocialLinks";
 import { StreamList } from "../StreamList";
 import { BlurFade } from "@components/ui";
 import {
@@ -13,14 +14,11 @@ import {
   useProducts,
   useStreams
 } from "../../hooks/index";
-import { usePlayer } from "@components/SmokeyBox";
 import Hero from "./Hero";
 import Products from "./Products";
 import { Loading } from "../Loading";
 
 export const StaticHome = (props: any) => {
-  const { state, dispatch } = usePlayer();
-
   const {
     error: productsError,
     data: productsData,
@@ -40,99 +38,13 @@ export const StaticHome = (props: any) => {
 
   return (
     <Layout>
-      {/* ------------------------------------------------------------------ */}
-      {/* 1. Hero  --  minimal logo + tagline, CityMorph breathes through    */}
-      {/* ------------------------------------------------------------------ */}
+      {/* 1. SkyChase Album Hero */}
       <Hero />
 
       <div className="section-container space-y-12 pb-20 pt-4 sm:space-y-16">
-        {/* ---------------------------------------------------------------- */}
-        {/* 2. Now Playing  --  glass card with current track info            */}
-        {/* ---------------------------------------------------------------- */}
-        {state.currentTrack && (
-          <BlurFade delay={0.1} inView>
-            <div className="glass-card mx-auto max-w-2xl px-5 py-4 sm:px-6">
-              <div className="flex items-center gap-4">
-                {/* Artwork thumbnail */}
-                {state.currentTrack.artworkUrl && (
-                  <div className="h-14 w-14 flex-shrink-0 overflow-hidden rounded-lg">
-                    <img
-                      src={state.currentTrack.artworkUrl}
-                      alt={state.currentTrack.title}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                )}
-
-                {/* Pulsing icon */}
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-brand/20">
-                  <Volume2 className="h-5 w-5 animate-live-pulse text-brand" />
-                </div>
-
-                {/* Track details */}
-                <div className="min-w-0 flex-1">
-                  <p className="font-mono text-xs uppercase tracking-widest text-brand">
-                    Now Playing
-                  </p>
-                  <p className="mt-0.5 truncate font-title text-sm text-foreground">
-                    {state.currentTrack.title}
-                  </p>
-                  <p className="truncate font-body text-xs text-muted-foreground">
-                    {state.currentTrack.artist}
-                  </p>
-                </div>
-
-                {/* Listen / expand player */}
-                <button
-                  onClick={() => dispatch({ type: "TOGGLE_EXPANDED" })}
-                  className="flex-shrink-0 rounded-lg border border-white/10 bg-white/5 px-4 py-2 font-title text-xs font-semibold text-foreground transition-all hover:bg-white/10 cursor-pointer"
-                >
-                  Listen
-                </button>
-              </div>
-            </div>
-          </BlurFade>
-        )}
-
-        {/* ---------------------------------------------------------------- */}
-        {/* 3. Featured Music                                                */}
-        {/* ---------------------------------------------------------------- */}
-        {productsData && (
-          <BlurFade delay={0.15} inView>
-            <section className="glass-card p-5 sm:p-8">
-              <Products
-                products={productsData}
-                title="New Music"
-                limit={4}
-                href="/music"
-                ctaLabel="View All Music"
-              />
-            </section>
-          </BlurFade>
-        )}
-
-        {/* ---------------------------------------------------------------- */}
-        {/* 4. Featured Merch                                                */}
-        {/* ---------------------------------------------------------------- */}
-        {productsData && (
-          <BlurFade delay={0.2} inView>
-            <section className="glass-card p-5 sm:p-8">
-              <Products
-                products={productsData}
-                title="Merch & Swag"
-                limit={6}
-                href="/browse"
-                ctaLabel="Shop All"
-              />
-            </section>
-          </BlurFade>
-        )}
-
-        {/* ---------------------------------------------------------------- */}
-        {/* 5. Live Stream                                                   */}
-        {/* ---------------------------------------------------------------- */}
+        {/* 2. Live Streams — only rendered if streams exist */}
         {streams.length > 0 && (
-          <BlurFade delay={0.25} inView>
+          <BlurFade delay={0.1} inView>
             <section className="glass-card overflow-hidden p-5 sm:p-8">
               <div className="mb-6 flex items-baseline justify-between">
                 <h2 className="font-display text-title-lg text-foreground sm:text-title-xl">
@@ -147,7 +59,6 @@ export const StaticHome = (props: any) => {
                 </Link>
               </div>
 
-              {/* Featured stream banner */}
               <Link
                 href={`/tv/${streams[0]?.playback_ids?.[0] || ""}`}
                 className="group relative flex items-center gap-4 rounded-xl border border-brand/20 bg-brand/5 p-5 no-underline transition-all hover:border-brand/30 hover:bg-brand/10"
@@ -168,7 +79,6 @@ export const StaticHome = (props: any) => {
                 </span>
               </Link>
 
-              {/* Additional streams */}
               {streams.length > 1 && (
                 <div className="mt-4">
                   <StreamList data={streams} title="" />
@@ -178,10 +88,23 @@ export const StaticHome = (props: any) => {
           </BlurFade>
         )}
 
-        {/* ---------------------------------------------------------------- */}
-        {/* 6. Newsletter                                                    */}
-        {/* ---------------------------------------------------------------- */}
-        <BlurFade delay={0.3} inView>
+        {/* 3. Featured Merch */}
+        {productsData && (
+          <BlurFade delay={0.15} inView>
+            <section className="glass-card p-5 sm:p-8">
+              <Products
+                products={productsData}
+                title="Merch & Swag"
+                limit={6}
+                href="/browse"
+                ctaLabel="Shop All"
+              />
+            </section>
+          </BlurFade>
+        )}
+
+        {/* 4. Newsletter + Social */}
+        <BlurFade delay={0.2} inView>
           <section className="glass-card py-8">
             <div className="text-center">
               <h2 className="font-display text-title-lg text-foreground sm:text-title-xl">
@@ -192,6 +115,9 @@ export const StaticHome = (props: any) => {
               </p>
             </div>
             <NotifyForm />
+            <div className="mt-6 flex justify-center">
+              <SocialLinks />
+            </div>
           </section>
         </BlurFade>
       </div>
