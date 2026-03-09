@@ -24,7 +24,8 @@ export const conditions: CityCondition[] = [
     textGlow: "0 0 20px rgba(244, 194, 127, 0.3)",
     hasRain: false,
     hasFog: true,
-    cityPhotoFilter: "brightness(0.4) saturate(0.8) hue-rotate(-20deg) blur(10px)",
+    cityPhotoFilter:
+      "brightness(0.4) saturate(0.8) hue-rotate(-20deg) blur(10px)",
     staticOpacity: 0.03
   },
   {
@@ -53,7 +54,8 @@ export const conditions: CityCondition[] = [
     textGlow: "0 0 15px rgba(232, 168, 76, 0.4)",
     hasRain: false,
     hasFog: false,
-    cityPhotoFilter: "brightness(0.5) saturate(1.3) hue-rotate(-30deg) sepia(0.3) blur(10px)",
+    cityPhotoFilter:
+      "brightness(0.5) saturate(1.3) hue-rotate(-30deg) sepia(0.3) blur(10px)",
     staticOpacity: 0.04
   },
   {
@@ -111,7 +113,8 @@ export const conditions: CityCondition[] = [
     textGlow: "0 0 15px rgba(170, 138, 206, 0.4)",
     hasRain: false,
     hasFog: true,
-    cityPhotoFilter: "brightness(0.25) saturate(0.7) hue-rotate(20deg) blur(10px)",
+    cityPhotoFilter:
+      "brightness(0.25) saturate(0.7) hue-rotate(20deg) blur(10px)",
     staticOpacity: 0.04
   },
   {
