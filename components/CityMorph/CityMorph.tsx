@@ -45,7 +45,10 @@ export const CityMorph: React.FC<CityMorphProps> = ({ children }) => {
   return (
     <div className="relative min-h-screen">
       {/* ===== Stars Layer — slowly rotating starfield (z-0) ===== */}
-      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      <div
+        className="fixed inset-0 z-0 overflow-hidden pointer-events-none"
+        aria-hidden="true"
+      >
         <div
           className="absolute inset-[-50%] h-[200%] w-[200%]"
           style={{
@@ -57,7 +60,33 @@ export const CityMorph: React.FC<CityMorphProps> = ({ children }) => {
         />
       </div>
 
-      {/* ===== City Photo Layer (current) — blurred NYC with per-condition filters (z-[1]) ===== */}
+      {/* ===== City Photo Layer — blurred NYC with angled gradual blur (z-[1]) ===== */}
+      {/* Sharp base layer */}
+      <div
+        className="fixed inset-0 z-[1] pointer-events-none"
+        style={{
+          backgroundImage: "url(/img/bg_image.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          filter: currentCondition.cityPhotoFilter.replace(/blur\([^)]*\)/, ""),
+          opacity: isTransitioning ? 1 - transitionProgress : 1
+        }}
+        aria-hidden="true"
+      />
+      {isTransitioning && (
+        <div
+          className="fixed inset-0 z-[1] pointer-events-none"
+          style={{
+            backgroundImage: "url(/img/bg_image.jpg)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            filter: nextCondition.cityPhotoFilter.replace(/blur\([^)]*\)/, ""),
+            opacity: transitionProgress
+          }}
+          aria-hidden="true"
+        />
+      )}
+      {/* Blurred layer masked with top-to-bottom gradient for angled blur effect */}
       <div
         className="fixed inset-0 z-[1] pointer-events-none"
         style={{
@@ -65,12 +94,14 @@ export const CityMorph: React.FC<CityMorphProps> = ({ children }) => {
           backgroundSize: "cover",
           backgroundPosition: "center",
           filter: currentCondition.cityPhotoFilter,
-          opacity: isTransitioning ? 1 - transitionProgress : 1
+          opacity: isTransitioning ? 1 - transitionProgress : 1,
+          maskImage:
+            "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0) 75%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0) 75%)"
         }}
         aria-hidden="true"
       />
-
-      {/* ===== City Photo Layer (next — crossfade) (z-[1]) ===== */}
       {isTransitioning && (
         <div
           className="fixed inset-0 z-[1] pointer-events-none"
@@ -79,37 +110,27 @@ export const CityMorph: React.FC<CityMorphProps> = ({ children }) => {
             backgroundSize: "cover",
             backgroundPosition: "center",
             filter: nextCondition.cityPhotoFilter,
-            opacity: transitionProgress
+            opacity: transitionProgress,
+            maskImage:
+              "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0) 75%)",
+            WebkitMaskImage:
+              "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0) 75%)"
           }}
           aria-hidden="true"
         />
       )}
 
-      {/* ===== Skyline Layer (current) (z-[2]) ===== */}
+      {/* ===== Skyline Layer — single blurred silhouette (z-[2]) ===== */}
       <div
         className="fixed inset-0 z-[2] bg-bottom bg-repeat-x pointer-events-none"
         style={{
           backgroundImage: "url(/img/skyline.png)",
           backgroundSize: "auto 60%",
-          filter: currentCondition.skylineFilter,
-          opacity: isTransitioning ? 1 - transitionProgress : 1
+          filter: `${currentCondition.skylineFilter} blur(2px)`,
+          opacity: 0.7
         }}
         aria-hidden="true"
       />
-
-      {/* ===== Skyline Layer (next — crossfade) (z-[2]) ===== */}
-      {isTransitioning && (
-        <div
-          className="fixed inset-0 z-[2] bg-bottom bg-repeat-x pointer-events-none"
-          style={{
-            backgroundImage: "url(/img/skyline.png)",
-            backgroundSize: "auto 60%",
-            filter: nextCondition.skylineFilter,
-            opacity: transitionProgress
-          }}
-          aria-hidden="true"
-        />
-      )}
 
       {/* ===== Color Overlay (current) (z-[3]) ===== */}
       <div

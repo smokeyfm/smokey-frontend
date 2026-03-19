@@ -16,7 +16,6 @@ import {
 } from "../../hooks/index";
 import Hero from "./Hero";
 import Products from "./Products";
-import { Loading } from "../Loading";
 
 export const StaticHome = (props: any) => {
   const {
@@ -31,10 +30,8 @@ export const StaticHome = (props: any) => {
     isLoading: streamsAreLoading
   }: any = useStreams(1);
 
-  if (productsAreLoading || streamsAreLoading) return <Loading />;
-  if (productsError || streamsError) return <Loading />;
-
   const streams = streamsData?.response_data || [];
+  const isLoading = productsAreLoading || streamsAreLoading;
 
   return (
     <Layout>
@@ -42,8 +39,14 @@ export const StaticHome = (props: any) => {
       <Hero />
 
       <div className="section-container space-y-12 pb-20 pt-4 sm:space-y-16">
+        {isLoading && (
+          <div className="flex justify-center py-12">
+            <div className="h-8 w-8 animate-spin rounded-full border-2 border-muted-foreground border-t-brand" />
+          </div>
+        )}
+
         {/* 2. Live Streams — only rendered if streams exist */}
-        {streams.length > 0 && (
+        {!isLoading && streams.length > 0 && (
           <BlurFade delay={0.1} inView>
             <section className="glass-card overflow-hidden p-5 sm:p-8">
               <div className="mb-6 flex items-baseline justify-between">
@@ -89,7 +92,7 @@ export const StaticHome = (props: any) => {
         )}
 
         {/* 3. Featured Merch */}
-        {productsData && (
+        {!isLoading && productsData && (
           <BlurFade delay={0.15} inView>
             <section className="glass-card p-5 sm:p-8">
               <Products
