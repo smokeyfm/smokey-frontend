@@ -87,6 +87,7 @@ Minimal top bar — not the site Header:
 ### Empty State
 
 When a user navigates directly to `/listen` (bookmark, direct URL) with nothing loaded:
+
 - The page auto-loads the default Albums playlist on mount (same `useSoundCloudPlaylist()` call that SmokeyBox uses)
 - While loading, the media area shows a placeholder: album art silhouette with a subtle pulse animation
 - Track info shows "Loading..." in muted text
@@ -132,11 +133,7 @@ contentMode: ContentMode; // default: "albums"
 
 **Initial state alignment:** When adding `contentMode: "albums"` to `initialState`, also change `initialState.mode` from `"simultaneous"` to `"soundcloud-only"` so the two fields are consistent from first render.
 
-Add action to `PlayerAction`:
-
-```typescript
-| { type: "SET_CONTENT_MODE"; payload: ContentMode }
-```
+Add action to `PlayerAction` (see Reducer Logic section below for full payload shape).
 
 ### Mode Behavior Matrix
 
@@ -159,6 +156,7 @@ The reducer is a pure function — it cannot dispatch other actions. `SET_CONTEN
 ```
 
 The reducer case:
+
 1. Sets `contentMode` to the new value
 2. Sets `mode` to the corresponding `PlayerMode` (see matrix above)
 3. Sets `playlist` / `videoPlaylist` from the payload data
@@ -373,17 +371,17 @@ PlayerProvider (global, in _app.tsx)
 
 ### Modified Files
 
-| File                                          | Change                                                                       |
-| --------------------------------------------- | ---------------------------------------------------------------------------- |
-| `components/SmokeyBox/types.ts`               | Add `ContentMode` type, `contentMode` to `PlayerState`                       |
-| `components/SmokeyBox/PlayerProvider.tsx`     | Add `contentMode` to initial state, `SET_CONTENT_MODE` action + reducer case |
-| `components/SmokeyBox/TransportButton.tsx`    | Add `xl` size variant                                                        |
+| File                                          | Change                                                                                |
+| --------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `components/SmokeyBox/types.ts`               | Add `ContentMode` type, `contentMode` to `PlayerState`                                |
+| `components/SmokeyBox/PlayerProvider.tsx`     | Add `contentMode` to initial state, `SET_CONTENT_MODE` action + reducer case          |
+| `components/SmokeyBox/TransportButton.tsx`    | Add `xl` size variant                                                                 |
 | `components/SmokeyBox/SmokeyBox.tsx`          | Hide chrome (not unmount) when `pathname === "/listen"`, keep SoundCloudLayer mounted |
-| `components/SmokeyBox/SmokeyBoxCollapsed.tsx` | Mode cycle uses `ContentMode` instead of `PlayerMode`                        |
-| `components/Header/Header.tsx`                | JamesFajardo font, "Listen" link, mobile spacing fixes                       |
-| `pages/_app.tsx`                              | Render `ListenFAB`                                                           |
-| `components/MainMenu/MainMenu.tsx`            | JamesFajardo font, "Listen" as first item                                    |
-| `hooks/useSoundCloudPlaylist.ts`              | Accept optional playlist URL parameter for spoken word                       |
+| `components/SmokeyBox/SmokeyBoxCollapsed.tsx` | Mode cycle uses `ContentMode` instead of `PlayerMode`                                 |
+| `components/Header/Header.tsx`                | JamesFajardo font, "Listen" link, mobile spacing fixes                                |
+| `pages/_app.tsx`                              | Render `ListenFAB`                                                                    |
+| `components/MainMenu/MainMenu.tsx`            | JamesFajardo font, "Listen" as first item                                             |
+| `hooks/useSoundCloudPlaylist.ts`              | Accept optional playlist URL parameter for spoken word                                |
 
 ### Unchanged
 
