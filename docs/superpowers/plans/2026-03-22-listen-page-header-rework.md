@@ -15,38 +15,41 @@
 ## File Structure
 
 ### New Files
-| File | Responsibility |
-|------|---------------|
-| `components/SmokeyBox/constants.ts` | Shared DEFAULT_VIDEOS array + content mode mappings |
-| `components/Listen/ListenPage.tsx` | Main listen page layout — media display, info panel, controls, playlist |
-| `components/Listen/ListenHeader.tsx` | Minimal top bar (back arrow + wordmark) |
-| `components/Listen/ListenControls.tsx` | Scaled-up retro transport controls |
-| `components/Listen/ModeSwitch.tsx` | Content mode toggle (Videos / Albums / Spoken Word) |
-| `components/Listen/PlaylistBrowser.tsx` | Scrollable playlist/video list |
-| `components/shared/ListenFAB.tsx` | Floating headphones button |
-| `pages/listen.tsx` | Page route |
+
+| File                                    | Responsibility                                                          |
+| --------------------------------------- | ----------------------------------------------------------------------- |
+| `components/SmokeyBox/constants.ts`     | Shared DEFAULT_VIDEOS array + content mode mappings                     |
+| `components/Listen/ListenPage.tsx`      | Main listen page layout — media display, info panel, controls, playlist |
+| `components/Listen/ListenHeader.tsx`    | Minimal top bar (back arrow + wordmark)                                 |
+| `components/Listen/ListenControls.tsx`  | Scaled-up retro transport controls                                      |
+| `components/Listen/ModeSwitch.tsx`      | Content mode toggle (Videos / Albums / Spoken Word)                     |
+| `components/Listen/PlaylistBrowser.tsx` | Scrollable playlist/video list                                          |
+| `components/shared/ListenFAB.tsx`       | Floating headphones button                                              |
+| `pages/listen.tsx`                      | Page route                                                              |
 
 ### Modified Files
-| File | Change |
-|------|--------|
-| `components/SmokeyBox/types.ts` | Add `ContentMode`, update `PlayerState` |
-| `components/SmokeyBox/PlayerProvider.tsx` | Add `contentMode` state, `SET_CONTENT_MODE` action |
-| `components/SmokeyBox/TransportButton.tsx` | Add `xl` size |
-| `components/SmokeyBox/SmokeyBox.tsx` | Hide chrome on `/listen`, keep layers mounted, use context analyser |
-| `components/SmokeyBox/SmokeyBoxExpanded.tsx` | Get analyserNode from context instead of props |
-| `components/SmokeyBox/SmokeyBoxCollapsed.tsx` | Cycle content modes instead of player modes |
-| `components/SmokeyBox/index.tsx` | Re-export `ContentMode` type |
-| `hooks/useSoundCloudPlaylist/index.ts` | Accept optional playlist URL |
-| `hooks/queryKeys.ts` | Add `SOUNDCLOUD_SPOKEN_WORD` key |
-| `components/Header/Header.tsx` | JamesFajardo font, "Listen" link, mobile fixes |
-| `components/MainMenu/MobileMenu.tsx` | JamesFajardo font, "Listen" as first item |
-| `pages/_app.tsx` | Render ListenFAB |
+
+| File                                          | Change                                                              |
+| --------------------------------------------- | ------------------------------------------------------------------- |
+| `components/SmokeyBox/types.ts`               | Add `ContentMode`, update `PlayerState`                             |
+| `components/SmokeyBox/PlayerProvider.tsx`     | Add `contentMode` state, `SET_CONTENT_MODE` action                  |
+| `components/SmokeyBox/TransportButton.tsx`    | Add `xl` size                                                       |
+| `components/SmokeyBox/SmokeyBox.tsx`          | Hide chrome on `/listen`, keep layers mounted, use context analyser |
+| `components/SmokeyBox/SmokeyBoxExpanded.tsx`  | Get analyserNode from context instead of props                      |
+| `components/SmokeyBox/SmokeyBoxCollapsed.tsx` | Cycle content modes instead of player modes                         |
+| `components/SmokeyBox/index.tsx`              | Re-export `ContentMode` type                                        |
+| `hooks/useSoundCloudPlaylist/index.ts`        | Accept optional playlist URL                                        |
+| `hooks/queryKeys.ts`                          | Add `SOUNDCLOUD_SPOKEN_WORD` key                                    |
+| `components/Header/Header.tsx`                | JamesFajardo font, "Listen" link, mobile fixes                      |
+| `components/MainMenu/MobileMenu.tsx`          | JamesFajardo font, "Listen" as first item                           |
+| `pages/_app.tsx`                              | Render ListenFAB                                                    |
 
 ---
 
 ## Task 1: Extend Player Types and State
 
 **Files:**
+
 - Modify: `components/SmokeyBox/types.ts`
 - Modify: `components/SmokeyBox/PlayerProvider.tsx`
 - Modify: `components/SmokeyBox/index.tsx`
@@ -118,8 +121,8 @@ Change `initialState`:
 
 ```typescript
 const initialState: PlayerState = {
-  mode: "soundcloud-only",   // changed from "simultaneous"
-  contentMode: "albums",     // new field
+  mode: "soundcloud-only", // changed from "simultaneous"
+  contentMode: "albums", // new field
   isPlaying: false,
   isExpanded: false,
   volume: 0.7,
@@ -231,9 +234,12 @@ Remove `const [analyserNode, setAnalyserNode] = useState<AnalyserNode | null>(nu
 Update `handleAnalyserReady`:
 
 ```typescript
-const handleAnalyserReady = useCallback((analyser: AnalyserNode) => {
-  setAnalyserNode(analyser);
-}, [setAnalyserNode]);
+const handleAnalyserReady = useCallback(
+  (analyser: AnalyserNode) => {
+    setAnalyserNode(analyser);
+  },
+  [setAnalyserNode]
+);
 ```
 
 And in `SmokeyBoxExpanded`, get `analyserNode` from context instead of props:
@@ -267,6 +273,7 @@ git commit -m "feat: add ContentMode, SET_CONTENT_MODE, shared constants, lift A
 ## Task 2: Add xl Size to TransportButton
 
 **Files:**
+
 - Modify: `components/SmokeyBox/TransportButton.tsx`
 
 - [ ] **Step 1: Add xl size variant**
@@ -310,6 +317,7 @@ git commit -m "feat: add xl size variant to TransportButton"
 ## Task 3: Refactor useSoundCloudPlaylist for Optional URL
 
 **Files:**
+
 - Modify: `hooks/useSoundCloudPlaylist/index.ts`
 - Modify: `hooks/queryKeys.ts`
 
@@ -318,7 +326,7 @@ git commit -m "feat: add xl size variant to TransportButton"
 In `hooks/queryKeys.ts`, add before the closing brace:
 
 ```typescript
-SOUNDCLOUD_SPOKEN_WORD = "SOUNDCLOUD_SPOKEN_WORD"
+SOUNDCLOUD_SPOKEN_WORD = "SOUNDCLOUD_SPOKEN_WORD";
 ```
 
 - [ ] **Step 2: Refactor hook to accept optional playlist URL**
@@ -377,7 +385,9 @@ const fetchUserTracks = async (): Promise<Track[]> => {
  * Fetch a specific playlist by URL via the SoundCloud /resolve endpoint.
  */
 const fetchPlaylistByUrl = async (playlistUrl: string): Promise<Track[]> => {
-  const resolveUrl = `${SC_CONFIG.apiBase}/resolve?url=${encodeURIComponent(playlistUrl)}&client_id=${SC_CONFIG.clientId}`;
+  const resolveUrl = `${SC_CONFIG.apiBase}/resolve?url=${encodeURIComponent(
+    playlistUrl
+  )}&client_id=${SC_CONFIG.clientId}`;
   const response = await fetch(resolveUrl);
   if (!response.ok) {
     throw new Error(`SoundCloud API error: ${response.status}`);
@@ -436,6 +446,7 @@ git commit -m "feat: refactor useSoundCloudPlaylist to accept optional playlist 
 ## Task 4: SmokeyBox — Hide Chrome on /listen
 
 **Files:**
+
 - Modify: `components/SmokeyBox/SmokeyBox.tsx`
 - Modify: `components/SmokeyBox/SmokeyBoxCollapsed.tsx`
 
@@ -489,7 +500,7 @@ return (
           }}
         >
           {isExpanded ? (
-            <SmokeyBoxExpanded analyserNode={analyserNode} />
+            <SmokeyBoxExpanded />
           ) : (
             <SmokeyBoxCollapsed />
           )}
@@ -551,7 +562,8 @@ Update `handleModeToggle` to cycle content modes. This is a simplified cycle tha
 ```typescript
 const handleModeToggle = () => {
   const currentIndex = CONTENT_MODE_CYCLE.indexOf(contentMode);
-  const nextContentMode = CONTENT_MODE_CYCLE[(currentIndex + 1) % CONTENT_MODE_CYCLE.length];
+  const nextContentMode =
+    CONTENT_MODE_CYCLE[(currentIndex + 1) % CONTENT_MODE_CYCLE.length];
   dispatch({
     type: "SET_CONTENT_MODE",
     payload: { contentMode: nextContentMode }
@@ -578,6 +590,7 @@ git commit -m "feat: hide SmokeyBox chrome on /listen, cycle content modes in co
 ## Task 5: Header Rework — JamesFajardo Font + Mobile Fixes + Listen Link
 
 **Files:**
+
 - Modify: `components/Header/Header.tsx`
 
 - [ ] **Step 1: Apply all Header changes**
@@ -615,22 +628,25 @@ Change `right-2.5` to responsive and add gap:
 **5. Add "Listen" link before auth section** — insert after the SearchBar (line 102), before the user check:
 
 ```tsx
-{!isMobile && (
-  <Link
-    href="/listen"
-    className={cn(
-      "mx-2.5 font-display text-lg no-underline transition-colors",
-      pathname === "/listen"
-        ? "pointer-events-none cursor-default text-muted-foreground"
-        : "text-foreground hover:text-brand"
-    )}
-  >
-    Listen
-  </Link>
-)}
+{
+  !isMobile && (
+    <Link
+      href="/listen"
+      className={cn(
+        "mx-2.5 font-display text-lg no-underline transition-colors",
+        pathname === "/listen"
+          ? "pointer-events-none cursor-default text-muted-foreground"
+          : "text-foreground hover:text-brand"
+      )}
+    >
+      Listen
+    </Link>
+  );
+}
 ```
 
 **6. Switch all font-title to font-display** — apply `replace_all` for `font-title` to `font-display` in this file. This covers:
+
 - Account dropdown trigger button (line 109)
 - LOGIN link (line 209)
 - SIGN UP link (line 219)
@@ -660,6 +676,7 @@ git commit -m "feat: header JamesFajardo font, Listen link, mobile alignment fix
 ## Task 6: MobileMenu — JamesFajardo Font + Listen Link
 
 **Files:**
+
 - Modify: `components/MainMenu/MobileMenu.tsx`
 
 - [ ] **Step 1: Add Listen as first menu item and switch font**
@@ -667,6 +684,7 @@ git commit -m "feat: header JamesFajardo font, Listen link, mobile alignment fix
 In `components/MainMenu/MobileMenu.tsx`:
 
 **1. Switch all `font-title` to `font-display`** throughout the file. This affects:
+
 - Menu item buttons (line 80)
 - "Music" button (line 127)
 - "Login" button (line 141)
@@ -677,7 +695,9 @@ In `components/MainMenu/MobileMenu.tsx`:
 **2. Add "Listen" button as the first item** in the scroll area content (after the opening `<div className="flex flex-col px-6 py-4">`), before the "Music" button:
 
 ```tsx
-{/* Listen Link — first item */}
+{
+  /* Listen Link — first item */
+}
 <button
   onClick={() => {
     setOpen(false);
@@ -689,7 +709,7 @@ In `components/MainMenu/MobileMenu.tsx`:
   )}
 >
   Listen
-</button>
+</button>;
 ```
 
 - [ ] **Step 2: Verify build**
@@ -709,6 +729,7 @@ git commit -m "feat: MobileMenu JamesFajardo font, Listen as first item"
 ## Task 7: ListenFAB — Floating Action Button
 
 **Files:**
+
 - Create: `components/shared/ListenFAB.tsx`
 - Modify: `pages/_app.tsx`
 
@@ -760,7 +781,7 @@ export function ListenFAB() {
 }
 ```
 
-- [ ] **Step 2: Add ListenFAB to _app.tsx**
+- [ ] **Step 2: Add ListenFAB to \_app.tsx**
 
 In `pages/_app.tsx`, add the import:
 
@@ -792,6 +813,7 @@ git commit -m "feat: add ListenFAB floating button to navigate to /listen"
 ## Task 8: Listen Page — Components and Route
 
 **Files:**
+
 - Create: `components/Listen/ListenHeader.tsx`
 - Create: `components/Listen/ModeSwitch.tsx`
 - Create: `components/Listen/PlaylistBrowser.tsx`
@@ -884,8 +906,8 @@ export function ModeSwitch({ albumTracks, spokenWordTracks }: ModeSwitchProps) {
         ...(mode === "music-videos"
           ? { videoPlaylist: DEFAULT_VIDEOS }
           : mode === "albums"
-            ? { playlist: albumTracks }
-            : { playlist: spokenWordTracks })
+          ? { playlist: albumTracks }
+          : { playlist: spokenWordTracks })
       }
     });
   };
@@ -895,10 +917,7 @@ export function ModeSwitch({ albumTracks, spokenWordTracks }: ModeSwitchProps) {
       {MODES.map(({ mode, label, Icon }) => (
         <div key={mode} className="flex flex-col items-center gap-1.5">
           <div className="flex items-center gap-1.5">
-            <LEDIndicator
-              color="green"
-              active={contentMode === mode}
-            />
+            <LEDIndicator color="green" active={contentMode === mode} />
             <TransportButton
               onClick={() => handleModeChange(mode)}
               size="sm"
@@ -939,7 +958,8 @@ function formatTime(seconds: number): string {
  */
 export function PlaylistBrowser() {
   const { state, dispatch } = usePlayer();
-  const { contentMode, playlist, videoPlaylist, trackIndex, videoIndex } = state;
+  const { contentMode, playlist, videoPlaylist, trackIndex, videoIndex } =
+    state;
 
   const isVideoMode = contentMode === "music-videos";
   const items = isVideoMode ? videoPlaylist : playlist;
@@ -1089,8 +1109,8 @@ export function ListenControls({ analyserNode }: ListenControlsProps) {
   const vuWidth = isMobile ? 80 : 120;
   const vuHeight = isMobile ? 32 : 48;
   const vuBars = isMobile ? 10 : 16;
-  const playSize = isMobile ? "lg" as const : "xl" as const;
-  const skipSize = isMobile ? "sm" as const : "md" as const;
+  const playSize = isMobile ? ("lg" as const) : ("xl" as const);
+  const skipSize = isMobile ? ("sm" as const) : ("md" as const);
 
   return (
     <div className="flex flex-col gap-4">
@@ -1376,6 +1396,7 @@ Run: `yarn dev`
 - [ ] **Step 2: Verify Header changes**
 
 Open `http://localhost:3000` in browser:
+
 - Confirm JamesFajardo font on all nav text (LOGIN, SIGN UP, Listen link)
 - Resize to mobile width — verify logo shrinks to 45px, spacing is clean, no overlap
 - Confirm "Listen" link is visible on desktop, styled correctly
@@ -1383,6 +1404,7 @@ Open `http://localhost:3000` in browser:
 - [ ] **Step 3: Verify MobileMenu changes**
 
 On mobile viewport:
+
 - Open burger menu
 - Confirm "Listen" is the first item in JamesFajardo font
 - Tap "Listen" — should navigate to `/listen`
