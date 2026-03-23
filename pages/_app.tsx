@@ -10,6 +10,7 @@ import { SmokeyBox, PlayerProvider } from "@components/SmokeyBox";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import * as tracking from "../config/tracking";
+import { ListenFAB } from "@components/shared/ListenFAB";
 
 // Styles
 import "../styles/globals.css";
@@ -97,6 +98,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                 </div>
               </CityMorph>
             </CityMorphProvider>
+            <ListenFAB />
             <SmokeyBox />
           </PlayerProvider>
         </Hydrate>
