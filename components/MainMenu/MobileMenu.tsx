@@ -77,7 +77,7 @@ export const MobileMenu = ({
               <button
                 onClick={() => handleItemClick(item, hasChildren, pathSlug)}
                 className={cn(
-                  "flex w-full items-center justify-between border-none bg-transparent py-2.5 text-left font-title text-base text-foreground transition-colors hover:text-brand",
+                  "flex w-full items-center justify-between border-none bg-transparent py-2.5 text-left font-display text-base text-foreground transition-colors hover:text-brand",
                   "cursor-pointer outline-none"
                 )}
                 style={{ paddingLeft: `${level * 20}px` }}
@@ -114,17 +114,31 @@ export const MobileMenu = ({
       </SheetTrigger>
       <SheetContent side="left" className="w-[66vw] max-w-[320px] p-0">
         <SheetHeader className="border-b border-border/30 px-6 py-4">
-          <SheetTitle className="font-title text-lg">Menu</SheetTitle>
+          <SheetTitle className="font-display text-lg">Menu</SheetTitle>
         </SheetHeader>
         <ScrollArea className="h-[calc(100vh-60px)]">
           <div className="flex flex-col px-6 py-4">
+            {/* Listen Link — first item */}
+            <button
+              onClick={() => {
+                setOpen(false);
+                router.push("/listen");
+              }}
+              className={cn(
+                "w-full cursor-pointer border-none bg-transparent py-2.5 text-left font-display text-lg text-foreground transition-colors hover:text-brand outline-none",
+                router.pathname === "/listen" && "pointer-events-none text-muted-foreground"
+              )}
+            >
+              Listen
+            </button>
+
             {/* Music Link */}
             <button
               onClick={() => {
                 setOpen(false);
                 router.push("/music");
               }}
-              className="w-full cursor-pointer border-none bg-transparent py-2.5 text-left font-title text-base text-foreground transition-colors hover:text-brand outline-none"
+              className="w-full cursor-pointer border-none bg-transparent py-2.5 text-left font-display text-base text-foreground transition-colors hover:text-brand outline-none"
             >
               Music
             </button>
@@ -138,7 +152,7 @@ export const MobileMenu = ({
                 setOpen(false);
                 router.push("/login");
               }}
-              className="w-full cursor-pointer border-none bg-transparent py-2.5 text-left font-title text-base text-foreground transition-colors hover:text-brand outline-none"
+              className="w-full cursor-pointer border-none bg-transparent py-2.5 text-left font-display text-base text-foreground transition-colors hover:text-brand outline-none"
             >
               Login
             </button>
@@ -147,7 +161,7 @@ export const MobileMenu = ({
                 setOpen(false);
                 router.push("/signup");
               }}
-              className="w-full cursor-pointer border-none bg-transparent py-2.5 text-left font-title text-base text-foreground transition-colors hover:text-brand outline-none"
+              className="w-full cursor-pointer border-none bg-transparent py-2.5 text-left font-display text-base text-foreground transition-colors hover:text-brand outline-none"
             >
               Sign Up
             </button>
@@ -156,7 +170,7 @@ export const MobileMenu = ({
               <SocialLinks />
             </div>
 
-            <div className="mt-8 font-title text-xs text-gray-light">
+            <div className="mt-8 font-display text-xs text-gray-light">
               <div>
                 <a
                   href="/privacy"
