@@ -6,27 +6,28 @@ import {
   ChevronUp,
   Music,
   Tv,
-  Radio
+  Disc3,
+  Mic
 } from "lucide-react";
 
 import { usePlayer } from "./PlayerProvider";
 import { TransportButton } from "./TransportButton";
 import { Knob } from "./Knob";
 import { LEDIndicator } from "./LEDIndicator";
-import type { PlayerMode } from "./types";
+import type { ContentMode } from "./types";
 
-/** Icon displayed for each player mode. */
-const MODE_ICONS: Record<PlayerMode, typeof Music> = {
-  simultaneous: Tv,
-  "youtube-only": Tv,
-  "soundcloud-only": Radio
+/** Icon displayed for each content mode. */
+const CONTENT_MODE_ICONS: Record<ContentMode, typeof Tv> = {
+  "music-videos": Tv,
+  albums: Disc3,
+  "spoken-word": Mic
 };
 
-/** Cycle order for mode toggling. */
-const MODE_CYCLE: PlayerMode[] = [
-  "simultaneous",
-  "youtube-only",
-  "soundcloud-only"
+/** Cycle order for content mode toggling. */
+const CONTENT_MODE_CYCLE: ContentMode[] = [
+  "music-videos",
+  "albums",
+  "spoken-word"
 ];
 
 /**
@@ -37,9 +38,9 @@ const MODE_CYCLE: PlayerMode[] = [
  */
 export function SmokeyBoxCollapsed() {
   const { state, dispatch } = usePlayer();
-  const { isPlaying, currentTrack, mode, volume } = state;
+  const { isPlaying, currentTrack, mode, volume, contentMode } = state;
 
-  const ModeIcon = MODE_ICONS[mode];
+  const ModeIcon = CONTENT_MODE_ICONS[contentMode];
 
   const handleTogglePlay = () => dispatch({ type: "TOGGLE_PLAY" });
   const handlePrev = () => dispatch({ type: "PREV_TRACK" });
@@ -49,9 +50,13 @@ export function SmokeyBoxCollapsed() {
     dispatch({ type: "SET_VOLUME", payload: v });
 
   const handleModeToggle = () => {
-    const currentIndex = MODE_CYCLE.indexOf(mode);
-    const nextMode = MODE_CYCLE[(currentIndex + 1) % MODE_CYCLE.length];
-    dispatch({ type: "SET_MODE", payload: nextMode });
+    const currentIndex = CONTENT_MODE_CYCLE.indexOf(contentMode);
+    const nextContentMode =
+      CONTENT_MODE_CYCLE[(currentIndex + 1) % CONTENT_MODE_CYCLE.length];
+    dispatch({
+      type: "SET_CONTENT_MODE",
+      payload: { contentMode: nextContentMode }
+    });
   };
 
   return (

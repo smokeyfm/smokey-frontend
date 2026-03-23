@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 
 import { usePlayer } from "./PlayerProvider";
 import { SmokeyBoxCollapsed } from "./SmokeyBoxCollapsed";
@@ -17,6 +18,9 @@ import { DEFAULT_VIDEOS } from "./constants";
 export function SmokeyBox() {
   const { state, dispatch, setAnalyserNode } = usePlayer();
   const { isExpanded, currentTrack, currentVideo } = state;
+
+  const router = useRouter();
+  const isListenPage = router.pathname === "/listen";
 
   // Don't render the player bar until the user has interacted (play/expand).
   const [activated, setActivated] = useState(false);
@@ -50,42 +54,45 @@ export function SmokeyBox() {
   }, []);
 
   // Don't render until user has interacted AND there is something to play.
-  if (!activated || (!currentTrack && !currentVideo)) return null;
+  if (!activated || (!currentTrack && !currentVideo)) {
+    return <SoundCloudLayer onAnalyserReady={handleAnalyserReady} />;
+  }
 
   return (
-    <div
-      className="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-700"
-      style={{
-        background:
-          "linear-gradient(180deg, #2c2c2e 0%, #1c1c1e 40%, #141414 100%)",
-        boxShadow: "0 -2px 12px rgba(0,0,0,0.5)"
-      }}
-    >
-      {/* Metallic top edge highlight */}
-      <div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{
-          background:
-            "linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)"
-        }}
-      />
-
-      {/* Smooth height transition wrapper */}
-      <div
-        className="transition-all duration-300 ease-in-out overflow-hidden"
-        style={{
-          maxHeight: isExpanded ? "480px" : "64px"
-        }}
-      >
-        {isExpanded ? (
-          <SmokeyBoxExpanded />
-        ) : (
-          <SmokeyBoxCollapsed />
-        )}
-      </div>
-
-      {/* Audio layers (always mounted to preserve AudioContext) */}
+    <>
+      {/* Audio layer — always mounted to preserve AudioContext */}
       <SoundCloudLayer onAnalyserReady={handleAnalyserReady} />
-    </div>
+
+      {/* Visual chrome — hidden on /listen page */}
+      {!isListenPage && (
+        <div
+          className="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-700"
+          style={{
+            background:
+              "linear-gradient(180deg, #2c2c2e 0%, #1c1c1e 40%, #141414 100%)",
+            boxShadow: "0 -2px 12px rgba(0,0,0,0.5)"
+          }}
+        >
+          {/* Metallic top edge highlight */}
+          <div
+            className="absolute top-0 left-0 right-0 h-px"
+            style={{
+              background:
+                "linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)"
+            }}
+          />
+
+          {/* Smooth height transition wrapper */}
+          <div
+            className="transition-all duration-300 ease-in-out overflow-hidden"
+            style={{
+              maxHeight: isExpanded ? "480px" : "64px"
+            }}
+          >
+            {isExpanded ? <SmokeyBoxExpanded /> : <SmokeyBoxCollapsed />}
+          </div>
+        </div>
+      )}
+    </>
   );
 }
