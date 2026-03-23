@@ -63,7 +63,7 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-black/30 backdrop-blur-md">
       {/* Top Header */}
-      <div className="relative flex flex-row items-center justify-center py-2.5 pb-3 sm:py-3">
+      <div className="relative flex flex-row items-center justify-center py-2 sm:py-3">
         {/* Left Side - Social Links */}
         {!isMobile && (
           <div className="absolute left-2.5 z-[2] flex items-center justify-between sm:left-2.5">
@@ -72,7 +72,7 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
         )}
 
         {/* Center - Logo */}
-        <div className="flex w-[355px] cursor-pointer items-center justify-center px-7 py-4">
+        <div className="flex w-auto max-w-[200px] sm:max-w-[355px] cursor-pointer items-center justify-center px-3 py-2 sm:px-7 sm:py-4">
           <Link
             href="/"
             className="text-sm no-underline text-foreground hover:text-brand transition-colors"
@@ -88,7 +88,7 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
                 width={0}
                 height={0}
                 sizes="(max-width: 768px) 100px, 141px"
-                style={{ width: "auto", height: "65px" }}
+                style={{ width: "auto", height: isMobile ? "45px" : "65px" }}
                 priority
               />
             ) : (
@@ -98,22 +98,36 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
         </div>
 
         {/* Right Side */}
-        <div className="absolute right-2.5 z-[2] flex w-auto flex-row items-center justify-between sm:justify-end">
+        <div className="absolute right-3 sm:right-2.5 z-[2] flex w-auto flex-row items-center justify-between gap-2 sm:justify-end">
           {isMobile ? null : <SearchBar darkMode={darkMode} />}
+
+          {!isMobile && (
+            <Link
+              href="/listen"
+              className={cn(
+                "mx-2.5 font-display text-lg no-underline transition-colors",
+                pathname === "/listen"
+                  ? "pointer-events-none cursor-default text-muted-foreground"
+                  : "text-foreground hover:text-brand"
+              )}
+            >
+              Listen
+            </Link>
+          )}
 
           {user ? (
             <div className="mx-5 hidden flex-row items-center justify-around sm:flex">
               {/* Account Dropdown */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <button className="mx-2.5 flex cursor-pointer items-center justify-center font-title text-title-sm text-foreground hover:text-brand transition-colors border-none bg-transparent outline-none">
+                  <button className="mx-2.5 flex cursor-pointer items-center justify-center font-display text-title-sm text-foreground hover:text-brand transition-colors border-none bg-transparent outline-none">
                     {user.data.attributes.email}
                     <ChevronDown className="ml-1 h-5 w-5 text-foreground hidden sm:block" />
                   </button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
                   align="end"
-                  className="w-[160px] p-5 font-title text-right"
+                  className="w-[160px] p-5 font-display text-right"
                 >
                   <DropdownMenuItem asChild>
                     <Link
@@ -206,7 +220,7 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
               <Link
                 href="/login"
                 className={cn(
-                  "mx-2.5 font-title text-title-md no-underline transition-colors",
+                  "mx-2.5 font-display text-title-md no-underline transition-colors",
                   pathname === "/login"
                     ? "pointer-events-none cursor-default text-muted-foreground"
                     : "text-foreground hover:text-brand"
@@ -217,7 +231,7 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
               <Link
                 href="/signup"
                 className={cn(
-                  "mx-2.5 font-title text-title-md no-underline transition-colors",
+                  "mx-2.5 font-display text-title-md no-underline transition-colors",
                   pathname === "/signup"
                     ? "pointer-events-none cursor-default text-muted-foreground"
                     : "text-foreground hover:text-brand"
@@ -229,7 +243,7 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
           )}
 
           {/* Cart */}
-          <div className="-mt-2.5 mr-0.5 relative text-foreground sm:-mt-2.5">
+          <div className="-mt-2.5 mr-2 sm:mr-0.5 relative text-foreground sm:-mt-2.5">
             <CartSidebar isVisible={cartVisible} toggle={toggleCart} />
             {cartItemCount > 0 && (
               <Badge className="absolute -right-2 -top-1 flex h-5 min-w-[20px] items-center justify-center px-1 text-[10px]">
