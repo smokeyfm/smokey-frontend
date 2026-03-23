@@ -3,14 +3,15 @@ import type { ReactNode } from "react";
 interface TransportButtonProps {
   onClick: () => void;
   children: ReactNode;
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "xl";
   active?: boolean;
 }
 
 const SIZES = {
   sm: "w-8 h-8",
   md: "w-10 h-10",
-  lg: "w-12 h-12"
+  lg: "w-12 h-12",
+  xl: "w-16 h-16"
 } as const;
 
 export function TransportButton({
