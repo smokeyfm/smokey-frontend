@@ -5,16 +5,7 @@ import { SmokeyBoxCollapsed } from "./SmokeyBoxCollapsed";
 import { SmokeyBoxExpanded } from "./SmokeyBoxExpanded";
 import { SoundCloudLayer } from "./SoundCloudLayer";
 import { useSoundCloudPlaylist } from "../../hooks/useSoundCloudPlaylist";
-import type { YouTubeVideo } from "./types";
-
-/** Default YouTube video playlist for SmokeyBox. */
-const DEFAULT_VIDEOS: YouTubeVideo[] = [
-  {
-    id: "1",
-    title: "Smokey FM Visual 1",
-    url: "https://www.youtube.com/watch?v=hGq0l_m0U20"
-  }
-];
+import { DEFAULT_VIDEOS } from "./constants";
 
 /**
  * SmokeyBox — main dual-mode AV player.
@@ -24,10 +15,8 @@ const DEFAULT_VIDEOS: YouTubeVideo[] = [
  * the VU meters consume.
  */
 export function SmokeyBox() {
-  const { state, dispatch } = usePlayer();
+  const { state, dispatch, setAnalyserNode } = usePlayer();
   const { isExpanded, currentTrack, currentVideo } = state;
-
-  const [analyserNode, setAnalyserNode] = useState<AnalyserNode | null>(null);
 
   // Don't render the player bar until the user has interacted (play/expand).
   const [activated, setActivated] = useState(false);
@@ -89,7 +78,7 @@ export function SmokeyBox() {
         }}
       >
         {isExpanded ? (
-          <SmokeyBoxExpanded analyserNode={analyserNode} />
+          <SmokeyBoxExpanded />
         ) : (
           <SmokeyBoxCollapsed />
         )}

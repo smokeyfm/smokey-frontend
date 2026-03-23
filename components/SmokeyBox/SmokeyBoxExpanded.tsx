@@ -19,10 +19,6 @@ import { LEDIndicator } from "./LEDIndicator";
 import { YouTubeLayer } from "./YouTubeLayer";
 import type { PlayerMode, Track } from "./types";
 
-interface SmokeyBoxExpandedProps {
-  analyserNode: AnalyserNode | null;
-}
-
 // -------------------------------------------------------------------------
 // Helpers
 // -------------------------------------------------------------------------
@@ -48,8 +44,8 @@ const MODES: { mode: PlayerMode; label: string; Icon: typeof Tv }[] = [
  * Shows YouTube video, track info, full transport controls, VU meters,
  * playlist browser, and mode selector.
  */
-export function SmokeyBoxExpanded({ analyserNode }: SmokeyBoxExpandedProps) {
-  const { state, dispatch } = usePlayer();
+export function SmokeyBoxExpanded() {
+  const { state, dispatch, analyserNode } = usePlayer();
   const {
     isPlaying,
     currentTrack,

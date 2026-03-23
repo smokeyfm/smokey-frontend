@@ -9,6 +9,9 @@
 /** The three playback modes for the SmokeyBox player. */
 export type PlayerMode = "simultaneous" | "youtube-only" | "soundcloud-only";
 
+/** The three content modes for the listening experience. */
+export type ContentMode = "music-videos" | "albums" | "spoken-word";
+
 /** A SoundCloud (or other audio source) track. */
 export interface Track {
   id: string;
@@ -30,6 +33,7 @@ export interface YouTubeVideo {
 /** The full player state managed by the reducer. */
 export interface PlayerState {
   mode: PlayerMode;
+  contentMode: ContentMode;
   isPlaying: boolean;
   isExpanded: boolean;
   /** Volume level from 0 to 1. */

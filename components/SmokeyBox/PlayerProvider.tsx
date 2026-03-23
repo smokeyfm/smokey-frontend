@@ -3,11 +3,19 @@ import React, {
   useContext,
   useReducer,
   useMemo,
+  useState,
   type Dispatch,
   type ReactNode
 } from "react";
 
-import type { PlayerMode, PlayerState, Track, YouTubeVideo } from "./types";
+import type {
+  ContentMode,
+  PlayerMode,
+  PlayerState,
+  Track,
+  YouTubeVideo
+} from "./types";
+import { CONTENT_MODE_TO_PLAYER_MODE } from "./constants";
 
 // ---------------------------------------------------------------------------
 // Actions
@@ -27,14 +35,23 @@ type PlayerAction =
   | { type: "PREV_TRACK" }
   | { type: "NEXT_VIDEO" }
   | { type: "SET_PROGRESS"; payload: { progress: number; duration: number } }
-  | { type: "QUEUE_TRACK"; payload: Track };
+  | { type: "QUEUE_TRACK"; payload: Track }
+  | {
+      type: "SET_CONTENT_MODE";
+      payload: {
+        contentMode: ContentMode;
+        playlist?: Track[];
+        videoPlaylist?: YouTubeVideo[];
+      };
+    };
 
 // ---------------------------------------------------------------------------
 // Initial State
 // ---------------------------------------------------------------------------
 
 const initialState: PlayerState = {
-  mode: "simultaneous",
+  mode: "soundcloud-only",
+  contentMode: "albums",
   isPlaying: false,
   isExpanded: false,
   volume: 0.7,
@@ -194,6 +211,31 @@ function playerReducer(state: PlayerState, action: PlayerAction): PlayerState {
       return { ...state, playlist: updatedPlaylist };
     }
 
+    case "SET_CONTENT_MODE": {
+      const { contentMode, playlist, videoPlaylist } = action.payload;
+      const newMode = CONTENT_MODE_TO_PLAYER_MODE[contentMode];
+
+      const newPlaylist = playlist ?? state.playlist;
+      const newVideoPlaylist = videoPlaylist ?? state.videoPlaylist;
+
+      const firstTrack = newPlaylist.length > 0 ? newPlaylist[0] : null;
+      const firstVideo = newVideoPlaylist.length > 0 ? newVideoPlaylist[0] : null;
+
+      return {
+        ...state,
+        contentMode,
+        mode: newMode,
+        playlist: newPlaylist,
+        videoPlaylist: newVideoPlaylist,
+        currentTrack: contentMode !== "music-videos" ? firstTrack : state.currentTrack,
+        currentVideo: contentMode === "music-videos" ? firstVideo : state.currentVideo,
+        trackIndex: contentMode !== "music-videos" ? 0 : state.trackIndex,
+        videoIndex: contentMode === "music-videos" ? 0 : state.videoIndex,
+        progress: 0,
+        duration: contentMode !== "music-videos" ? (firstTrack?.duration ?? 0) : 0
+      };
+    }
+
     default:
       return state;
   }
@@ -206,6 +248,8 @@ function playerReducer(state: PlayerState, action: PlayerAction): PlayerState {
 interface PlayerContextValue {
   state: PlayerState;
   dispatch: Dispatch<PlayerAction>;
+  analyserNode: AnalyserNode | null;
+  setAnalyserNode: (node: AnalyserNode | null) => void;
 }
 
 const PlayerContext = createContext<PlayerContextValue | null>(null);
@@ -220,10 +264,11 @@ interface PlayerProviderProps {
 
 export function PlayerProvider({ children }: PlayerProviderProps) {
   const [state, dispatch] = useReducer(playerReducer, initialState);
+  const [analyserNode, setAnalyserNode] = useState<AnalyserNode | null>(null);
 
   const value = useMemo<PlayerContextValue>(
-    () => ({ state, dispatch }),
-    [state]
+    () => ({ state, dispatch, analyserNode, setAnalyserNode }),
+    [state, analyserNode]
   );
 
   return (
